@@ -1,0 +1,36 @@
+[
+  {
+    "id": "prod-001",
+    "name": "Live Chat Widget & AI Agent",
+    "role": "Lead Full Stack Engineer",
+    "description": "Real-time live chat solution with AI-powered response suggestions. Enables instant customer communication with intelligent reply recommendations using OpenAI integration.",
+    "technologies": [
+      "React",
+      "TypeScript",
+      "WebSocket",
+      "GraphQL",
+      "Node.js",
+      "OpenAI API"
+    ],
+    "link": "https://www.elasticemail.com",
+    "year": 2024,
+    "featured": true
+  },
+  {
+    "id": "prod-002",
+    "name": "Communication Platform",
+    "role": "Full Stack Engineer",
+    "description": "Comprehensive communication hub combining team chat, email service, and unified messaging. Designed for seamless collaboration with real-time notifications and rich media support.",
+    "technologies": [
+      "Next.js",
+      "Express",
+      "MongoDB",
+      "GraphQL",
+      "TypeScript",
+      "WebSocket"
+    ],
+    "link": "https://www.elasticemail.com",
+    "year": 2023,
+    "featured": true
+  }
+]

@@ -1,0 +1,180 @@
+/* Theme CSS - Light and dark mode support with CSS variables */
+
+@layer base {
+  /* Dark mode (default) */
+  :root,
+  [data-theme="dark"] {
+    color-scheme: dark;
+
+    /* Color variables */
+    --color-background: #050505;
+    --color-foreground: #ffffff;
+    --color-muted: #888888;
+    --color-border: #1f1f1f;
+
+    /* Hover states */
+    --color-hover-bg: rgba(255, 255, 255, 0.05);
+    --color-hover-border: rgba(255, 255, 255, 0.1);
+    --color-hover-text: #ffffff;
+
+    /* Accent colors */
+    --color-success: #10b981;
+    --color-warning: #f59e0b;
+    --color-error: #ef4444;
+    --color-info: #3b82f6;
+
+    /* Gradients */
+    --gradient-text-from: #ffffff;
+    --gradient-text-to: #a0a0a0;
+    --gradient-hover-via: rgba(255, 255, 255, 0.03);
+  }
+
+  /* Light mode (future) */
+  [data-theme="light"] {
+    color-scheme: light;
+
+    /* Color variables */
+    --color-background: #fafaf9;
+    --color-foreground: #1f2937;
+    --color-muted: #6b7280;
+    --color-border: #e5e7eb;
+
+    /* Hover states */
+    --color-hover-bg: rgba(0, 0, 0, 0.03);
+    --color-hover-border: rgba(0, 0, 0, 0.1);
+    --color-hover-text: #1f2937;
+
+    /* Accent colors */
+    --color-success: #047857;
+    --color-warning: #d97706;
+    --color-error: #dc2626;
+    --color-info: #2563eb;
+
+    /* Gradients */
+    --gradient-text-from: #1f2937;
+    --gradient-text-to: #6b7280;
+    --gradient-hover-via: rgba(0, 0, 0, 0.02);
+  }
+
+  /* Apply theme colors to body */
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+
+  /* Apply theme colors to common elements */
+  a {
+    color: var(--color-foreground);
+  }
+
+  /* Borders use theme color */
+  .border-border {
+    border-color: var(--color-border);
+  }
+
+  .border-border\/50 {
+    border-color: color-mix(
+      in srgb,
+      var(--color-border),
+      transparent 50%
+    );
+  }
+
+  .border-border\/80 {
+    border-color: color-mix(
+      in srgb,
+      var(--color-border),
+      transparent 20%
+    );
+  }
+
+  /* Text colors use theme */
+  .text-foreground {
+    color: var(--color-foreground);
+  }
+
+  .text-muted {
+    color: var(--color-muted);
+  }
+
+  .text-muted\/50 {
+    color: color-mix(in srgb, var(--color-muted), transparent 50%);
+  }
+
+  .text-muted\/70 {
+    color: color-mix(in srgb, var(--color-muted), transparent 30%);
+  }
+
+  /* Background colors */
+  .bg-background {
+    background-color: var(--color-background);
+  }
+
+  .bg-white\/5 {
+    background-color: var(--color-hover-bg);
+  }
+
+  .bg-white\/\[0\.02\] {
+    background-color: color-mix(in srgb, white, transparent 98%);
+  }
+
+  .bg-background\/50 {
+    background-color: color-mix(
+      in srgb,
+      var(--color-background),
+      transparent 50%
+    );
+  }
+
+  .bg-background\/30 {
+    background-color: color-mix(
+      in srgb,
+      var(--color-background),
+      transparent 70%
+    );
+  }
+
+  /* Hover states with theme awareness */
+  .hover\:bg-white\/5:hover {
+    background-color: var(--color-hover-bg);
+  }
+
+  .hover\:border-border\/80:hover {
+    border-color: color-mix(
+      in srgb,
+      var(--color-border),
+      transparent 20%
+    );
+  }
+
+  .hover\:text-foreground:hover {
+    color: var(--color-foreground);
+  }
+
+  /* Status badge colors */
+  .badge-success {
+    color: var(--color-success);
+    background-color: color-mix(in srgb, var(--color-success), transparent 90%);
+  }
+
+  .badge-warning {
+    color: var(--color-warning);
+    background-color: color-mix(in srgb, var(--color-warning), transparent 90%);
+  }
+
+  .badge-info {
+    color: var(--color-info);
+    background-color: color-mix(in srgb, var(--color-info), transparent 90%);
+  }
+
+  /* Selection color */
+  ::selection {
+    background-color: var(--color-foreground);
+    color: var(--color-background);
+  }
+
+  /* Smooth theme transitions (optional) */
+  body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+}

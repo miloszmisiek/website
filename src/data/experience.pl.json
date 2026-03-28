@@ -1,0 +1,93 @@
+[
+  {
+    "id": "exp-001",
+    "period": {
+      "start": "2024-01",
+      "end": "present"
+    },
+    "duration": "1+ roku",
+    "role": "Starszy Inżynier Full Stack",
+    "company": "Elastic Email",
+    "focus": "Rozwój agentów AI i architektura platformy",
+    "description": "Prowadzę przeprojektowanie architektury i integrację AI dla platformy komunikacyjnej. Mentoruję członków zespołu i ustalam najlepsze praktyki inżynieryjne dla systemów na dużą skalę.",
+    "highlights": [
+      "Prowadziłem rozwój agenta AI do inteligentnych odpowiedzi e-mail",
+      "Zaprojektowałem widżet czatu na żywo z możliwościami czasu rzeczywistego",
+      "Mentorowałem 3+ juniorów",
+      "Zredukowałem czas odpowiedzi API o 40% poprzez optymalizację",
+      "Ustaliłem standardy GraphQL dla API platformy"
+    ],
+    "technologies": [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "GraphQL",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "WebSocket",
+      "OpenAI API"
+    ],
+    "type": "work"
+  },
+  {
+    "id": "exp-002",
+    "period": {
+      "start": "2020-06",
+      "end": "2023-12"
+    },
+    "duration": "3+ lata",
+    "role": "Inżynier Full Stack",
+    "company": "Poprzednia firma",
+    "focus": "Architektura backendowa i optymalizacja baz danych",
+    "description": "Budowałem i utrzymywałem kluczowe systemy backendowe podczas skalowania platformy od 1 tys. do 50 tys.+ użytkowników. Skupiałem się na optymalizacji baz danych i niezawodności systemu.",
+    "highlights": [
+      "Zaprojektowałem i wdrożyłem architekturę mikroserwisów",
+      "Zoptymalizowałem zapytania PostgreSQL, redukując czas zapytań o 60%",
+      "Prowadziłem projekt migracji bazy danych bez przestojów",
+      "Ustanowiłem pipeline'y CI/CD dla automatycznego wdrażania",
+      "Osiągnąłem 99,95% dostępności SLA"
+    ],
+    "technologies": [
+      "Node.js",
+      "Express",
+      "PostgreSQL",
+      "Redis",
+      "Docker",
+      "Kubernetes",
+      "GraphQL",
+      "TypeScript"
+    ],
+    "type": "work"
+  },
+  {
+    "id": "exp-003",
+    "period": {
+      "start": "2022-09",
+      "end": "present"
+    },
+    "duration": "2+ lata",
+    "role": "Doktorant (rok 2 z 4)",
+    "company": "Uczelnia – Badania nad bezpieczeństwem AI",
+    "focus": "Wielowarstwowe wykrywanie phishingu z AI",
+    "description": "Prowadzę badania nad systemami bezpieczeństwa opartymi na AI. Łączę wykrywanie oparte na URL, analizę wizyjną i orkiestrację LLM w celu kompleksowego wykrywania zagrożeń.",
+    "highlights": [
+      "Opublikowałem 2 recenzowane artykuły o wykrywaniu phishingu",
+      "3. artykuł jest pod recenzją (orkiestracja LLM)",
+      "Zaprojektowałem wielowarstwowy system wykrywania łączący 3 podejścia",
+      "Opracowałem wizyjną analizę zawartości e-maili",
+      "Stworzyłem framework orkiestracji LLM do inteligentnego routingu"
+    ],
+    "technologies": [
+      "Python",
+      "LLaMA Index",
+      "OpenAI API",
+      "pgvector",
+      "TensorFlow",
+      "Computer Vision",
+      "NLP",
+      "Machine Learning"
+    ],
+    "type": "academic"
+  }
+]

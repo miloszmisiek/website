@@ -1,0 +1,41 @@
+---
+---
+<a
+  href="/"
+  class="inline-flex select-none cursor-pointer font-nav text-2xl leading-none tracking-wide"
+  aria-label="milosz misiek — home"
+>
+  {/* Mobile: mm() */}
+  <span class="inline-flex items-baseline md:hidden">
+    <span class="text-foreground">mm</span>
+    <span class="text-muted">()</span>
+  </span>
+
+  {/* Desktop: milosz.misiek */}
+  <span class="hidden md:inline-flex items-baseline">
+    <span class="text-foreground">milosz</span>
+    <span class="text-muted">.</span>
+    <span class="text-foreground">misiek</span>
+  </span>
+</a>
+
+<!-- scroll-collapse animation — disabled for now
+<style>
+  .logo-full,
+  .logo-short {
+    grid-area: 1 / 1;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+
+  :global(header[data-scrolled]) .logo-full {
+    opacity: 0;
+    transform: translateY(-4px);
+    pointer-events: none;
+  }
+
+  :global(header[data-scrolled]) .logo-short {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+</style>
+-->

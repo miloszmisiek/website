@@ -1,0 +1,32 @@
+---
+import { FadeIn } from '../FadeIn';
+import ProductCard from '../products/ProductCard.astro';
+import type { Product } from '../../data/schema';
+import { useTranslations, type Locale } from '../../i18n';
+import enData from '../../data/products.en.json';
+import plData from '../../data/products.pl.json';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const products = ((lang === 'pl' ? plData : enData) as Product[]).filter(p => p.featured !== false);
+---
+
+<FadeIn client:load delay={0.3} className="mb-32">
+  <section id="products">
+    {/* Section Header */}
+    <div class="section-label">
+	{`[ ${t('section.products')} ]`}
+    </div>
+
+    {/* Products Grid */}
+    <div class="grid-responsive-3">
+      {products.map((product, index) => (
+        <ProductCard product={product} index={index} lang={lang} />
+      ))}
+    </div>
+  </section>
+</FadeIn>

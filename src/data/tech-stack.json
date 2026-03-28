@@ -1,0 +1,18 @@
+[
+  { "name": "React", "slug": "react" },
+  { "name": "Next.js", "slug": "nextdotjs" },
+  { "name": "Astro", "slug": "astro" },
+  { "name": "TypeScript", "slug": "typescript" },
+  { "name": "Tailwind CSS", "slug": "tailwindcss" },
+  { "name": "Framer Motion", "slug": "framer" },
+  { "name": "Node.js", "slug": "nodedotjs" },
+  { "name": "GraphQL", "slug": "graphql" },
+  { "name": "Python", "slug": "python" },
+  { "name": "OpenAI", "slug": "openai" },
+  { "name": "MongoDB", "slug": "mongodb" },
+  { "name": "PostgreSQL", "slug": "postgresql" },
+  { "name": "Redis", "slug": "redis" },
+  { "name": "Docker", "slug": "docker" },
+  { "name": "Git", "slug": "git" },
+  { "name": "GitHub Actions", "slug": "githubactions" }
+]

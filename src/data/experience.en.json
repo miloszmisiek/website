@@ -1,0 +1,93 @@
+[
+  {
+    "id": "exp-001",
+    "period": {
+      "start": "2024-01",
+      "end": "present"
+    },
+    "duration": "1+ years",
+    "role": "Senior Full Stack Engineer",
+    "company": "Elastic Email",
+    "focus": "AI Agent Development & Platform Architecture",
+    "description": "Leading architecture redesign and AI integration for communication platform. Mentoring team members and establishing engineering best practices for large-scale systems.",
+    "highlights": [
+      "Led AI agent development for intelligent email replies",
+      "Architected live chat widget with real-time capabilities",
+      "Mentored 3+ junior engineers",
+      "Reduced API response time by 40% through optimization",
+      "Established GraphQL standards for platform APIs"
+    ],
+    "technologies": [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "GraphQL",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "WebSocket",
+      "OpenAI API"
+    ],
+    "type": "work"
+  },
+  {
+    "id": "exp-002",
+    "period": {
+      "start": "2020-06",
+      "end": "2023-12"
+    },
+    "duration": "3+ years",
+    "role": "Full Stack Engineer",
+    "company": "Previous Position",
+    "focus": "Backend Architecture & Database Optimization",
+    "description": "Built and maintained critical backend systems for scaling platform from 1K to 50K+ users. Focused on database optimization and system reliability.",
+    "highlights": [
+      "Designed and implemented microservices architecture",
+      "Optimized PostgreSQL queries reducing query time by 60%",
+      "Led database migration project with zero downtime",
+      "Established CI/CD pipelines for automated deployment",
+      "Achieved 99.95% uptime SLA"
+    ],
+    "technologies": [
+      "Node.js",
+      "Express",
+      "PostgreSQL",
+      "Redis",
+      "Docker",
+      "Kubernetes",
+      "GraphQL",
+      "TypeScript"
+    ],
+    "type": "work"
+  },
+  {
+    "id": "exp-003",
+    "period": {
+      "start": "2022-09",
+      "end": "present"
+    },
+    "duration": "2+ years",
+    "role": "Doctoral Candidate (Year 2 of 4)",
+    "company": "University - AI Security Research",
+    "focus": "Multi-Layer Phishing Detection with AI",
+    "description": "Conducting cutting-edge research on AI-powered security systems. Combining URL-based detection, vision analysis, and LLM orchestration for comprehensive threat detection.",
+    "highlights": [
+      "Published 2 peer-reviewed articles on phishing detection",
+      "3rd article under peer review (LLM orchestration)",
+      "Designed multi-layer detection system combining 3 approaches",
+      "Developed vision-based email content analysis",
+      "Created LLM orchestration framework for intelligent routing"
+    ],
+    "technologies": [
+      "Python",
+      "LLaMA Index",
+      "OpenAI API",
+      "pgvector",
+      "TensorFlow",
+      "Computer Vision",
+      "NLP",
+      "Machine Learning"
+    ],
+    "type": "academic"
+  }
+]

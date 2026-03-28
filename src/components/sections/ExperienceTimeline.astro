@@ -1,0 +1,39 @@
+---
+import { FadeIn } from '../FadeIn';
+import TimelineEntry from '../timeline/TimelineEntry.astro';
+import TimelineAnimator from '../timeline/TimelineAnimator';
+import type { TimelineEntry as TimelineEntryType } from '../../data/schema';
+import { useTranslations, type Locale } from '../../i18n';
+import enData from '../../data/experience.en.json';
+import plData from '../../data/experience.pl.json';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const experience = (lang === 'pl' ? plData : enData) as TimelineEntryType[];
+---
+
+<FadeIn client:load delay={0.3} className="mb-32">
+  <section id="experience">
+    {/* Section Header */}
+     <div class="section-label">
+       {`[ ${t('section.experience')} ]`}
+     </div>
+
+    {/* Timeline Container */}
+    <div class="relative ml-4 md:ml-8 lg:ml-12 space-y-12">
+      {/* Vertical Line Connector */}
+      <div class="absolute left-0 top-0 bottom-0 w-px bg-border"></div>
+
+      {/* Timeline Items with Animation */}
+      <TimelineAnimator client:load items={experience}>
+        {experience.map((entry, index) => (
+          <TimelineEntry entry={entry} index={index} lang={lang} />
+        ))}
+      </TimelineAnimator>
+    </div>
+  </section>
+</FadeIn>

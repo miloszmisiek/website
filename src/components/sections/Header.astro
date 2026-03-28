@@ -1,0 +1,48 @@
+---
+import Logo from '../logo/Logo.astro';
+import NavLink from '../nav-links/NavLink.astro';
+import LanguageSwitcher from '../LanguageSwitcher.astro';
+import { useTranslations, type Locale } from '../../i18n';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const navLinks = [
+  { key: 'nav.work' as const, href: '#experience' },
+  { key: 'nav.research' as const, href: '#publications' },
+  { key: 'nav.contact' as const, href: '#contact' },
+];
+---
+
+<header class="flex justify-between items-center text-xl font-nav tracking-wide text-muted border-b border-border pb-6 mb-24">
+  <Logo />
+  <nav class="flex items-center gap-8">
+    {navLinks.map((link) => (
+      <NavLink key={link.key} href={link.href} label={t(link.key)} />
+    ))}
+    <LanguageSwitcher lang={lang} />
+  </nav>
+</header>
+
+<!-- scroll-collapse animation disabled for now
+<script>
+  const header = document.querySelector('header');
+  const THRESHOLD = 80;
+
+  function updateScrollState() {
+    if (!header) return;
+    if (window.scrollY > THRESHOLD) {
+      header.setAttribute('data-scrolled', '');
+    } else {
+      header.removeAttribute('data-scrolled');
+    }
+  }
+
+  window.addEventListener('scroll', updateScrollState, { passive: true });
+  updateScrollState();
+</script>
+-->

@@ -1,0 +1,88 @@
+---
+import type { Product } from '../../data/schema';
+import { useTranslations, type Locale } from '../../i18n';
+
+interface Props {
+  product: Product;
+  index: number;
+  lang: Locale;
+}
+
+const { product, index, lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<div
+  class="card-base overflow-hidden transition-smooth"
+  style={{
+    animation: `slideInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards`,
+    opacity: 0,
+  }}
+>
+  {/* Image Container */}
+  <div class="relative overflow-hidden bg-background/50 aspect-video md:aspect-auto md:h-48 lg:h-56 hover-zoom">
+    <div class="w-full h-full bg-gradient-to-br from-neutral-900/20 to-neutral-800/20 flex items-center justify-center">
+<span class="text-muted font-mono text-sm">{`[${t('product.imagePlaceholder')}]`}</span>
+    </div>
+  </div>
+
+  {/* Content */}
+  <div class="p-6 border-t border-border/50 bg-background/30">
+    {/* Title */}
+    <h3 class="text-heading-md mb-2">
+      {product.name}
+    </h3>
+
+    {/* Role */}
+    {product.role && (
+      <p class="text-sm italic text-muted mb-3">
+        {product.role}
+      </p>
+    )}
+
+    {/* Description */}
+    {product.description && (
+      <p class="text-body mb-4 line-clamp-3">
+        {product.description}
+      </p>
+    )}
+
+    {/* Technologies */}
+    {product.technologies && product.technologies.length > 0 && (
+      <div class="text-label mb-6 flex flex-wrap gap-2">
+        {product.technologies.map((tech, i) => (
+          <span key={tech}>
+            {tech}
+            {i < product.technologies.length - 1 ? (
+              <span class="text-muted"> · </span>
+            ) : null}
+          </span>
+        ))}
+      </div>
+    )}
+
+    {/* CTA Button */}
+    {product.link && (
+      <a href={product.link} target="_blank" rel="noopener noreferrer" class="button-secondary">
+		{`[ ${t('product.viewProduct')} ]`}
+      </a>
+    )}
+  </div>
+</div>
+
+<style>
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  div {
+    animation-delay: calc(0.08s * v-bind('index'));
+  }
+</style>

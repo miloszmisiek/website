@@ -1,0 +1,214 @@
+/* Utilities CSS - Custom utility classes for portfolio-specific patterns */
+
+@layer utilities {
+  /* Section headers */
+  .section-label {
+    @apply text-xs font-mono uppercase tracking-widest text-muted border-b border-border pb-4 mb-8;
+  }
+
+  /* Card styles */
+  .card-base {
+    @apply border border-border rounded-lg transition-all duration-300;
+  }
+
+  .card-hover {
+    @apply card-base hover:border-border/80;
+  }
+
+  .card-interactive {
+    @apply card-base hover:bg-white/5 hover:shadow-md transition-smooth;
+  }
+
+  /* Button styles */
+  .button-primary {
+    @apply inline-flex items-center justify-center rounded bg-foreground px-4 py-2 text-xs font-mono tracking-widest text-background hover:bg-foreground/90 transition-colors duration-300;
+  }
+
+  .button-secondary {
+    @apply inline-flex items-center justify-center rounded border border-border px-4 py-2 text-xs font-mono tracking-widest text-foreground hover:bg-white/5 transition-colors duration-300;
+  }
+
+  /* Grid patterns */
+  .grid-responsive-2 {
+    @apply grid grid-cols-1 md:grid-cols-2 gap-6;
+  }
+
+  .grid-responsive-3 {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+  }
+
+  .grid-responsive-4 {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4;
+  }
+
+  /* Container styles */
+  .page-container {
+    @apply max-w-5xl mx-auto px-6 md:px-8 lg:px-12;
+  }
+
+  .section-spacing {
+    @apply mb-32;
+  }
+
+  /* Typography utilities */
+  .text-heading-lg {
+    @apply text-lg md:text-xl lg:text-2xl font-medium tracking-tight leading-[1.2] text-foreground;
+  }
+
+  .text-heading-md {
+    @apply text-lg md:text-xl font-medium tracking-tight text-foreground;
+  }
+
+  .text-body {
+    @apply text-sm md:text-base text-muted leading-relaxed;
+  }
+
+  .text-body-sm {
+    @apply text-sm text-muted leading-relaxed;
+  }
+
+  .text-label {
+    @apply text-xs font-mono uppercase tracking-widest text-muted;
+  }
+
+  /* Icon utilities */
+  .icon-sm {
+    @apply w-4 h-4;
+  }
+
+  .icon-md {
+    @apply w-6 h-6;
+  }
+
+  .icon-lg {
+    @apply w-8 h-8;
+  }
+
+  /* Flex utilities */
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+
+  .flex-between {
+    @apply flex items-center justify-between;
+  }
+
+  .flex-col-center {
+    @apply flex flex-col items-center justify-center;
+  }
+
+  /* Spacing helpers */
+  .space-y-timeline {
+    @apply space-y-12;
+  }
+
+  .space-y-cards {
+    @apply space-y-8;
+  }
+
+  /* Border utilities */
+  .border-divider {
+    @apply border-b border-border;
+  }
+
+  .border-subtle {
+    @apply border border-border/50;
+  }
+
+  /* Opacity utilities */
+  .opacity-disabled {
+    @apply opacity-50 pointer-events-none;
+  }
+
+  .opacity-hover-dim {
+    @apply hover:opacity-70 transition-opacity duration-300;
+  }
+
+  /* Cursor utilities */
+  .cursor-interactive {
+    @apply cursor-pointer hover:cursor-pointer;
+  }
+
+  /* Gradient text */
+  .gradient-text-primary {
+    @apply bg-clip-text text-transparent bg-gradient-to-br from-white to-neutral-500;
+  }
+
+  .gradient-text-light {
+    @apply bg-clip-text text-transparent bg-gradient-to-br from-slate-900 to-slate-600;
+  }
+
+  /* Line clamp helpers */
+  .line-clamp-2-no-break {
+    @apply line-clamp-2;
+    word-break: break-word;
+  }
+
+  /* Focus utilities for accessibility */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-2 focus:ring-offset-background;
+  }
+
+  .focus-ring-sm {
+    @apply focus:outline-none focus:ring-2 focus:ring-foreground;
+  }
+
+  /* Scroll behavior */
+  .scroll-smooth-custom {
+    scroll-behavior: smooth;
+  }
+
+  /* Performance optimizations */
+  .gpu-accelerate {
+    @apply will-change-transform;
+  }
+
+  .gpu-accelerate-opacity {
+    @apply will-change-opacity;
+  }
+
+  /* Badge styles */
+  .badge-base {
+    @apply inline-flex items-center px-2 py-1 rounded text-xs font-mono uppercase;
+  }
+
+  .badge-published {
+    @apply badge-base text-emerald-500 bg-emerald-500/10;
+  }
+
+  .badge-review {
+    @apply badge-base text-amber-500 bg-amber-500/10;
+  }
+
+  .badge-preprint {
+    @apply badge-base text-blue-500 bg-blue-500/10;
+  }
+
+  /* Hover gradient effect (existing pattern) */
+  .hover-gradient {
+    @apply relative overflow-hidden;
+  }
+
+  .hover-gradient-bg {
+    @apply absolute inset-0 bg-gradient-to-r from-neutral-900/0 via-neutral-800/30 to-neutral-900/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 pointer-events-none;
+  }
+
+  /* Light mode gradient */
+  .hover-gradient-light-bg {
+    @apply absolute inset-0 bg-gradient-to-r from-slate-100/0 via-slate-200/20 to-slate-100/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 pointer-events-none;
+  }
+
+  /* Responsive display helpers */
+  .hidden-mobile {
+    @apply hidden md:block;
+  }
+
+  .visible-mobile {
+    @apply block md:hidden;
+  }
+
+  /* Smooth scrolling */
+  html {
+    @apply scroll-smooth;
+  }
+}

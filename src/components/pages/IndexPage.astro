@@ -1,0 +1,148 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { FadeIn } from '../FadeIn';
+import { Typewriter } from '../Typewriter';
+import Header from '../sections/Header.astro';
+import HowICanHelpSection from '../sections/HowICanHelpSection.astro';
+import ExperienceTimeline from '../sections/ExperienceTimeline.astro';
+import PublicationsSection from '../sections/PublicationsSection.astro';
+import FeaturedProductsSection from '../sections/FeaturedProductsSection.astro';
+import '@fontsource/inter';
+import '@fontsource/jetbrains-mono';
+import '@fontsource/vt323';
+import { useTranslations, type Locale } from '../../i18n';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<Layout title={t('layout.title')} lang={lang}>
+  <div class="max-w-5xl mx-auto px-6 py-8 min-h-screen flex flex-col">
+    <!-- Navigation -->
+    <Header lang={lang} />
+
+    <!-- Hero Section -->
+    <main class="flex-grow">
+      <div class="mb-32">
+        <Typewriter
+          client:load
+          text={t('hero.typewriter')}
+          delay={0.2}
+          className="text-4xl md:text-5xl font-medium tracking-tight leading-[1.2] mb-12 max-w-3xl min-h-[3em] md:min-h-[2.4em]"
+        />
+        <FadeIn client:load delay={2.5}>
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-12 text-muted font-light leading-relaxed text-sm border-l border-border pl-6">
+            <div class="md:col-span-8 max-w-2xl pt-2">
+              <p class="mb-6 text-base">
+                {t('hero.bio.first')}
+              </p>
+              <p class="mb-8">
+                {t('hero.bio.second')}
+              </p>
+              <div class="flex items-center gap-4">
+                <a href="#work" class="inline-flex items-center justify-center rounded bg-foreground px-4 py-2 text-xs font-mono tracking-widest text-background hover:bg-foreground/90 transition-colors">
+			{`[ ${t('hero.cta.viewWork')} ]`}
+                </a>
+                <a href="#contact" class="inline-flex items-center justify-center rounded border border-border px-4 py-2 text-xs font-mono tracking-widest text-foreground hover:bg-white/5 transition-colors">
+			{`[ ${t('hero.cta.contact')} ]`}
+                </a>
+              </div>
+            </div>
+            <div class="md:col-span-4">
+              <div class="relative overflow-hidden rounded-lg border border-border shadow-2xl">
+                <!-- Title bar -->
+                <div class="flex items-center gap-3 px-4 py-3 border-b border-border bg-white/[0.03]">
+                  <div class="flex items-center gap-1.5">
+                    <span class="w-3 h-3 rounded-full bg-foreground/20"></span>
+                    <span class="w-3 h-3 rounded-full bg-foreground/20"></span>
+                    <span class="w-3 h-3 rounded-full bg-foreground/20"></span>
+                  </div>
+                  <span class="text-xs font-mono text-muted/30 tracking-widest">milosz@dev</span>
+                </div>
+
+                <!-- Screen content -->
+                <div class="relative p-5 bg-background">
+                  <!-- Ambient screen glow -->
+                  <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.03),_transparent_60%)]"></div>
+
+                  <div class="relative">
+                    <ul class="space-y-3 font-mono text-[0.65rem] tracking-widest uppercase">
+                      <li class="flex items-center justify-between">
+                        <span class="flex items-center gap-2">
+                          <span class="text-muted/30 select-none">&gt;</span>
+                          <span class="text-muted/60">{t('hero.stats.experience.label')}</span>
+                        </span>
+                        <span class="text-foreground">{t('hero.stats.experience.value')}</span>
+                      </li>
+                      <li class="flex items-center justify-between">
+                        <span class="flex items-center gap-2">
+                          <span class="text-muted/30 select-none">&gt;</span>
+                          <span class="text-muted/60">{t('hero.stats.focus.label')}</span>
+                        </span>
+                        <span class="text-foreground">{t('hero.stats.focus.value')}</span>
+                      </li>
+                      <li class="flex items-center justify-between">
+                        <span class="flex items-center gap-2">
+                          <span class="text-muted/30 select-none">&gt;</span>
+                          <span class="text-muted/60">{t('hero.stats.status.label')}</span>
+                        </span>
+                        <span class="flex items-center gap-2">
+                          <span class="relative flex h-2 w-2">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                          </span>
+                          <span class="text-emerald-500">{t('hero.stats.status.value')}</span>
+                        </span>
+                      </li>
+                    </ul>
+
+                    <!-- Blinking cursor -->
+                    <div class="mt-3">
+                      <span class="cursor-blink font-mono text-[0.65rem] text-muted/40">▋</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </FadeIn>
+      </div>
+
+      <!-- How I Can Help Section -->
+      <HowICanHelpSection lang={lang} />
+
+      <!-- Experience Timeline Section -->
+      <ExperienceTimeline lang={lang} />
+
+      <!-- Publications & Research Section -->
+      <PublicationsSection lang={lang} />
+
+      <!-- Featured Products Section -->
+      <FeaturedProductsSection lang={lang} />
+    </main>
+
+    <FadeIn client:load delay={0.4}>
+      <footer id="contact" class="flex justify-between items-center text-xs font-mono text-muted py-8 border-t border-border mt-auto">
+        <span>© {new Date().getFullYear()} MILOSZ MISIEK</span>
+        <div class="flex gap-4">
+          <a href="#" class="hover:text-foreground transition-colors">{t('footer.github')}</a>
+          <a href="#" class="hover:text-foreground transition-colors">{t('footer.linkedin')}</a>
+        </div>
+      </footer>
+    </FadeIn>
+  </div>
+</Layout>
+
+<style>
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+  }
+  .cursor-blink {
+    animation: blink 1s step-end infinite;
+  }
+</style>

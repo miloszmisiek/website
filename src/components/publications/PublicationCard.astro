@@ -1,0 +1,114 @@
+---
+import type { Publication } from '../../data/schema';
+import { useTranslations, type Locale } from '../../i18n';
+
+interface Props {
+  publication: Publication;
+  index: number;
+  lang: Locale;
+}
+
+const { publication, index, lang } = Astro.props;
+const t = useTranslations(lang);
+
+const statusColors = {
+  'Published': { text: 'text-emerald-500', bg: 'bg-emerald-500/10' },
+  'Under Review': { text: 'text-amber-500', bg: 'bg-amber-500/10' },
+  'Preprint': { text: 'text-blue-500', bg: 'bg-blue-500/10' },
+};
+
+const status = statusColors[publication.status];
+const statusLabel = t(`publication.status.${publication.status}` as Parameters<typeof t>[0]);
+---
+
+<div
+  class="card-base bg-white/[0.03] overflow-hidden p-6 transition-smooth hover:border-border/80 hover:shadow-md hover:-translate-y-1"
+>
+  {/* Status Badge */}
+  <div class="flex items-center justify-between mb-4">
+    <span class={`text-xs font-mono uppercase px-2 py-1 rounded ${status.bg} ${status.text}`}>
+      {statusLabel}
+    </span>
+    {publication.year && (
+      <span class="text-label">{publication.year}</span>
+    )}
+  </div>
+
+  {/* Title */}
+  <h3 class="text-heading-md mb-2 leading-snug">
+    {publication.title}
+  </h3>
+
+  {/* Authors */}
+  {publication.authors && publication.authors.length > 0 && (
+    <p class="text-sm italic text-muted mb-3">
+      {publication.authors.join(', ')}
+    </p>
+  )}
+
+  {/* Topics */}
+  {publication.topics && publication.topics.length > 0 && (
+    <div class="flex flex-wrap gap-2 mb-4">
+      {publication.topics.map((topic) => (
+        <span key={topic} class="text-label">
+          #{topic}
+        </span>
+      ))}
+    </div>
+  )}
+
+  {/* Excerpt */}
+  {publication.excerpt && (
+    <p class="text-body mb-4 line-clamp-3">
+      {publication.excerpt}
+    </p>
+  )}
+
+  {/* Meta Information */}
+  <div class="text-label mb-4 flex flex-wrap gap-3">
+    {publication.readTime && (
+      <span>{publication.readTime}</span>
+    )}
+    {publication.readTime && publication.year && (
+      <span class="text-muted">·</span>
+    )}
+    {publication.year && (
+      <span>{publication.year}</span>
+    )}
+    {publication.doi && (
+      <>
+        <span class="text-muted">·</span>
+        <span class="font-mono text-xs">{publication.doi}</span>
+      </>
+    )}
+  </div>
+
+  {/* CTA Button */}
+  {publication.link && (
+    <a
+      href={publication.link}
+      class="button-secondary"
+    >
+	{`[ ${t('publication.viewPaper')} ]`}
+    </a>
+  )}
+</div>
+
+<style>
+  div {
+    animation: slideInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: calc(0.08s * v-bind('index'));
+    opacity: 0;
+  }
+
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
