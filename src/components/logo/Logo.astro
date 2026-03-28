@@ -27,6 +27,13 @@
     transition: opacity 0.25s ease, transform 0.25s ease;
   }
 
+  @media (min-width: 768px) {
+    .logo-short {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+  }
+
   :global(header[data-scrolled]) .logo-full {
     opacity: 0;
     transform: translateY(-4px);
@@ -34,8 +41,14 @@
   }
 
   :global(header[data-scrolled]) .logo-short {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
+    opacity: 1;
+    transform: translateY(0);
   }
 </style>
+
+To re-enable:
+1. Change <a> class from inline-flex to inline-grid
+2. Replace mobile span with: <span class="logo-short inline-flex items-baseline">
+3. Replace desktop span with: <span class="logo-full hidden md:inline-flex items-baseline">
+4. Uncomment the <style> block above
 -->

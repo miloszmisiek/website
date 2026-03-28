@@ -1,6 +1,7 @@
 ---
 import { FadeIn } from '../FadeIn';
 import ProductCard from '../products/ProductCard.astro';
+import ArrayTitle from '../arrayTitle/ArrayTitle.astro';
 import type { Product } from '../../data/schema';
 import { useTranslations, type Locale } from '../../i18n';
 import enData from '../../data/products.en.json';
@@ -19,7 +20,7 @@ const products = ((lang === 'pl' ? plData : enData) as Product[]).filter(p => p.
   <section id="products">
     {/* Section Header */}
     <div class="section-label">
-	{`[ ${t('section.products')} ]`}
+	<ArrayTitle translationKey={'section.products'} lang={lang} />
     </div>
 
     {/* Products Grid */}

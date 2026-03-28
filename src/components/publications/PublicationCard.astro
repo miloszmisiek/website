@@ -1,4 +1,5 @@
 ---
+import ArrayTitle from '../arrayTitle/ArrayTitle.astro';
 import type { Publication } from '../../data/schema';
 import { useTranslations, type Locale } from '../../i18n';
 
@@ -89,7 +90,7 @@ const statusLabel = t(`publication.status.${publication.status}` as Parameters<t
       href={publication.link}
       class="button-secondary"
     >
-	{`[ ${t('publication.viewPaper')} ]`}
+	<ArrayTitle translationKey={'publication.viewPaper'} lang={lang} />
     </a>
   )}
 </div>

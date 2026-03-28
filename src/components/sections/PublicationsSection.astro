@@ -1,4 +1,5 @@
 ---
+import ArrayTitle from '../arrayTitle/ArrayTitle.astro';
 import { FadeIn } from '../FadeIn';
 import PublicationCard from '../publications/PublicationCard.astro';
 import type { Publication } from '../../data/schema';
@@ -20,7 +21,7 @@ const publications = (lang === 'pl' ? plData : enData) as Publication[];
   <section id="publications">
     {/* Section Header */}
      <div class="section-label">
-       {`[ ${t('section.publications')} ]`}
+	<ArrayTitle translationKey={'section.publications'} lang={lang} />
      </div>
 
     {/* Publications Grid */}

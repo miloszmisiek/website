@@ -1,0 +1,13 @@
+---
+import { useTranslations, type Locale } from '../../i18n';
+
+interface Props {
+  translationKey: string;
+   lang: Locale;
+}
+const { translationKey, lang } = Astro.props;
+const t = useTranslations(lang);
+---
+<span>
+  {`[ ${t(translationKey)} ]`}
+</span>

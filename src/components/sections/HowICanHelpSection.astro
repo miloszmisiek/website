@@ -1,5 +1,6 @@
 ---
 import { FadeIn } from '../FadeIn';
+import ArrayTitle from '../arrayTitle/ArrayTitle.astro';
 import { useTranslations, type Locale } from '../../i18n';
 import type { TechLogo } from '../../data/schema';
 import techData from '../../data/tech-stack.json';
@@ -17,7 +18,7 @@ const bySlug = (...slugs: string[]) =>
 
 const capabilities = [
   {
-    index: '01',
+    index: '00',
     title: t('capabilities.product.title'),
     items: [
       t('capabilities.product.item1'),
@@ -27,7 +28,7 @@ const capabilities = [
     logos: [] as TechLogo[],
   },
   {
-    index: '02',
+    index: '01',
     title: t('capabilities.frontend.title'),
     items: [
       t('capabilities.frontend.item1'),
@@ -37,7 +38,7 @@ const capabilities = [
     logos: bySlug('react', 'nextdotjs', 'astro', 'tailwindcss', 'framer'),
   },
   {
-    index: '03',
+    index: '02',
     title: t('capabilities.fullstack.title'),
     items: [
       t('capabilities.fullstack.item1'),
@@ -53,7 +54,7 @@ const capabilities = [
   <section id="capabilities">
     {/* Section Header */}
     <div class="section-label">
-      {`[ ${t('section.howICanHelp')} ]`}
+	<ArrayTitle translationKey={'section.howICanHelp'} lang={lang} />
     </div>
 
     {/* Capability Cards */}

@@ -1,4 +1,5 @@
 ---
+import ArrayTitle from '../arrayTitle/ArrayTitle.astro';
 import type { Product } from '../../data/schema';
 import { useTranslations, type Locale } from '../../i18n';
 
@@ -64,7 +65,7 @@ const t = useTranslations(lang);
     {/* CTA Button */}
     {product.link && (
       <a href={product.link} target="_blank" rel="noopener noreferrer" class="button-secondary">
-		{`[ ${t('product.viewProduct')} ]`}
+		<ArrayTitle translationKey={'product.viewProduct'} lang={lang} />
       </a>
     )}
   </div>

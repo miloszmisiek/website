@@ -18,7 +18,7 @@ const navLinks = [
 ];
 ---
 
-<header class="flex justify-between items-center text-xl font-nav tracking-wide text-muted border-b border-border pb-6 mb-24">
+<header class="sticky top-0 z-[99999] bg-transparent flex justify-between items-center text-xl font-nav tracking-wide text-muted  border-border pt-8 pb-6 mb-24 transition-[border-color] duration-300">
   <Logo />
   <nav class="flex items-center gap-8">
     {navLinks.map((link) => (
@@ -28,7 +28,6 @@ const navLinks = [
   </nav>
 </header>
 
-<!-- scroll-collapse animation disabled for now
 <script>
   const header = document.querySelector('header');
   const THRESHOLD = 80;
@@ -45,4 +44,15 @@ const navLinks = [
   window.addEventListener('scroll', updateScrollState, { passive: true });
   updateScrollState();
 </script>
--->
+
+<style>
+  header {
+    background: transparent;
+    transition: background 0.3s ease, backdrop-filter 0.3s ease;
+  }
+  header[data-scrolled] {
+    background: rgba(14, 12, 12, 0.5);
+    backdrop-filter: blur(16px);
+    border-bottom-color: transparent;
+  }
+</style>

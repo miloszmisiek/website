@@ -2,6 +2,7 @@
 import { FadeIn } from '../FadeIn';
 import TimelineEntry from '../timeline/TimelineEntry.astro';
 import TimelineAnimator from '../timeline/TimelineAnimator';
+import ArrayTitle from '../arrayTitle/ArrayTitle.astro';
 import type { TimelineEntry as TimelineEntryType } from '../../data/schema';
 import { useTranslations, type Locale } from '../../i18n';
 import enData from '../../data/experience.en.json';
@@ -20,7 +21,7 @@ const experience = (lang === 'pl' ? plData : enData) as TimelineEntryType[];
   <section id="experience">
     {/* Section Header */}
      <div class="section-label">
-       {`[ ${t('section.experience')} ]`}
+	<ArrayTitle translationKey={'section.experience'} lang={lang}/>
      </div>
 
     {/* Timeline Container */}
