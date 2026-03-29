@@ -12,6 +12,9 @@ interface Props {
 const { publication, index, lang } = Astro.props;
 const t = useTranslations(lang);
 
+const excerpt = (lang === 'pl' ? publication.excerpt_pl : publication.excerpt) ?? publication.excerpt;
+const readTime = (lang === 'pl' ? publication.readTime_pl : publication.readTime) ?? publication.readTime;
+
 const statusColors = {
   'Published': { text: 'text-emerald-500', bg: 'bg-emerald-500/10' },
   'Under Review': { text: 'text-amber-500', bg: 'bg-amber-500/10' },
@@ -52,25 +55,25 @@ const statusLabel = t(`publication.status.${publication.status}` as Parameters<t
     <div class="flex flex-wrap gap-2 mb-4">
       {publication.topics.map((topic) => (
         <span key={topic} class="text-label">
-          #{topic}
+          {topic}
         </span>
       ))}
     </div>
   )}
 
   {/* Excerpt */}
-  {publication.excerpt && (
+  {excerpt && (
     <p class="text-body mb-4 line-clamp-3">
-      {publication.excerpt}
+      {excerpt}
     </p>
   )}
 
   {/* Meta Information */}
   <div class="text-label mb-4 flex flex-wrap gap-3">
-    {publication.readTime && (
-      <span>{publication.readTime}</span>
+    {readTime && (
+      <span>{readTime}</span>
     )}
-    {publication.readTime && publication.year && (
+    {readTime && publication.year && (
       <span class="text-muted">·</span>
     )}
     {publication.year && (

@@ -27,8 +27,10 @@ export interface Publication {
   year: number;
   date?: string; // YYYY-MM-DD
   topics: string[];
-  excerpt: string;
+  excerpt?: string;
+  excerpt_pl?: string;
   readTime?: string; // e.g., "8 min read"
+  readTime_pl?: string;
   link?: string;
   doi?: string;
 }
@@ -45,6 +47,7 @@ export interface Product {
   description: string;
   technologies: string[];
   link?: string;
+  image?: string;
   year?: number;
   featured?: boolean;
 }

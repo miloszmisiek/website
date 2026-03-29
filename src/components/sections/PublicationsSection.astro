@@ -4,8 +4,7 @@ import { FadeIn } from '../FadeIn';
 import PublicationCard from '../publications/PublicationCard.astro';
 import type { Publication } from '../../data/schema';
 import { useTranslations, type Locale } from '../../i18n';
-import enData from '../../data/publications.en.json';
-import plData from '../../data/publications.pl.json';
+import publicationsData from '../../data/publications.json';
 
 interface Props {
   lang: Locale;
@@ -13,8 +12,7 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
-// FIXME: restructure publication data for one json file with optional PL fields instead of two separate files
-const publications = (lang === 'pl' ? plData : enData) as Publication[];
+const publications = publicationsData as Publication[];
 ---
 
 <FadeIn client:load delay={0.3} className="mb-32">

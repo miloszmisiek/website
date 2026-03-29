@@ -33,9 +33,9 @@ const t = useTranslations(lang);
           client:load
           text={t('hero.typewriter')}
           delay={0.2}
-          className="text-4xl md:text-5xl font-medium tracking-tight leading-[1.2] mb-12 max-w-3xl min-h-[3em] md:min-h-[2.4em]"
+          className="text-4xl md:text-5xl font-medium tracking-tight leading-[1.2] mb-12 max-w-3xl"
         />
-        <FadeIn client:load delay={2.5}>
+        <FadeIn client:load waitForTypewriter delay={0.1}>
           <div class="grid grid-cols-1 md:grid-cols-12 gap-12 text-muted font-light leading-relaxed text-sm border-l border-border pl-6">
             <div class="md:col-span-8 max-w-2xl pt-2">
               <p class="mb-6 text-base">

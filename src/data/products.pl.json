@@ -1,35 +1,50 @@
 [
   {
     "id": "prod-001",
-    "name": "Live Chat Widget & Agent AI",
-    "role": "Główny Inżynier Full Stack",
-    "description": "Rozwiązanie czatu na żywo z sugestiami odpowiedzi opartymi na AI. Umożliwia natychmiastową komunikację z klientami z inteligentnymi rekomendacjami odpowiedzi przy użyciu integracji z OpenAI.",
+    "name": "Inbox: Platforma Komunikacyjna",
+    "role": "Główny Inżynier",
+    "description": "Kompleksowe centrum komunikacyjne łączące czat zespołowy, usługę e-mail i ujednolicone wiadomości. Zaprojektowane do bezproblemowej współpracy z powiadomieniami w czasie rzeczywistym i obsługą multimediów.",
     "technologies": [
-      "React",
-      "TypeScript",
-      "WebSocket",
-      "GraphQL",
-      "Node.js",
-      "OpenAI API"
+       "Next.js",
+       "NodeJS",
+       "MongoDB",
+       "GraphQL",
+       "TypeScript",
+       "WebSocket"
     ],
-    "link": "https://www.elasticemail.com",
-    "year": 2024,
+    "link": "https://elasticemail.com/inbox",
+    "image": "https://cms.elasticemail.com/wp-content/uploads/components-icons/inbox-logo-banner.svg",
+    "year": 2025,
     "featured": true
   },
   {
     "id": "prod-002",
-    "name": "Platforma Komunikacyjna",
-    "role": "Inżynier Full Stack",
-    "description": "Kompleksowe centrum komunikacyjne łączące czat zespołowy, usługę e-mail i ujednolicone wiadomości. Zaprojektowane do bezproblemowej współpracy z powiadomieniami w czasie rzeczywistym i obsługą multimediów.",
+    "name": "Strona Główna: Elastic Email",
+    "role": "Inżynier",
+    "description": "Nowoczesna strona internetowa Elastic Email - kompleksowej platformy do email marketingu i API. Zbudowana z Next.js dla optymalnej wydajności i SEO, z responsywnym designem, interaktywnymi demonstracjami produktów i stronami lądowymi skoncentrowanymi na konwersji.",
     "technologies": [
-      "Next.js",
-      "Express",
-      "MongoDB",
-      "GraphQL",
-      "TypeScript",
-      "WebSocket"
+       "Next.js",
+       "TypeScript",
+       "TailwindCSS"
     ],
-    "link": "https://www.elasticemail.com",
+    "link": "https://elasticemail.com",
+    "image": "https://cms.elasticemail.com/wp-content/uploads/components-icons/EE-logo/logo-horizontal.svg",
+    "year": 2024,
+    "featured": true
+  },
+  {
+    "id": "prod-003",
+    "name": "Edytor Szablonów: Elastic Email",
+    "role": "Inżynier",
+    "description": "Intuicyjny edytor szablonów e-mail z interfejsem drag-and-drop i możliwością edycji surowego HTML. Zawiera generowanie szablonów zasilane sztuczną inteligencją, dostosowalne bloki treści, responsywne układy, zarządzanie kolorami marki i personalizację pól scalających.",
+    "technologies": [
+       "React",
+       "TypeScript",
+       "Styled Components",
+       "WordPress Gutenberg"
+    ],
+    "link": "https://elasticemail.com/email-designer",
+    "image": "https://cms.elasticemail.com/wp-content/uploads/next-pages/email-editor/Feature-emaildesigner-top.webp",
     "year": 2023,
     "featured": true
   }
