@@ -7,6 +7,9 @@ import type { TimelineEntry as TimelineEntryType } from '../../data/schema';
 import { useTranslations, type Locale } from '../../i18n';
 import enData from '../../data/experience.en.json';
 import plData from '../../data/experience.pl.json';
+// Kept for future use:
+// import VerticalGitTimeline from '../timeline/VerticalGitTimeline';
+// import HorizontalGitTimeline from '../timeline/HorizontalGitTimeline';
 
 interface Props {
   lang: Locale;
@@ -19,22 +22,62 @@ const experience = (lang === 'pl' ? plData : enData) as TimelineEntryType[];
 
 <FadeIn client:load delay={0.3} className="mb-32">
   <section id="experience">
+
     {/* Section Header */}
-     <div class="section-label">
-	<ArrayTitle translationKey={'section.experience'} lang={lang}/>
-     </div>
+    <div class="section-label">
+      <ArrayTitle translationKey={'section.experience'} lang={lang}/>
+    </div>
 
-    {/* Timeline Container */}
-    <div class="relative ml-4 md:ml-8 lg:ml-12 space-y-12">
-      {/* Vertical Line Connector */}
-      <div class="absolute left-0 top-0 bottom-0 w-px bg-border"></div>
+    {/* Timeline */}
+    <div class="timeline-container">
+      <div class="trunk"></div>
+      <span class="trunk-label">* main</span>
 
-      {/* Timeline Items with Animation */}
-      <TimelineAnimator client:load items={experience}>
+      <TimelineAnimator client:load items={experience} staggerDelay={0.12}>
         {experience.map((entry, index) => (
           <TimelineEntry entry={entry} index={index} lang={lang} />
         ))}
       </TimelineAnimator>
     </div>
+
   </section>
 </FadeIn>
+
+<style>
+  .timeline-container {
+    position: relative;
+    margin-left: 1rem;
+  }
+
+  @media (min-width: 768px)  { .timeline-container { margin-left: 2rem; } }
+  @media (min-width: 1024px) { .timeline-container { margin-left: 3rem; } }
+
+  /* Dashed vertical trunk */
+  .trunk {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background-image: repeating-linear-gradient(
+      to bottom,
+      var(--color-border) 0px,
+      var(--color-border) 6px,
+      transparent 6px,
+      transparent 12px
+    );
+  }
+
+  /* * main label above trunk */
+  .trunk-label {
+    position: absolute;
+    left: 6px;
+    top: -20px;
+    font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', monospace;
+    font-size: 0.62rem;
+    color: var(--color-muted);
+    opacity: 0.45;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+</style>

@@ -10,64 +10,170 @@ interface Props {
 
 const { entry, index, lang } = Astro.props;
 const t = useTranslations(lang);
-const isWork = entry.type === 'work';
+const isWork     = entry.type === 'work';
 const isAcademic = entry.type === 'academic';
+
+// Branch name from company
+const branchSlug = entry.company
+  .toLowerCase()
+  .replace(/[^a-z0-9]+/g, '-')
+  .replace(/^-|-$/g, '');
+const branchPrefix = isWork ? 'feat' : 'edu';
+const branchName   = `${branchPrefix}/${branchSlug}`;
+
+// Short commit hash from id
+const shortHash = entry.id.replace(/[^a-z0-9]/g, '').slice(0, 7).padEnd(7, '0');
+
+// Technologies: first 4 + overflow
+const MAX_TECH      = 4;
+const visibleTech   = entry.technologies?.slice(0, MAX_TECH) ?? [];
+const overflowCount = (entry.technologies?.length ?? 0) - MAX_TECH;
+
+// Highlights: max 3
+const MAX_HIGHLIGHTS    = 3;
+const visibleHighlights = entry.highlights?.slice(0, MAX_HIGHLIGHTS) ?? [];
 ---
 
-<div class="group relative pl-8 md:pl-10 lg:pl-12 transition-smooth">
-  {/* Timeline Dot */}
-  <div class="absolute -left-2 md:-left-2.5 lg:-left-3 top-2 md:top-3 w-2 md:w-2.5 lg:w-3 h-2 md:h-2.5 lg:h-3 rounded-full border-2 border-border group-hover:border-foreground transition-smooth bg-background"></div>
+<div class="group relative pl-10 transition-smooth mb-20">
 
-  {/* Entry Content */}
-  <div class="mb-12 md:mb-16 lg:mb-20 last:mb-0">
-    {/* Period and Duration */}
-    <div class="flex flex-col md:flex-row md:items-baseline md:justify-between mb-2 gap-2">
+  {/* Commit node */}
+  <div class:list={["node", isWork ? "node--work" : "node--academic"]}>
+    <div class:list={["node-inner", isWork ? "node-inner--work" : "node-inner--academic"]}></div>
+  </div>
+
+  {/* Horizontal branch connector */}
+  <div class="branch-line"></div>
+
+    <div>
+
+    {/* Git ref row */}
+    <div class="git-ref">
+      <span class:list={["ref-hash", isWork ? "ref-hash--work" : "ref-hash--academic"]}>{shortHash}</span>
+      <span class="ref-sep">–</span>
+      <span class="ref-branch">{branchName}</span>
+      {index === 0 && <span class="ref-head">HEAD</span>}
+    </div>
+
+    {/* Period */}
+    <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2 gap-1">
       <span class="text-label">
-        {entry.period.start.split('-')[0]} - {entry.period.end === 'present' ? t('timeline.present') : entry.period.end.split('-')[0]}
+        {entry.period.start.split('-')[0]} – {entry.period.end === 'present' ? t('timeline.present') : entry.period.end.split('-')[0]}
       </span>
       {entry.duration && <span class="text-label text-muted/70">{entry.duration}</span>}
     </div>
 
-    {/* Role and Company */}
-    <h3 class="text-heading-md mb-1">
-      {entry.role}
-    </h3>
+    <h3 class="text-heading-md mb-1">{entry.role}</h3>
     <p class="text-sm italic text-muted mb-3">{entry.company}</p>
 
-    {/* Focus Area */}
     {entry.focus && (
-      <p class="text-xs font-mono tracking-widest text-muted mb-3 uppercase">
-        {entry.focus}
-      </p>
+      <p class="text-xs font-mono tracking-widest text-muted mb-3 uppercase">{entry.focus}</p>
     )}
 
-    {/* Description */}
-    <p class="text-body mb-4">
-      {entry.description}
-    </p>
-
-    {/* Highlights */}
-    {entry.highlights && entry.highlights.length > 0 && (
+    {visibleHighlights.length > 0 && (
       <ul class="space-y-2 mb-4">
-        {entry.highlights.map((highlight) => (
+        {visibleHighlights.map((h) => (
           <li class="text-body flex gap-3">
             <span class="text-muted flex-shrink-0">•</span>
-            <span>{highlight}</span>
+            <span>{h}</span>
           </li>
         ))}
       </ul>
     )}
 
-    {/* Technologies */}
-    {entry.technologies && entry.technologies.length > 0 && (
-      <div class="flex flex-wrap gap-2">
-        {entry.technologies.map((tech, i) => (
-          <span key={tech} class="text-label">
-            {tech}
-            {i < entry.technologies.length - 1 ? <span class="text-muted"> · </span> : ''}
+    {visibleTech.length > 0 && (
+      <div class="flex flex-wrap items-center gap-x-0 gap-y-1">
+        {visibleTech.map((tech, i) => (
+          <span class="text-label">
+            {tech}{i < visibleTech.length - 1 ? <span class="text-muted"> · </span> : ''}
           </span>
         ))}
+        {overflowCount > 0 && <span class="tech-overflow">+{overflowCount}</span>}
       </div>
     )}
   </div>
 </div>
+
+<style>
+  /* Commit node */
+  .node {
+    position: absolute;
+    left: -6px;
+    top: 14px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    border: 2px solid var(--color-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-background);
+    transition: transform 0.2s ease;
+    z-index: 1;
+  }
+  .group:hover .node { transform: scale(1.25); }
+
+  .node--work {
+    border-color: var(--color-info);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-info), transparent 85%);
+  }
+  .node--academic {
+    border-color: var(--color-success);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-success), transparent 85%);
+  }
+
+  .node-inner { width: 5px; height: 5px; border-radius: 50%; }
+  .node-inner--work    { background-color: var(--color-info); }
+  .node-inner--academic { background-color: var(--color-success); }
+
+  /* Horizontal branch connector from node to content */
+  .branch-line {
+    position: absolute;
+    left: 7px;
+    top: 19px;
+    width: 16px;
+    height: 1px;
+    background-color: var(--color-border);
+  }
+
+  /* Git ref row */
+  .git-ref {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', monospace;
+    font-size: 0.65rem;
+    color: var(--color-muted);
+    margin-bottom: 0.5rem;
+    select: none;
+  }
+
+  .ref-hash { opacity: 0.75; letter-spacing: 0.04em; }
+  .ref-hash--work    { color: var(--color-info); }
+  .ref-hash--academic { color: var(--color-success); }
+
+  .ref-sep    { opacity: 0.3; }
+  .ref-branch { opacity: 0.65; }
+
+  .ref-head {
+    font-size: 0.55rem;
+    padding: 1px 4px;
+    border-radius: 3px;
+    background-color: color-mix(in srgb, var(--color-info), transparent 82%);
+    color: var(--color-info);
+    border: 1px solid color-mix(in srgb, var(--color-info), transparent 60%);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* Tech overflow badge */
+  .tech-overflow {
+    font-size: 0.6rem;
+    padding: 1px 5px;
+    border-radius: 3px;
+    border: 1px solid var(--color-border);
+    color: var(--color-muted);
+    margin-left: 0.25rem;
+    opacity: 0.7;
+    font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', monospace;
+  }
+</style>
