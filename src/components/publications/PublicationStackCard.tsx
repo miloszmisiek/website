@@ -57,6 +57,13 @@ export function PublicationStackCard({
         ].join(' ')}
         aria-hidden="true"
       />
+      {/* Right-edge depth shadow — active card only, reinforces 3D elevation */}
+      {isTop && (
+        <div
+          className="absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-black/20 to-transparent pointer-events-none"
+          aria-hidden="true"
+        />
+      )}
       {/* Status + Year */}
       <div className="flex items-center justify-between mb-4">
         <span

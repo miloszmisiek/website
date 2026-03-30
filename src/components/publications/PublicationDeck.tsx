@@ -6,7 +6,12 @@ import { PublicationStackCard } from './PublicationStackCard';
 
 // ─── Layout constants ─────────────────────────────────────────────────────────
 const CARD_WIDTH = 480;       // px — fixed card width on desktop
-const H_STEP_X   = 160;       // px — horizontal peek strip width per position
+const H_STEP_X   = 240;       // px — horizontal separation per depth position
+
+// Desktop 3D depth constants
+const ROTATE_Y_PER_STEP = 8;  // degrees of Y-rotation per depth position
+const SCALE_PER_STEP    = 0.04; // scale reduction per depth position
+const Y_SINK_PER_STEP   = 6;  // px — subtle vertical drop per depth
 
 // Mobile vertical-stack fallback constants
 const STACK_Y_OFFSET  = 28;   // px per depth position
@@ -81,7 +86,11 @@ export function PublicationDeck({ publications, lang }: PublicationDeckProps) {
       {/* ── Stack / Spread container ──────────────────────────────────────── */}
       <div
         className="relative"
-        style={{ width: containerWidth, minHeight: `${minHeight}px` }}
+        style={{
+          width: containerWidth,
+          minHeight: `${minHeight}px`,
+          perspective: isMobile ? undefined : '1200px',
+        }}
       >
         {orderedIds.map((id) => {
           const stackPos = orderedIds.indexOf(id);
@@ -93,21 +102,37 @@ export function PublicationDeck({ publications, lang }: PublicationDeckProps) {
           const opacity = isTop ? 1 : Math.max(0.5, 0.9 - stackPos * 0.15);
 
           // Horizontal spread (desktop) vs. vertical stack (mobile)
-          const animX = isMobile ? 0 : stackPos * H_STEP_X;
-          const animY = isMobile ? stackPos * STACK_Y_OFFSET : 0;
+          const animX      = isMobile ? 0 : stackPos * H_STEP_X;
+          const animY      = isMobile ? stackPos * STACK_Y_OFFSET : stackPos * Y_SINK_PER_STEP;
           const animRotate = isMobile ? stackPos * STACK_ROTATION : 0;
+          const animRotateY = isMobile ? 0 : stackPos * -ROTATE_Y_PER_STEP;
+          const animScale   = isMobile ? 1 : 1 - stackPos * SCALE_PER_STEP;
 
           // Card width: fixed on desktop, full-width on mobile
           const cardWidth = isMobile ? '100%' : `${CARD_WIDTH}px`;
+
+          // Shadow: active card gets strong drop + right-edge lift; background cards recede
+          const boxShadow = isMobile
+            ? undefined
+            : isTop
+              ? '0 24px 48px rgba(0,0,0,0.6), 8px 0 24px rgba(0,0,0,0.3)'
+              : '0 8px 16px rgba(0,0,0,0.3)';
 
           return (
             <motion.div
               key={id}
               ref={isTop ? topCardRef : null}
               className="absolute top-0 left-0 will-change-transform"
-              animate={{ x: animX, y: animY, rotate: animRotate, opacity }}
+              animate={{
+                x: animX,
+                y: animY,
+                rotate: animRotate,
+                rotateY: animRotateY,
+                scale: animScale,
+                opacity,
+              }}
               transition={springTransition}
-              style={{ zIndex, width: cardWidth }}
+              style={{ zIndex, width: cardWidth, boxShadow }}
             >
               <PublicationStackCard
                 publication={pub}
