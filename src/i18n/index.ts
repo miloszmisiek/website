@@ -33,8 +33,8 @@ const en = {
 	'hero.stats.experience.value': '5+ Years',
 	'hero.stats.focus.label': 'Focus',
 	'hero.stats.focus.value': 'Frontend / UX',
-	'hero.stats.status.label': 'Status',
-	'hero.stats.status.value': 'Available',
+	'hero.stats.status.label': 'Timezone',
+	'hero.stats.status.value': 'CET (UTC+1)',
 
 	// Footer
 	'footer.github': 'GITHUB',
@@ -107,8 +107,8 @@ const pl: Record<keyof typeof en, string> = {
 	'hero.stats.experience.value': '5+ lat',
 	'hero.stats.focus.label': 'Specjalizacja',
 	'hero.stats.focus.value': 'Frontend / UX',
-	'hero.stats.status.label': 'Status',
-	'hero.stats.status.value': 'Dostępny',
+	'hero.stats.status.label': 'Strefa Czasowa',
+	'hero.stats.status.value': 'CET (UTC+1)',
 
 	// Footer
 	'footer.github': 'GITHUB',

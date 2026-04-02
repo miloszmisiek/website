@@ -22,91 +22,87 @@ const t = useTranslations(lang);
 ---
 
 <Layout title={t('layout.title')} lang={lang}>
-  <div class="max-w-5xl mx-auto px-6 pb-8 min-h-screen flex flex-col">
+  <div class="page-container pb-8 min-h-screen flex flex-col">
     <!-- Navigation -->
     <Header lang={lang} />
 
     <!-- Hero Section -->
     <main class="flex-grow">
-      <div class="mb-32">
+      <div class="section-spacing mt-12 md:mt-24">
+        <div class="flex items-center gap-4 mb-8">
+          <span class="text-emerald-500 animate-pulse font-mono font-bold text-xl">_</span>
+          <span class="text-label border border-border/30 bg-neutral-900/20 px-3 py-1 rounded-sm">system.init()</span>
+        </div>
         <Typewriter
           client:load
           text={t('hero.typewriter')}
           delay={0.2}
-          className="text-4xl md:text-5xl font-medium tracking-tight leading-[1.2] mb-12 max-w-3xl"
+          className="text-heading-xl mb-12 max-w-4xl"
         />
         <FadeIn client:load waitForTypewriter delay={0.1}>
-          <div class="grid grid-cols-1 md:grid-cols-12 gap-12 text-muted font-light leading-relaxed text-sm border-l border-border pl-6">
-            <div class="md:col-span-8 max-w-2xl pt-2">
-              <p class="mb-6 text-base">
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-12 text-muted font-light leading-relaxed text-sm border-l-2 border-border/40 pl-6 lg:pl-10 ml-2">
+            <div class="md:col-span-7 lg:col-span-8 max-w-2xl pt-2">
+              <p class="text-body mb-6">
+                <span class="text-foreground/50 font-mono mr-3">{"//"}</span>
                 {t('hero.bio.first')}
               </p>
-              <p class="mb-8">
+              <p class="text-body mb-10">
+                <span class="text-foreground/50 font-mono mr-3">{"//"}</span>
                 {t('hero.bio.second')}
               </p>
-              <div class="flex items-center gap-4">
+              <div class="flex flex-wrap items-center gap-4">
                 <span class="btn-radiate-wrap relative inline-flex">
-                  <a href="#work" class="btn-radiate relative inline-flex items-center justify-center rounded bg-foreground px-4 py-2 text-xs font-mono tracking-widest text-background hover:bg-foreground/90 transition-colors">
+                  <a href="#work" class="button-primary btn-radiate group">
                     <ArrayTitle translationKey={'hero.cta.viewWork'} lang={lang}/>
                   </a>
                 </span>
-                <a href="#contact" class="inline-flex items-center justify-center rounded border border-border px-4 py-2 text-xs font-mono tracking-widest text-foreground hover:bg-white/5 transition-colors">
-			<ArrayTitle translationKey={'hero.cta.contact'} lang={lang} />
+                <a href="#contact" class="button-secondary">
+                  <ArrayTitle translationKey={'hero.cta.contact'} lang={lang} />
                 </a>
               </div>
             </div>
-            <div class="md:col-span-4">
-              <div class="relative overflow-hidden rounded-lg border border-border shadow-2xl">
+            
+            {/* Terminal Window Stats */}
+            <div class="md:col-span-5 lg:col-span-4">
+              <div class="relative overflow-hidden rounded-md border border-border/60 shadow-2xl bg-[#0A0A0A]">
                 <!-- Title bar -->
-                <div class="flex items-center gap-3 px-4 py-3 border-b border-border bg-white/[0.03]">
-                  <div class="flex items-center gap-1.5">
-                    <span class="w-3 h-3 rounded-full bg-foreground/20"></span>
-                    <span class="w-3 h-3 rounded-full bg-foreground/20"></span>
-                    <span class="w-3 h-3 rounded-full bg-foreground/20"></span>
+                <div class="flex items-center justify-between px-4 py-3 border-b border-border/40 bg-white/[0.02]">
+                  <div class="flex items-center gap-2">
+                    <span class="w-2.5 h-2.5 rounded-full bg-neutral-700 hover:bg-red-500 transition-colors"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-neutral-700 hover:bg-yellow-500 transition-colors"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-neutral-700 hover:bg-green-500 transition-colors"></span>
                   </div>
-                  <span class="text-xs font-mono text-muted/30 tracking-widest">milosz@dev</span>
+                  <span class="text-[10px] font-mono text-muted/50 tracking-widest">milosz@dev:~</span>
                 </div>
 
                 <!-- Screen content -->
-                <div class="relative p-5 bg-background">
+                <div class="relative p-5">
                   <!-- Ambient screen glow -->
                   <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.03),_transparent_60%)]"></div>
 
                   <div class="relative">
-                    <ul class="space-y-3 font-mono text-[0.65rem] tracking-widest uppercase">
-                      <li class="flex items-center justify-between">
-                        <span class="flex items-center gap-2">
-                          <span class="text-muted/30 select-none">&gt;</span>
-                          <span class="text-muted/60">{t('hero.stats.experience.label')}</span>
+                    <ul class="space-y-4 font-mono text-[11px] tracking-widest uppercase">
+                      <li class="flex flex-col gap-1">
+                        <span class="text-muted/40 flex items-center gap-2">
+                          <span class="text-foreground/30">❯</span> {t('hero.stats.experience.label')}
                         </span>
-                        <span class="text-foreground">{t('hero.stats.experience.value')}</span>
+                        <span class="text-foreground pl-4 border-l border-border/30 ml-1">{t('hero.stats.experience.value')}</span>
                       </li>
-                      <li class="flex items-center justify-between">
-                        <span class="flex items-center gap-2">
-                          <span class="text-muted/30 select-none">&gt;</span>
-                          <span class="text-muted/60">{t('hero.stats.focus.label')}</span>
+                      <li class="flex flex-col gap-1">
+                        <span class="text-muted/40 flex items-center gap-2">
+                          <span class="text-foreground/30">❯</span> {t('hero.stats.focus.label')}
                         </span>
-                        <span class="text-foreground">{t('hero.stats.focus.value')}</span>
+                        <span class="text-foreground pl-4 border-l border-border/30 ml-1">{t('hero.stats.focus.value')}</span>
                       </li>
-                      <li class="flex items-center justify-between">
-                        <span class="flex items-center gap-2">
-                          <span class="text-muted/30 select-none">&gt;</span>
-                          <span class="text-muted/60">{t('hero.stats.status.label')}</span>
-                        </span>
-                        <span class="flex items-center gap-2">
-                          <span class="relative flex h-2 w-2">
-                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                          </span>
-                          <span class="text-emerald-500">{t('hero.stats.status.value')}</span>
-                        </span>
+                      <li class="flex flex-col gap-2 mt-6 pt-4 border-t border-border/20 font-mono text-[11px] sm:text-xs normal-case tracking-normal">
+                        <div class="flex items-center gap-2 text-muted/70">
+                          <span class="text-info/80">~/portfolio</span> <span class="text-foreground/30">on</span> <span class="text-emerald-400/80">main</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-foreground">
+                          <span class="text-emerald-400">❯</span> npm run start
+                        </div>
                       </li>
                     </ul>
-
-                    <!-- Blinking cursor -->
-                    <!-- <div class="mt-3"> -->
-                    <!--   <span class="cursor-blink font-mono text-[0.65rem] text-muted/40">▋</span> -->
-                    <!-- </div> -->
                   </div>
                 </div>
               </div>
@@ -129,11 +125,11 @@ const t = useTranslations(lang);
     </main>
 
     <FadeIn client:load delay={0.4}>
-      <footer id="contact" class="flex justify-between items-center text-xs font-mono text-muted py-8 border-t border-border mt-auto">
-        <span>© {new Date().getFullYear()} MILOSZ MISIEK</span>
-        <div class="flex gap-4">
-          <a href="#" class="hover:text-foreground transition-colors">{t('footer.github')}</a>
-          <a href="#" class="hover:text-foreground transition-colors">{t('footer.linkedin')}</a>
+      <footer id="contact" class="flex justify-between items-center text-xs font-mono text-muted py-8 border-t border-border/60 mt-auto">
+        <span class="tracking-widest">© {new Date().getFullYear()} MILOSZ MISIEK</span>
+        <div class="flex gap-6">
+          <a href="#" class="hover:text-foreground transition-colors tracking-widest uppercase">{t('footer.github')}</a>
+          <a href="#" class="hover:text-foreground transition-colors tracking-widest uppercase">{t('footer.linkedin')}</a>
         </div>
       </footer>
     </FadeIn>
@@ -149,28 +145,43 @@ const t = useTranslations(lang);
     animation: blink 1s step-end infinite;
   }
 
-  @keyframes btn-radiate {
-    0%   { box-shadow: 0 0 4px  0px rgba(255, 255, 255, 0.35); }
-    100% { box-shadow: 0 0 4px 16px rgba(255, 255, 255, 0);    }
+  @keyframes sonar-wave {
+    0% {
+      inset: -1px;
+      opacity: 0.25;
+      box-shadow: 0 0 2px 0px var(--color-foreground), inset 0 0 2px 0px var(--color-foreground);
+    }
+    100% {
+      inset: -12px;
+      opacity: 0;
+      box-shadow: 0 0 12px 2px var(--color-foreground), inset 0 0 6px 2px var(--color-foreground);
+    }
   }
 
-  /* Ring 1 — on the button itself */
   .btn-radiate {
-    animation: btn-radiate 2.2s ease-out infinite;
+    position: relative;
+    z-index: 1;
   }
 
-  /* Ring 2 — pseudo-element on the wrapper, offset by half duration */
-  .btn-radiate-wrap::after {
+  .btn-radiate::before,
+  .btn-radiate::after {
     content: '';
     position: absolute;
     inset: 0;
-    border-radius: 4px;
-    animation: btn-radiate 2.2s ease-out 1.1s infinite;
+    border-radius: inherit;
+    border: 1px solid var(--color-foreground);
+    opacity: 0;
+    animation: sonar-wave 3s cubic-bezier(0.2, 0.6, 0.3, 1) infinite;
     pointer-events: none;
+    z-index: -1;
+  }
+
+  .btn-radiate::after {
+    animation-delay: 1.5s;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .btn-radiate             { animation: none; }
-    .btn-radiate-wrap::after { animation: none; }
+    .btn-radiate::before,
+    .btn-radiate::after { animation: none; display: none; }
   }
 </style>

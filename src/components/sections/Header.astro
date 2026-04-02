@@ -18,13 +18,20 @@ const navLinks = [
 ];
 ---
 
-<header class="sticky top-0 z-[99999] bg-transparent flex justify-between items-center text-xl font-nav tracking-wide text-muted  border-border pt-8 pb-6 mb-24 transition-[border-color] duration-300">
-  <Logo />
-  <nav class="flex items-center gap-8">
-    {navLinks.map((link) => (
-      <NavLink key={link.key} href={link.href} label={t(link.key)} />
-    ))}
-    <LanguageSwitcher lang={lang} />
+<header class="sticky top-0 z-[99999] bg-transparent flex justify-between items-center text-sm font-mono tracking-widest uppercase text-muted border-border pt-8 pb-6 mb-16 transition-[border-color] duration-300">
+  <div class="flex items-center gap-4">
+    <span class="text-foreground/40 hidden md:inline-block">~/</span>
+    <Logo />
+  </div>
+  <nav class="flex items-center gap-8 md:gap-12">
+    <div class="hidden md:flex items-center gap-8 border-r border-border/40 pr-8">
+      {navLinks.map((link) => (
+        <NavLink key={link.key} href={link.href} label={`[ ${t(link.key)} ]`} />
+      ))}
+    </div>
+    <div class="flex items-center gap-4">
+      <LanguageSwitcher lang={lang} />
+    </div>
   </nav>
 </header>
 
@@ -51,8 +58,8 @@ const navLinks = [
     transition: background 0.3s ease, backdrop-filter 0.3s ease;
   }
   header[data-scrolled] {
-    background: rgba(14, 12, 12, 0.5);
-    backdrop-filter: blur(16px);
-    border-bottom-color: transparent;
+    background: rgba(10, 10, 10, 0.7);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
   }
 </style>

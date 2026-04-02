@@ -5,8 +5,8 @@ import type { Locale } from '../../i18n';
 import { PublicationStackCard } from './PublicationStackCard';
 
 // ─── Layout constants ─────────────────────────────────────────────────────────
-const CARD_WIDTH = 480;       // px — fixed card width on desktop
-const H_STEP_X   = 240;       // px — horizontal separation per depth position
+const CARD_WIDTH = 720;       // px — increased for wider content
+const H_STEP_X   = 120;       // px — tighter overlap
 
 // Desktop 3D depth constants
 const ROTATE_Y_PER_STEP = 8;  // degrees of Y-rotation per depth position
@@ -17,8 +17,8 @@ const Y_SINK_PER_STEP   = 6;  // px — subtle vertical drop per depth
 const STACK_Y_OFFSET  = 28;   // px per depth position
 const STACK_ROTATION  = 1.5;  // degrees per depth position
 
-const MOBILE_BREAKPOINT = 640; // px — matches Tailwind `sm`
-const FALLBACK_HEIGHT   = 320; // px — shown before first measurement
+const MOBILE_BREAKPOINT = 1024; // px — stack vertically on tablet and smaller
+const FALLBACK_HEIGHT   = 400; // px — shown before first measurement
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 interface PublicationDeckProps {
@@ -82,7 +82,7 @@ export function PublicationDeck({ publications, lang }: PublicationDeckProps) {
   const minHeight = containerHeight > 0 ? containerHeight : FALLBACK_HEIGHT;
 
   return (
-    <div className="w-full">
+    <div className="w-full overflow-hidden lg:overflow-visible">
       {/* ── Stack / Spread container ──────────────────────────────────────── */}
       <div
         className="relative"
@@ -148,25 +148,24 @@ export function PublicationDeck({ publications, lang }: PublicationDeckProps) {
       {/* ── Dot navigation ────────────────────────────────────────────────── */}
       {numCards > 1 && (
         <div
-          className="flex items-center justify-center gap-3 mt-6"
+          className="flex items-center justify-center gap-4 mt-12"
           role="tablist"
           aria-label="Publication navigation"
         >
-          {orderedIds.map((id, idx) => {
-            const pub = pubMap[id];
-            const isActive = idx === 0;
+          {publications.map((pub) => {
+            const isActive = orderedIds[0] === pub.id;
             return (
               <button
-                key={id}
+                key={pub.id}
                 role="tab"
                 aria-selected={isActive}
-                aria-label={`Go to publication: ${pub?.title ?? id}`}
-                onClick={() => bringToFront(id)}
+                aria-label={`Go to publication: ${pub.title}`}
+                onClick={() => bringToFront(pub.id)}
                 className={[
-                  'rounded-full transition-all duration-300 cursor-pointer focus-ring',
+                  'rounded-sm transition-all duration-300 cursor-pointer focus-ring',
                   isActive
-                    ? 'w-4 h-2 bg-foreground'
-                    : 'w-2 h-2 bg-border hover:bg-muted',
+                    ? 'w-6 h-2.5 bg-foreground border border-transparent'
+                    : 'w-2.5 h-2.5 bg-neutral-700/50 border border-neutral-600/50 hover:bg-neutral-600 hover:border-neutral-500',
                 ].join(' ')}
               />
             );

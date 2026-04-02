@@ -7,9 +7,6 @@ import type { TimelineEntry as TimelineEntryType } from '../../data/schema';
 import { useTranslations, type Locale } from '../../i18n';
 import enData from '../../data/experience.en.json';
 import plData from '../../data/experience.pl.json';
-// Kept for future use:
-// import VerticalGitTimeline from '../timeline/VerticalGitTimeline';
-// import HorizontalGitTimeline from '../timeline/HorizontalGitTimeline';
 
 interface Props {
   lang: Locale;
@@ -42,6 +39,35 @@ const experience = (lang === 'pl' ? plData : enData) as TimelineEntryType[];
 
   </section>
 </FadeIn>
+
+<script>
+  function setupTimelineObserver() {
+    const entries = document.querySelectorAll('.timeline-entry');
+    if (!entries.length) return;
+
+    // Trigger when the element is in the middle ~40% of the viewport
+    const observer = new IntersectionObserver((entriesList) => {
+      entriesList.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-active');
+        } else {
+          entry.target.classList.remove('is-active');
+        }
+      });
+    }, {
+      rootMargin: '-30% 0px -40% 0px',
+      threshold: 0
+    });
+
+    entries.forEach(entry => observer.observe(entry));
+  }
+
+  // Run on initial load
+  setupTimelineObserver();
+  
+  // If using view transitions, ensure it runs on navigation
+  document.addEventListener('astro:page-load', setupTimelineObserver);
+</script>
 
 <style>
   .timeline-container {
