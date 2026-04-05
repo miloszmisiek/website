@@ -1,0 +1,33 @@
+---
+import { useTranslations, type Locale } from "../../../i18n";
+type Props = {
+  start: string;
+  end: string;
+  presentLabel: string;
+  lang: Locale;
+  duration?: string;
+};
+const { start, end, presentLabel, duration, lang } = Astro.props;
+const t = useTranslations(lang);
+
+const startYear = start.split("-")[0];
+const endYear =
+  end === t("timeline.present") ? presentLabel : end.split("-")[0];
+---
+
+<div
+  class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-3 gap-2"
+>
+  <span class="text-label text-muted/60 tracking-[0.3em] uppercase">
+    {startYear}
+    <span class="text-foreground/30 mx-1">{`->`}</span>
+    {endYear}
+  </span>
+  {
+    duration && (
+      <span class="text-[10px] font-mono text-muted/40 uppercase tracking-widest border border-border/30 px-2 py-0.5">
+        {duration}
+      </span>
+    )
+  }
+</div>

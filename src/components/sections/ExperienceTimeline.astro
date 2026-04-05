@@ -1,6 +1,6 @@
 ---
 import { FadeIn } from '../FadeIn';
-import TimelineEntry from '../timeline/TimelineEntry.astro';
+import TimelineEntry from '../timeline/TimelineEntry/index.astro';
 import TimelineAnimator from '../timeline/TimelineAnimator';
 import ArrayTitle from '../arrayTitle/ArrayTitle.astro';
 import type { TimelineEntry as TimelineEntryType } from '../../data/schema';
@@ -45,14 +45,9 @@ const experience = (lang === 'pl' ? plData : enData) as TimelineEntryType[];
     const entries = document.querySelectorAll('.timeline-entry');
     if (!entries.length) return;
 
-    // Trigger when the element is in the middle ~40% of the viewport
     const observer = new IntersectionObserver((entriesList) => {
       entriesList.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-active');
-        } else {
-          entry.target.classList.remove('is-active');
-        }
+        entry.target.classList.toggle('is-active', entry.isIntersecting);
       });
     }, {
       rootMargin: '-30% 0px -40% 0px',
@@ -99,7 +94,7 @@ const experience = (lang === 'pl' ? plData : enData) as TimelineEntryType[];
     position: absolute;
     left: 6px;
     top: -20px;
-    font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', monospace;
+    font-family: theme('fontFamily.mono-system');
     font-size: 0.62rem;
     color: var(--color-muted);
     opacity: 0.45;

@@ -3,27 +3,29 @@
  * Ensures type safety across all data files and components
  */
 
-export interface TimelineEntry {
+export { ExperienceTypeEnum, PublicationStatusEnum } from "./types";
+
+export type TimelineEntry = {
   id: string;
   period: {
     start: string; // YYYY-MM-DD or "present"
-    end: string;   // YYYY-MM-DD or "present"
+    end: string; // YYYY-MM-DD or "present"
   };
   duration: string; // e.g., "1+ years", "2 years"
   role: string;
   company: string;
-  focus?: string; // Optional: main focus area
   description: string;
   highlights: string[];
   technologies: string[];
-  type: "work" | "academic";
-}
+  type: ExperienceTypeEnum;
+  focus?: string; // Optional: main focus area
+};
 
-export interface Publication {
+export type Publication = {
   id: string;
   title: string;
   authors: string[];
-  status: "Published" | "Under Review" | "Preprint";
+  status: PublicationStatusEnum;
   year: number;
   date?: string; // YYYY-MM-DD
   topics: string[];
@@ -33,14 +35,14 @@ export interface Publication {
   readTime_pl?: string;
   link?: string;
   doi?: string;
-}
+};
 
-export interface TechLogo {
+export type TechLogo = {
   name: string;
   slug: string; // Simple Icons slug, e.g. "react", "nextdotjs"
-}
+};
 
-export interface Product {
+export type Product = {
   id: string;
   name: string;
   role: string;
@@ -50,11 +52,11 @@ export interface Product {
   image?: string;
   year?: number;
   featured?: boolean;
-}
+};
 
-export interface PortfolioData {
+export type PortfolioData = {
   experience: TimelineEntry[];
   publications: Publication[];
   techStack: TechLogo[];
   products: Product[];
-}
+};

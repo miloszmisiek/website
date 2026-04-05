@@ -1,0 +1,102 @@
+---
+type Props = {
+  isWork: boolean;
+};
+
+const { isWork } = Astro.props;
+---
+
+<div class:list={["node", isWork ? "node--work" : "node--academic"]}>
+  <div
+    class:list={[
+      "node-inner",
+      isWork ? "node-inner--work" : "node-inner--academic",
+    ]}
+  >
+  </div>
+</div>
+
+<div class="branch-line"></div>
+
+<style>
+  .node {
+    position: absolute;
+    left: -7px;
+    top: 36px;
+    width: 15px;
+    height: 15px;
+    border-radius: 0;
+    border: 2px solid var(--color-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-background);
+    transition:
+      transform 0.3s ease,
+      border-radius 0.3s ease;
+    z-index: 10;
+  }
+
+  :global(.timeline-entry.is-active) .node {
+    transform: scale(1.15) rotate(45deg);
+  }
+
+  .node--work {
+    border-color: var(--color-info);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-info), transparent 90%);
+  }
+  .node--academic {
+    border-color: var(--color-success);
+    box-shadow: 0 0 0 4px
+      color-mix(in srgb, var(--color-success), transparent 90%);
+  }
+
+  .node-inner {
+    width: 5px;
+    height: 5px;
+    transition: transform 0.3s ease;
+  }
+
+  :global(.timeline-entry.is-active) .node-inner {
+    transform: scale(0.5);
+  }
+
+  .node-inner--work {
+    background-color: var(--color-info);
+  }
+  .node-inner--academic {
+    background-color: var(--color-success);
+  }
+
+  .branch-line {
+    position: absolute;
+    left: 8px;
+    top: 43px;
+    width: calc(3rem - 8px);
+    height: 1px;
+    background-color: var(--color-border);
+    opacity: 0.5;
+    transition:
+      width 0.3s ease,
+      opacity 0.3s ease,
+      background-color 0.3s ease;
+  }
+
+  :global(.timeline-entry.is-active) .branch-line {
+    opacity: 1;
+    background-color: var(--color-foreground);
+    background-image: repeating-linear-gradient(
+      to right,
+      var(--color-foreground) 0,
+      var(--color-foreground) 4px,
+      transparent 4px,
+      transparent 8px
+    );
+  }
+
+  @media (min-width: 768px) {
+    .branch-line {
+      width: calc(4rem - 8px);
+    }
+  }
+</style>

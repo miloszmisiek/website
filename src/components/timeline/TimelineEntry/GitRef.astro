@@ -1,0 +1,68 @@
+---
+import type { TimelineEntry } from "../../../data/schema";
+import { getGitDisplay } from "../utils/getGitDisplay";
+
+type Props = {
+  entry: TimelineEntry;
+  isWork: boolean;
+  isHead: boolean;
+};
+
+const { entry, isHead, isWork } = Astro.props;
+const { branchName, shortHash } = getGitDisplay(entry);
+---
+
+<div class="git-ref mb-6">
+  <span
+    class:list={["ref-hash", isWork ? "ref-hash--work" : "ref-hash--academic"]}
+  >
+    {shortHash}
+  </span>
+  <span class="ref-sep ml-2 mr-2">--&gt;</span>
+  <span
+    class="ref-branch border border-border/40 bg-neutral-900/40 px-2 py-0.5 rounded-sm"
+  >
+    {branchName}
+  </span>
+  {isHead && <span class="ref-head ml-3 tracking-[0.2em]">HEAD</span>}
+</div>
+
+<style>
+  .git-ref {
+    display: flex;
+    align-items: center;
+    font-family: theme("fontFamily.mono-system");
+    font-size: 0.65rem;
+    color: var(--color-muted);
+    select: none;
+  }
+
+  .ref-hash {
+    opacity: 0.8;
+    letter-spacing: 0.08em;
+  }
+  .ref-hash--work {
+    color: var(--color-info);
+  }
+  .ref-hash--academic {
+    color: var(--color-success);
+  }
+
+  .ref-sep {
+    opacity: 0.2;
+    font-size: 0.55rem;
+  }
+  .ref-branch {
+    opacity: 0.7;
+    letter-spacing: 0.05em;
+  }
+
+  .ref-head {
+    font-size: 0.55rem;
+    padding: 1px 5px;
+    border-radius: 2px;
+    background-color: color-mix(in srgb, var(--color-info), transparent 85%);
+    color: var(--color-info);
+    border: 1px solid color-mix(in srgb, var(--color-info), transparent 70%);
+  }
+</style>

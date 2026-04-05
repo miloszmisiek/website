@@ -1,0 +1,12 @@
+---
+type Props = {
+  focus: string;
+};
+
+const { focus } = Astro.props;
+---
+
+<p class="text-[10px] font-mono tracking-[0.2em] text-foreground/50 mb-4 uppercase border-l-2 border-foreground/20 pl-3">
+  <span class="text-muted/30 mr-2">{"//"}</span>
+  {focus}
+</p>
