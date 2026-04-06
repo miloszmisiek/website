@@ -1,12 +1,12 @@
 ---
-import { FadeIn } from '../FadeIn';
-import TimelineEntry from '../timeline/TimelineEntry/index.astro';
-import TimelineAnimator from '../timeline/TimelineAnimator';
-import ArrayTitle from '../arrayTitle/ArrayTitle.astro';
-import type { TimelineEntry as TimelineEntryType } from '../../data/schema';
-import { useTranslations, type Locale } from '../../i18n';
-import enData from '../../data/experience.en.json';
-import plData from '../../data/experience.pl.json';
+import { FadeIn } from '../components/FadeIn';
+import TimelineEntry from '../components/timeline/TimelineEntry/index.astro';
+import TimelineAnimator from '../components/timeline/TimelineAnimator';
+import ArrayTitle from '../components/arrayTitle/ArrayTitle.astro';
+import type { TimelineEntry as TimelineEntryType } from '../data/schema';
+import { useTranslations, type Locale } from '../i18n';
+import enData from '../data/experience.en.json';
+import plData from '../data/experience.pl.json';
 
 interface Props {
   lang: Locale;

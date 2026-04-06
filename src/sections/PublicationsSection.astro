@@ -1,10 +1,10 @@
 ---
-import ArrayTitle from '../arrayTitle/ArrayTitle.astro';
-import { FadeIn } from '../FadeIn';
-import { PublicationDeck } from '../publications/PublicationDeck';
-import type { Publication } from '../../data/schema';
-import { type Locale } from '../../i18n';
-import publicationsData from '../../data/publications.json';
+import ArrayTitle from '../components/arrayTitle/ArrayTitle.astro';
+import { FadeIn } from '../components/FadeIn';
+import { PublicationDeck } from '../components/publications/PublicationDeck';
+import type { Publication } from '../data/schema';
+import { type Locale } from '../i18n';
+import publicationsData from '../data/publications.json';
 
 interface Props {
   lang: Locale;

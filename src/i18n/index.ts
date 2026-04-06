@@ -2,7 +2,10 @@
  * Lightweight i18n — no external packages.
  * Usage:
  *   const t = useTranslations(lang)
- *   t('hero.typewriter')
+ *   t('hconst publicationsData = await Promise.all(PUBLICATION_DOIS.map(pub => {
+	const data = getPublicationData(pub);
+	return data;
+}));ero.typewriter')
  */
 
 export type Locale = "en" | "pl";
@@ -33,8 +36,8 @@ const en = {
   "hero.stats.experience.value": "5+ Years",
   "hero.stats.focus.label": "Focus",
   "hero.stats.focus.value": "Frontend / UX",
-  "hero.stats.status.label": "Timezone",
-  "hero.stats.status.value": "CET (UTC+1)",
+  "hero.stats.status.label": "Status",
+  "hero.stats.status.value": "Available",
 
   // Footer
   "footer.github": "GITHUB",
@@ -74,9 +77,9 @@ const en = {
 
   // Publication
   "publication.viewPaper": "VIEW PAPER",
-  "publication.status.published": "Published",
-  "publication.status.underreview": "Under Review",
-  "publication.status.preprint": "Preprint",
+  "publication.status.Published": "Published",
+  "publication.status.Under Review": "Under Review",
+  "publication.status.Preprint": "Preprint",
 
   // Product
   "product.viewProduct": "VIEW PRODUCT",
@@ -107,8 +110,8 @@ const pl: Record<keyof typeof en, string> = {
   "hero.stats.experience.value": "5+ lat",
   "hero.stats.focus.label": "Specjalizacja",
   "hero.stats.focus.value": "Frontend / UX",
-  "hero.stats.status.label": "Strefa Czasowa",
-  "hero.stats.status.value": "CET (UTC+1)",
+  "hero.stats.status.label": "Status",
+  "hero.stats.status.value": "Dostępny",
 
   // Footer
   "footer.github": "GITHUB",
@@ -148,9 +151,9 @@ const pl: Record<keyof typeof en, string> = {
 
   // Publication
   "publication.viewPaper": "CZYTAJ ARTYKUŁ",
-  "publication.status.published": "Opublikowano",
-  "publication.status.underreview": "W recenzji",
-  "publication.status.preprint": "Preprint",
+  "publication.status.Published": "Opublikowano",
+  "publication.status.Under Review": "W recenzji",
+  "publication.status.Preprint": "Preprint",
 
   // Product
   "product.viewProduct": "PRZEJDŹ DO PROJEKTU",

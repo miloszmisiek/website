@@ -1,7 +1,7 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import { FadeIn } from '../FadeIn';
-import { TerminalTypewriter } from '../TerminalTypewriter';
+import Layout from '../layouts/Layout.astro';
+import { FadeIn } from '../components/FadeIn';
+import { TerminalTypewriter } from '../components/TerminalTypewriter';
 import Header from '../sections/Header.astro';
 import HowICanHelpSection from '../sections/HowICanHelpSection.astro';
 import ExperienceTimeline from '../sections/ExperienceTimeline.astro';
@@ -10,8 +10,8 @@ import FeaturedProductsSection from '../sections/FeaturedProductsSection.astro';
 import '@fontsource/inter';
 import '@fontsource/jetbrains-mono';
 import '@fontsource/vt323';
-import { useTranslations, type Locale } from '../../i18n';
-import ArrayTitle from '../arrayTitle/ArrayTitle.astro'
+import { useTranslations, type Locale } from '../i18n';
+import ArrayTitle from '../components/arrayTitle/ArrayTitle.astro'
 
 interface Props {
   lang: Locale;

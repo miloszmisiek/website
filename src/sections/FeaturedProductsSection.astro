@@ -1,10 +1,10 @@
 ---
-import { ProductsParallax } from '../products/ProductsParallax';
-import ArrayTitle from '../arrayTitle/ArrayTitle.astro';
-import type { Product } from '../../data/schema';
-import { useTranslations, type Locale } from '../../i18n';
-import enData from '../../data/products.en.json';
-import plData from '../../data/products.pl.json';
+import { ProductsParallax } from '../components/products/ProductsParallax';
+import ArrayTitle from '../components/arrayTitle/ArrayTitle.astro';
+import type { Product } from '../data/schema';
+import { useTranslations, type Locale } from '../i18n';
+import enData from '../data/products.en.json';
+import plData from '../data/products.pl.json';
 
 interface Props {
   lang: Locale;

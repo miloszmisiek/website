@@ -1,6 +1,5 @@
 import type { Publication } from "../../data/schema";
 import { useTranslations, type Locale } from "../../i18n";
-import { Badge } from "./Badge";
 
 interface PublicationStackCardProps {
   publication: Publication;
@@ -8,6 +7,27 @@ interface PublicationStackCardProps {
   isTop: boolean;
   onClick: () => void;
 }
+
+const STATUS_COLORS: Record<
+  Publication["status"],
+  { text: string; bg: string; border: string }
+> = {
+  Published: {
+    text: "text-emerald-400",
+    bg: "bg-emerald-500/10",
+    border: "border-emerald-500/30",
+  },
+  "Under Review": {
+    text: "text-amber-400",
+    bg: "bg-amber-500/10",
+    border: "border-amber-500/30",
+  },
+  Preprint: {
+    text: "text-blue-400",
+    bg: "bg-blue-500/10",
+    border: "border-blue-500/30",
+  },
+};
 
 export function PublicationStackCard({
   publication,
@@ -22,6 +42,7 @@ export function PublicationStackCard({
   const readTime =
     (lang === "pl" ? publication.readTime_pl : publication.readTime) ??
     publication.readTime;
+  const status = STATUS_COLORS[publication.status];
   const statusLabel = t(
     `publication.status.${publication.status}` as Parameters<typeof t>[0],
   );
@@ -58,7 +79,11 @@ export function PublicationStackCard({
       {/* Top Bar */}
       <div className="flex flex-wrap items-center justify-between mb-8 gap-4 border-b border-border/40 pb-6 relative z-10">
         <div className="flex items-center gap-3">
-          <Badge status={publication.status}>{statusLabel}</Badge>
+          <span
+            className={`text-[10px] font-mono tracking-widest uppercase px-3 py-1 rounded-sm border ${status.bg} ${status.text} ${status.border}`}
+          >
+            {statusLabel}
+          </span>
         </div>
 
         <div className="flex items-center gap-3">
