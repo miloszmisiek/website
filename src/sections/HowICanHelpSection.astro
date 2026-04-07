@@ -1,16 +1,11 @@
 ---
 import { FadeIn } from '../components/FadeIn';
 import ArrayTitle from '../components/arrayTitle/ArrayTitle.astro';
-import { useTranslations, type Locale } from '../i18n';
+import { getTranslations } from '../i18n';
 import type { TechLogo } from '../data/schema';
 import techData from '../data/tech-stack.json';
 
-interface Props {
-  lang: Locale;
-}
-
-const { lang } = Astro.props;
-const t = useTranslations(lang);
+const t = getTranslations(Astro.currentLocale);
 const allLogos = techData as TechLogo[];
 
 const bySlug = (...slugs: string[]) =>
@@ -54,7 +49,7 @@ const capabilities = [
   <section id="capabilities">
     {/* Section Header */}
     <div class="section-label">
-	<ArrayTitle translationKey={'section.howICanHelp'} lang={lang} />
+	<ArrayTitle translationKey={'section.howICanHelp'} />
     </div>
 
     {/* Capability Cards */}

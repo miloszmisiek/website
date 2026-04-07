@@ -4,16 +4,11 @@ import TimelineEntry from '../components/timeline/TimelineEntry/index.astro';
 import TimelineAnimator from '../components/timeline/TimelineAnimator';
 import ArrayTitle from '../components/arrayTitle/ArrayTitle.astro';
 import type { TimelineEntry as TimelineEntryType } from '../data/schema';
-import { useTranslations, type Locale } from '../i18n';
+import type { Locale } from '../i18n';
 import enData from '../data/experience.en.json';
 import plData from '../data/experience.pl.json';
 
-interface Props {
-  lang: Locale;
-}
-
-const { lang } = Astro.props;
-const t = useTranslations(lang);
+const lang = Astro.currentLocale as Locale;
 const experience = (lang === 'pl' ? plData : enData) as TimelineEntryType[];
 ---
 
@@ -22,7 +17,7 @@ const experience = (lang === 'pl' ? plData : enData) as TimelineEntryType[];
 
     {/* Section Header */}
     <div class="section-label">
-      <ArrayTitle translationKey={'section.experience'} lang={lang}/>
+      <ArrayTitle translationKey={'section.experience'} />
     </div>
 
     {/* Timeline */}
@@ -32,7 +27,7 @@ const experience = (lang === 'pl' ? plData : enData) as TimelineEntryType[];
 
       <TimelineAnimator client:load items={experience} staggerDelay={0.12}>
         {experience.map((entry, index) => (
-          <TimelineEntry entry={entry} index={index} lang={lang} />
+          <TimelineEntry entry={entry} index={index} />
         ))}
       </TimelineAnimator>
     </div>

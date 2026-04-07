@@ -2,12 +2,8 @@
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import type { Locale } from '../i18n';
 
-interface Props {
-  lang: Locale;
-}
-
-const { lang } = Astro.props;
-const otherLang: Locale = lang === 'en' ? 'pl' : 'en';
+const currentLang = Astro.currentLocale as Locale;
+const otherLang: Locale = currentLang === 'en' ? 'pl' : 'en';
 const switchUrl = getRelativeLocaleUrl(otherLang, '/');
 ---
 

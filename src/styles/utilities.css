@@ -53,7 +53,7 @@
 
   /* Container styles */
   .page-container {
-    @apply max-w-6xl mx-auto px-6 md:px-12 lg:px-16;
+    @apply max-w-7xl mx-auto px-6 md:px-12 lg:px-16;
   }
 
   .section-spacing {

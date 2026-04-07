@@ -2,14 +2,9 @@
 import Logo from '../components/logo/Logo.astro';
 import NavLink from '../components/nav-links/NavLink.astro';
 import LanguageSwitcher from '../components/LanguageSwitcher.astro';
-import { useTranslations, type Locale } from '../i18n';
+import { getTranslations } from '../i18n';
 
-interface Props {
-  lang: Locale;
-}
-
-const { lang } = Astro.props;
-const t = useTranslations(lang);
+const t = getTranslations(Astro.currentLocale);
 
 const navLinks = [
   { key: 'nav.work' as const, href: '#experience' },
@@ -18,7 +13,7 @@ const navLinks = [
 ];
 ---
 
-<header class="sticky top-0 z-[99999] bg-transparent flex justify-between items-center text-sm font-mono tracking-widest uppercase text-muted border-border pt-8 pb-6 mb-10 transition-[border-color] duration-300">
+<header class="sticky top-0 z-[99999] bg-transparent flex justify-between items-center text-sm font-mono tracking-widest uppercase text-muted border-border pt-8 pb-6 mb-10 transition-[border-color] duration-300 px-6 md:px-12 lg:px-16">
   <div class="flex items-center gap-4">
     <span class="text-foreground/40 hidden md:inline-block">~/</span>
     <Logo />
@@ -26,11 +21,11 @@ const navLinks = [
   <nav class="flex items-center gap-8 md:gap-12">
     <div class="hidden md:flex items-center gap-8 border-r border-border/40 pr-8">
       {navLinks.map((link) => (
-        <NavLink key={link.key} href={link.href} label={`[ ${t(link.key)} ]`} />
+        <NavLink href={link.href} label={t(link.key)} />
       ))}
     </div>
     <div class="flex items-center gap-4">
-      <LanguageSwitcher lang={lang} />
+      <LanguageSwitcher />
     </div>
   </nav>
 </header>

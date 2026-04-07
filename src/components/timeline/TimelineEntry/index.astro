@@ -1,7 +1,7 @@
 ---
 import type { TimelineEntry as TimelineEntryType } from "../../../data/schema";
 import { ExperienceTypeEnum } from "../../../data/types";
-import { useTranslations, type Locale } from "../../../i18n";
+import { getTranslations } from "../../../i18n";
 import { TimelineTechStack } from "../TimelineTechStack";
 import CommitNode from "./CommitNode.astro";
 import GitRef from "./GitRef.astro";
@@ -15,11 +15,10 @@ const MAX_HIGHLIGHTS = 3;
 type Props = {
   entry: TimelineEntryType;
   index: number;
-  lang: Locale;
 };
 
-const { entry, index, lang } = Astro.props;
-const t = useTranslations(lang);
+const { entry, index } = Astro.props;
+const t = getTranslations(Astro.currentLocale);
 
 const {
   period: { start, end },
@@ -46,7 +45,6 @@ const visibleHighlights = highlights?.slice(0, MAX_HIGHLIGHTS);
     <Period
       start={start}
       end={end}
-      lang={lang}
       presentLabel={t("timeline.present")}
       duration={duration}
     />

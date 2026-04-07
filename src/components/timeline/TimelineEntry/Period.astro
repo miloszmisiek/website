@@ -1,14 +1,15 @@
 ---
-import { useTranslations, type Locale } from "../../../i18n";
+import { getTranslations } from "../../../i18n";
+
 type Props = {
   start: string;
   end: string;
   presentLabel: string;
-  lang: Locale;
   duration?: string;
 };
-const { start, end, presentLabel, duration, lang } = Astro.props;
-const t = useTranslations(lang);
+
+const { start, end, presentLabel, duration } = Astro.props;
+const t = getTranslations(Astro.currentLocale);
 
 const startYear = start.split("-")[0];
 const endYear =

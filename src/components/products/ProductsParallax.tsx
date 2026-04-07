@@ -1,20 +1,25 @@
-import { useRef } from 'react';
-import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
-import type { Product } from '../../data/schema';
-import { useTranslations, type Locale } from '../../i18n';
+import { useRef } from "react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useReducedMotion,
+} from "framer-motion";
+import type { Product } from "../../data/schema";
+import { getTranslations } from "../../i18n";
+import { ArrayTitle } from "../arrayTitle/ArrayTitle";
 
 interface ProductsParallaxProps {
   products: Product[];
-  lang: Locale;
 }
 
-export function ProductsParallax({ products, lang }: ProductsParallaxProps) {
+export function ProductsParallax({ products }: ProductsParallaxProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  
+
   // Track scroll progress of the entire products container
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ['start start', 'end end'],
+    offset: ["start start", "end end"],
   });
 
   return (
@@ -22,13 +27,12 @@ export function ProductsParallax({ products, lang }: ProductsParallaxProps) {
       {products.map((product, index) => {
         // Earlier cards scale down more as they get pushed back further
         const targetScale = 1 - (products.length - index) * 0.05;
-        
+
         return (
           <ProductCard
             key={product.id}
             index={index}
             product={product}
-            lang={lang}
             progress={scrollYProgress}
             total={products.length}
             targetScale={targetScale}
@@ -42,30 +46,39 @@ export function ProductsParallax({ products, lang }: ProductsParallaxProps) {
 interface ProductCardProps {
   product: Product;
   index: number;
-  lang: Locale;
   progress: any;
   total: number;
   targetScale: number;
 }
 
-function ProductCard({ product, index, lang, progress, total, targetScale }: ProductCardProps) {
-  const t = useTranslations(lang);
+function ProductCard({
+  product,
+  index,
+  progress,
+  total,
+  targetScale,
+}: ProductCardProps) {
+  const t = getTranslations();
   const prefersReducedMotion = useReducedMotion();
-  
+
   // Calculate when this specific card should start its stacking animation.
   // We want it to start scaling down when the NEXT card starts coming up.
   const startRange = index / total;
   const endRange = 1;
-  
+
   // Parallax transforms applied as the user scrolls past this card
-  const scale = useTransform(progress, [startRange, endRange], [1, targetScale]);
+  const scale = useTransform(
+    progress,
+    [startRange, endRange],
+    [1, targetScale],
+  );
 
   return (
-    <div 
+    <div
       className="md:sticky md:top-24 flex items-center justify-center"
       style={{
         zIndex: 10 + index,
-        marginBottom: index < total - 1 ? '16vh' : 0,
+        marginBottom: index < total - 1 ? "16vh" : 0,
       }}
     >
       <motion.article
@@ -73,24 +86,21 @@ function ProductCard({ product, index, lang, progress, total, targetScale }: Pro
         initial={prefersReducedMotion ? false : { opacity: 0, y: 80 }}
         whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        viewport={{ once: true, margin: '-60px' }}
+        viewport={{ once: true, margin: "-60px" }}
         className="w-full origin-top"
       >
         <div className="card-base bg-background overflow-hidden flex flex-col md:flex-row md:min-h-[36rem] border border-border/60 shadow-xl group">
-          
           {/* Left: Content */}
           <div className="flex-1 p-8 lg:p-12 flex flex-col border-b md:border-b-0 md:border-r border-border/50 bg-background/95 backdrop-blur-sm z-10 hover-gradient">
             <div className="hover-gradient-bg" />
             {/* Header: Number & Year */}
             <div className="flex items-center justify-between mb-10">
-              <span className="font-mono text-xs tracking-[0.2em] text-muted border border-border/60 px-3 py-1 bg-neutral-900/5">
-                <span className="text-foreground/30 mr-2">{"{"}</span>
-                {String(index + 1).padStart(2, '0')}
-                <span className="text-foreground/30 ml-2">{"}"}</span>
+              <span className="font-mono text-xs tracking-[0.2em] text-muted">
+                {String(index).padStart(2, "0")}
               </span>
               {product.year && (
-                <span className="font-mono text-[10px] text-muted/50 tracking-[0.3em] uppercase border-b border-border/30 pb-1">
-                  const year = {product.year};
+                <span className="font-mono text-[10px] text-muted/50 tracking-[0.3em] uppercase">
+                  {product.year}
                 </span>
               )}
             </div>
@@ -116,7 +126,7 @@ function ProductCard({ product, index, lang, progress, total, targetScale }: Pro
             {product.technologies && product.technologies.length > 0 && (
               <div className="flex flex-wrap gap-2 mb-10">
                 {product.technologies.map((tech) => (
-                  <span 
+                  <span
                     key={tech}
                     className="font-mono text-[10px] text-muted/80 tracking-widest bg-neutral-800/20 border border-neutral-700/50 px-3 py-1.5 rounded-sm"
                   >
@@ -133,12 +143,9 @@ function ProductCard({ product, index, lang, progress, total, targetScale }: Pro
                   href={product.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="button-secondary self-start w-fit group/btn"
+                  className="button-secondary self-start w-fit"
                 >
-                  <span className="text-muted/40 mr-2">[</span>
-                  <span className="mr-3">{t('product.viewProduct')}</span>
-                  <span className="group-hover/btn:translate-x-1 transition-transform">→</span>
-                  <span className="text-muted/40 ml-2">]</span>
+                  <ArrayTitle text={t("product.viewProduct")} />
                 </a>
               </div>
             )}
@@ -159,7 +166,7 @@ function ProductCard({ product, index, lang, progress, total, targetScale }: Pro
               <div className="absolute inset-0 flex items-center justify-center bg-neutral-900/20 font-mono text-xs text-muted tracking-widest border-l border-border/30">
                 <div className="flex flex-col items-center gap-4 opacity-30">
                   <span className="animate-pulse">_</span>
-                  {`[ ${t('product.imagePlaceholder')} ]`}
+                  {`[ ${t("product.imagePlaceholder")} ]`}
                 </div>
               </div>
             )}

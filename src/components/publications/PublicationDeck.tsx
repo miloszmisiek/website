@@ -1,37 +1,41 @@
-import { useState, useRef, useLayoutEffect, useEffect, useCallback } from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
-import type { Publication } from '../../data/schema';
-import type { Locale } from '../../i18n';
-import { PublicationStackCard } from './PublicationStackCard';
+import {
+  useState,
+  useRef,
+  useLayoutEffect,
+  useEffect,
+  useCallback,
+} from "react";
+import { motion, useReducedMotion } from "framer-motion";
+import type { Publication } from "../../data/schema";
+import { PublicationStackCard } from "./PublicationStackCard";
 
 // ─── Layout constants ─────────────────────────────────────────────────────────
-const CARD_WIDTH = 720;       // px — increased for wider content
-const H_STEP_X   = 120;       // px — tighter overlap
+const CARD_WIDTH = 720; // px — increased for wider content
+const H_STEP_X = 120; // px — tighter overlap
 
 // Desktop 3D depth constants
-const ROTATE_Y_PER_STEP = 8;  // degrees of Y-rotation per depth position
-const SCALE_PER_STEP    = 0.04; // scale reduction per depth position
-const Y_SINK_PER_STEP   = 6;  // px — subtle vertical drop per depth
+const ROTATE_Y_PER_STEP = 8; // degrees of Y-rotation per depth position
+const SCALE_PER_STEP = 0.04; // scale reduction per depth position
+const Y_SINK_PER_STEP = 6; // px — subtle vertical drop per depth
 
 // Mobile vertical-stack fallback constants
-const STACK_Y_OFFSET  = 28;   // px per depth position
-const STACK_ROTATION  = 1.5;  // degrees per depth position
+const STACK_Y_OFFSET = 28; // px per depth position
+const STACK_ROTATION = 1.5; // degrees per depth position
 
 const MOBILE_BREAKPOINT = 1024; // px — stack vertically on tablet and smaller
-const FALLBACK_HEIGHT   = 400; // px — shown before first measurement
+const FALLBACK_HEIGHT = 400; // px — shown before first measurement
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 interface PublicationDeckProps {
   publications: Publication[];
-  lang: Locale;
 }
 
 // ─── Component ───────────────────────────────────────────────────────────────
-export function PublicationDeck({ publications, lang }: PublicationDeckProps) {
+export function PublicationDeck({ publications }: PublicationDeckProps) {
   const prefersReducedMotion = useReducedMotion();
 
   const [orderedIds, setOrderedIds] = useState<string[]>(
-    publications.map((p) => p.id)
+    publications.map((p) => p.id),
   );
   const [containerHeight, setContainerHeight] = useState<number>(0);
   const [isMobile, setIsMobile] = useState<boolean>(false);
@@ -43,8 +47,8 @@ export function PublicationDeck({ publications, lang }: PublicationDeckProps) {
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
     check();
-    window.addEventListener('resize', check);
-    return () => window.removeEventListener('resize', check);
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
   }, []);
 
   // ── Container height — tracks active (top) card height ─────────────────────
@@ -72,11 +76,11 @@ export function PublicationDeck({ publications, lang }: PublicationDeckProps) {
 
   const springTransition = prefersReducedMotion
     ? { duration: 0 }
-    : { type: 'spring' as const, stiffness: 380, damping: 32 };
+    : { type: "spring" as const, stiffness: 380, damping: 32 };
 
   // ── Container sizing ───────────────────────────────────────────────────────
   const containerWidth = isMobile
-    ? '100%'
+    ? "100%"
     : `${CARD_WIDTH + (numCards - 1) * H_STEP_X}px`;
 
   const minHeight = containerHeight > 0 ? containerHeight : FALLBACK_HEIGHT;
@@ -89,7 +93,7 @@ export function PublicationDeck({ publications, lang }: PublicationDeckProps) {
         style={{
           width: containerWidth,
           minHeight: `${minHeight}px`,
-          perspective: isMobile ? undefined : '1200px',
+          perspective: isMobile ? undefined : "1200px",
         }}
       >
         {orderedIds.map((id) => {
@@ -102,21 +106,23 @@ export function PublicationDeck({ publications, lang }: PublicationDeckProps) {
           const opacity = isTop ? 1 : Math.max(0.5, 0.9 - stackPos * 0.15);
 
           // Horizontal spread (desktop) vs. vertical stack (mobile)
-          const animX      = isMobile ? 0 : stackPos * H_STEP_X;
-          const animY      = isMobile ? stackPos * STACK_Y_OFFSET : stackPos * Y_SINK_PER_STEP;
+          const animX = isMobile ? 0 : stackPos * H_STEP_X;
+          const animY = isMobile
+            ? stackPos * STACK_Y_OFFSET
+            : stackPos * Y_SINK_PER_STEP;
           const animRotate = isMobile ? stackPos * STACK_ROTATION : 0;
           const animRotateY = isMobile ? 0 : stackPos * -ROTATE_Y_PER_STEP;
-          const animScale   = isMobile ? 1 : 1 - stackPos * SCALE_PER_STEP;
+          const animScale = isMobile ? 1 : 1 - stackPos * SCALE_PER_STEP;
 
           // Card width: fixed on desktop, full-width on mobile
-          const cardWidth = isMobile ? '100%' : `${CARD_WIDTH}px`;
+          const cardWidth = isMobile ? "100%" : `${CARD_WIDTH}px`;
 
           // Shadow: active card gets strong drop + right-edge lift; background cards recede
           const boxShadow = isMobile
             ? undefined
             : isTop
-              ? '0 24px 48px rgba(0,0,0,0.6), 8px 0 24px rgba(0,0,0,0.3)'
-              : '0 8px 16px rgba(0,0,0,0.3)';
+              ? "0 24px 48px rgba(0,0,0,0.6), 8px 0 24px rgba(0,0,0,0.3)"
+              : "0 8px 16px rgba(0,0,0,0.3)";
 
           return (
             <motion.div
@@ -136,7 +142,6 @@ export function PublicationDeck({ publications, lang }: PublicationDeckProps) {
             >
               <PublicationStackCard
                 publication={pub}
-                lang={lang}
                 isTop={isTop}
                 onClick={() => bringToFront(id)}
               />
@@ -162,11 +167,11 @@ export function PublicationDeck({ publications, lang }: PublicationDeckProps) {
                 aria-label={`Go to publication: ${pub.title}`}
                 onClick={() => bringToFront(pub.id)}
                 className={[
-                  'rounded-sm transition-all duration-300 cursor-pointer focus-ring',
+                  "rounded-sm transition-all duration-300 cursor-pointer focus-ring",
                   isActive
-                    ? 'w-6 h-2.5 bg-foreground border border-transparent'
-                    : 'w-2.5 h-2.5 bg-neutral-700/50 border border-neutral-600/50 hover:bg-neutral-600 hover:border-neutral-500',
-                ].join(' ')}
+                    ? "w-6 h-2.5 bg-foreground border border-transparent"
+                    : "w-2.5 h-2.5 bg-neutral-700/50 border border-neutral-600/50 hover:bg-neutral-600 hover:border-neutral-500",
+                ].join(" ")}
               />
             );
           })}

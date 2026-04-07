@@ -10,22 +10,17 @@ import FeaturedProductsSection from '../sections/FeaturedProductsSection.astro';
 import '@fontsource/inter';
 import '@fontsource/jetbrains-mono';
 import '@fontsource/vt323';
-import { useTranslations, type Locale } from '../i18n';
+import { getTranslations } from '../i18n';
 import ArrayTitle from '../components/arrayTitle/ArrayTitle.astro'
 
-interface Props {
-  lang: Locale;
-}
-
-const { lang } = Astro.props;
-const t = useTranslations(lang);
+const t = getTranslations(Astro.currentLocale);
 ---
 
-<Layout title={t('layout.title')} lang={lang}>
-  <div class="page-container pb-8 min-h-screen flex flex-col">
-    <!-- Navigation -->
-    <Header lang={lang} />
+<Layout title={t('layout.title')}>
+  <!-- Navigation -->
+  <Header />
 
+  <div class="page-container pb-8 min-h-screen flex flex-col">
     <!-- Hero Section -->
     <main class="flex-grow">
       <div class="section-spacing min-h-[85vh] sm:min-h-[calc(100svh-8rem)] flex flex-col justify-center pb-12 md:pb-24 pt-6 md:pt-10">
@@ -46,11 +41,11 @@ const t = useTranslations(lang);
               <div class="flex flex-wrap items-center gap-4">
                 <span class="btn-radiate-wrap relative inline-flex">
                   <a href="#work" class="button-primary btn-radiate group">
-                    <ArrayTitle translationKey={'hero.cta.viewWork'} lang={lang}/>
+                    <ArrayTitle translationKey={'hero.cta.viewWork'} />
                   </a>
                 </span>
                 <a href="#contact" class="button-secondary">
-                  <ArrayTitle translationKey={'hero.cta.contact'} lang={lang} />
+                  <ArrayTitle translationKey={'hero.cta.contact'} />
                 </a>
               </div>
             </div>
@@ -125,16 +120,16 @@ const t = useTranslations(lang);
       </div>
 
       <!-- How I Can Help Section -->
-      <!-- <HowICanHelpSection lang={lang} /> -->
+      <!-- <HowICanHelpSection /> -->
 
       <!-- Experience Timeline Section -->
-      <ExperienceTimeline lang={lang} />
+      <ExperienceTimeline />
 
       <!-- Publications & Research Section -->
-      <PublicationsSection lang={lang} />
+      <PublicationsSection />
 
       <!-- Featured Products Section -->
-      <FeaturedProductsSection lang={lang} />
+      <FeaturedProductsSection />
     </main>
 
     <FadeIn client:load delay={0.4}>

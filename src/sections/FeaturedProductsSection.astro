@@ -2,24 +2,20 @@
 import { ProductsParallax } from '../components/products/ProductsParallax';
 import ArrayTitle from '../components/arrayTitle/ArrayTitle.astro';
 import type { Product } from '../data/schema';
-import { useTranslations, type Locale } from '../i18n';
+import type { Locale } from '../i18n';
 import enData from '../data/products.en.json';
 import plData from '../data/products.pl.json';
 
-interface Props {
-  lang: Locale;
-}
-
-const { lang } = Astro.props;
+const lang = Astro.currentLocale as Locale;
 const products = ((lang === 'pl' ? plData : enData) as Product[]).filter(p => p.featured !== false);
 ---
 
 <section id="products" class="mb-32">
   {/* Section Header */}
   <div class="section-label">
-    <ArrayTitle translationKey={'section.products'} lang={lang} />
+    <ArrayTitle translationKey={'section.products'} />
   </div>
 
   {/* Products — sticky stacking cards with entrance animations */}
-  <ProductsParallax client:load products={products} lang={lang} />
+  <ProductsParallax client:load products={products} />
 </section>

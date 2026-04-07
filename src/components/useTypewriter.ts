@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 
 type UseTypewriterOptions = {
-  typingSpeed?: number;
-  deletingSpeed?: number;
-  pauseDelay?: number;
+  typingSpeed: number;
+  deletingSpeed: number;
+  pauseDelay: number;
 };
 
 export function useTypewriter(
@@ -12,7 +12,7 @@ export function useTypewriter(
     typingSpeed = 80,
     deletingSpeed = 40,
     pauseDelay = 1500,
-  }: UseTypewriterOptions = {},
+  }: UseTypewriterOptions,
 ) {
   const [wordIndex, setWordIndex] = useState(0);
   const [text, setText] = useState("");
@@ -20,23 +20,23 @@ export function useTypewriter(
 
   const scheduleTyping = () => {
     const word = words[wordIndex];
-    return text === word
+    const isFullWordTyped = text === word;
+    return isFullWordTyped
       ? setTimeout(() => setIsDeleting(true), pauseDelay)
       : setTimeout(() => setText(word.slice(0, text.length + 1)), typingSpeed);
   };
 
   const scheduleDeleting = () => {
-    if (!text) {
-      setIsDeleting(false);
-      setWordIndex((i) => (i + 1) % words.length);
-      return;
+    if (text) {
+      return setTimeout(() => setText(text.slice(0, -1)), deletingSpeed);
     }
-    return setTimeout(() => setText(text.slice(0, -1)), deletingSpeed);
+    setIsDeleting(false);
+    setWordIndex((i) => (i + 1) % words.length);
   };
 
   useEffect(() => {
-    const t = isDeleting ? scheduleDeleting() : scheduleTyping();
-    return () => clearTimeout(t);
+    const timeout = isDeleting ? scheduleDeleting() : scheduleTyping();
+    return () => clearTimeout(timeout);
   }, [
     isDeleting,
     text,

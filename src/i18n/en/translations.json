@@ -1,0 +1,58 @@
+{
+  "layout.title": "Milosz Misiek | Software Engineer",
+
+  "nav.work": "WORK",
+  "nav.research": "RESEARCH",
+  "nav.contact": "CONTACT",
+
+  "hero.typewriter": "Engineering calm, precision-driven digital experiences.",
+  "hero.bio.first": "I am a software engineer based in Poland. I blend deep technical architecture with severe design restraint to build interfaces that feel deliberate, fast, and timeless.",
+  "hero.bio.second": "Specializing in high-performance frontends, complex state management, and motion systems for teams that care about refined details.",
+  "hero.cta.viewWork": "VIEW_WORK",
+  "hero.cta.contact": "CONTACT",
+  "hero.stats.experience.label": "Experience",
+  "hero.stats.experience.value": "5+ Years",
+  "hero.stats.focus.label": "Focus",
+  "hero.stats.focus.value": "Frontend / UX",
+  "hero.stats.status.label": "Status",
+  "hero.stats.status.value": "Available",
+
+  "footer.github": "GITHUB",
+  "footer.linkedin": "LINKEDIN",
+
+  "section.experience": "EXPERIENCE",
+  "section.publications": "PUBLICATIONS",
+  "section.products": "FEATURED PRODUCTS",
+  "section.howICanHelp": "HOW I CAN HELP",
+
+  "capabilities.product.title": "Product & UX",
+  "capabilities.product.item1": "Journey mapping",
+  "capabilities.product.item2": "State diagrams",
+  "capabilities.product.item3": "Interaction flows",
+  "capabilities.frontend.title": "Frontend Engineering",
+  "capabilities.frontend.item1": "React / Next.js / Astro",
+  "capabilities.frontend.item2": "Framer Motion & animations",
+  "capabilities.frontend.item3": "Design systems",
+  "capabilities.fullstack.title": "Full-Stack & APIs",
+  "capabilities.fullstack.item1": "Node.js / GraphQL",
+  "capabilities.fullstack.item2": "Database design",
+  "capabilities.fullstack.item3": "AI / ML integration",
+
+  "timeline.present": "Present",
+
+  "tech.level.expert": "Expert",
+  "tech.level.advanced": "Advanced",
+  "tech.level.intermediate": "Intermediate",
+  "tech.level.basic": "Basic",
+  "tech.year": "year",
+  "tech.years": "years",
+
+  "publication.viewPaper": "VIEW PAPER",
+  "publication.status.published": "Published",
+  "publication.status.underreview": "Under Review",
+  "publication.status.preprint": "Preprint",
+   "publication.time": "Time",
+
+  "product.viewProduct": "VIEW PRODUCT",
+  "product.imagePlaceholder": "Product Image"
+}

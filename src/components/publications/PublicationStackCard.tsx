@@ -1,70 +1,58 @@
 import type { Publication } from "../../data/schema";
-import { useTranslations, type Locale } from "../../i18n";
+import { PublicationStatusEnum } from "../../data/types";
+import { getTranslations, type TranslationKey } from "../../i18n";
+import { cn } from "../../styles/cn";
+import { Badge } from "./Badge";
+import { ArrayTitle } from "../arrayTitle/ArrayTitle";
 
-interface PublicationStackCardProps {
+type PublicationStackCardProps = {
   publication: Publication;
-  lang: Locale;
   isTop: boolean;
   onClick: () => void;
-}
-
-const STATUS_COLORS: Record<
-  Publication["status"],
-  { text: string; bg: string; border: string }
-> = {
-  Published: {
-    text: "text-emerald-400",
-    bg: "bg-emerald-500/10",
-    border: "border-emerald-500/30",
-  },
-  "Under Review": {
-    text: "text-amber-400",
-    bg: "bg-amber-500/10",
-    border: "border-amber-500/30",
-  },
-  Preprint: {
-    text: "text-blue-400",
-    bg: "bg-blue-500/10",
-    border: "border-blue-500/30",
-  },
 };
 
+const statusLabels = {
+  [PublicationStatusEnum.Published]: "publication.status.published",
+  [PublicationStatusEnum.UnderReview]: "publication.status.underreview",
+  [PublicationStatusEnum.Preprint]: "publication.status.preprint",
+} satisfies Record<PublicationStatusEnum, TranslationKey>;
+
 export function PublicationStackCard({
-  publication,
-  lang,
+  publication: {
+    excerpt,
+    status,
+    title,
+    authors,
+    topics,
+    year,
+    readTime,
+    doi,
+    link,
+  },
   isTop,
   onClick,
 }: PublicationStackCardProps) {
-  const t = useTranslations(lang);
-  const excerpt =
-    (lang === "pl" ? publication.excerpt_pl : publication.excerpt) ??
-    publication.excerpt;
-  const readTime =
-    (lang === "pl" ? publication.readTime_pl : publication.readTime) ??
-    publication.readTime;
-  const status = STATUS_COLORS[publication.status];
-  const statusLabel = t(
-    `publication.status.${publication.status}` as Parameters<typeof t>[0],
-  );
+  const t = getTranslations();
+  const statusLabel = t(statusLabels[status as keyof typeof statusLabels]);
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
-    if (!isTop && (e.key === "Enter" || e.key === " ")) {
-      e.preventDefault();
-      onClick();
-    }
+  const stopPropagation = (e: React.MouseEvent) => e.stopPropagation();
+  const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (isTop || (e.key !== "Enter" && e.key !== " ")) return;
+    e.preventDefault();
+    onClick();
   };
 
   return (
     <div
       onClick={isTop ? undefined : onClick}
-      onKeyDown={handleKeyDown}
+      onKeyDown={onKeyDown}
       role={isTop ? undefined : "button"}
       tabIndex={isTop ? undefined : 0}
-      aria-label={isTop ? undefined : `Bring to front: ${publication.title}`}
-      className={[
+      aria-label={isTop ? undefined : `Bring to front: ${title}`}
+      className={cn(
         "card-interactive p-8 lg:p-10 w-full relative",
-        !isTop ? "group cursor-pointer hover:border-border/80" : "",
-      ].join(" ")}
+        !isTop && "group cursor-pointer hover:border-border/80",
+      )}
     >
       <div className="hover-gradient-bg absolute inset-0 transition-opacity duration-700 opacity-0 group-hover:opacity-100 rounded-lg pointer-events-none"></div>
 
@@ -79,17 +67,13 @@ export function PublicationStackCard({
       {/* Top Bar */}
       <div className="flex flex-wrap items-center justify-between mb-8 gap-4 border-b border-border/40 pb-6 relative z-10">
         <div className="flex items-center gap-3">
-          <span
-            className={`text-[10px] font-mono tracking-widest uppercase px-3 py-1 rounded-sm border ${status.bg} ${status.text} ${status.border}`}
-          >
-            {statusLabel}
-          </span>
+          <Badge status={status}>{statusLabel}</Badge>
         </div>
 
         <div className="flex items-center gap-3">
-          {publication.year && (
+          {year && (
             <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted/60">
-              {publication.year}
+              {year}
             </span>
           )}
         </div>
@@ -97,24 +81,22 @@ export function PublicationStackCard({
 
       {/* Title */}
       <div className="mb-8 relative z-10">
-        <h3 className="text-heading-md mb-4 text-foreground">
-          {publication.title}
-        </h3>
+        <h3 className="text-heading-md mb-4 text-foreground">{title}</h3>
 
         {/* Authors */}
-        {publication.authors.length > 0 && (
+        {authors.length > 0 && (
           <p className="font-mono text-xs uppercase tracking-widest text-muted/70 flex items-center gap-3">
             <span className="text-foreground/30">{"{ author(s): "}</span>
-            {publication.authors.join(", ")}
+            {authors.join(", ")}
             <span className="text-foreground/30">{" }"}</span>
           </p>
         )}
       </div>
 
       {/* Topics */}
-      {publication.topics.length > 0 && (
+      {topics.length > 0 && (
         <div className="flex flex-wrap gap-2 mb-8 relative z-10">
-          {publication.topics.map((topic) => (
+          {topics.map((topic) => (
             <span
               key={topic}
               className="font-mono text-[10px] tracking-[0.1em] text-muted/80 bg-neutral-900/20 border border-neutral-800 px-2 py-1 rounded-sm uppercase"
@@ -125,7 +107,7 @@ export function PublicationStackCard({
         </div>
       )}
 
-      {/* Excerpt */}
+      {/* Excerpt — already normalized to correct locale by PublicationsSection.astro */}
       {excerpt && (
         <p className="text-body mb-10 line-clamp-3 text-muted/80 relative z-10 pl-4 border-l-2 border-border/30">
           {excerpt}
@@ -137,28 +119,29 @@ export function PublicationStackCard({
         <div className="flex items-center gap-4 text-[10px] font-mono uppercase tracking-widest text-muted/50">
           {readTime && (
             <span className="flex items-center gap-2">
-              <span className="text-foreground/30">time:</span> {readTime}
+              <span className="text-foreground/30">
+                {t("publications.time")}:
+              </span>{" "}
+              {readTime}
             </span>
           )}
-          {publication.doi && (
+          {doi && (
             <span className="flex items-center gap-2 border-l border-border/40 pl-4">
-              <span className="text-foreground/30">doi:</span> {publication.doi}
+              <span className="text-foreground/30">doi:</span> {doi}
             </span>
           )}
         </div>
 
         {/* CTA */}
-        {publication.link && (
+        {link && (
           <a
-            href={publication.link}
+            href={link}
             target="_blank"
             rel="noopener noreferrer"
             className="button-secondary"
-            onClick={(e) => e.stopPropagation()}
+            onClick={stopPropagation}
           >
-            <span className="text-muted/40 mr-2">[</span>
-            {t("publication.viewPaper")}
-            <span className="text-muted/40 ml-2">]</span>
+            <ArrayTitle text={t("publication.viewPaper")} />
           </a>
         )}
       </div>
