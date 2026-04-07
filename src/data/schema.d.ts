@@ -30,9 +30,7 @@ export type Publication = {
   date?: string; // YYYY-MM-DD
   topics: string[];
   excerpt?: string;
-  excerpt_pl?: string;
   readTime?: string; // e.g., "8 min read"
-  readTime_pl?: string;
   link?: string;
   doi?: string;
 };
@@ -52,11 +50,4 @@ export type Product = {
   image?: string;
   year?: number;
   featured?: boolean;
-};
-
-export type PortfolioData = {
-  experience: TimelineEntry[];
-  publications: Publication[];
-  techStack: TechLogo[];
-  products: Product[];
 };

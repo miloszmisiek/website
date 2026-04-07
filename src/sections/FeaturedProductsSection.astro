@@ -1,21 +1,23 @@
 ---
 import { ProductsParallax } from '../components/products/ProductsParallax';
-import ArrayTitle from '../components/arrayTitle/ArrayTitle.astro';
-import type { Product } from '../data/schema';
-import type { Locale } from '../i18n';
-import enData from '../data/products.en.json';
-import plData from '../data/products.pl.json';
+import { AnimatedSectionTitle } from '../components/arrayTitle/AnimatedSectionTitle';
+import { FadeIn } from '../components/FadeIn';
+import { getProducts, getTranslations } from '../i18n';
 
-const lang = Astro.currentLocale as Locale;
-const products = ((lang === 'pl' ? plData : enData) as Product[]).filter(p => p.featured !== false);
+const products = getProducts(Astro.currentLocale);
+const t = getTranslations(Astro.currentLocale);
 ---
 
-<section id="products" class="mb-32">
+<section id="products" class="mb-32 scroll-mt-28">
+
   {/* Section Header */}
   <div class="section-label">
-    <ArrayTitle translationKey={'section.products'} />
+    <span class="section-num">03</span>
+    <AnimatedSectionTitle client:load text={t('section.products')} />
   </div>
 
   {/* Products — sticky stacking cards with entrance animations */}
-  <ProductsParallax client:load products={products} />
+  <FadeIn client:load delay={0.3} scrollTriggered noTranslate>
+    <ProductsParallax client:load products={products} />
+  </FadeIn>
 </section>

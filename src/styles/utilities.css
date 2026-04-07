@@ -1,32 +1,33 @@
 /* Utilities CSS - Custom utility classes for portfolio-specific patterns */
 
 @layer utilities {
-  /* Section headers */
+  /* Section labels — prominent numbered section anchor */
   .section-label {
-    @apply text-xs md:text-sm font-mono uppercase tracking-[0.2em] text-muted border-b border-border/60 pb-6 mb-12 flex items-center;
+    @apply flex flex-col gap-2 mb-14;
   }
 
-  .section-label::before {
-    content: "/*";
-    @apply text-muted/30 mr-3;
-  }
-
+  .section-label::before,
   .section-label::after {
-    content: "*/";
-    @apply text-muted/30 ml-3;
+    content: none;
+  }
+
+  /* Number within section-label */
+  .section-num {
+    @apply font-mono text-[10px] text-muted/60 tracking-[0.3em] uppercase;
+  }
+
+  /* Title within section-label (use as h2) */
+  .section-title {
+    @apply text-xl md:text-2xl font-mono text-foreground tracking-widest uppercase leading-none;
   }
 
   /* Card styles */
   .card-base {
-    @apply border border-border rounded-lg transition-all duration-300;
-  }
-
-  .card-hover {
-    @apply card-base hover:border-foreground/20 hover:shadow-lg transition-all duration-500;
+    @apply border border-border rounded-lg transition-[border-color,box-shadow,background-color] duration-300;
   }
 
   .card-interactive {
-    @apply card-base bg-[#0C0C0C] hover:bg-[#111111] hover:border-white/10 hover:shadow-xl transition-all duration-500;
+    @apply card-base bg-[#0C0C0C] hover:bg-[#111111] hover:border-white/10 hover:shadow-xl transition-[border-color,box-shadow,background-color] duration-500;
   }
 
   /* Button styles */
@@ -38,19 +39,6 @@
     @apply inline-flex items-center justify-center rounded border border-border px-5 py-2.5 text-xs font-mono tracking-[0.2em] text-foreground hover:bg-foreground/5 hover:border-foreground/30 transition-colors duration-300 uppercase;
   }
 
-  /* Grid patterns */
-  .grid-responsive-2 {
-    @apply grid grid-cols-1 md:grid-cols-2 gap-8;
-  }
-
-  .grid-responsive-3 {
-    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
-  }
-
-  .grid-responsive-4 {
-    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6;
-  }
-
   /* Container styles */
   .page-container {
     @apply max-w-7xl mx-auto px-6 md:px-12 lg:px-16;
@@ -60,7 +48,7 @@
     @apply mb-40;
   }
 
-  /* Typography utilities - Elevated AI-Native */
+  /* Typography utilities */
   .text-heading-xl {
     @apply text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.05] text-foreground;
   }
@@ -77,125 +65,13 @@
     @apply text-base md:text-lg text-muted/90 leading-relaxed;
   }
 
-  .text-body-sm {
-    @apply text-sm text-muted/80 leading-relaxed;
-  }
-
   .text-label {
     @apply text-xs font-mono uppercase tracking-[0.2em] text-muted/80;
   }
 
-  /* Icon utilities */
-  .icon-sm {
-    @apply w-4 h-4;
-  }
-
-  .icon-md {
-    @apply w-6 h-6;
-  }
-
-  .icon-lg {
-    @apply w-8 h-8;
-  }
-
-  /* Flex utilities */
-  .flex-center {
-    @apply flex items-center justify-center;
-  }
-
-  .flex-between {
-    @apply flex items-center justify-between;
-  }
-
-  .flex-col-center {
-    @apply flex flex-col items-center justify-center;
-  }
-
-  /* Spacing helpers */
-  .space-y-timeline {
-    @apply space-y-16;
-  }
-
-  .space-y-cards {
-    @apply space-y-10;
-  }
-
-  /* Border utilities */
-  .border-divider {
-    @apply border-b border-border/60;
-  }
-
-  .border-subtle {
-    @apply border border-border/30;
-  }
-
-  /* Opacity utilities */
-  .opacity-disabled {
-    @apply opacity-50 pointer-events-none;
-  }
-
-  .opacity-hover-dim {
-    @apply hover:opacity-70 transition-opacity duration-300;
-  }
-
-  /* Cursor utilities */
-  .cursor-interactive {
-    @apply cursor-pointer hover:cursor-pointer;
-  }
-
-  /* Gradient text */
-  .gradient-text-primary {
-    @apply bg-clip-text text-transparent bg-gradient-to-br from-white to-neutral-400;
-  }
-
-  .gradient-text-light {
-    @apply bg-clip-text text-transparent bg-gradient-to-br from-slate-900 to-slate-500;
-  }
-
-  /* Line clamp helpers */
-  .line-clamp-2-no-break {
-    @apply line-clamp-2;
-    word-break: break-word;
-  }
-
   /* Focus utilities for accessibility */
   .focus-ring {
-    @apply focus:outline-none focus:ring-2 focus:ring-foreground/50 focus:ring-offset-2 focus:ring-offset-background;
-  }
-
-  .focus-ring-sm {
-    @apply focus:outline-none focus:ring-2 focus:ring-foreground/50;
-  }
-
-  /* Scroll behavior */
-  .scroll-smooth-custom {
-    scroll-behavior: smooth;
-  }
-
-  /* Performance optimizations */
-  .gpu-accelerate {
-    @apply will-change-transform;
-  }
-
-  .gpu-accelerate-opacity {
-    @apply will-change-opacity;
-  }
-
-  /* Badge styles - Programming theme */
-  .badge-base {
-    @apply inline-flex items-center px-3 py-1 text-[11px] font-mono uppercase tracking-widest border rounded-sm;
-  }
-
-  .badge-published {
-    @apply badge-base text-emerald-400 border-emerald-500/30 bg-emerald-500/5;
-  }
-
-  .badge-review {
-    @apply badge-base text-amber-400 border-amber-500/30 bg-amber-500/5;
-  }
-
-  .badge-preprint {
-    @apply badge-base text-blue-400 border-blue-500/30 bg-blue-500/5;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background;
   }
 
   /* Hover gradient effect */
@@ -205,20 +81,6 @@
 
   .hover-gradient-bg {
     @apply absolute inset-0 bg-gradient-to-r from-neutral-900/0 via-white/[0.02] to-neutral-900/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10 pointer-events-none;
-  }
-
-  /* Light mode gradient */
-  .hover-gradient-light-bg {
-    @apply absolute inset-0 bg-gradient-to-r from-slate-100/0 via-slate-200/40 to-slate-100/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10 pointer-events-none;
-  }
-
-  /* Responsive display helpers */
-  .hidden-mobile {
-    @apply hidden md:block;
-  }
-
-  .visible-mobile {
-    @apply block md:hidden;
   }
 
   /* Smooth scrolling */

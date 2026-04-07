@@ -1,32 +1,24 @@
 ---
-import ArrayTitle from '../components/arrayTitle/ArrayTitle.astro';
+import { AnimatedSectionTitle } from '../components/arrayTitle/AnimatedSectionTitle';
 import { FadeIn } from '../components/FadeIn';
 import { PublicationDeck } from '../components/publications/PublicationDeck';
-import type { Publication } from '../data/schema';
-import type { Locale } from '../i18n';
-import publicationsData from '../data/publications.json';
+import { getPublications, getTranslations } from '../i18n';
 
-const lang = Astro.currentLocale as Locale;
-
-// Normalize locale-specific fields server-side so React components receive
-// a clean Publication object with no locale conditionals needed.
-const publications = (publicationsData as Publication[])
-  .sort((a, b) => (b.year || 0) - (a.year || 0))
-  .map((p) => ({
-    ...p,
-    excerpt: (lang === 'pl' ? p.excerpt_pl : p.excerpt) ?? p.excerpt,
-    readTime: (lang === 'pl' ? p.readTime_pl : p.readTime) ?? p.readTime,
-  }));
+const publications = getPublications(Astro.currentLocale);
+const t = getTranslations(Astro.currentLocale);
 ---
 
-<FadeIn client:load delay={0.3} className="mb-32">
-  <section id="publications">
-    {/* Section Header */}
-    <div class="section-label">
-      <ArrayTitle translationKey={'section.publications'} />
-    </div>
+<section id="publications" class="mb-32 scroll-mt-28">
 
-    {/* Publications Stacked Deck */}
+  {/* Section Header */}
+  <div class="section-label">
+    <span class="section-num">02</span>
+    <AnimatedSectionTitle client:load text={t('section.publications')} />
+  </div>
+
+  {/* Publications Stacked Deck */}
+  <FadeIn client:load delay={0.3} scrollTriggered>
     <PublicationDeck client:load publications={publications} />
-  </section>
-</FadeIn>
+  </FadeIn>
+
+</section>

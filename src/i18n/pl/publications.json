@@ -1,0 +1,36 @@
+[
+  {
+    "id": "pub-hicss-2025",
+    "title": "Preventing Phishing Attacks with Browser-Based URL Detection",
+    "authors": ["Miłosz Misiek", "Tomasz Hyla"],
+    "status": "published",
+    "year": 2025,
+    "topics": [
+      "Security",
+      "Phishing Detection",
+      "URL Analysis",
+      "Browser Extension"
+    ],
+    "excerpt": "One way to protect users from clicking on a malicious URL is to continuously check all URLs displayed on the website and notify them when a suspicious URL is detected. This paper presents a browser plug-in to detect malicious web addresses facilitating phishing attacks. The plug-in leverages a machine-learning model, specifically the Extreme Gradient Boosting decision tree model. The results indicate high performance in accurately identifying malicious URLs. Although the XGBoost model does not achieve the highest possible accuracy, it offers an exceptional balance between various performance metrics. It provides practical benefits in terms of computational efficiency and interpretability. These features make it a solid foundation for further development and potential implementation in phishing detection systems on social networking sites. The plug-in identifies and flags all external URLs on a given page, providing users with information regarding the potential maliciousness of a URL.",
+    "link": "https://hdl.handle.net/10125/109726",
+    "doi": "10.24251/hicss.2025.874",
+    "readTime": "15 min"
+  },
+  {
+    "id": "pub-ieee-access-2026",
+    "title": "XGBoost-Based URL Phishing Detection Method With Cross-Dataset Validation",
+    "authors": ["Milosz Misiek", "Tomasz Hyla"],
+    "status": "published",
+    "year": 2026,
+    "topics": [
+      "Machine Learning",
+      "XGBoost",
+      "Phishing Detection",
+      "URL Analysis"
+    ],
+    "excerpt": "This article analyses the performance characteristics of XGBoost models across multiple datasets for phishing URL detection, extending our previous conference paper with comprehensive cross-dataset validation and comparative analysis. Using a validation framework with three distinct datasets — a custom phishing dataset (75,738 samples), the large-scale GramBeddings dataset (639,723 samples), and the PhiUSIIL dataset (47,103 samples)—we demonstrate that XGBoost delivers robust performance across diverse data sources. Our approach addresses the issue of feature instability, showing how balanced feature engineering is crucial for reliable detection. The model achieves 90.7% accuracy and 91.2% F1 score on the custom dataset, with a solid 77.8% average accuracy across three independent test sets. In comparative benchmarks against Neural Networks, XGBoost proved superior in training efficiency and detection quality, achieving 2.1% higher accuracy and training 12.6 times faster (0.95s vs 12.01s) with 3.6 times less memory. Although Neural Networks offered faster inference (7.51ms vs 20.6ms) and smaller model sizes, XGBoost’s balance of high accuracy and rapid training makes it highly effective for practical, real-world phishing detection systems.",
+    "link": "https://ieeexplore.ieee.org/document/11428202/",
+    "doi": "10.1109/access.2026.3672690",
+    "readTime": "30 min"
+  }
+]

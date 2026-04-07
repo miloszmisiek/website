@@ -1,78 +1,90 @@
 ---
-import { FadeIn } from '../components/FadeIn';
-import TimelineEntry from '../components/timeline/TimelineEntry/index.astro';
-import TimelineAnimator from '../components/timeline/TimelineAnimator';
-import ArrayTitle from '../components/arrayTitle/ArrayTitle.astro';
-import type { TimelineEntry as TimelineEntryType } from '../data/schema';
-import type { Locale } from '../i18n';
-import enData from '../data/experience.en.json';
-import plData from '../data/experience.pl.json';
+import { FadeIn } from "../components/FadeIn";
+import TimelineEntry from "../components/timeline/TimelineEntry/index.astro";
+import TimelineAnimator from "../components/timeline/TimelineAnimator";
+import { AnimatedSectionTitle } from "../components/arrayTitle/AnimatedSectionTitle";
+import { getExperience, getTranslations } from "../i18n";
 
-const lang = Astro.currentLocale as Locale;
-const experience = (lang === 'pl' ? plData : enData) as TimelineEntryType[];
+const experience = getExperience(Astro.currentLocale);
+const t = getTranslations(Astro.currentLocale);
 ---
 
-<FadeIn client:load delay={0.3} className="mb-32">
-  <section id="experience">
+<section id="experience" class="mb-32 scroll-mt-28">
+  {/* Section Header */}
+  <div class="section-label">
+    <span class="section-num">01</span>
+    <AnimatedSectionTitle client:load text={t("section.experience")} />
+  </div>
 
-    {/* Section Header */}
-    <div class="section-label">
-      <ArrayTitle translationKey={'section.experience'} />
+  {/* Timeline */}
+  <FadeIn client:load delay={0.3} scrollTriggered>
+    <div class="pt-4">
+      <div class="timeline-container">
+        <span class="trunk-label">* main</span>
+        <div class="trunk"></div>
+
+        <TimelineAnimator client:load items={experience} staggerDelay={0.12}>
+          {
+            experience.map((entry, index) => (
+              <TimelineEntry entry={entry} index={index} />
+            ))
+          }
+        </TimelineAnimator>
+      </div>
     </div>
-
-    {/* Timeline */}
-    <div class="timeline-container">
-      <div class="trunk"></div>
-      <span class="trunk-label">* main</span>
-
-      <TimelineAnimator client:load items={experience} staggerDelay={0.12}>
-        {experience.map((entry, index) => (
-          <TimelineEntry entry={entry} index={index} />
-        ))}
-      </TimelineAnimator>
-    </div>
-
-  </section>
-</FadeIn>
+  </FadeIn>
+</section>
 
 <script>
   function setupTimelineObserver() {
-    const entries = document.querySelectorAll('.timeline-entry');
+    const entries = document.querySelectorAll(".timeline-entry");
     if (!entries.length) return;
 
-    const observer = new IntersectionObserver((entriesList) => {
-      entriesList.forEach(entry => {
-        entry.target.classList.toggle('is-active', entry.isIntersecting);
-      });
-    }, {
-      rootMargin: '-30% 0px -40% 0px',
-      threshold: 0
-    });
+    const observer = new IntersectionObserver(
+      (entriesList) => {
+        entriesList.forEach((entry) => {
+          entry.target.classList.toggle("is-active", entry.isIntersecting);
+        });
+      },
+      {
+        rootMargin: "-30% 0px -40% 0px",
+        threshold: 0,
+      },
+    );
 
-    entries.forEach(entry => observer.observe(entry));
+    entries.forEach((entry) => observer.observe(entry));
   }
 
   // Run on initial load
   setupTimelineObserver();
-  
+
   // If using view transitions, ensure it runs on navigation
-  document.addEventListener('astro:page-load', setupTimelineObserver);
+  document.addEventListener("astro:page-load", setupTimelineObserver);
 </script>
 
 <style>
   .timeline-container {
     position: relative;
+    padding-top: 1.5rem;
     margin-left: 1rem;
   }
 
-  @media (min-width: 768px)  { .timeline-container { margin-left: 2rem; } }
-  @media (min-width: 1024px) { .timeline-container { margin-left: 3rem; } }
+  @media (min-width: 768px) {
+    .timeline-container {
+      margin-left: 2rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .timeline-container {
+      margin-left: 3rem;
+    }
+  }
 
   /* Dashed vertical trunk */
   .trunk {
     position: absolute;
     left: 0;
-    top: 0;
+    top: 0rem;
     bottom: 0;
     width: 1px;
     background-image: repeating-linear-gradient(
@@ -89,7 +101,7 @@ const experience = (lang === 'pl' ? plData : enData) as TimelineEntryType[];
     position: absolute;
     left: 6px;
     top: -20px;
-    font-family: theme('fontFamily.mono-system');
+    font-family: theme("fontFamily.mono-system");
     font-size: 0.62rem;
     color: var(--color-muted);
     opacity: 0.45;

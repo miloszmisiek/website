@@ -3,7 +3,6 @@ import Layout from '../layouts/Layout.astro';
 import { FadeIn } from '../components/FadeIn';
 import { TerminalTypewriter } from '../components/TerminalTypewriter';
 import Header from '../sections/Header.astro';
-import HowICanHelpSection from '../sections/HowICanHelpSection.astro';
 import ExperienceTimeline from '../sections/ExperienceTimeline.astro';
 import PublicationsSection from '../sections/PublicationsSection.astro';
 import FeaturedProductsSection from '../sections/FeaturedProductsSection.astro';
@@ -25,7 +24,7 @@ const t = getTranslations(Astro.currentLocale);
     <main class="flex-grow">
       <div class="section-spacing min-h-[85vh] sm:min-h-[calc(100svh-8rem)] flex flex-col justify-center pb-12 md:pb-24 pt-6 md:pt-10">
         <FadeIn client:load delay={0.1}>
-          <h1 class="text-heading-xl mb-12 max-w-4xl text-transparent bg-clip-text bg-gradient-to-br from-white to-neutral-500">
+          <h1 class="text-heading-xl mb-12 max-w-4xl text-transparent bg-clip-text bg-gradient-to-br from-white to-neutral-500 [text-wrap:balance]">
             {t('hero.typewriter')}
           </h1>
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 text-muted font-light leading-relaxed text-sm border-l-2 border-border/40 pl-6 lg:pl-10 ml-2">
@@ -40,7 +39,7 @@ const t = getTranslations(Astro.currentLocale);
               </p>
               <div class="flex flex-wrap items-center gap-4">
                 <span class="btn-radiate-wrap relative inline-flex">
-                  <a href="#work" class="button-primary btn-radiate group">
+                  <a href="#experience" class="button-primary btn-radiate group">
                     <ArrayTitle translationKey={'hero.cta.viewWork'} />
                   </a>
                 </span>
@@ -136,7 +135,9 @@ const t = getTranslations(Astro.currentLocale);
       <footer id="contact" class="flex justify-between items-center text-xs font-mono text-muted py-8 border-t border-border/60 mt-auto">
         <span class="tracking-widest">© {new Date().getFullYear()} MILOSZ MISIEK</span>
         <div class="flex gap-6">
+          {/* TODO: replace # with real GitHub URL */}
           <a href="#" class="hover:text-foreground transition-colors tracking-widest uppercase">{t('footer.github')}</a>
+          {/* TODO: replace # with real LinkedIn URL */}
           <a href="#" class="hover:text-foreground transition-colors tracking-widest uppercase">{t('footer.linkedin')}</a>
         </div>
       </footer>

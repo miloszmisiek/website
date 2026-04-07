@@ -120,7 +120,7 @@ export function PublicationStackCard({
           {readTime && (
             <span className="flex items-center gap-2">
               <span className="text-foreground/30">
-                {t("publications.time")}:
+                {t("publication.time")}:
               </span>{" "}
               {readTime}
             </span>
