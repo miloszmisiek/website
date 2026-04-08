@@ -52,7 +52,7 @@ const t = getTranslations(Astro.currentLocale);
             
             {/* Terminal Window Stats */}
             <div class="lg:col-span-5 terminal-widget">
-              <div class="terminal-frame relative overflow-hidden rounded-md font-mono text-[11px] sm:text-xs">
+              <div class="terminal-frame relative overflow-hidden rounded-none font-mono text-[11px] sm:text-xs">
                 <!-- Title bar -->
                 <div class="terminal-titlebar flex items-center justify-between px-4 py-3">
                   <div class="flex items-center gap-2" aria-hidden="true">
@@ -70,7 +70,7 @@ const t = getTranslations(Astro.currentLocale);
 
                   <div class="p-4 md:p-5">
                     <!-- Main Content Box -->
-                    <fieldset class="terminal-fieldset rounded px-4 pb-5 pt-3 mb-1">
+                    <fieldset class="terminal-fieldset rounded-none px-4 pb-5 pt-3 mb-1">
                       <legend class="px-2 text-[12px] text-foreground/45 tracking-wider">milosz-cli</legend>
 
                       <div class="flex flex-col items-center justify-center text-center space-y-4">

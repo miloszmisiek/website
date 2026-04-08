@@ -6,8 +6,9 @@ interface Props {
 
 const { label, href } = Astro.props;
 ---
-<a href={href} class="hover:text-foreground transition-colors">
+<a href={href} class="relative group hover:text-foreground transition-colors pb-1">
 	{label}
+	<span class="absolute bottom-0 left-0 w-full h-[1px] bg-foreground origin-bottom-right scale-x-0 transition-transform duration-300 ease-out group-hover:origin-bottom-left group-hover:scale-x-100"></span>
 </a>
 
 

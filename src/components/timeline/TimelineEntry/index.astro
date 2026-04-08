@@ -35,7 +35,7 @@ const visibleHighlights = highlights?.slice(0, MAX_HIGHLIGHTS);
 ---
 
 <div
-  class="timeline-entry relative pl-12 md:pl-16 transition-smooth mb-24 py-6 -my-6 rounded-lg border border-transparent"
+  class="timeline-entry relative pl-12 md:pl-16 transition-smooth mb-24 py-6 -my-6 rounded-none border border-transparent"
 >
   <CommitNode isWork={isWork} />
 
@@ -75,7 +75,7 @@ const visibleHighlights = highlights?.slice(0, MAX_HIGHLIGHTS);
   :global(.tech-overflow) {
     font-size: 0.55rem;
     padding: 2px 6px;
-    border-radius: 2px;
+    border-radius: 0;
     border: 1px dashed var(--color-line);
     color: var(--color-muted);
     opacity: 1;

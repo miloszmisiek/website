@@ -21,12 +21,13 @@ const navLinks = [
     <span class="text-foreground/55 hidden md:inline-block">~/</span>
     <Logo />
   </div>
-  <nav class="flex items-center gap-8 md:gap-12">
-    <div
-      class="hidden md:flex items-center gap-8 border-r border-border/40 pr-8"
-    >
+  <nav class="flex items-center gap-6 md:gap-8">
+    <div class="hidden md:flex items-center gap-8">
       {navLinks.map((link) => <NavLink href={link.href} label={t(link.key)} />)}
     </div>
+    
+    <div class="hidden md:block w-[1px] h-6 bg-border/80 mx-2"></div>
+    
     <div class="flex items-center gap-3">
       <ThemeSwitcher />
       <LanguageSwitcher />
@@ -62,9 +63,9 @@ const navLinks = [
   /* Dark mode scrolled */
   :root[data-theme="dark"] header[data-scrolled],
   header[data-scrolled] {
-    background: rgba(5, 5, 5, 0.75);
+    background: rgba(24, 22, 21, 0.75);
     backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid rgba(230, 226, 221, 0.06);
   }
 
   /* Light mode scrolled — warm paper */

@@ -32,7 +32,7 @@ export const FadeIn = ({
   const ref = useRef<HTMLDivElement>(null);
 
   // scroll-triggered path: useInView fires once when element enters viewport
-  const isInView = useInView(ref, { once: true, margin: "-5% 0px" });
+  const isInView = useInView(ref, { once: true, margin: "0px" });
 
   const isVisible = scrollTriggered ? isInView : true;
 

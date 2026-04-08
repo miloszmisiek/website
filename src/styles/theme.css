@@ -6,52 +6,47 @@
     color-scheme: dark;
 
     /* Color channel values (R G B) — enables Tailwind opacity modifier support */
-    --color-background: 5 5 5;
-    --color-foreground: 255 255 255;
-    --color-muted: 136 136 136;
-    --color-border: 31 31 31;
+    --color-background: 24 22 21; /* #181615 Deep Charcoal */
+    --color-foreground: 230 226 221; /* #e6e2dd Soft Bone White */
+    --color-muted: 163 157 150; /* #a39d96 Light Taupe Gray */
+    --color-border: 48 44 42; /* #302c2a Soft Dark Border */
 
     /* Structural / decorative */
-    --color-line: rgba(255, 255, 255, 0.2);
-    --color-dim: rgba(255, 255, 255, 0.5);
+    --color-line: rgba(230, 226, 221, 0.15);
+    --color-dim: rgba(230, 226, 221, 0.4);
 
     /* Hover states */
-    --color-hover-bg: rgba(255, 255, 255, 0.05);
-    --color-hover-border: rgba(255, 255, 255, 0.1);
-    --color-hover-text: rgb(255, 255, 255);
+    --color-hover-bg: rgba(230, 226, 221, 0.05);
+    --color-hover-border: rgba(230, 226, 221, 0.1);
+    --color-hover-text: rgb(230, 226, 221);
 
     /* Accent colors */
-    --color-success: #10b981;
-    --color-warning: #f59e0b;
-    --color-error: #ef4444;
-    --color-info: #3b82f6;
+    --color-success: #739e73;
+    --color-warning: #c2a878;
+    --color-error: #c76b6b;
+    --color-info: #7a9fbf;
 
     /* Gradient tokens */
-    --gradient-text-from: #ffffff;
-    --gradient-text-to: #a0a0a0;
-    --gradient-hover-via: rgba(255, 255, 255, 0.03);
+    --gradient-text-from: #e6e2dd;
+    --gradient-text-to: #a39d96;
+    --gradient-hover-via: rgba(230, 226, 221, 0.03);
 
     /* Card surface tokens */
-    --color-card-bg: 12 12 12;
-    --color-card-bg-hover: 17 17 17;
+    --color-card-bg: 32 29 28;
+    --color-card-bg-hover: 38 35 34;
 
     /* Card shadow tokens */
-    --shadow-card-top:
-      0 24px 48px rgba(0, 0, 0, 0.6), 8px 0 24px rgba(0, 0, 0, 0.3);
-    --shadow-card-bg: 0 8px 16px rgba(0, 0, 0, 0.3);
+    --shadow-card-top: none;
+    --shadow-card-bg: none;
 
     /* Terminal widget tokens */
-    --terminal-body-bg: 10 10 10;
-    --terminal-titlebar-bg: rgba(255, 255, 255, 0.03);
-    --terminal-border: rgba(255, 255, 255, 0.15);
-    --terminal-divider: rgba(255, 255, 255, 0.07);
-    --terminal-fieldset: rgba(255, 255, 255, 0.1);
-    --terminal-dot: 64 64 64;
-    --terminal-glow: radial-gradient(
-      circle at top,
-      rgba(255, 255, 255, 0.05),
-      transparent 60%
-    );
+    --terminal-body-bg: 28 26 25;
+    --terminal-titlebar-bg: rgba(230, 226, 221, 0.03);
+    --terminal-border: rgba(230, 226, 221, 0.15);
+    --terminal-divider: rgba(230, 226, 221, 0.07);
+    --terminal-fieldset: rgba(230, 226, 221, 0.1);
+    --terminal-dot: 85 80 75;
+    --terminal-glow: none;
   }
 
   /* ─────────── System preference: light (Warm Paper -> Matte Pastel) ─────────── */
@@ -91,34 +86,29 @@
   /* ─────────── Explicit dark override ─────────── */
   [data-theme="dark"] {
     color-scheme: dark;
-    --color-background: 5 5 5;
-    --color-foreground: 255 255 255;
-    --color-muted: 136 136 136;
-    --color-border: 31 31 31;
-    --color-line: rgba(255, 255, 255, 0.2);
-    --color-dim: rgba(255, 255, 255, 0.5);
-    --color-hover-bg: rgba(255, 255, 255, 0.05);
-    --color-hover-border: rgba(255, 255, 255, 0.1);
-    --color-hover-text: rgb(255, 255, 255);
-    --gradient-text-from: #ffffff;
-    --gradient-text-to: #a0a0a0;
-    --gradient-hover-via: rgba(255, 255, 255, 0.03);
-    --color-card-bg: 12 12 12;
-    --color-card-bg-hover: 17 17 17;
-    --shadow-card-top:
-      0 24px 48px rgba(0, 0, 0, 0.6), 8px 0 24px rgba(0, 0, 0, 0.3);
-    --shadow-card-bg: 0 8px 16px rgba(0, 0, 0, 0.3);
-    --terminal-body-bg: 10 10 10;
-    --terminal-titlebar-bg: rgba(255, 255, 255, 0.03);
-    --terminal-border: rgba(255, 255, 255, 0.15);
-    --terminal-divider: rgba(255, 255, 255, 0.07);
-    --terminal-fieldset: rgba(255, 255, 255, 0.1);
-    --terminal-dot: 64 64 64;
-    --terminal-glow: radial-gradient(
-      circle at top,
-      rgba(255, 255, 255, 0.05),
-      transparent 60%
-    );
+    --color-background: 24 22 21; /* #181615 Deep Charcoal */
+    --color-foreground: 230 226 221; /* #e6e2dd Soft Bone White */
+    --color-muted: 163 157 150; /* #a39d96 Light Taupe Gray */
+    --color-border: 48 44 42; /* #302c2a Soft Dark Border */
+    --color-line: rgba(230, 226, 221, 0.15);
+    --color-dim: rgba(230, 226, 221, 0.4);
+    --color-hover-bg: rgba(230, 226, 221, 0.05);
+    --color-hover-border: rgba(230, 226, 221, 0.1);
+    --color-hover-text: rgb(230, 226, 221);
+    --gradient-text-from: #e6e2dd;
+    --gradient-text-to: #a39d96;
+    --gradient-hover-via: rgba(230, 226, 221, 0.03);
+    --color-card-bg: 32 29 28;
+    --color-card-bg-hover: 38 35 34;
+    --shadow-card-top: none;
+    --shadow-card-bg: none;
+    --terminal-body-bg: 28 26 25;
+    --terminal-titlebar-bg: rgba(230, 226, 221, 0.03);
+    --terminal-border: rgba(230, 226, 221, 0.15);
+    --terminal-divider: rgba(230, 226, 221, 0.07);
+    --terminal-fieldset: rgba(230, 226, 221, 0.1);
+    --terminal-dot: 85 80 75;
+    --terminal-glow: none;
   }
 
   /* ─────────── Explicit light override (Matte Pastel) ─────────── */
@@ -246,7 +236,7 @@
     background-color: #edf2ed;
   }
   [data-theme="light"] .border-emerald-500\/30 {
-    border-color: #cce0cc;
+    border-color: #a3c2a3;
   }
   [data-theme="light"] .bg-emerald-400 {
     background-color: #5a7d5a;
@@ -260,7 +250,7 @@
     background-color: #f5f0e6;
   }
   [data-theme="light"] .border-amber-500\/30 {
-    border-color: #e8dec8;
+    border-color: #c4b08f;
   }
 
   /* Blue (Info) — preprint badge -> Matte Slate / Steel Blue */
@@ -271,7 +261,7 @@
     background-color: #edf1f5;
   }
   [data-theme="light"] .border-blue-500\/30 {
-    border-color: #d0dce6;
+    border-color: #a6bed1;
   }
 
   /* Red — form errors */
@@ -279,26 +269,26 @@
     color: rgb(185 28 28 / 0.9);
   }
 
-  /* ─── Restore inside explicit dark containers (e.g. terminal widget) ─── */
+  /* ─── Adjust inside explicit dark containers (Matte Charcoal variants) ─── */
   [data-theme="dark"] .text-emerald-400 {
-    color: rgb(52 211 153);
+    color: #739e73;
   }
   [data-theme="dark"] .bg-emerald-500\/10 {
-    background-color: rgb(16 185 129 / 0.1);
+    background-color: rgba(115, 158, 115, 0.15);
   }
   [data-theme="dark"] .border-emerald-500\/30 {
-    border-color: rgb(16 185 129 / 0.3);
+    border-color: rgba(115, 158, 115, 0.4);
   }
   [data-theme="dark"] .bg-emerald-400 {
-    background-color: rgb(52 211 153);
+    background-color: #739e73;
   }
   [data-theme="dark"] .text-amber-400 {
-    color: rgb(251 191 36);
+    color: #c2a878;
   }
   [data-theme="dark"] .text-blue-400 {
-    color: rgb(96 165 250);
+    color: #7a9fbf;
   }
   [data-theme="dark"] .text-red-400\/90 {
-    color: rgb(248 113 113 / 0.9);
+    color: rgb(199 107 107 / 0.9);
   }
 }

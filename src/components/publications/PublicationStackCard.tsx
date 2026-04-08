@@ -2,7 +2,7 @@ import type { Publication } from "../../data/schema";
 import { PublicationStatusEnum } from "../../data/types";
 import { getTranslations, type TranslationKey } from "../../i18n";
 import { cn } from "../../styles/cn";
-import { Badge } from "./Badge";
+import { Badge } from "../Badge";
 import { ArrayTitle } from "../arrayTitle/ArrayTitle";
 
 type PublicationStackCardProps = {
@@ -51,15 +51,16 @@ export function PublicationStackCard({
       aria-label={isTop ? undefined : `Bring to front: ${title}`}
       className={cn(
         "card-interactive p-8 lg:p-10 w-full relative",
-        !isTop && "group cursor-pointer hover:border-border/80 focus-ring",
+        !isTop &&
+          "card-hoverable group cursor-pointer hover:border-border/80 focus-ring",
       )}
     >
-      <div className="hover-gradient-bg absolute inset-0 transition-opacity duration-700 opacity-0 group-hover:opacity-100 rounded-lg pointer-events-none"></div>
+      <div className="hover-gradient-bg absolute inset-0 transition-opacity duration-700 opacity-0 group-hover:opacity-100 rounded-none pointer-events-none"></div>
 
       {/* Right-edge depth shadow — active card only, reinforces 3D elevation */}
       {isTop && (
         <div
-          className="absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-background/60 to-transparent pointer-events-none rounded-r-lg"
+          className="absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-background/60 to-transparent pointer-events-none rounded-none"
           aria-hidden="true"
         />
       )}
@@ -67,7 +68,17 @@ export function PublicationStackCard({
       {/* Top Bar */}
       <div className="flex flex-wrap items-center justify-between mb-8 gap-4 border-b border-border/70 pb-6 relative z-10">
         <div className="flex items-center gap-3">
-          <Badge status={status}>{statusLabel}</Badge>
+          <Badge
+            variant={
+              status === "published"
+                ? "success"
+                : status === "underreview"
+                  ? "warning"
+                  : "info"
+            }
+          >
+            {statusLabel}
+          </Badge>
         </div>
 
         <div className="flex items-center gap-3">
@@ -85,10 +96,12 @@ export function PublicationStackCard({
 
         {/* Authors */}
         {authors.length > 0 && (
-          <p className="font-mono text-xs uppercase tracking-widest text-muted/70 flex items-center gap-3">
-            <span className="text-foreground/60">{"{ author(s): "}</span>
-            {authors.join(", ")}
-            <span className="text-foreground/60">{" }"}</span>
+          <p className="font-mono text-xs uppercase tracking-widest flex items-center gap-3">
+            <span className="text-foreground/40">{"{ author(s): "}</span>
+            <span className="text-foreground/80 tracking-wide">
+              {authors.join(", ")}
+            </span>
+            <span className="text-foreground/40">{" }"}</span>
           </p>
         )}
       </div>
@@ -97,12 +110,9 @@ export function PublicationStackCard({
       {topics.length > 0 && (
         <div className="flex flex-wrap gap-2 mb-8 relative z-10">
           {topics.map((topic) => (
-            <span
-              key={topic}
-              className="font-mono text-[10px] tracking-[0.1em] text-muted/90 bg-foreground/[0.06] border border-border px-2 py-1 rounded-sm uppercase"
-            >
+            <Badge key={topic} variant="neutral" className="tracking-[0.1em]">
               {topic}
-            </span>
+            </Badge>
           ))}
         </div>
       )}

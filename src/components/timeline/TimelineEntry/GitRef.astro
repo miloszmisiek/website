@@ -20,7 +20,7 @@ const { branchName, shortHash } = getGitDisplay(entry);
   </span>
   <span class="ref-sep ml-2 mr-2">--&gt;</span>
   <span
-    class="ref-branch border border-transparent dark:border-border/40 bg-black/5 dark:bg-white/5 px-2 py-0.5 rounded-sm"
+    class="ref-branch border border-transparent dark:border-border/40 bg-black/5 dark:bg-white/5 px-2 py-0.5 rounded-none"
   >
     {branchName}
   </span>
@@ -60,7 +60,7 @@ const { branchName, shortHash } = getGitDisplay(entry);
   .ref-head {
     font-size: 0.55rem;
     padding: 1px 5px;
-    border-radius: 2px;
+    border-radius: 0;
     background-color: color-mix(in srgb, var(--color-info), transparent 85%);
     color: var(--color-info);
     border: 1px solid color-mix(in srgb, var(--color-info), transparent 70%);

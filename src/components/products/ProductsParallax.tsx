@@ -5,6 +5,7 @@ import {
   useTransform,
   useReducedMotion,
 } from "framer-motion";
+import { Badge } from "../Badge";
 import type { Product } from "../../data/schema";
 import { getTranslations } from "../../i18n";
 import { ArrayTitle } from "../arrayTitle/ArrayTitle";
@@ -89,9 +90,15 @@ function ProductCard({
         viewport={{ once: true, margin: "-60px" }}
         className="w-full origin-top"
       >
-        <div className="card-base overflow-hidden flex flex-col md:flex-row md:min-h-[36rem] border border-border/60 shadow-xl group" style={{ backgroundColor: "rgb(var(--color-card-bg))" }}>
+        <div
+          className="card-base overflow-hidden flex flex-col md:flex-row md:min-h-[36rem] border border-border/60 shadow-xl group"
+          style={{ backgroundColor: "rgb(var(--color-card-bg))" }}
+        >
           {/* Left: Content */}
-          <div className="flex-1 p-8 lg:p-12 flex flex-col border-b md:border-b-0 md:border-r border-border/50 z-10 hover-gradient" style={{ backgroundColor: "rgb(var(--color-card-bg))" }}>
+          <div
+            className="flex-1 p-8 lg:p-12 flex flex-col border-b md:border-b-0 md:border-r border-border/50 z-10 hover-gradient"
+            style={{ backgroundColor: "rgb(var(--color-card-bg))" }}
+          >
             <div className="hover-gradient-bg" />
             {/* Header: Number & Year */}
             <div className="flex items-center justify-between mb-10">
@@ -126,12 +133,9 @@ function ProductCard({
             {product.technologies && product.technologies.length > 0 && (
               <div className="flex flex-wrap gap-2 mb-10">
                 {product.technologies.map((tech) => (
-                  <span
-                    key={tech}
-                    className="font-mono text-[10px] text-muted/90 tracking-widest bg-foreground/[0.06] border border-border px-3 py-1.5 rounded-sm"
-                  >
+                  <Badge key={tech} variant="neutral">
                     {tech}
-                  </span>
+                  </Badge>
                 ))}
               </div>
             )}

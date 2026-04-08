@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Badge } from "../Badge";
 
 interface TimelineTechStackProps {
   technologies: string[];
@@ -24,7 +25,7 @@ export function TimelineTechStack({
     <div className="flex flex-wrap items-center gap-2">
       <AnimatePresence>
         {visibleTech.map((tech, i) => (
-          <motion.span
+          <motion.div
             key={tech}
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -32,10 +33,9 @@ export function TimelineTechStack({
               duration: 0.2,
               delay: isExpanded && i >= maxTech ? (i - maxTech) * 0.05 : 0,
             }}
-            className="font-mono text-[10px] tracking-widest text-muted/90 bg-black/5 dark:bg-white/5 border border-transparent dark:border-border/40 px-2 py-1 rounded-sm uppercase"
           >
-            {tech}
-          </motion.span>
+            <Badge variant="neutral">{tech}</Badge>
+          </motion.div>
         ))}
       </AnimatePresence>
 

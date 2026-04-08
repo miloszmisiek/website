@@ -8,7 +8,7 @@ interface Props {
 
 export function AnimatedSectionTitle({ text, delay = 0 }: Props) {
   const ref = useRef<HTMLHeadingElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-10% 0px" });
+  const isInView = useInView(ref, { once: true, margin: "0px" });
   const prefersReducedMotion = useReducedMotion();
 
   // Reduced-motion: skip width expansion, just fade in

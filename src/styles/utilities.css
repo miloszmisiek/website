@@ -23,34 +23,44 @@
 
   /* Card styles */
   .card-base {
-    @apply border border-border rounded-lg transition-[border-color,box-shadow,background-color] duration-300;
+    @apply border border-border rounded-none transition-[border-color,box-shadow,background-color] duration-300;
   }
 
   .card-interactive {
-    @apply card-base hover:shadow-xl transition-[border-color,box-shadow,background-color] duration-500;
+    @apply card-base transition-[border-color,box-shadow,background-color] duration-500;
     background-color: rgb(var(--color-card-bg));
   }
 
-  .card-interactive:hover {
+  .card-hoverable {
+    @apply hover:shadow-xl;
+  }
+
+  .card-hoverable:hover {
     background-color: rgb(var(--color-card-bg-hover));
     border-color: rgb(var(--color-foreground) / 0.1);
   }
 
   /* Button styles */
   .button-primary {
-    @apply inline-flex items-center justify-center rounded bg-foreground px-5 py-2.5 text-xs font-mono tracking-[0.2em] text-background hover:bg-foreground/90 transition-colors duration-300 uppercase;
+    @apply inline-flex items-center justify-center rounded-none bg-foreground px-5 py-2.5 text-xs font-mono tracking-[0.2em] text-background hover:bg-foreground/90 transition-colors duration-300 uppercase;
   }
 
   .button-secondary {
-    @apply inline-flex items-center justify-center rounded border border-border px-5 py-2.5 text-xs font-mono tracking-[0.2em] text-foreground hover:bg-foreground/5 hover:border-foreground/30 transition-colors duration-300 uppercase;
+    @apply inline-flex items-center justify-center rounded-none border border-border px-5 py-2.5 text-xs font-mono tracking-[0.2em] text-foreground hover:bg-foreground/5 hover:border-foreground/30 transition-colors duration-300 uppercase;
   }
 
   /* Social icons designed for dark bg — invert in light mode */
   @media (prefers-color-scheme: light) {
-    .button-secondary img { filter: invert(1); }
+    .button-secondary img {
+      filter: invert(1);
+    }
   }
-  [data-theme="light"] .button-secondary img { filter: invert(1); }
-  [data-theme="dark"] .button-secondary img { filter: none; }
+  [data-theme="light"] .button-secondary img {
+    filter: invert(1);
+  }
+  [data-theme="dark"] .button-secondary img {
+    filter: none;
+  }
 
   /* Container styles */
   .page-container {
@@ -84,7 +94,11 @@
 
   /* Gradient heading text — theme-aware */
   .text-gradient-heading {
-    background-image: linear-gradient(to bottom right, var(--gradient-text-from), var(--gradient-text-to));
+    background-image: linear-gradient(
+      to bottom right,
+      var(--gradient-text-from),
+      var(--gradient-text-to)
+    );
   }
 
   /* Focus utilities for accessibility */
@@ -99,7 +113,12 @@
 
   .hover-gradient-bg {
     @apply absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10 pointer-events-none;
-    background: linear-gradient(to right, transparent, var(--gradient-hover-via), transparent);
+    background: linear-gradient(
+      to right,
+      transparent,
+      var(--gradient-hover-via),
+      transparent
+    );
   }
 
   /* Smooth scrolling */
