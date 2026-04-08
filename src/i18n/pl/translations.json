@@ -27,5 +27,24 @@
   "publication.time": "Czas",
 
   "product.viewProduct": "PRZEJDŹ DO PROJEKTU",
-  "product.imagePlaceholder": "Zdjęcie produktu"
+  "product.imagePlaceholder": "Zdjęcie produktu",
+
+  "section.contact": "KONTAKT",
+  "contact.headline": "Zbudujmy coś razem.",
+  "contact.subheadline": "// otwarty na nowe projekty, współprace i ciekawe problemy",
+  "contact.email.label": "BEZPOŚREDNIO",
+  "contact.form.title": "contact.form",
+  "contact.form.name.label": "IMIĘ",
+  "contact.form.name.placeholder": "np. Jan Kowalski…",
+  "contact.form.email.label": "EMAIL",
+  "contact.form.email.placeholder": "ty@przykład.pl…",
+  "contact.form.message.label": "WIADOMOŚĆ",
+  "contact.form.message.placeholder": "Opowiedz mi o swoim projekcie…",
+  "contact.form.submit": "WYŚLIJ_WIADOMOŚĆ",
+  "contact.form.sending": "Wysyłanie…",
+  "contact.form.success": "Wiadomość wysłana. Odezwę się wkrótce.",
+  "contact.form.error": "Coś poszło nie tak. Spróbuj ponownie.",
+  "contact.github": "GITHUB",
+  "contact.linkedin": "LINKEDIN",
+  "contact.researchgate": "RESEARCHGATE"
 }

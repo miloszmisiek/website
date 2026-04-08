@@ -24,7 +24,7 @@ export function TimelineTechStack({ technologies, maxTech = 4 }: TimelineTechSta
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.2, delay: isExpanded && i >= maxTech ? (i - maxTech) * 0.05 : 0 }}
-            className="font-mono text-[10px] tracking-widest text-muted/70 bg-neutral-900/30 border border-neutral-700/40 px-2 py-1 rounded-sm uppercase"
+            className="font-mono text-[10px] tracking-widest text-muted/90 bg-neutral-900/50 border border-neutral-700/65 px-2 py-1 rounded-sm uppercase"
           >
             {tech}
           </motion.span>

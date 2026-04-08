@@ -6,6 +6,7 @@ import Header from '../sections/Header.astro';
 import ExperienceTimeline from '../sections/ExperienceTimeline.astro';
 import PublicationsSection from '../sections/PublicationsSection.astro';
 import FeaturedProductsSection from '../sections/FeaturedProductsSection.astro';
+import ContactSection from '../sections/ContactSection.astro';
 import '@fontsource/inter';
 import '@fontsource/jetbrains-mono';
 import '@fontsource/vt323';
@@ -27,7 +28,7 @@ const t = getTranslations(Astro.currentLocale);
           <h1 class="text-heading-xl mb-12 max-w-4xl text-transparent bg-clip-text bg-gradient-to-br from-white to-neutral-500 [text-wrap:balance]">
             {t('hero.typewriter')}
           </h1>
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 text-muted font-light leading-relaxed text-sm border-l-2 border-border/40 pl-6 lg:pl-10 ml-2">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 text-muted font-light leading-relaxed text-sm border-l-2 border-white/20 pl-6 lg:pl-10 ml-2">
             <div class="lg:col-span-7 max-w-2xl pt-2">
               <p class="text-body mb-6">
                 <span class="text-foreground/50 font-mono mr-3">{"//"}</span>
@@ -51,38 +52,38 @@ const t = getTranslations(Astro.currentLocale);
             
             {/* Terminal Window Stats */}
             <div class="lg:col-span-5">
-              <div class="relative overflow-hidden rounded-md border border-border/60 shadow-2xl bg-[#0A0A0A] font-mono text-[11px] sm:text-xs">
+              <div class="relative overflow-hidden rounded-md border border-white/15 shadow-2xl bg-[#0A0A0A] font-mono text-[11px] sm:text-xs">
                 <!-- Title bar -->
-                <div class="flex items-center justify-between px-4 py-3 border-b border-border/40 bg-white/[0.02]">
+                <div class="flex items-center justify-between px-4 py-3 border-b border-white/10 bg-white/[0.03]">
                   <div class="flex items-center gap-2">
-                    <span class="w-2.5 h-2.5 rounded-full bg-neutral-700 hover:bg-red-500 transition-colors"></span>
-                    <span class="w-2.5 h-2.5 rounded-full bg-neutral-700 hover:bg-yellow-500 transition-colors"></span>
-                    <span class="w-2.5 h-2.5 rounded-full bg-neutral-700 hover:bg-green-500 transition-colors"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-neutral-600 hover:bg-red-500 transition-colors"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-neutral-600 hover:bg-yellow-500 transition-colors"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-neutral-600 hover:bg-green-500 transition-colors"></span>
                   </div>
-                  <span class="text-[10px] font-mono text-muted/50 tracking-widest">milosz@dev:~</span>
+                  <span class="text-[10px] font-mono text-foreground/45 tracking-widest">milosz@dev:~</span>
                 </div>
 
                 <!-- Ambient screen glow -->
-                <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.03),_transparent_60%)]"></div>
+                <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.05),_transparent_60%)]"></div>
 
                 <div class="relative p-0 flex flex-col text-muted">
                   
                   <div class="p-4 md:p-5">
                     <!-- Main Content Box -->
-                    <fieldset class="border border-border/30 rounded px-4 pb-5 pt-3 mb-1">
-                      <legend class="px-2 text-[12px] text-muted/60 tracking-wider">milosz-cli</legend>
+                    <fieldset class="border border-white/[0.1] rounded px-4 pb-5 pt-3 mb-1">
+                      <legend class="px-2 text-[12px] text-foreground/45 tracking-wider">milosz-cli</legend>
                       
                       <div class="flex flex-col items-center justify-center text-center space-y-4">
                         <span class="text-foreground/90 font-medium tracking-wide">Hello there!</span>
                         
-                        <div class="text-emerald-400/90 leading-[1.15] whitespace-pre font-bold select-none text-[15px] text-center pt-2 pb-2">
+                        <div class="text-emerald-400 leading-[1.15] whitespace-pre font-bold select-none text-[15px] text-center pt-2 pb-2">
 █▀▄▀█
 █ ▀ █
                         </div>
 
-                        <div class="text-muted/60 flex flex-col items-center text-[10px] tracking-wider uppercase pt-1">
+                        <div class="text-foreground/60 flex flex-col items-center text-[10px] tracking-wider uppercase pt-1">
                           <span>Node: Szczecin, PL · UTC+1</span>
-                          <span class="opacity-60 lowercase mt-1 tracking-normal">~/workspace/portfolio</span>
+                          <span class="lowercase mt-1 tracking-normal">~/workspace/portfolio</span>
                         </div>
                       </div>
                     </fieldset>
@@ -90,7 +91,7 @@ const t = getTranslations(Astro.currentLocale);
 
                   <div class="flex flex-col">
                     <!-- Top Divider -->
-                    <div class="h-px w-full bg-border/20"></div>
+                    <div class="h-px w-full bg-white/[0.07]"></div>
                     
                     <!-- Prompt Line -->
                     <div class="flex items-center gap-2 px-4 md:px-5 py-3 text-foreground/80 font-mono text-[13px]">
@@ -99,11 +100,11 @@ const t = getTranslations(Astro.currentLocale);
                     </div>
 
                     <!-- Bottom Divider -->
-                    <div class="h-px w-full bg-border/20"></div>
+                    <div class="h-px w-full bg-white/[0.07]"></div>
 
                     <!-- Footer / Mode Indicator -->
-                    <div class="flex items-center gap-2 px-4 md:px-5 py-3 text-emerald-400/90 font-mono text-[11px]">
-                      <div class="flex gap-[2px] opacity-80">
+                    <div class="flex items-center gap-2 px-4 md:px-5 py-3 text-emerald-400 font-mono text-[11px]">
+                      <div class="flex gap-[2px]">
                         <div class="w-1 h-3 bg-emerald-400"></div>
                         <div class="w-1 h-3 bg-emerald-400"></div>
                       </div>
@@ -129,17 +130,14 @@ const t = getTranslations(Astro.currentLocale);
 
       <!-- Featured Products Section -->
       <FeaturedProductsSection />
+
+      <!-- Contact Section -->
+      <ContactSection />
     </main>
 
     <FadeIn client:load delay={0.4}>
-      <footer id="contact" class="flex justify-between items-center text-xs font-mono text-muted py-8 border-t border-border/60 mt-auto">
+      <footer class="flex items-center text-xs font-mono text-muted py-8 border-t border-border/60 mt-auto">
         <span class="tracking-widest">© {new Date().getFullYear()} MILOSZ MISIEK</span>
-        <div class="flex gap-6">
-          {/* TODO: replace # with real GitHub URL */}
-          <a href="#" class="hover:text-foreground transition-colors tracking-widest uppercase">{t('footer.github')}</a>
-          {/* TODO: replace # with real LinkedIn URL */}
-          <a href="#" class="hover:text-foreground transition-colors tracking-widest uppercase">{t('footer.linkedin')}</a>
-        </div>
       </footer>
     </FadeIn>
   </div>

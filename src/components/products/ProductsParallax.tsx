@@ -99,7 +99,7 @@ function ProductCard({
                 {String(index).padStart(2, "0")}
               </span>
               {product.year && (
-                <span className="font-mono text-[10px] text-muted/50 tracking-[0.3em] uppercase">
+                <span className="font-mono text-[10px] text-muted/90 tracking-[0.3em] uppercase">
                   {product.year}
                 </span>
               )}
@@ -128,7 +128,7 @@ function ProductCard({
                 {product.technologies.map((tech) => (
                   <span
                     key={tech}
-                    className="font-mono text-[10px] text-muted/80 tracking-widest bg-neutral-800/20 border border-neutral-700/50 px-3 py-1.5 rounded-sm"
+                    className="font-mono text-[10px] text-muted/90 tracking-widest bg-neutral-800/40 border border-neutral-700/70 px-3 py-1.5 rounded-sm"
                   >
                     {tech}
                   </span>
@@ -164,7 +164,7 @@ function ProductCard({
               </>
             ) : (
               <div className="absolute inset-0 flex items-center justify-center bg-neutral-900/20 font-mono text-xs text-muted tracking-widest border-l border-border/30">
-                <div className="flex flex-col items-center gap-4 opacity-30">
+                <div className="flex flex-col items-center gap-4 opacity-50">
                   <span className="animate-pulse">_</span>
                   {`[ ${t("product.imagePlaceholder")} ]`}
                 </div>

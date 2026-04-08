@@ -12,6 +12,10 @@
     --color-muted: #888888;
     --color-border: #1f1f1f;
 
+    /* Structural line / dim label — white-based, for elements on page background */
+    --color-line: rgba(255, 255, 255, 0.2);
+    --color-dim: rgba(255, 255, 255, 0.5);
+
     /* Hover states */
     --color-hover-bg: rgba(255, 255, 255, 0.05);
     --color-hover-border: rgba(255, 255, 255, 0.1);

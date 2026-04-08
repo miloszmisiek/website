@@ -13,7 +13,7 @@
 
   /* Number within section-label */
   .section-num {
-    @apply font-mono text-[10px] text-muted/60 tracking-[0.3em] uppercase;
+    @apply font-mono text-[10px] text-muted tracking-[0.3em] uppercase;
   }
 
   /* Title within section-label (use as h2) */
@@ -36,7 +36,7 @@
   }
 
   .button-secondary {
-    @apply inline-flex items-center justify-center rounded border border-border px-5 py-2.5 text-xs font-mono tracking-[0.2em] text-foreground hover:bg-foreground/5 hover:border-foreground/30 transition-colors duration-300 uppercase;
+    @apply inline-flex items-center justify-center rounded border border-white/20 px-5 py-2.5 text-xs font-mono tracking-[0.2em] text-foreground hover:bg-foreground/5 hover:border-foreground/30 transition-colors duration-300 uppercase;
   }
 
   /* Container styles */
@@ -66,7 +66,7 @@
   }
 
   .text-label {
-    @apply text-xs font-mono uppercase tracking-[0.2em] text-muted/80;
+    @apply text-xs font-mono uppercase tracking-[0.2em] text-muted;
   }
 
   /* Focus utilities for accessibility */

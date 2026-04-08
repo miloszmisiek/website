@@ -27,5 +27,24 @@
   "publication.time": "Time",
 
   "product.viewProduct": "VIEW PRODUCT",
-  "product.imagePlaceholder": "Product Image"
+  "product.imagePlaceholder": "Product Image",
+
+  "section.contact": "CONTACT",
+  "contact.headline": "Let's Build Something.",
+  "contact.subheadline": "// open to new projects, collaborations, and interesting problems",
+  "contact.email.label": "DIRECT",
+  "contact.form.title": "contact.form",
+  "contact.form.name.label": "NAME",
+  "contact.form.name.placeholder": "e.g. Jane Smith…",
+  "contact.form.email.label": "EMAIL",
+  "contact.form.email.placeholder": "you@example.com…",
+  "contact.form.message.label": "MESSAGE",
+  "contact.form.message.placeholder": "Tell me about your project…",
+  "contact.form.submit": "SEND_MESSAGE",
+  "contact.form.sending": "Sending…",
+  "contact.form.success": "Message sent. I'll get back to you soon.",
+  "contact.form.error": "Something went wrong. Try again.",
+  "contact.github": "GITHUB",
+  "contact.linkedin": "LINKEDIN",
+  "contact.researchgate": "RESEARCHGATE"
 }

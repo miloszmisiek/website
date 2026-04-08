@@ -65,14 +65,14 @@ export function PublicationStackCard({
       )}
 
       {/* Top Bar */}
-      <div className="flex flex-wrap items-center justify-between mb-8 gap-4 border-b border-border/40 pb-6 relative z-10">
+      <div className="flex flex-wrap items-center justify-between mb-8 gap-4 border-b border-border/70 pb-6 relative z-10">
         <div className="flex items-center gap-3">
           <Badge status={status}>{statusLabel}</Badge>
         </div>
 
         <div className="flex items-center gap-3">
           {year && (
-            <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted/60">
+            <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted/90">
               {year}
             </span>
           )}
@@ -86,9 +86,9 @@ export function PublicationStackCard({
         {/* Authors */}
         {authors.length > 0 && (
           <p className="font-mono text-xs uppercase tracking-widest text-muted/70 flex items-center gap-3">
-            <span className="text-foreground/30">{"{ author(s): "}</span>
+            <span className="text-foreground/60">{"{ author(s): "}</span>
             {authors.join(", ")}
-            <span className="text-foreground/30">{" }"}</span>
+            <span className="text-foreground/60">{" }"}</span>
           </p>
         )}
       </div>
@@ -99,7 +99,7 @@ export function PublicationStackCard({
           {topics.map((topic) => (
             <span
               key={topic}
-              className="font-mono text-[10px] tracking-[0.1em] text-muted/80 bg-neutral-900/20 border border-neutral-800 px-2 py-1 rounded-sm uppercase"
+              className="font-mono text-[10px] tracking-[0.1em] text-muted/90 bg-neutral-900/20 border border-neutral-700 px-2 py-1 rounded-sm uppercase"
             >
               {topic}
             </span>
@@ -109,25 +109,25 @@ export function PublicationStackCard({
 
       {/* Excerpt — already normalized to correct locale by PublicationsSection.astro */}
       {excerpt && (
-        <p className="text-body mb-10 line-clamp-3 text-muted/80 relative z-10 pl-4 border-l-2 border-border/30">
+        <p className="text-body mb-10 line-clamp-3 text-muted/80 relative z-10 pl-4 border-l-2 border-border/70">
           {excerpt}
         </p>
       )}
 
       {/* Footer & Meta Information */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pt-6 border-t border-border/40 mt-auto relative z-10">
-        <div className="flex items-center gap-4 text-[10px] font-mono uppercase tracking-widest text-muted/50">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pt-6 border-t border-border/70 mt-auto relative z-10">
+        <div className="flex items-center gap-4 text-[10px] font-mono uppercase tracking-widest text-muted/90">
           {readTime && (
             <span className="flex items-center gap-2">
-              <span className="text-foreground/30">
+              <span className="text-foreground/60">
                 {t("publication.time")}:
               </span>{" "}
               {readTime}
             </span>
           )}
           {doi && (
-            <span className="flex items-center gap-2 border-l border-border/40 pl-4">
-              <span className="text-foreground/30">doi:</span> {doi}
+            <span className="flex items-center gap-2 border-l border-border/70 pl-4">
+              <span className="text-foreground/60">doi:</span> {doi}
             </span>
           )}
         </div>

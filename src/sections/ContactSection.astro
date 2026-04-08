@@ -1,0 +1,117 @@
+---
+import { AnimatedSectionTitle } from '../components/arrayTitle/AnimatedSectionTitle';
+import { FadeIn } from '../components/FadeIn';
+import { ContactForm } from '../components/contact/ContactForm';
+import { getTranslations } from '../i18n';
+
+const t = getTranslations(Astro.currentLocale);
+---
+
+<section id="contact" class="mb-32 scroll-mt-28">
+
+  {/* Section Header */}
+  <div class="section-label">
+    <span class="section-num">04</span>
+    <AnimatedSectionTitle client:load text={t('section.contact')} />
+  </div>
+
+  <FadeIn client:load delay={0.3} scrollTriggered>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+
+      {/* ── Left: info + social links ── */}
+      <div class="lg:col-span-5 flex flex-col gap-8">
+
+        {/* Headline */}
+        <div class="flex flex-col gap-4">
+          <h2 class="text-heading-lg [text-wrap:balance]">
+            {t('contact.headline')}
+          </h2>
+          <p class="text-foreground/65 text-base md:text-lg leading-relaxed max-w-sm">
+            <span class="text-foreground/50 font-mono mr-3">{"//"}</span>
+            {t('contact.subheadline').replace('// ', '')}
+          </p>
+        </div>
+
+        {/* Email pill */}
+        <div class="flex flex-col gap-2">
+          <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-foreground/55">
+            {t('contact.email.label')}
+          </span>
+          <a
+            href="mailto:hello@milosz.dev"
+            class="group inline-flex items-center gap-3 w-fit border border-foreground/15 rounded-sm px-4 py-3 hover:border-foreground/30 hover:bg-white/[0.02] transition-[border-color,background-color] duration-300 cursor-pointer focus-ring"
+            translate="no"
+          >
+            {/* Arrow */}
+            <svg
+              aria-hidden="true"
+              class="w-3.5 h-3.5 text-muted/70 group-hover:text-foreground/70 group-hover:translate-x-0.5 transition-[color,transform] duration-200 shrink-0"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+            </svg>
+            <span class="text-xs font-mono text-foreground/80 group-hover:text-foreground tracking-wide transition-colors duration-200">
+              hello@milosz.dev
+            </span>
+          </a>
+        </div>
+
+        {/* Social links */}
+        <div class="flex flex-wrap gap-3">
+          {/* GitHub */}
+          <a
+            href="#"
+            class="button-secondary focus-ring"
+            aria-label="GitHub profile"
+          >
+            <img src="/icons/github.svg" alt="" aria-hidden="true" width="14" height="14" class="w-3.5 h-3.5 mr-2 shrink-0" />
+            {t('contact.github')}
+          </a>
+
+          {/* LinkedIn */}
+          <a
+            href="#"
+            class="button-secondary focus-ring"
+            aria-label="LinkedIn profile"
+          >
+            <img src="/icons/linkedin.svg" alt="" aria-hidden="true" width="14" height="14" class="w-3.5 h-3.5 mr-2 shrink-0" />
+            {t('contact.linkedin')}
+          </a>
+
+          {/* ResearchGate */}
+          <a
+            href="#"
+            class="button-secondary focus-ring"
+            aria-label="ResearchGate profile"
+          >
+            <img src="/icons/researchgate.svg" alt="" aria-hidden="true" width="14" height="14" class="w-3.5 h-3.5 mr-2 shrink-0" />
+            {t('contact.researchgate')}
+          </a>
+        </div>
+
+        {/* Decorative code-like notation */}
+        <div class="hidden lg:block mt-auto pt-8">
+          <div class="font-mono text-[10px] text-foreground/40 tracking-widest leading-relaxed select-none">
+            <div>{'// milosz.misiek'}</div>
+            <div>{'{'}</div>
+            <div class="pl-4">{'role: "software engineer",'}</div>
+            <div class="pl-4">{'location: "Szczecin, PL",'}</div>
+            <div class="pl-4">{'status: "available"'}</div>
+            <div>{'}'}</div>
+          </div>
+        </div>
+
+      </div>
+
+      {/* ── Right: terminal form card ── */}
+      <div class="lg:col-span-6 lg:col-start-7">
+        <ContactForm client:load />
+      </div>
+
+    </div>
+  </FadeIn>
+
+</section>

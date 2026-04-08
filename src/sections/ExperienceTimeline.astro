@@ -89,8 +89,8 @@ const t = getTranslations(Astro.currentLocale);
     width: 1px;
     background-image: repeating-linear-gradient(
       to bottom,
-      var(--color-border) 0px,
-      var(--color-border) 6px,
+      var(--color-line) 0px,
+      var(--color-line) 6px,
       transparent 6px,
       transparent 12px
     );
@@ -103,8 +103,7 @@ const t = getTranslations(Astro.currentLocale);
     top: -20px;
     font-family: theme("fontFamily.mono-system");
     font-size: 0.62rem;
-    color: var(--color-muted);
-    opacity: 0.45;
+    color: var(--color-dim);
     letter-spacing: 0.05em;
     white-space: nowrap;
   }
