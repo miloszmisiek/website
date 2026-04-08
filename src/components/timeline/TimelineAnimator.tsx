@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import type { ReactNode } from 'react';
 
 interface TimelineAnimatorProps {
@@ -13,6 +13,7 @@ export default function TimelineAnimator({
   items,
   staggerDelay = 0.1,
 }: TimelineAnimatorProps) {
+  const shouldReduceMotion = useReducedMotion();
   const childArray = React.Children.toArray(children);
 
   return (
@@ -20,9 +21,9 @@ export default function TimelineAnimator({
       {childArray.map((child, index) => (
         <motion.div
           key={items[index]?.id || index}
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{
+          initial={shouldReduceMotion ? {} : { opacity: 0, x: -20 }}
+          whileInView={shouldReduceMotion ? {} : { opacity: 1, x: 0 }}
+          transition={shouldReduceMotion ? {} : {
             duration: 0.8,
             ease: [0.16, 1, 0.3, 1],
             delay: index * staggerDelay,

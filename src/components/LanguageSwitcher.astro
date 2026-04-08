@@ -9,7 +9,7 @@ const switchUrl = getRelativeLocaleUrl(otherLang, '/');
 
 <a
   href={switchUrl}
-  class="text-xs font-mono tracking-widest text-muted hover:text-foreground transition-colors border border-border/50 px-2 py-1 rounded hover:border-border"
+  class="text-xs font-mono tracking-widest text-muted hover:text-foreground transition-colors border border-border/50 px-3 py-2 rounded hover:border-border min-h-[44px] inline-flex items-center"
   aria-label={`Switch to ${otherLang === 'en' ? 'English' : 'Polish'}`}
 >
   {otherLang.toUpperCase()}

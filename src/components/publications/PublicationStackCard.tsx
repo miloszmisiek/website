@@ -51,7 +51,7 @@ export function PublicationStackCard({
       aria-label={isTop ? undefined : `Bring to front: ${title}`}
       className={cn(
         "card-interactive p-8 lg:p-10 w-full relative",
-        !isTop && "group cursor-pointer hover:border-border/80",
+        !isTop && "group cursor-pointer hover:border-border/80 focus-ring",
       )}
     >
       <div className="hover-gradient-bg absolute inset-0 transition-opacity duration-700 opacity-0 group-hover:opacity-100 rounded-lg pointer-events-none"></div>

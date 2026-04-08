@@ -166,13 +166,17 @@ export function PublicationDeck({ publications }: PublicationDeckProps) {
                 aria-selected={isActive}
                 aria-label={`Go to publication: ${pub.title}`}
                 onClick={() => bringToFront(pub.id)}
-                className={[
-                  "rounded-sm transition-all duration-300 cursor-pointer focus-ring",
-                  isActive
-                    ? "w-6 h-2.5 bg-foreground border border-transparent"
-                    : "w-2.5 h-2.5 bg-neutral-700/50 border border-neutral-600/50 hover:bg-neutral-600 hover:border-neutral-500",
-                ].join(" ")}
-              />
+                className="min-w-[44px] min-h-[44px] flex items-center justify-center cursor-pointer focus-ring rounded-sm"
+              >
+                <span
+                  className={[
+                    "rounded-sm transition-all duration-300 pointer-events-none",
+                    isActive
+                      ? "w-6 h-2.5 bg-foreground border border-transparent"
+                      : "w-2.5 h-2.5 bg-neutral-700/50 border border-neutral-600/50 hover:bg-neutral-600 hover:border-neutral-500",
+                  ].join(" ")}
+                />
+              </button>
             );
           })}
         </div>
