@@ -32,7 +32,7 @@ export function TimelineTechStack({
               duration: 0.2,
               delay: isExpanded && i >= maxTech ? (i - maxTech) * 0.05 : 0,
             }}
-            className="font-mono text-[10px] tracking-widest text-muted/90 bg-white/5 border border-border/40 px-2 py-1 rounded-sm uppercase"
+            className="font-mono text-[10px] tracking-widest text-muted/90 bg-black/5 dark:bg-white/5 border border-transparent dark:border-border/40 px-2 py-1 rounded-sm uppercase"
           >
             {tech}
           </motion.span>

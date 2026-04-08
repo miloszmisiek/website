@@ -23,7 +23,7 @@ const t = getTranslations(Astro.currentLocale);
   <div class="page-container pb-8 min-h-screen flex flex-col">
     <!-- Hero Section -->
     <main class="flex-grow">
-      <div class="section-spacing min-h-[85vh] sm:min-h-[calc(100svh-8rem)] flex flex-col justify-center pb-12 md:pb-24 pt-0 md:pt-2">
+      <div class="mb-32 min-h-[calc(100svh-120px)] flex flex-col justify-center pb-12 pt-0 md:pt-2">
         <FadeIn client:load delay={0.1}>
           <h1 class="text-heading-xl mb-12 max-w-4xl text-transparent bg-clip-text text-gradient-heading [text-wrap:balance]">
             {t('hero.typewriter')}
