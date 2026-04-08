@@ -11,7 +11,6 @@ import '@fontsource/inter';
 import '@fontsource/jetbrains-mono';
 import '@fontsource/vt323';
 import { getTranslations } from '../i18n';
-import ArrayTitle from '../components/arrayTitle/ArrayTitle.astro'
 
 const t = getTranslations(Astro.currentLocale);
 ---
@@ -41,11 +40,11 @@ const t = getTranslations(Astro.currentLocale);
               <div class="flex flex-wrap items-center gap-4">
                 <span class="btn-radiate-wrap relative inline-flex">
                   <a href="#experience" class="button-primary btn-radiate group">
-                    <ArrayTitle translationKey={'hero.cta.viewWork'} />
+                    {t('hero.cta.viewWork')}
                   </a>
                 </span>
                 <a href="#contact" class="button-secondary">
-                  <ArrayTitle translationKey={'hero.cta.contact'} />
+                  {t('hero.cta.contact')}
                 </a>
               </div>
             </div>

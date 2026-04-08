@@ -3,7 +3,6 @@ import { PublicationStatusEnum } from "../../data/types";
 import { getTranslations, type TranslationKey } from "../../i18n";
 import { cn } from "../../styles/cn";
 import { Badge } from "../Badge";
-import { ArrayTitle } from "../arrayTitle/ArrayTitle";
 
 type PublicationStackCardProps = {
   publication: Publication;
@@ -151,7 +150,7 @@ export function PublicationStackCard({
             className="button-secondary"
             onClick={stopPropagation}
           >
-            <ArrayTitle text={t("publication.viewPaper")} />
+            {t("publication.viewPaper")}
           </a>
         )}
       </div>

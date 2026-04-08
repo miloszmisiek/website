@@ -8,7 +8,6 @@ import {
 import { Badge } from "../Badge";
 import type { Product } from "../../data/schema";
 import { getTranslations } from "../../i18n";
-import { ArrayTitle } from "../arrayTitle/ArrayTitle";
 
 interface ProductsParallaxProps {
   products: Product[];
@@ -149,7 +148,7 @@ function ProductCard({
                   rel="noopener noreferrer"
                   className="button-secondary self-start w-fit"
                 >
-                  <ArrayTitle text={t("product.viewProduct")} />
+                  {t("product.viewProduct")}
                 </a>
               </div>
             )}
