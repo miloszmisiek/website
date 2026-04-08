@@ -27,7 +27,13 @@
   }
 
   .card-interactive {
-    @apply card-base bg-[#0C0C0C] hover:bg-[#111111] hover:border-white/10 hover:shadow-xl transition-[border-color,box-shadow,background-color] duration-500;
+    @apply card-base hover:shadow-xl transition-[border-color,box-shadow,background-color] duration-500;
+    background-color: rgb(var(--color-card-bg));
+  }
+
+  .card-interactive:hover {
+    background-color: rgb(var(--color-card-bg-hover));
+    border-color: rgb(var(--color-foreground) / 0.1);
   }
 
   /* Button styles */
@@ -36,8 +42,15 @@
   }
 
   .button-secondary {
-    @apply inline-flex items-center justify-center rounded border border-white/20 px-5 py-2.5 text-xs font-mono tracking-[0.2em] text-foreground hover:bg-foreground/5 hover:border-foreground/30 transition-colors duration-300 uppercase;
+    @apply inline-flex items-center justify-center rounded border border-border px-5 py-2.5 text-xs font-mono tracking-[0.2em] text-foreground hover:bg-foreground/5 hover:border-foreground/30 transition-colors duration-300 uppercase;
   }
+
+  /* Social icons designed for dark bg — invert in light mode */
+  @media (prefers-color-scheme: light) {
+    .button-secondary img { filter: invert(1); }
+  }
+  [data-theme="light"] .button-secondary img { filter: invert(1); }
+  [data-theme="dark"] .button-secondary img { filter: none; }
 
   /* Container styles */
   .page-container {
@@ -69,6 +82,11 @@
     @apply text-xs font-mono uppercase tracking-[0.2em] text-muted;
   }
 
+  /* Gradient heading text — theme-aware */
+  .text-gradient-heading {
+    background-image: linear-gradient(to bottom right, var(--gradient-text-from), var(--gradient-text-to));
+  }
+
   /* Focus utilities for accessibility */
   .focus-ring {
     @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background;
@@ -80,7 +98,8 @@
   }
 
   .hover-gradient-bg {
-    @apply absolute inset-0 bg-gradient-to-r from-neutral-900/0 via-white/[0.02] to-neutral-900/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10 pointer-events-none;
+    @apply absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10 pointer-events-none;
+    background: linear-gradient(to right, transparent, var(--gradient-hover-via), transparent);
   }
 
   /* Smooth scrolling */

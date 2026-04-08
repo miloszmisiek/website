@@ -1,60 +1,76 @@
 ---
-import Logo from '../components/logo/Logo.astro';
-import NavLink from '../components/nav-links/NavLink.astro';
-import LanguageSwitcher from '../components/LanguageSwitcher.astro';
-import { getTranslations } from '../i18n';
+import Logo from "../components/logo/Logo.astro";
+import NavLink from "../components/nav-links/NavLink.astro";
+import LanguageSwitcher from "../components/LanguageSwitcher.astro";
+import ThemeSwitcher from "../components/ThemeSwitcher.astro";
+import { getTranslations } from "../i18n";
 
 const t = getTranslations(Astro.currentLocale);
 
 const navLinks = [
-  { key: 'nav.work' as const, href: '#experience' },
-  { key: 'nav.research' as const, href: '#publications' },
-  { key: 'nav.contact' as const, href: '#contact' },
+  { key: "nav.work" as const, href: "#experience" },
+  { key: "nav.research" as const, href: "#publications" },
+  { key: "nav.contact" as const, href: "#contact" },
 ];
 ---
 
-<header class="sticky top-0 z-[99999] bg-transparent flex justify-between items-center text-sm font-mono tracking-widest uppercase text-muted border-border pt-8 pb-6 mb-10 transition-[border-color] duration-300 px-6 md:px-12 lg:px-16">
+<header
+  class="sticky top-0 z-[99999] bg-transparent flex justify-between items-center text-sm font-mono tracking-widest uppercase text-muted border-border pt-4 pb-4 mb-6 md:mb-8 transition-[border-color] duration-300 px-6 md:px-12 lg:px-16"
+>
   <div class="flex items-center gap-4">
     <span class="text-foreground/55 hidden md:inline-block">~/</span>
     <Logo />
   </div>
   <nav class="flex items-center gap-8 md:gap-12">
-    <div class="hidden md:flex items-center gap-8 border-r border-border/40 pr-8">
-      {navLinks.map((link) => (
-        <NavLink href={link.href} label={t(link.key)} />
-      ))}
+    <div
+      class="hidden md:flex items-center gap-8 border-r border-border/40 pr-8"
+    >
+      {navLinks.map((link) => <NavLink href={link.href} label={t(link.key)} />)}
     </div>
-    <div class="flex items-center gap-4">
+    <div class="flex items-center gap-3">
+      <ThemeSwitcher />
       <LanguageSwitcher />
     </div>
   </nav>
 </header>
 
 <script>
-  const header = document.querySelector('header');
-  const THRESHOLD = 80;
+  const header = document.querySelector("header");
+  const THRESHOLD = 40;
 
   function updateScrollState() {
     if (!header) return;
     if (window.scrollY > THRESHOLD) {
-      header.setAttribute('data-scrolled', '');
+      header.setAttribute("data-scrolled", "");
     } else {
-      header.removeAttribute('data-scrolled');
+      header.removeAttribute("data-scrolled");
     }
   }
 
-  window.addEventListener('scroll', updateScrollState, { passive: true });
+  window.addEventListener("scroll", updateScrollState, { passive: true });
   updateScrollState();
 </script>
 
 <style>
   header {
     background: transparent;
-    transition: background 0.3s ease, backdrop-filter 0.3s ease;
+    transition:
+      background 0.3s ease,
+      backdrop-filter 0.3s ease;
   }
+
+  /* Dark mode scrolled */
+  :root[data-theme="dark"] header[data-scrolled],
   header[data-scrolled] {
-    background: rgba(10, 10, 10, 0.7);
+    background: rgba(5, 5, 5, 0.75);
     backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  /* Light mode scrolled — warm paper */
+  :root[data-theme="light"] header[data-scrolled] {
+    background: rgba(248, 245, 239, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(26, 21, 16, 0.1);
   }
 </style>

@@ -1,25 +1,24 @@
-/* Theme CSS - Dark mode with CSS variables */
+/* Theme CSS - Dual light/dark theme with CSS custom properties */
 
 @layer base {
-  /* Dark mode (default) */
-  :root,
-  [data-theme="dark"] {
+  /* ─────────── Default / Dark theme ─────────── */
+  :root {
     color-scheme: dark;
 
-    /* Color variables */
-    --color-background: #050505;
-    --color-foreground: #ffffff;
-    --color-muted: #888888;
-    --color-border: #1f1f1f;
+    /* Color channel values (R G B) — enables Tailwind opacity modifier support */
+    --color-background: 5 5 5;
+    --color-foreground: 255 255 255;
+    --color-muted: 136 136 136;
+    --color-border: 31 31 31;
 
-    /* Structural line / dim label — white-based, for elements on page background */
+    /* Structural / decorative */
     --color-line: rgba(255, 255, 255, 0.2);
     --color-dim: rgba(255, 255, 255, 0.5);
 
     /* Hover states */
     --color-hover-bg: rgba(255, 255, 255, 0.05);
     --color-hover-border: rgba(255, 255, 255, 0.1);
-    --color-hover-text: #ffffff;
+    --color-hover-text: rgb(255, 255, 255);
 
     /* Accent colors */
     --color-success: #10b981;
@@ -27,59 +26,160 @@
     --color-error: #ef4444;
     --color-info: #3b82f6;
 
-    /* Gradients */
+    /* Gradient tokens */
     --gradient-text-from: #ffffff;
     --gradient-text-to: #a0a0a0;
     --gradient-hover-via: rgba(255, 255, 255, 0.03);
+
+    /* Card surface tokens */
+    --color-card-bg: 12 12 12;
+    --color-card-bg-hover: 17 17 17;
+
+    /* Card shadow tokens */
+    --shadow-card-top: 0 24px 48px rgba(0, 0, 0, 0.6), 8px 0 24px rgba(0, 0, 0, 0.3);
+    --shadow-card-bg: 0 8px 16px rgba(0, 0, 0, 0.3);
+
+    /* Terminal widget tokens */
+    --terminal-body-bg: 10 10 10;
+    --terminal-titlebar-bg: rgba(255, 255, 255, 0.03);
+    --terminal-border: rgba(255, 255, 255, 0.15);
+    --terminal-divider: rgba(255, 255, 255, 0.07);
+    --terminal-fieldset: rgba(255, 255, 255, 0.1);
+    --terminal-dot: 64 64 64;
+    --terminal-glow: radial-gradient(circle at top, rgba(255,255,255,0.05), transparent 60%);
   }
 
-  /* Apply theme colors to body */
+  /* ─────────── System preference: light (Warm Paper) ─────────── */
+  @media (prefers-color-scheme: light) {
+    :root {
+      color-scheme: light;
+      --color-background: 248 245 239;   /* #f8f5ef — warm cream */
+      --color-foreground: 26 21 16;      /* #1a1510 — warm near-black */
+      --color-muted: 138 128 120;        /* #8a8078 — warm gray */
+      --color-border: 224 217 208;       /* #e0d9d0 — warm border */
+      --color-line: rgba(26, 21, 16, 0.15);
+      --color-dim: rgba(26, 21, 16, 0.4);
+      --color-hover-bg: rgba(26, 21, 16, 0.04);
+      --color-hover-border: rgba(26, 21, 16, 0.08);
+      --color-hover-text: rgb(26, 21, 16);
+      --gradient-text-from: #1a1510;
+      --gradient-text-to: #8a8078;
+      --gradient-hover-via: rgba(26, 21, 16, 0.02);
+      --color-card-bg: 243 238 230;       /* #f3eee6 — warm light gray */
+      --color-card-bg-hover: 236 230 220; /* #ece6dc — deeper warm gray on hover */
+      --shadow-card-top: 0 24px 48px rgba(26, 21, 16, 0.12), 8px 0 24px rgba(26, 21, 16, 0.08);
+      --shadow-card-bg: 0 8px 16px rgba(26, 21, 16, 0.08);
+      --terminal-body-bg: 236 230 220;
+      --terminal-titlebar-bg: rgba(26, 21, 16, 0.07);
+      --terminal-border: rgba(26, 21, 16, 0.12);
+      --terminal-divider: rgba(26, 21, 16, 0.07);
+      --terminal-fieldset: rgba(26, 21, 16, 0.1);
+      --terminal-dot: 168 158 148;
+      --terminal-glow: none;
+    }
+  }
+
+  /* ─────────── Explicit dark override ─────────── */
+  [data-theme="dark"] {
+    color-scheme: dark;
+    --color-background: 5 5 5;
+    --color-foreground: 255 255 255;
+    --color-muted: 136 136 136;
+    --color-border: 31 31 31;
+    --color-line: rgba(255, 255, 255, 0.2);
+    --color-dim: rgba(255, 255, 255, 0.5);
+    --color-hover-bg: rgba(255, 255, 255, 0.05);
+    --color-hover-border: rgba(255, 255, 255, 0.1);
+    --color-hover-text: rgb(255, 255, 255);
+    --gradient-text-from: #ffffff;
+    --gradient-text-to: #a0a0a0;
+    --gradient-hover-via: rgba(255, 255, 255, 0.03);
+    --color-card-bg: 12 12 12;
+    --color-card-bg-hover: 17 17 17;
+    --shadow-card-top: 0 24px 48px rgba(0, 0, 0, 0.6), 8px 0 24px rgba(0, 0, 0, 0.3);
+    --shadow-card-bg: 0 8px 16px rgba(0, 0, 0, 0.3);
+    --terminal-body-bg: 10 10 10;
+    --terminal-titlebar-bg: rgba(255, 255, 255, 0.03);
+    --terminal-border: rgba(255, 255, 255, 0.15);
+    --terminal-divider: rgba(255, 255, 255, 0.07);
+    --terminal-fieldset: rgba(255, 255, 255, 0.1);
+    --terminal-dot: 64 64 64;
+    --terminal-glow: radial-gradient(circle at top, rgba(255,255,255,0.05), transparent 60%);
+  }
+
+  /* ─────────── Explicit light override (Warm Paper) ─────────── */
+  [data-theme="light"] {
+    color-scheme: light;
+    --color-background: 248 245 239;   /* #f8f5ef — warm cream */
+    --color-foreground: 26 21 16;      /* #1a1510 — warm near-black */
+    --color-muted: 138 128 120;        /* #8a8078 — warm gray */
+    --color-border: 224 217 208;       /* #e0d9d0 — warm border */
+    --color-line: rgba(26, 21, 16, 0.15);
+    --color-dim: rgba(26, 21, 16, 0.4);
+    --color-hover-bg: rgba(26, 21, 16, 0.04);
+    --color-hover-border: rgba(26, 21, 16, 0.08);
+    --color-hover-text: rgb(26, 21, 16);
+    --gradient-text-from: #1a1510;
+    --gradient-text-to: #8a8078;
+    --gradient-hover-via: rgba(26, 21, 16, 0.02);
+    --color-card-bg: 243 238 230;       /* #f3eee6 — warm light gray */
+    --color-card-bg-hover: 236 230 220; /* #ece6dc — deeper warm gray on hover */
+    --shadow-card-top: 0 24px 48px rgba(26, 21, 16, 0.12), 8px 0 24px rgba(26, 21, 16, 0.08);
+    --shadow-card-bg: 0 8px 16px rgba(26, 21, 16, 0.08);
+    --terminal-body-bg: 236 230 220;
+    --terminal-titlebar-bg: rgba(26, 21, 16, 0.07);
+    --terminal-border: rgba(26, 21, 16, 0.12);
+    --terminal-divider: rgba(26, 21, 16, 0.07);
+    --terminal-fieldset: rgba(26, 21, 16, 0.1);
+    --terminal-dot: 168 158 148;
+    --terminal-glow: none;
+  }
+
+  /* ─────────── Body ─────────── */
   body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
+    background-color: rgb(var(--color-background));
+    color: rgb(var(--color-foreground));
     transition:
       background-color 0.3s ease,
       color 0.3s ease;
   }
 
-  /* Apply theme colors to common elements */
   a {
-    color: var(--color-foreground);
+    color: rgb(var(--color-foreground));
   }
 
-  /* Borders use theme color */
+  /* ─────────── Semantic utility overrides ─────────── */
+
   .border-border {
-    border-color: var(--color-border);
+    border-color: rgb(var(--color-border));
   }
 
   .border-border\/50 {
-    border-color: color-mix(in srgb, var(--color-border), transparent 50%);
+    border-color: rgb(var(--color-border) / 0.5);
   }
 
   .border-border\/80 {
-    border-color: color-mix(in srgb, var(--color-border), transparent 20%);
+    border-color: rgb(var(--color-border) / 0.8);
   }
 
-  /* Text colors use theme */
   .text-foreground {
-    color: var(--color-foreground);
+    color: rgb(var(--color-foreground));
   }
 
   .text-muted {
-    color: var(--color-muted);
+    color: rgb(var(--color-muted));
   }
 
   .text-muted\/50 {
-    color: color-mix(in srgb, var(--color-muted), transparent 50%);
+    color: rgb(var(--color-muted) / 0.5);
   }
 
   .text-muted\/70 {
-    color: color-mix(in srgb, var(--color-muted), transparent 30%);
+    color: rgb(var(--color-muted) / 0.7);
   }
 
-  /* Background colors */
   .bg-background {
-    background-color: var(--color-background);
+    background-color: rgb(var(--color-background));
   }
 
   .bg-white\/5 {
@@ -87,41 +187,64 @@
   }
 
   .bg-white\/\[0\.02\] {
-    background-color: color-mix(in srgb, white, transparent 98%);
+    background-color: color-mix(in srgb, rgb(255 255 255), transparent 98%);
   }
 
   .bg-background\/50 {
-    background-color: color-mix(
-      in srgb,
-      var(--color-background),
-      transparent 50%
-    );
+    background-color: rgb(var(--color-background) / 0.5);
   }
 
   .bg-background\/30 {
-    background-color: color-mix(
-      in srgb,
-      var(--color-background),
-      transparent 70%
-    );
+    background-color: rgb(var(--color-background) / 0.3);
   }
 
-  /* Hover states with theme awareness */
   .hover\:bg-white\/5:hover {
     background-color: var(--color-hover-bg);
   }
 
   .hover\:border-border\/80:hover {
-    border-color: color-mix(in srgb, var(--color-border), transparent 20%);
+    border-color: rgb(var(--color-border) / 0.8);
   }
 
   .hover\:text-foreground:hover {
-    color: var(--color-foreground);
+    color: rgb(var(--color-foreground));
   }
 
-  /* Selection color */
   ::selection {
-    background-color: var(--color-foreground);
-    color: var(--color-background);
+    background-color: rgb(var(--color-foreground));
+    color: rgb(var(--color-background));
   }
+
+  /* ─────────── Light mode: accent color adjustments for warm paper ─────────── */
+  /* Bright 400-series Tailwind colors lack contrast on white/cream cards.
+     In light mode we promote to 600-700 series for WCAG AA compliance.
+     Elements inside [data-theme="dark"] (e.g. terminal) are explicitly restored below. */
+
+  /* Emerald — published badge, success states */
+  [data-theme="light"] .text-emerald-400 { color: #047857; }
+  [data-theme="light"] .bg-emerald-500\/10 { background-color: #ecfdf5; }
+  [data-theme="light"] .border-emerald-500\/30 { border-color: #a7f3d0; }
+  [data-theme="light"] .bg-emerald-400 { background-color: #059669; }
+
+  /* Amber — under-review badge */
+  [data-theme="light"] .text-amber-400 { color: #b45309; }
+  [data-theme="light"] .bg-amber-500\/10 { background-color: #fffbeb; }
+  [data-theme="light"] .border-amber-500\/30 { border-color: #fde68a; }
+
+  /* Blue — preprint badge, info */
+  [data-theme="light"] .text-blue-400 { color: #1d4ed8; }
+  [data-theme="light"] .bg-blue-500\/10 { background-color: #eff6ff; }
+  [data-theme="light"] .border-blue-500\/30 { border-color: #bfdbfe; }
+
+  /* Red — form errors */
+  [data-theme="light"] .text-red-400\/90 { color: rgb(185 28 28 / 0.9); }
+
+  /* ─── Restore inside explicit dark containers (e.g. terminal widget) ─── */
+  [data-theme="dark"] .text-emerald-400 { color: rgb(52 211 153); }
+  [data-theme="dark"] .bg-emerald-500\/10 { background-color: rgb(16 185 129 / 0.1); }
+  [data-theme="dark"] .border-emerald-500\/30 { border-color: rgb(16 185 129 / 0.3); }
+  [data-theme="dark"] .bg-emerald-400 { background-color: rgb(52 211 153); }
+  [data-theme="dark"] .text-amber-400 { color: rgb(251 191 36); }
+  [data-theme="dark"] .text-blue-400 { color: rgb(96 165 250); }
+  [data-theme="dark"] .text-red-400\/90 { color: rgb(248 113 113 / 0.9); }
 }

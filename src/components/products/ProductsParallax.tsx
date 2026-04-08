@@ -89,9 +89,9 @@ function ProductCard({
         viewport={{ once: true, margin: "-60px" }}
         className="w-full origin-top"
       >
-        <div className="card-base bg-background overflow-hidden flex flex-col md:flex-row md:min-h-[36rem] border border-border/60 shadow-xl group">
+        <div className="card-base overflow-hidden flex flex-col md:flex-row md:min-h-[36rem] border border-border/60 shadow-xl group" style={{ backgroundColor: "rgb(var(--color-card-bg))" }}>
           {/* Left: Content */}
-          <div className="flex-1 p-8 lg:p-12 flex flex-col border-b md:border-b-0 md:border-r border-border/50 bg-background/95 backdrop-blur-sm z-10 hover-gradient">
+          <div className="flex-1 p-8 lg:p-12 flex flex-col border-b md:border-b-0 md:border-r border-border/50 z-10 hover-gradient" style={{ backgroundColor: "rgb(var(--color-card-bg))" }}>
             <div className="hover-gradient-bg" />
             {/* Header: Number & Year */}
             <div className="flex items-center justify-between mb-10">
@@ -128,7 +128,7 @@ function ProductCard({
                 {product.technologies.map((tech) => (
                   <span
                     key={tech}
-                    className="font-mono text-[10px] text-muted/90 tracking-widest bg-neutral-800/40 border border-neutral-700/70 px-3 py-1.5 rounded-sm"
+                    className="font-mono text-[10px] text-muted/90 tracking-widest bg-foreground/[0.06] border border-border px-3 py-1.5 rounded-sm"
                   >
                     {tech}
                   </span>
@@ -152,10 +152,10 @@ function ProductCard({
           </div>
 
           {/* Right: Image */}
-          <div className="flex-1 relative overflow-hidden bg-neutral-900/30 min-h-[16rem] md:min-h-0">
+          <div className="flex-1 relative overflow-hidden bg-foreground/[0.05] min-h-[16rem] md:min-h-0">
             {product.image ? (
               <>
-                <div className="absolute inset-0 bg-neutral-900/10 z-10 group-hover:bg-transparent transition-colors duration-700 pointer-events-none" />
+                <div className="absolute inset-0 bg-foreground/[0.06] z-10 group-hover:bg-transparent transition-colors duration-700 pointer-events-none" />
                 <img
                   src={product.image}
                   alt={product.name}
@@ -163,7 +163,7 @@ function ProductCard({
                 />
               </>
             ) : (
-              <div className="absolute inset-0 flex items-center justify-center bg-neutral-900/20 font-mono text-xs text-muted tracking-widest border-l border-border/30">
+              <div className="absolute inset-0 flex items-center justify-center bg-foreground/[0.04] font-mono text-xs text-muted tracking-widest border-l border-border/30">
                 <div className="flex flex-col items-center gap-4 opacity-50">
                   <span className="animate-pulse">_</span>
                   {`[ ${t("product.imagePlaceholder")} ]`}

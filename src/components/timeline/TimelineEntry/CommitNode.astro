@@ -26,11 +26,11 @@ const { isWork } = Astro.props;
     width: 15px;
     height: 15px;
     border-radius: 0;
-    border: 2px solid var(--color-muted);
+    border: 2px solid rgb(var(--color-muted));
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--color-background);
+    background-color: rgb(var(--color-background));
     transition:
       transform 0.3s ease,
       border-radius 0.3s ease;
@@ -83,11 +83,11 @@ const { isWork } = Astro.props;
 
   :global(.timeline-entry.is-active) .branch-line {
     opacity: 1;
-    background-color: var(--color-foreground);
+    background-color: rgb(var(--color-foreground));
     background-image: repeating-linear-gradient(
       to right,
-      var(--color-foreground) 0,
-      var(--color-foreground) 4px,
+      rgb(var(--color-foreground)) 0,
+      rgb(var(--color-foreground)) 4px,
       transparent 4px,
       transparent 8px
     );

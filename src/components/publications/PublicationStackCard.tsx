@@ -59,7 +59,7 @@ export function PublicationStackCard({
       {/* Right-edge depth shadow — active card only, reinforces 3D elevation */}
       {isTop && (
         <div
-          className="absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-black/40 to-transparent pointer-events-none rounded-r-lg"
+          className="absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-background/60 to-transparent pointer-events-none rounded-r-lg"
           aria-hidden="true"
         />
       )}
@@ -99,7 +99,7 @@ export function PublicationStackCard({
           {topics.map((topic) => (
             <span
               key={topic}
-              className="font-mono text-[10px] tracking-[0.1em] text-muted/90 bg-neutral-900/20 border border-neutral-700 px-2 py-1 rounded-sm uppercase"
+              className="font-mono text-[10px] tracking-[0.1em] text-muted/90 bg-foreground/[0.06] border border-border px-2 py-1 rounded-sm uppercase"
             >
               {topic}
             </span>

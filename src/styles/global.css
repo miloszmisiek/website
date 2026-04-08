@@ -8,12 +8,12 @@
 
 @layer base {
   body {
-    @apply bg-background text-foreground antialiased font-sans selection:bg-white selection:text-black;
+    @apply bg-background text-foreground antialiased font-sans;
     position: relative;
     min-height: 100vh;
   }
-  
-  /* The subtle ambient gradient and noise texture the user requested */
+
+  /* Ambient background gradient — dark default */
   body::before {
     content: "";
     position: fixed;
@@ -21,8 +21,26 @@
     z-index: -1;
     background: radial-gradient(circle at 50% -20%, #1a1a1a 0%, #050505 60%, #000000 100%);
     pointer-events: none;
+    transition: background 0.3s ease;
   }
 
+  /* System preference: light */
+  @media (prefers-color-scheme: light) {
+    body::before {
+      background: radial-gradient(circle at 50% -20%, #ede8e0 0%, #f8f5ef 60%, #f2ede5 100%);
+    }
+  }
+
+  /* Explicit theme overrides */
+  [data-theme="light"] body::before {
+    background: radial-gradient(circle at 50% -20%, #ede8e0 0%, #f8f5ef 60%, #f2ede5 100%);
+  }
+
+  [data-theme="dark"] body::before {
+    background: radial-gradient(circle at 50% -20%, #1a1a1a 0%, #050505 60%, #000000 100%);
+  }
+
+  /* Noise texture overlay */
   body::after {
     content: "";
     position: fixed;

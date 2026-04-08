@@ -4,10 +4,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "#050505",
-        foreground: "#ffffff",
-        muted: "#888888",
-        border: "#1f1f1f",
+        background: "rgb(var(--color-background) / <alpha-value>)",
+        foreground: "rgb(var(--color-foreground) / <alpha-value>)",
+        muted: "rgb(var(--color-muted) / <alpha-value>)",
+        border: "rgb(var(--color-border) / <alpha-value>)",
       },
       fontFamily: {
         sans: ["Inter", "sans-serif"],

@@ -121,8 +121,8 @@ export function PublicationDeck({ publications }: PublicationDeckProps) {
           const boxShadow = isMobile
             ? undefined
             : isTop
-              ? "0 24px 48px rgba(0,0,0,0.6), 8px 0 24px rgba(0,0,0,0.3)"
-              : "0 8px 16px rgba(0,0,0,0.3)";
+              ? "var(--shadow-card-top)"
+              : "var(--shadow-card-bg)";
 
           return (
             <motion.div
@@ -173,7 +173,7 @@ export function PublicationDeck({ publications }: PublicationDeckProps) {
                     "rounded-sm transition-all duration-300 pointer-events-none",
                     isActive
                       ? "w-6 h-2.5 bg-foreground border border-transparent"
-                      : "w-2.5 h-2.5 bg-neutral-700/50 border border-neutral-600/50 hover:bg-neutral-600 hover:border-neutral-500",
+                      : "w-2.5 h-2.5 bg-muted/40 border border-border/60 hover:bg-muted/70 hover:border-border",
                   ].join(" ")}
                 />
               </button>
