@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 
 type UseTypewriterOptions = {
-  typingSpeed: number;
-  deletingSpeed: number;
-  pauseDelay: number;
+  typingSpeed?: number;
+  deletingSpeed?: number;
+  pauseDelay?: number;
+  disabled?: boolean;
 };
 
 export function useTypewriter(
@@ -12,10 +13,11 @@ export function useTypewriter(
     typingSpeed = 80,
     deletingSpeed = 40,
     pauseDelay = 1500,
+    disabled = false,
   }: UseTypewriterOptions,
 ) {
   const [wordIndex, setWordIndex] = useState(0);
-  const [text, setText] = useState("");
+  const [text, setText] = useState(disabled ? (words[0] ?? "") : "");
   const [isDeleting, setIsDeleting] = useState(false);
 
   const scheduleTyping = () => {
@@ -35,9 +37,11 @@ export function useTypewriter(
   };
 
   useEffect(() => {
+    if (disabled) return;
     const timeout = isDeleting ? scheduleDeleting() : scheduleTyping();
     return () => clearTimeout(timeout);
   }, [
+    disabled,
     isDeleting,
     text,
     wordIndex,

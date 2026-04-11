@@ -17,13 +17,9 @@
 
     /* Hover states */
     --color-hover-bg: rgba(230, 226, 221, 0.05);
-    --color-hover-border: rgba(230, 226, 221, 0.1);
-    --color-hover-text: rgb(230, 226, 221);
 
     /* Accent colors */
     --color-success: #739e73;
-    --color-warning: #c2a878;
-    --color-error: #c76b6b;
     --color-info: #7a9fbf;
 
     /* Gradient tokens */
@@ -60,8 +56,6 @@
       --color-line: rgba(26, 21, 16, 0.15);
       --color-dim: rgba(26, 21, 16, 0.4);
       --color-hover-bg: rgba(26, 21, 16, 0.04);
-      --color-hover-border: rgba(26, 21, 16, 0.08);
-      --color-hover-text: rgb(26, 21, 16);
       --gradient-text-from: #1a1510;
       --gradient-text-to: #91877f;
       --gradient-hover-via: rgba(26, 21, 16, 0.02);
@@ -77,9 +71,7 @@
       --terminal-dot: 168 158 148;
       --terminal-glow: none;
       --color-success: #5a7d5a; /* Matte Sage */
-      --color-warning: #99845e; /* Soft Sand */
       --color-info: #5c7c99; /* Matte Slate (Steel Blue) */
-      --color-error: #b56060;
     }
   }
 
@@ -93,8 +85,6 @@
     --color-line: rgba(230, 226, 221, 0.15);
     --color-dim: rgba(230, 226, 221, 0.4);
     --color-hover-bg: rgba(230, 226, 221, 0.05);
-    --color-hover-border: rgba(230, 226, 221, 0.1);
-    --color-hover-text: rgb(230, 226, 221);
     --gradient-text-from: #e6e2dd;
     --gradient-text-to: #a39d96;
     --gradient-hover-via: rgba(230, 226, 221, 0.03);
@@ -121,8 +111,6 @@
     --color-line: rgba(26, 21, 16, 0.15);
     --color-dim: rgba(26, 21, 16, 0.4);
     --color-hover-bg: rgba(26, 21, 16, 0.04);
-    --color-hover-border: rgba(26, 21, 16, 0.08);
-    --color-hover-text: rgb(26, 21, 16);
     --gradient-text-from: #1a1510;
     --gradient-text-to: #91877f;
     --gradient-hover-via: rgba(26, 21, 16, 0.02);
@@ -138,9 +126,7 @@
     --terminal-dot: 168 158 148;
     --terminal-glow: none;
     --color-success: #5a7d5a; /* Matte Sage */
-    --color-warning: #99845e; /* Soft Sand */
     --color-info: #5c7c99; /* Matte Slate (Steel Blue) */
-    --color-error: #b56060;
   }
 
   /* ─────────── Body ─────────── */
@@ -156,66 +142,17 @@
     color: rgb(var(--color-foreground));
   }
 
-  /* ─────────── Semantic utility overrides ─────────── */
+  /* ─────────── Theme-aware overrides for Tailwind color utilities ─────────── */
+  /* bg-white/5 and hover:bg-white/5 are redirected to --color-hover-bg so the
+     "frosted" tint adapts to both dark and light themes instead of using white. */
 
-  .border-border {
-    border-color: rgb(var(--color-border));
-  }
-
-  .border-border\/50 {
-    border-color: rgb(var(--color-border) / 0.5);
-  }
-
-  .border-border\/80 {
-    border-color: rgb(var(--color-border) / 0.8);
-  }
-
-  .text-foreground {
-    color: rgb(var(--color-foreground));
-  }
-
-  .text-muted {
-    color: rgb(var(--color-muted));
-  }
-
-  .text-muted\/50 {
-    color: rgb(var(--color-muted) / 0.5);
-  }
-
-  .text-muted\/70 {
-    color: rgb(var(--color-muted) / 0.7);
-  }
-
-  .bg-background {
-    background-color: rgb(var(--color-background));
-  }
-
-  .bg-white\/5 {
+  .bg-white\/5,
+  .hover\:bg-white\/5:hover {
     background-color: var(--color-hover-bg);
   }
 
   .bg-white\/\[0\.02\] {
     background-color: color-mix(in srgb, rgb(255 255 255), transparent 98%);
-  }
-
-  .bg-background\/50 {
-    background-color: rgb(var(--color-background) / 0.5);
-  }
-
-  .bg-background\/30 {
-    background-color: rgb(var(--color-background) / 0.3);
-  }
-
-  .hover\:bg-white\/5:hover {
-    background-color: var(--color-hover-bg);
-  }
-
-  .hover\:border-border\/80:hover {
-    border-color: rgb(var(--color-border) / 0.8);
-  }
-
-  .hover\:text-foreground:hover {
-    color: rgb(var(--color-foreground));
   }
 
   ::selection {

@@ -43,7 +43,11 @@ const t = getTranslations(Astro.currentLocale);
     const observer = new IntersectionObserver(
       (entriesList) => {
         entriesList.forEach((entry) => {
-          entry.target.classList.toggle("is-active", entry.isIntersecting);
+          if (!entry.isIntersecting) {
+            return;
+          }
+          entry.target.classList.add("is-active");
+          observer.unobserve(entry.target);
         });
       },
       {

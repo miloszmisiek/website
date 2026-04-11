@@ -1,126 +1,28 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { FadeIn } from '../components/FadeIn';
-import { TerminalTypewriter } from '../components/TerminalTypewriter';
-import Header from '../sections/Header.astro';
-import ExperienceTimeline from '../sections/ExperienceTimeline.astro';
-import PublicationsSection from '../sections/PublicationsSection.astro';
-import FeaturedProductsSection from '../sections/FeaturedProductsSection.astro';
-import ContactSection from '../sections/ContactSection.astro';
-import '@fontsource/inter';
-import '@fontsource/jetbrains-mono';
-import '@fontsource/vt323';
-import { getTranslations } from '../i18n';
+import Layout from "../layouts/Layout.astro";
+import { FadeIn } from "../components/FadeIn";
+import Header from "../sections/Header.astro";
+import ExperienceTimeline from "../sections/ExperienceTimeline.astro";
+import PublicationsSection from "../sections/PublicationsSection.astro";
+import FeaturedProductsSection from "../sections/FeaturedProductsSection.astro";
+import ContactSection from "../sections/ContactSection.astro";
+import Hero from "../sections/Hero.astro";
+import "@fontsource/inter";
+import "@fontsource/jetbrains-mono";
+import "@fontsource/vt323";
+import { getTranslations } from "../i18n";
 
 const t = getTranslations(Astro.currentLocale);
 ---
 
-<Layout title={t('layout.title')}>
+<Layout title={t("layout.title")}>
   <!-- Navigation -->
   <Header />
 
   <div class="page-container pb-8 min-h-screen flex flex-col">
     <!-- Hero Section -->
     <main class="flex-grow">
-      <div class="mb-32 min-h-[calc(100svh-120px)] flex flex-col justify-center pb-12 pt-0 md:pt-2">
-        <FadeIn client:load delay={0.1}>
-          <h1 class="text-heading-xl mb-12 max-w-4xl text-transparent bg-clip-text text-gradient-heading [text-wrap:balance]">
-            {t('hero.typewriter')}
-          </h1>
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 text-muted font-light leading-relaxed text-sm border-l-2 pl-6 lg:pl-10 ml-2" style="border-color: var(--color-line)">
-            <div class="lg:col-span-7 max-w-2xl pt-2">
-              <p class="text-body mb-6">
-                <span class="text-foreground/50 font-mono mr-3">{"//"}</span>
-                {t('hero.bio.first')}
-              </p>
-              <p class="text-body mb-10">
-                <span class="text-foreground/50 font-mono mr-3">{"//"}</span>
-                {t('hero.bio.second')}
-              </p>
-              <div class="flex flex-wrap items-center gap-4">
-                <span class="btn-radiate-wrap relative inline-flex">
-                  <a href="#experience" class="button-primary btn-radiate group">
-                    {t('hero.cta.viewWork')}
-                  </a>
-                </span>
-                <a href="#contact" class="button-secondary">
-                  {t('hero.cta.contact')}
-                </a>
-              </div>
-            </div>
-            
-            {/* Terminal Window Stats */}
-            <div class="lg:col-span-5 terminal-widget">
-              <div class="terminal-frame relative overflow-hidden rounded-none font-mono text-[11px] sm:text-xs">
-                <!-- Title bar -->
-                <div class="terminal-titlebar flex items-center justify-between px-4 py-3">
-                  <div class="flex items-center gap-2" aria-hidden="true">
-                    <span class="terminal-dot w-2.5 h-2.5 rounded-full"></span>
-                    <span class="terminal-dot w-2.5 h-2.5 rounded-full"></span>
-                    <span class="terminal-dot w-2.5 h-2.5 rounded-full"></span>
-                  </div>
-                  <span class="text-[10px] font-mono text-foreground/45 tracking-widest">milosz@dev:~</span>
-                </div>
-
-                <!-- Ambient screen glow -->
-                <div class="terminal-glow pointer-events-none absolute inset-0"></div>
-
-                <div class="relative p-0 flex flex-col text-muted">
-
-                  <div class="p-4 md:p-5">
-                    <!-- Main Content Box -->
-                    <fieldset class="terminal-fieldset rounded-none px-4 pb-5 pt-3 mb-1">
-                      <legend class="px-2 text-[12px] text-foreground/45 tracking-wider">milosz-cli</legend>
-
-                      <div class="flex flex-col items-center justify-center text-center space-y-4">
-                        <span class="text-foreground/90 font-medium tracking-wide">Hello there!</span>
-
-                        <div class="text-emerald-400 leading-[1.15] whitespace-pre font-bold select-none text-[15px] text-center pt-2 pb-2">
-█▀▄▀█
-█ ▀ █
-                        </div>
-
-                        <div class="text-foreground/60 flex flex-col items-center text-[10px] tracking-wider uppercase pt-1">
-                          <span>Node: Szczecin, PL · UTC+1</span>
-                          <span class="lowercase mt-1 tracking-normal">~/workspace/portfolio</span>
-                        </div>
-                      </div>
-                    </fieldset>
-                  </div>
-
-                  <div class="flex flex-col">
-                    <!-- Top Divider -->
-                    <div class="terminal-divider h-px w-full"></div>
-
-                    <!-- Prompt Line -->
-                    <div class="flex items-center gap-2 px-4 md:px-5 py-3 text-foreground/80 font-mono text-[13px]">
-                      <span class="text-emerald-400">❯</span>
-                      <TerminalTypewriter client:load words={["frontend", "backend", "full-stack", "builder"]} />
-                    </div>
-
-                    <!-- Bottom Divider -->
-                    <div class="terminal-divider h-px w-full"></div>
-
-                    <!-- Footer / Mode Indicator -->
-                    <div class="flex items-center gap-2 px-4 md:px-5 py-3 text-emerald-400 font-mono text-[11px]">
-                      <div class="flex gap-[2px]">
-                        <div class="w-1 h-3 bg-emerald-400"></div>
-                        <div class="w-1 h-3 bg-emerald-400"></div>
-                      </div>
-                      <span>plan mode on</span>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-          </div>
-        </FadeIn>
-      </div>
-
-      <!-- How I Can Help Section -->
-      <!-- <HowICanHelpSection /> -->
-
+      <Hero />
       <!-- Experience Timeline Section -->
       <ExperienceTimeline />
 
@@ -135,88 +37,13 @@ const t = getTranslations(Astro.currentLocale);
     </main>
 
     <FadeIn client:load delay={0.4}>
-      <footer class="flex items-center text-xs font-mono text-muted py-8 border-t border-border/60 mt-auto">
-        <span class="tracking-widest">© {new Date().getFullYear()} MILOSZ MISIEK</span>
+      <footer
+        class="flex items-center text-xs font-mono text-muted py-8 border-t border-border/60 mt-auto"
+      >
+        <span class="tracking-widest"
+          >© {new Date().getFullYear()} MILOSZ MISIEK</span
+        >
       </footer>
     </FadeIn>
   </div>
 </Layout>
-
-<style>
-  /* ── Terminal widget ── */
-  .terminal-frame {
-    background-color: rgb(var(--terminal-body-bg));
-    border: 1px solid var(--terminal-border);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-  }
-
-  .terminal-titlebar {
-    background-color: var(--terminal-titlebar-bg);
-    border-bottom: 1px solid var(--terminal-border);
-  }
-
-  .terminal-dot {
-    background-color: rgb(var(--terminal-dot));
-  }
-
-  .terminal-glow {
-    background: var(--terminal-glow);
-  }
-
-  .terminal-fieldset {
-    border: 1px solid var(--terminal-fieldset);
-  }
-
-  .terminal-divider {
-    background-color: var(--terminal-divider);
-  }
-
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50%       { opacity: 0; }
-  }
-  .cursor-blink {
-    animation: blink 1s step-end infinite;
-  }
-
-  @keyframes sonar-wave {
-    0% {
-      inset: -1px;
-      opacity: 0.25;
-      box-shadow: 0 0 2px 0px rgb(var(--color-foreground)), inset 0 0 2px 0px rgb(var(--color-foreground));
-    }
-    100% {
-      inset: -12px;
-      opacity: 0;
-      box-shadow: 0 0 12px 2px rgb(var(--color-foreground)), inset 0 0 6px 2px rgb(var(--color-foreground));
-    }
-  }
-
-  .btn-radiate {
-    position: relative;
-    z-index: 1;
-  }
-
-  .btn-radiate::before,
-  .btn-radiate::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    border: 1px solid rgb(var(--color-foreground));
-    opacity: 0;
-    animation: sonar-wave 3s cubic-bezier(0.2, 0.6, 0.3, 1) infinite;
-    pointer-events: none;
-    z-index: -1;
-  }
-
-  .btn-radiate::after {
-    animation-delay: 1.5s;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .btn-radiate::before,
-    .btn-radiate::after { animation: none; display: none; }
-  }
-</style>

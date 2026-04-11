@@ -1,41 +1,43 @@
 ---
-import { AnimatedSectionTitle } from '../components/arrayTitle/AnimatedSectionTitle';
-import { FadeIn } from '../components/FadeIn';
-import { ContactForm } from '../components/contact/ContactForm';
-import { getTranslations } from '../i18n';
+import Button from "../components/button/Button.astro";
+import { AnimatedSectionTitle } from "../components/arrayTitle/AnimatedSectionTitle";
+import { FadeIn } from "../components/FadeIn";
+import { ContactForm } from "../components/contact/ContactForm";
+import { getTranslations } from "../i18n";
 
 const t = getTranslations(Astro.currentLocale);
 ---
 
 <section id="contact" class="mb-32 scroll-mt-28">
-
   {/* Section Header */}
   <div class="section-label">
     <span class="section-num">04</span>
-    <AnimatedSectionTitle client:load text={t('section.contact')} />
+    <AnimatedSectionTitle client:load text={t("section.contact")} />
   </div>
 
   <FadeIn client:load delay={0.3} scrollTriggered>
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-
       {/* ── Left: info + social links ── */}
       <div class="lg:col-span-5 flex flex-col gap-8">
-
         {/* Headline */}
         <div class="flex flex-col gap-4">
           <h2 class="text-heading-lg [text-wrap:balance]">
-            {t('contact.headline')}
+            {t("contact.headline")}
           </h2>
-          <p class="text-foreground/65 text-base md:text-lg leading-relaxed max-w-sm">
+          <p
+            class="text-foreground/65 text-base md:text-lg leading-relaxed max-w-sm"
+          >
             <span class="text-foreground/50 font-mono mr-3">{"//"}</span>
-            {t('contact.subheadline').replace('// ', '')}
+            {t("contact.subheadline").replace("// ", "")}
           </p>
         </div>
 
         {/* Email pill */}
         <div class="flex flex-col gap-2">
-          <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-foreground/55">
-            {t('contact.email.label')}
+          <span
+            class="text-[10px] font-mono uppercase tracking-[0.2em] text-foreground/55"
+          >
+            {t("contact.email.label")}
           </span>
           <a
             href="mailto:hello@milosz.dev"
@@ -51,9 +53,14 @@ const t = getTranslations(Astro.currentLocale);
               stroke="currentColor"
               stroke-width="1.5"
             >
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"></path>
             </svg>
-            <span class="text-xs font-mono text-foreground/80 group-hover:text-foreground tracking-wide transition-colors duration-200">
+            <span
+              class="text-xs font-mono text-foreground/80 group-hover:text-foreground tracking-wide transition-colors duration-200"
+            >
               hello@milosz.dev
             </span>
           </a>
@@ -62,56 +69,79 @@ const t = getTranslations(Astro.currentLocale);
         {/* Social links */}
         <div class="flex flex-wrap gap-3">
           {/* GitHub */}
-          <a
+          <Button
             href="#"
-            class="button-secondary focus-ring"
+            variant="secondary"
+            class="focus-ring gap-2"
             aria-label="GitHub profile"
           >
-            <img src="/icons/github.svg" alt="" aria-hidden="true" width="14" height="14" class="w-3.5 h-3.5 mr-2 shrink-0" />
-            {t('contact.github')}
-          </a>
+            <img
+              src="/icons/github.svg"
+              alt=""
+              aria-hidden="true"
+              width="14"
+              height="14"
+              class="w-3.5 h-3.5 shrink-0 icon-invert"
+            />
+            {t("contact.github")}
+          </Button>
 
           {/* LinkedIn */}
-          <a
+          <Button
             href="#"
-            class="button-secondary focus-ring"
+            variant="secondary"
+            class="focus-ring gap-2"
             aria-label="LinkedIn profile"
           >
-            <img src="/icons/linkedin.svg" alt="" aria-hidden="true" width="14" height="14" class="w-3.5 h-3.5 mr-2 shrink-0" />
-            {t('contact.linkedin')}
-          </a>
+            <img
+              src="/icons/linkedin.svg"
+              alt=""
+              aria-hidden="true"
+              width="14"
+              height="14"
+              class="w-3.5 h-3.5 shrink-0 icon-invert"
+            />
+            {t("contact.linkedin")}
+          </Button>
 
           {/* ResearchGate */}
-          <a
+          <Button
             href="#"
-            class="button-secondary focus-ring"
+            variant="secondary"
+            class="focus-ring gap-2"
             aria-label="ResearchGate profile"
           >
-            <img src="/icons/researchgate.svg" alt="" aria-hidden="true" width="14" height="14" class="w-3.5 h-3.5 mr-2 shrink-0" />
-            {t('contact.researchgate')}
-          </a>
+            <img
+              src="/icons/researchgate.svg"
+              alt=""
+              aria-hidden="true"
+              width="14"
+              height="14"
+              class="w-3.5 h-3.5 shrink-0 icon-invert"
+            />
+            {t("contact.researchgate")}
+          </Button>
         </div>
 
         {/* Decorative code-like notation */}
         <div class="hidden lg:block mt-auto pt-8">
-          <div class="font-mono text-[10px] text-foreground/40 tracking-widest leading-relaxed select-none">
-            <div>{'// milosz.misiek'}</div>
-            <div>{'{'}</div>
+          <div
+            class="font-mono text-[10px] text-foreground/40 tracking-widest leading-relaxed select-none"
+          >
+            <div>{"// milosz.misiek"}</div>
+            <div>{"{"}</div>
             <div class="pl-4">{'role: "software engineer",'}</div>
             <div class="pl-4">{'location: "Szczecin, PL",'}</div>
             <div class="pl-4">{'status: "available"'}</div>
-            <div>{'}'}</div>
+            <div>{"}"}</div>
           </div>
         </div>
-
       </div>
 
       {/* ── Right: terminal form card ── */}
       <div class="lg:col-span-6 lg:col-start-7">
         <ContactForm client:load />
       </div>
-
     </div>
   </FadeIn>
-
 </section>

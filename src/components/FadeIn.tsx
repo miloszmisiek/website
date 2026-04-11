@@ -10,7 +10,7 @@ interface FadeInProps {
    * When true the fade-in triggers when the element scrolls into the
    * viewport instead of on mount.  Use this for section content so it
    * stays on the same clock as AnimatedSectionTitle (which also uses
-   * useInView), enabling a staggered cascade via the delay prop.
+   G
    */
   scrollTriggered?: boolean;
   /**
@@ -32,7 +32,7 @@ export const FadeIn = ({
   const ref = useRef<HTMLDivElement>(null);
 
   // scroll-triggered path: useInView fires once when element enters viewport
-  const isInView = useInView(ref, { once: true, margin: "0px" });
+  const isInView = useInView(ref, { once: true, margin: "-5% 0px" });
 
   const isVisible = scrollTriggered ? isInView : true;
 

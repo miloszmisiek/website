@@ -17,16 +17,18 @@ export const TerminalTypewriter = ({
   className = "",
 }: TerminalTypewriterProps) => {
   const shouldReduceMotion = useReducedMotion();
-  const text = useTypewriter(words, { typingSpeed, deletingSpeed, pauseDelay });
+  const text = useTypewriter(words, { typingSpeed, deletingSpeed, pauseDelay, disabled: shouldReduceMotion ?? false });
 
   return (
     <span className={className}>
       {text}
-      <motion.span
-        animate={shouldReduceMotion ? {} : { opacity: [1, 0] }}
-        transition={shouldReduceMotion ? {} : { duration: 0.8, repeat: Infinity, ease: "linear" }}
-        className="inline-block w-[0.6em] h-[1em] bg-foreground/60 ml-1 translate-y-[2px]"
-      />
+      {!shouldReduceMotion && (
+        <motion.span
+          animate={{ opacity: [1, 0] }}
+          transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
+          className="inline-block w-[0.6em] h-[1em] bg-foreground/60 ml-1 translate-y-[2px]"
+        />
+      )}
     </span>
   );
 };

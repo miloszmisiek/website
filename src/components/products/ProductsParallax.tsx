@@ -6,6 +6,7 @@ import {
   useReducedMotion,
 } from "framer-motion";
 import { Badge } from "../Badge";
+import { Button } from "../button/Button";
 import type { Product } from "../../data/schema";
 import { getTranslations } from "../../i18n";
 
@@ -15,8 +16,6 @@ interface ProductsParallaxProps {
 
 export function ProductsParallax({ products }: ProductsParallaxProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-
-  // Track scroll progress of the entire products container
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
@@ -90,13 +89,11 @@ function ProductCard({
         className="w-full origin-top"
       >
         <div
-          className="card-base overflow-hidden flex flex-col md:flex-row md:min-h-[36rem] border border-border/60 shadow-xl group"
-          style={{ backgroundColor: "rgb(var(--color-card-bg))" }}
+          className="card-base overflow-hidden flex flex-col-reverse lg:flex-row lg:min-h-[36rem] border border-border/60 shadow-xl group bg-card-bg"
         >
           {/* Left: Content */}
           <div
-            className="flex-1 p-8 lg:p-12 flex flex-col border-b md:border-b-0 md:border-r border-border/50 z-10 hover-gradient"
-            style={{ backgroundColor: "rgb(var(--color-card-bg))" }}
+            className="flex-1 p-8 lg:p-12 flex flex-col border-t lg:border-t-0 lg:border-r border-border/50 z-10 hover-gradient bg-card-bg"
           >
             <div className="hover-gradient-bg" />
             {/* Header: Number & Year */}
@@ -142,27 +139,28 @@ function ProductCard({
             {/* CTA */}
             {product.link && (
               <div className="mt-auto">
-                <a
+                <Button
                   href={product.link}
+                  variant="secondary"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="button-secondary self-start w-fit"
+                  className="self-start w-fit"
                 >
                   {t("product.viewProduct")}
-                </a>
+                </Button>
               </div>
             )}
           </div>
 
           {/* Right: Image */}
-          <div className="flex-1 relative overflow-hidden bg-foreground/[0.05] min-h-[16rem] md:min-h-0">
+          <div className="flex-1 relative overflow-hidden bg-foreground/[0.05] min-h-[16rem] sm:min-h-[24rem] lg:min-h-0">
             {product.image ? (
               <>
                 <div className="absolute inset-0 bg-foreground/[0.06] z-10 group-hover:bg-transparent transition-colors duration-700 pointer-events-none" />
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-[1.03]"
+                  className="absolute inset-0 w-full h-full object-cover object-top drop-shadow-2xl transition-transform duration-[2s] ease-out group-hover:scale-[1.03] z-0"
                 />
               </>
             ) : (

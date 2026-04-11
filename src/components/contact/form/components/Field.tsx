@@ -1,0 +1,18 @@
+import { useId } from "react";
+import { FieldContext } from "../context/FieldContext";
+import type { ContactFieldName } from "../../types";
+
+export function Field({
+  name,
+  children,
+}: {
+  name: ContactFieldName;
+  children: React.ReactNode;
+}) {
+  const id = useId();
+  return (
+    <FieldContext.Provider value={{ id, name }}>
+      <div className="pt-6 pb-1">{children}</div>
+    </FieldContext.Provider>
+  );
+}

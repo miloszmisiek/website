@@ -1,32 +1,6 @@
 /* Animations CSS - Smooth and performant animations */
 
 @layer utilities {
-  /* Smooth transitions for interactive elements */
-  .transition-smooth {
-    transition:
-      color, background-color, border-color, box-shadow, transform, opacity;
-    transition-duration: 0.3s;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  /* Image zoom effect (subtle) */
-  .hover-zoom {
-    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .hover-zoom:hover {
-    transform: scale(1.05);
-  }
-
-  /* Will change for performance */
-  .will-change-transform {
-    will-change: transform;
-  }
-
-  .will-change-opacity {
-    will-change: opacity;
-  }
-
   /* Reduce motion support */
   @media (prefers-reduced-motion: reduce) {
     *,

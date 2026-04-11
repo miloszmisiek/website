@@ -6,7 +6,9 @@ type Props = {
 const { focus } = Astro.props;
 ---
 
-<p class="text-[10px] font-mono tracking-[0.2em] text-foreground/50 mb-4 uppercase border-l-2 border-foreground/20 pl-3">
+<p
+  class="text-[10px] font-mono tracking-[0.2em] text-foreground/50 mb-4 uppercase md:border-l-2 border-foreground/20 pl-3"
+>
   <span class="text-foreground/40 mr-2">{"//"}</span>
   {focus}
 </p>

@@ -13,7 +13,7 @@
        "WebSocket"
     ],
     "link": "https://elasticemail.com/inbox",
-    "image": "https://cms.elasticemail.com/wp-content/uploads/components-icons/inbox-logo-banner.svg",
+    "image": "/inbox.webp",
     "year": 2025,
     "featured": true
   },
@@ -28,7 +28,7 @@
        "TailwindCSS"
     ],
     "link": "https://elasticemail.com",
-    "image": "https://cms.elasticemail.com/wp-content/uploads/components-icons/EE-logo/logo-horizontal.svg",
+    "image": "/ee-home.webp",
     "year": 2024,
     "featured": true
   },
@@ -44,7 +44,7 @@
 			"WordPress Gutenberg"
 	],
 	"link": "https://elasticemail.com/email-designer",
-	"image": "https://cms.elasticemail.com/wp-content/uploads/next-pages/email-editor/Feature-emaildesigner-top.webp",
+	"image": "/ee-te.webp",
 	"year": 2023,
 	"featured": true
 	}
