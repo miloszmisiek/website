@@ -5,9 +5,9 @@
   "nav.research": "RESEARCH",
   "nav.contact": "CONTACT",
 
-  "hero.typewriter": "Engineering calm, precision-driven digital experiences.",
-  "hero.bio.first": "I am a software engineer based in Poland. I blend deep technical architecture with severe design restraint to build interfaces that feel deliberate, fast, and timeless.",
-  "hero.bio.second": "Specializing in high-performance frontends, complex state management, and motion systems for teams that care about refined details.",
+  "hero.typewriter": "Engineering scalable, high-performance systems with precision.",
+  "hero.bio.first": "Software engineer based in Poland, focused on designing and building reliable systems at scale.",
+  "hero.bio.second": "I work across the stack — from system architecture to implementation — solving complex problems with an emphasis on performance, scalability, and maintainability.",
   "hero.cta.viewWork": "VIEW WORK",
   "hero.cta.contact": "CONTACT",
 

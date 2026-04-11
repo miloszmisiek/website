@@ -1,24 +1,22 @@
 ---
-import { AnimatedSectionTitle } from '../components/arrayTitle/AnimatedSectionTitle';
-import { FadeIn } from '../components/FadeIn';
-import { PublicationDeck } from '../components/publications/PublicationDeck';
-import { getPublications, getTranslations } from '../i18n';
+import { AnimatedSectionTitle } from "../components/arrayTitle/AnimatedSectionTitle";
+import { FadeIn } from "../components/FadeIn";
+import { PublicationDeck } from "../components/publications/PublicationDeck";
+import { getPublications, getTranslations } from "../i18n";
 
 const publications = getPublications(Astro.currentLocale);
 const t = getTranslations(Astro.currentLocale);
 ---
 
-<section id="publications" class="mb-32 scroll-mt-28">
-
+<section id="publications" class="mb-32 scroll-mt-28 short:mb-16">
   {/* Section Header */}
   <div class="section-label">
     <span class="section-num">02</span>
-    <AnimatedSectionTitle client:load text={t('section.publications')} />
+    <AnimatedSectionTitle client:load text={t("section.publications")} />
   </div>
 
   {/* Publications Stacked Deck */}
   <FadeIn client:load delay={0.3} scrollTriggered>
     <PublicationDeck client:load publications={publications} />
   </FadeIn>
-
 </section>

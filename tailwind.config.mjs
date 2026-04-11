@@ -3,6 +3,16 @@ export default {
   darkMode: ["selector", '[data-theme="dark"]'],
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
+    screens: {
+      xs: "430px",
+      sm: "640px",
+      md: "768px",
+      md2: "820px",
+      lg: "1024px",
+      xl: "1280px",
+      "2xl": "1536px",
+      short: { raw: "(max-height: 750px)" },
+    },
     extend: {
       fontSize: {
         micro: "0.625rem", // 10px
