@@ -11,8 +11,9 @@ const M_LOGO = "█▀▄▀█\n█ ▀ █";
 
 <section
   id="hero"
-  class="pb-12 min-h-[calc(100svh-100px)] lg:min-h-[calc(100svh-76px)] flex flex-col justify-center lg:pb-0 relative short:mb-16"
+  class="pb-12 min-h-[calc(100svh-100px)] lg:min-h-[calc(100svh-76px)] flex flex-col justify-start lg:justify-center lg:pb-0 relative short:mb-16"
 >
+  <div class="flex-1 lg:hidden" aria-hidden="true"></div>
   <FadeIn client:load delay={0.1}>
     <h1
       class="text-heading-xl mb-6 sm:mb-10 md:mb-12 max-w-4xl text-transparent bg-clip-text text-gradient-heading [text-wrap:balance]"
@@ -183,6 +184,7 @@ const M_LOGO = "█▀▄▀█\n█ ▀ █";
       </div>
     </div>
   </FadeIn>
+  <div class="flex-[2] lg:hidden" aria-hidden="true"></div>
 
   {/* Scroll indicator */}
   <div

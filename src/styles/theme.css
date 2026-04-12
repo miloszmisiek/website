@@ -27,6 +27,9 @@
     --gradient-text-to: #a39d96;
     --gradient-hover-via: rgba(230, 226, 221, 0.03);
 
+    /* Hero surface token */
+    --color-hero-bg: 13 11 10;            /* #0d0b0a — darker terminal screen */
+
     /* Card surface tokens */
     --color-card-bg: 32 29 28;
     --color-card-bg-hover: 38 35 34;
@@ -59,6 +62,7 @@
       --gradient-text-from: #1a1510;
       --gradient-text-to: #91877f;
       --gradient-hover-via: rgba(26, 21, 16, 0.02);
+      --color-hero-bg: 228 220 208;       /* #e4dcd0 — warmer/darker than body */
       --color-card-bg: 252 250 246; /* #fcfaf6 — crisp matte white/cream */
       --color-card-bg-hover: 245 242 235; /* #f5f2eb — deeper matte on hover */
       --shadow-card-top: none;
@@ -88,6 +92,7 @@
     --gradient-text-from: #e6e2dd;
     --gradient-text-to: #a39d96;
     --gradient-hover-via: rgba(230, 226, 221, 0.03);
+    --color-hero-bg: 13 11 10;
     --color-card-bg: 32 29 28;
     --color-card-bg-hover: 38 35 34;
     --shadow-card-top: none;
@@ -114,6 +119,7 @@
     --gradient-text-from: #1a1510;
     --gradient-text-to: #91877f;
     --gradient-hover-via: rgba(26, 21, 16, 0.02);
+    --color-hero-bg: 228 220 208;
     --color-card-bg: 252 250 246; /* #fcfaf6 — crisp matte white/cream */
     --color-card-bg-hover: 245 242 235; /* #f5f2eb — deeper matte on hover */
     --shadow-card-top: none;

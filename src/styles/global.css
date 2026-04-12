@@ -60,6 +60,28 @@
     );
   }
 
+  /* Hero zone — full-width wrapper covering header + hero section.
+     The gradient fades the hero bg to transparent at the bottom so
+     the experience section starts on the plain body (body::before) background. */
+  .hero-zone {
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(
+      to bottom,
+      rgb(var(--color-hero-bg)) calc(100% - 150px),
+      transparent 100%
+    );
+  }
+
+  /* Footer zone — mirrors hero-zone with fade at top */
+  .footer-zone {
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgb(var(--color-hero-bg)) 80px
+    );
+  }
+
   /* Custom Scrollbar */
   ::-webkit-scrollbar {
     width: 8px;
