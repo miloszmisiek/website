@@ -29,3 +29,5 @@ theme-drafts/
 # Markdown files (except README)
 *.md
 !README.md
+
+.playwright-mcp/
