@@ -16,15 +16,17 @@ const t = getTranslations(Astro.currentLocale);
 ---
 
 <Layout title={t("layout.title")}>
-  <!-- Hero zone: full-viewport-width area covering header + hero -->
+  <!-- Header lives outside hero-zone so sticky works across the full page -->
+  <Header />
+
+  <!-- Hero zone: full-viewport-width area covering just the hero section -->
   <div class="hero-zone">
-    <Header />
     <div class="page-container">
       <Hero />
     </div>
   </div>
 
-  <div class="page-container relative z-10">
+  <div class="page-container">
     <main>
       <!-- Experience Timeline Section -->
       <ExperienceTimeline />

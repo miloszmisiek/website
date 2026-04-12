@@ -1,0 +1,344 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]: ~/
+      - link "milosz misiek — home" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e6]:
+          - generic [ref=e7]: milosz
+          - generic [ref=e8]: .
+          - generic [ref=e9]: misiek
+    - navigation [ref=e10]:
+      - generic [ref=e11]:
+        - link "WORK" [ref=e12] [cursor=pointer]:
+          - /url: "#products"
+          - text: WORK
+        - link "RESEARCH" [ref=e13] [cursor=pointer]:
+          - /url: "#publications"
+          - text: RESEARCH
+        - link "CONTACT" [ref=e14] [cursor=pointer]:
+          - /url: "#contact"
+          - text: CONTACT
+      - generic [ref=e16]:
+        - button "Switch to dark theme" [ref=e17] [cursor=pointer]:
+          - img [ref=e18]
+        - link "Switch to Polish" [ref=e20] [cursor=pointer]:
+          - /url: /pl/
+          - text: PL
+  - generic [ref=e23]:
+    - generic [ref=e27]:
+      - heading "Engineering scalable, high-performance systems with precision." [level=1] [ref=e28]
+      - generic [ref=e30]:
+        - paragraph [ref=e31]: // Software engineer based in Poland, focused on designing and building reliable systems at scale.
+        - paragraph [ref=e32]: // I work across the stack — from system architecture to implementation — solving complex problems with an emphasis on performance, scalability, and maintainability.
+        - generic [ref=e33]:
+          - link "VIEW WORK" [ref=e35] [cursor=pointer]:
+            - /url: "#products"
+          - link "CONTACT" [ref=e36] [cursor=pointer]:
+            - /url: "#contact"
+        - generic [ref=e37]:
+          - generic [ref=e40]: milosz-cli
+          - generic [ref=e43]: ❯
+          - generic [ref=e49]:
+            - generic [ref=e54]: plan mode on
+            - generic [ref=e55]: Szczecin, PL
+    - generic:
+      - generic:
+        - generic: scroll
+        - img
+  - main [ref=e58]:
+    - generic [ref=e59]:
+      - generic [ref=e60]:
+        - generic [ref=e61]: "01"
+        - heading "EXPERIENCE" [level=2] [ref=e63]:
+          - generic [ref=e64]: "["
+          - generic [ref=e65]: EXPERIENCE
+          - generic [ref=e66]: "]"
+      - generic [ref=e71]:
+        - generic [ref=e72]: "* main"
+        - generic [ref=e76]:
+          - generic [ref=e81]:
+            - generic [ref=e82]:
+              - generic [ref=e83]: exp0010
+              - generic [ref=e84]: "-->"
+              - generic [ref=e85]: feat/elastic-email
+              - generic [ref=e86]: HEAD
+            - generic [ref=e87]:
+              - generic [ref=e88]: 2024 -> Present
+              - generic [ref=e89]: 1+ years
+            - heading "Senior Full Stack Engineer" [level=3] [ref=e90]
+            - paragraph [ref=e91]:
+              - generic [ref=e92]: "@"
+              - text: Elastic Email
+            - paragraph [ref=e93]: // AI Agent Development & Platform Architecture
+            - list [ref=e94]:
+              - listitem [ref=e95]:
+                - generic [ref=e96]: "->"
+                - generic [ref=e97]: Led AI agent development for intelligent email replies
+              - listitem [ref=e98]:
+                - generic [ref=e99]: "->"
+                - generic [ref=e100]: Architected live chat widget with real-time capabilities
+              - listitem [ref=e101]:
+                - generic [ref=e102]: "->"
+                - generic [ref=e103]: Mentored 3+ junior engineers
+            - generic [ref=e105]:
+              - generic [ref=e107]: React
+              - generic [ref=e109]: Next.js
+              - generic [ref=e111]: TypeScript
+              - generic [ref=e113]: GraphQL
+              - button "Show 5 more technologies" [ref=e114] [cursor=pointer]: + 5
+          - generic [ref=e119]:
+            - generic [ref=e120]:
+              - generic [ref=e121]: exp0020
+              - generic [ref=e122]: "-->"
+              - generic [ref=e123]: feat/previous-position
+            - generic [ref=e124]:
+              - generic [ref=e125]: 2020 -> 2023
+              - generic [ref=e126]: 3+ years
+            - heading "Full Stack Engineer" [level=3] [ref=e127]
+            - paragraph [ref=e128]:
+              - generic [ref=e129]: "@"
+              - text: Previous Position
+            - paragraph [ref=e130]: // Backend Architecture & Database Optimization
+            - list [ref=e131]:
+              - listitem [ref=e132]:
+                - generic [ref=e133]: "->"
+                - generic [ref=e134]: Designed and implemented microservices architecture
+              - listitem [ref=e135]:
+                - generic [ref=e136]: "->"
+                - generic [ref=e137]: Optimized PostgreSQL queries reducing query time by 60%
+              - listitem [ref=e138]:
+                - generic [ref=e139]: "->"
+                - generic [ref=e140]: Led database migration project with zero downtime
+            - generic [ref=e142]:
+              - generic [ref=e144]: Node.js
+              - generic [ref=e146]: Express
+              - generic [ref=e148]: PostgreSQL
+              - generic [ref=e150]: Redis
+              - button "Show 4 more technologies" [ref=e151] [cursor=pointer]: + 4
+          - generic [ref=e156]:
+            - generic [ref=e157]:
+              - generic [ref=e158]: exp0030
+              - generic [ref=e159]: "-->"
+              - generic [ref=e160]: edu/university-ai-security-research
+            - generic [ref=e161]:
+              - generic [ref=e162]: 2022 -> Present
+              - generic [ref=e163]: 2+ years
+            - heading "Doctoral Candidate (Year 2 of 4)" [level=3] [ref=e164]
+            - paragraph [ref=e165]:
+              - generic [ref=e166]: "@"
+              - text: University - AI Security Research
+            - paragraph [ref=e167]: // Multi-Layer Phishing Detection with AI
+            - list [ref=e168]:
+              - listitem [ref=e169]:
+                - generic [ref=e170]: "->"
+                - generic [ref=e171]: Published 2 peer-reviewed articles on phishing detection
+              - listitem [ref=e172]:
+                - generic [ref=e173]: "->"
+                - generic [ref=e174]: 3rd article under peer review (LLM orchestration)
+              - listitem [ref=e175]:
+                - generic [ref=e176]: "->"
+                - generic [ref=e177]: Designed multi-layer detection system combining 3 approaches
+            - generic [ref=e179]:
+              - generic [ref=e181]: Python
+              - generic [ref=e183]: LLaMA Index
+              - generic [ref=e185]: OpenAI API
+              - generic [ref=e187]: pgvector
+              - button "Show 4 more technologies" [ref=e188] [cursor=pointer]: + 4
+    - generic [ref=e189]:
+      - generic [ref=e190]:
+        - generic [ref=e191]: "02"
+        - heading "PUBLICATIONS" [level=2] [ref=e193]:
+          - generic [ref=e194]: "["
+          - generic [ref=e195]: PUBLICATIONS
+          - generic [ref=e196]: "]"
+      - generic [ref=e201]:
+        - generic [ref=e202]:
+          - generic [ref=e204]:
+            - generic [ref=e205]:
+              - generic [ref=e207]: Published
+              - generic [ref=e209]: "2026"
+            - generic [ref=e210]:
+              - heading "XGBoost-Based URL Phishing Detection Method With Cross-Dataset Validation" [level=3] [ref=e211]
+              - paragraph [ref=e212]:
+                - generic [ref=e213]: "{ author(s):"
+                - generic [ref=e214]: Milosz Misiek, Tomasz Hyla
+                - generic [ref=e215]: "}"
+            - generic [ref=e216]:
+              - generic [ref=e217]: Machine Learning
+              - generic [ref=e218]: XGBoost
+              - generic [ref=e219]: Phishing Detection
+              - generic [ref=e220]: URL Analysis
+            - paragraph [ref=e221]:
+              - text: This article analyses the performance characteristics of XGBoost models across multiple datasets for phishing URL detection, extending our previous conference paper with comprehens...
+              - button "more" [ref=e222] [cursor=pointer]
+            - generic [ref=e223]:
+              - generic [ref=e224]:
+                - generic [ref=e225]:
+                  - generic [ref=e226]: "Time:"
+                  - text: 30 min
+                - generic [ref=e227]:
+                  - generic [ref=e228]: "doi:"
+                  - text: 10.1109/access.2026.3672690
+              - link "VIEW PAPER" [ref=e229] [cursor=pointer]:
+                - /url: https://ieeexplore.ieee.org/document/11428202/
+          - 'button "Bring to front: Preventing Phishing Attacks with Browser-Based URL Detection" [ref=e231] [cursor=pointer]':
+            - generic [ref=e232]:
+              - generic [ref=e234]: Published
+              - generic [ref=e236]: "2025"
+            - generic [ref=e237]:
+              - heading "Preventing Phishing Attacks with Browser-Based URL Detection" [level=3] [ref=e238]
+              - paragraph [ref=e239]:
+                - generic [ref=e240]: "{ author(s):"
+                - generic [ref=e241]: Miłosz Misiek, Tomasz Hyla
+                - generic [ref=e242]: "}"
+            - generic [ref=e243]:
+              - generic [ref=e244]: Security
+              - generic [ref=e245]: Phishing Detection
+              - generic [ref=e246]: URL Analysis
+              - generic [ref=e247]: Browser Extension
+            - paragraph [ref=e248]:
+              - text: One way to protect users from clicking on a malicious URL is to continuously check all URLs displayed on the website and notify them when a suspicious URL is detected. This paper p...
+              - button "more" [ref=e249]
+            - generic [ref=e250]:
+              - generic [ref=e251]:
+                - generic [ref=e252]:
+                  - generic [ref=e253]: "Time:"
+                  - text: 15 min
+                - generic [ref=e254]:
+                  - generic [ref=e255]: "doi:"
+                  - text: 10.24251/hicss.2025.874
+              - link "VIEW PAPER":
+                - /url: https://hdl.handle.net/10125/109726
+        - tablist "Publication navigation" [ref=e256]:
+          - 'tab "Go to publication: XGBoost-Based URL Phishing Detection Method With Cross-Dataset Validation" [selected] [ref=e257] [cursor=pointer]'
+          - 'tab "Go to publication: Preventing Phishing Attacks with Browser-Based URL Detection" [ref=e258] [cursor=pointer]'
+    - generic [ref=e259]:
+      - generic [ref=e260]:
+        - generic [ref=e261]: "03"
+        - heading "FEATURED PRODUCTS" [level=2] [ref=e263]:
+          - generic [ref=e264]: "["
+          - generic [ref=e265]: FEATURED PRODUCTS
+          - generic [ref=e266]: "]"
+      - generic [ref=e271]:
+        - article [ref=e273]:
+          - generic [ref=e274]:
+            - generic [ref=e275]:
+              - generic [ref=e276]:
+                - generic [ref=e277]: "00"
+                - generic [ref=e278]: "2025"
+              - generic [ref=e279]:
+                - 'heading "Inbox: Communication Platfrom" [level=3] [ref=e280]'
+                - paragraph [ref=e281]: // Core Engineer
+              - paragraph [ref=e282]: Comprehensive communication hub combining team chat, email service, and unified messaging. Designed for seamless collaboration with real-time notifications and rich media support.
+              - generic [ref=e283]:
+                - generic [ref=e284]: Next.js
+                - generic [ref=e285]: NodeJS
+                - generic [ref=e286]: MongoDB
+                - generic [ref=e287]: GraphQL
+                - generic [ref=e288]: TypeScript
+                - generic [ref=e289]: WebSocket
+              - link "VIEW PRODUCT" [ref=e291] [cursor=pointer]:
+                - /url: https://elasticemail.com/inbox
+            - 'img "Inbox: Communication Platfrom" [ref=e293]'
+        - article [ref=e295]:
+          - generic [ref=e296]:
+            - generic [ref=e297]:
+              - generic [ref=e298]:
+                - generic [ref=e299]: "01"
+                - generic [ref=e300]: "2024"
+              - generic [ref=e301]:
+                - 'heading "Home Page: Elastic Email" [level=3] [ref=e302]'
+                - paragraph [ref=e303]: // Engineer
+              - paragraph [ref=e304]: Modern marketing website for Elastic Email, a comprehensive email marketing and API platform. Built with Next.js for optimal performance and SEO, featuring responsive design, interactive product demonstrations, and conversion-focused landing pages.
+              - generic [ref=e305]:
+                - generic [ref=e306]: Next.js
+                - generic [ref=e307]: TypeScript
+                - generic [ref=e308]: TailwindCSS
+              - link "VIEW PRODUCT" [ref=e310] [cursor=pointer]:
+                - /url: https://elasticemail.com
+            - 'img "Home Page: Elastic Email" [ref=e312]'
+        - article [ref=e314]:
+          - generic [ref=e315]:
+            - generic [ref=e316]:
+              - generic [ref=e317]:
+                - generic [ref=e318]: "02"
+                - generic [ref=e319]: "2023"
+              - generic [ref=e320]:
+                - 'heading "Template Editor: Elastic Email" [level=3] [ref=e321]'
+                - paragraph [ref=e322]: // Engineer
+              - paragraph [ref=e323]: Intuitive email template editor with drag-and-drop interface and raw HTML editing capabilities. Features AI-powered template generation, customizable content blocks, mobile-responsive layouts, brand color management, and merge field personalization for creating stunning newsletters.
+              - generic [ref=e324]:
+                - generic [ref=e325]: React
+                - generic [ref=e326]: TypeScript
+                - generic [ref=e327]: Styled Components
+                - generic [ref=e328]: WordPress Gutenberg
+              - link "VIEW PRODUCT" [ref=e330] [cursor=pointer]:
+                - /url: https://elasticemail.com/email-designer
+            - 'img "Template Editor: Elastic Email" [ref=e332]'
+    - generic [ref=e333]:
+      - generic [ref=e334]:
+        - generic [ref=e335]: "04"
+        - heading "CONTACT" [level=2] [ref=e337]:
+          - generic [ref=e338]: "["
+          - generic [ref=e339]: CONTACT
+          - generic [ref=e340]: "]"
+      - generic [ref=e344]:
+        - generic [ref=e345]:
+          - generic [ref=e346]:
+            - heading "Let's Build Something." [level=2] [ref=e347]
+            - paragraph [ref=e348]: // open to new projects, collaborations, and interesting problems
+          - generic [ref=e349]:
+            - generic [ref=e350]: DIRECT
+            - link "hello@milosz.dev" [ref=e351] [cursor=pointer]:
+              - /url: mailto:hello@milosz.dev
+              - img [ref=e352]
+              - generic [ref=e354]: hello@milosz.dev
+          - generic [ref=e355]:
+            - link "GitHub profile" [ref=e356] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e357]
+              - text: GITHUB
+            - link "LinkedIn profile" [ref=e358] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e359]
+              - text: LINKEDIN
+            - link "ResearchGate profile" [ref=e360] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e361]
+              - text: RESEARCHGATE
+        - generic [ref=e366]:
+          - generic [ref=e367]:
+            - generic [ref=e368]: NAME
+            - textbox "NAME" [ref=e369]:
+              - /placeholder: e.g. Jane Smith…
+          - generic [ref=e370]:
+            - generic [ref=e371]: EMAIL
+            - textbox "EMAIL" [ref=e372]:
+              - /placeholder: you@example.com…
+          - generic [ref=e373]:
+            - generic [ref=e374]: MESSAGE
+            - textbox "MESSAGE" [ref=e375]:
+              - /placeholder: Tell me about your project…
+          - generic [ref=e376]:
+            - generic [ref=e377]: "{ status: ready }"
+            - button "SEND" [ref=e378] [cursor=pointer]:
+              - text: SEND
+              - img [ref=e379]
+  - contentinfo [ref=e386]:
+    - generic [ref=e387]: © 2026 MILOSZ MISIEK
+  - generic [ref=e390]:
+    - button "Menu" [ref=e391]:
+      - img [ref=e393]
+      - generic: Menu
+    - button "Inspect" [ref=e397]:
+      - img [ref=e399]
+      - generic: Inspect
+    - button "Audit" [ref=e401]:
+      - generic [ref=e402]:
+        - img [ref=e403]
+        - img [ref=e406]
+      - generic: Audit
+    - button "Settings" [ref=e409]:
+      - img [ref=e411]
+      - generic: Settings
