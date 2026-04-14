@@ -2,91 +2,87 @@
   {
     "id": "exp-001",
     "period": {
-      "start": "2024-01",
+      "start": "2023-05",
       "end": "present"
     },
-    "duration": "1+ years",
-    "role": "Senior Full Stack Engineer",
+    "duration": "3 years",
+    "role": "Software Engineer",
     "company": "Elastic Email",
-    "focus": "AI Agent Development & Platform Architecture",
-    "description": "Leading architecture redesign and AI integration for communication platform. Mentoring team members and establishing engineering best practices for large-scale systems.",
+    "focus": "Full Stack Development & AI Integration",
+    "description": "Delivering full-stack features across frontend, backend, and database layers at a leading email delivery platform. Currently implementing AI-powered automated communication features using RAG. Building reusable components, enhancing scalability, and collaborating cross-functionally on UI/UX and performance.",
     "highlights": [
-      "Led AI agent development for intelligent email replies",
-      "Architected live chat widget with real-time capabilities",
-      "Mentored 3+ junior engineers",
-      "Reduced API response time by 40% through optimization",
-      "Established GraphQL standards for platform APIs"
+      "Implementing AI-powered automated communication features using RAG",
+      "Deliver full-stack features across frontend, backend, and database layers",
+      "Build reusable components supporting long-term product growth",
+      "Collaborate on high-quality UI/UX solutions with cross-functional teams",
+      "Monitor performance, identify bottlenecks, and drive infrastructure improvements"
     ],
     "technologies": [
-      "React",
-      "Next.js",
       "TypeScript",
-      "GraphQL",
+      "React.js",
       "Node.js",
-      "Express",
+      "Express.js",
+      "RAG",
+      "OpenAI API",
       "MongoDB",
-      "WebSocket",
-      "OpenAI API"
+      "pgvector",
+      "REST API",
+      "Git"
     ],
     "type": "work"
   },
   {
     "id": "exp-002",
     "period": {
-      "start": "2020-06",
-      "end": "2023-12"
+      "start": "2023-03",
+      "end": "2023-05"
     },
-    "duration": "3+ years",
-    "role": "Full Stack Engineer",
-    "company": "Previous Position",
-    "focus": "Backend Architecture & Database Optimization",
-    "description": "Built and maintained critical backend systems for scaling platform from 1K to 50K+ users. Focused on database optimization and system reliability.",
+    "duration": "3 months",
+    "role": "Web Developer",
+    "company": "Maritime University of Szczecin",
+    "focus": "Procurement System Development",
+    "description": "Designed and built a public procurement system (v1.0.0) from architecture to production deployment on a Debian server. Also maintained official university websites and provided IT support.",
     "highlights": [
-      "Designed and implemented microservices architecture",
-      "Optimized PostgreSQL queries reducing query time by 60%",
-      "Led database migration project with zero downtime",
-      "Established CI/CD pipelines for automated deployment",
-      "Achieved 99.95% uptime SLA"
+      "Built full procurement system v1.0.0 with React, Redux, Express, TypeScript, MySQL",
+      "Deployed and configured on Debian server with secure database management",
+      "Led development across the entire project lifecycle to on-time delivery",
+      "Maintained official university websites and provided IT support"
     ],
     "technologies": [
-      "Node.js",
-      "Express",
-      "PostgreSQL",
-      "Redis",
-      "Docker",
-      "Kubernetes",
-      "GraphQL",
-      "TypeScript"
+      "React.js",
+      "Redux",
+      "Express.js",
+      "TypeScript",
+      "MySQL",
+      "HTML5",
+      "CSS3",
+      "Debian Linux"
     ],
     "type": "work"
   },
   {
     "id": "exp-003",
     "period": {
-      "start": "2022-09",
-      "end": "present"
+      "start": "2024-10",
+      "end": "2028-10"
     },
-    "duration": "2+ years",
-    "role": "Doctoral Candidate (Year 2 of 4)",
-    "company": "University - AI Security Research",
-    "focus": "Multi-Layer Phishing Detection with AI",
-    "description": "Conducting cutting-edge research on AI-powered security systems. Combining URL-based detection, vision analysis, and LLM orchestration for comprehensive threat detection.",
+    "duration": "4-year program",
+    "role": "PhD Candidate",
+    "company": "West Pomeranian University of Technology",
+    "focus": "Cybersecurity & Phishing Detection",
+    "description": "Doctoral research at the intersection of AI and cybersecurity. Exploring machine learning and deep learning approaches to detect and prevent phishing attacks, contributing to safer digital environments.",
     "highlights": [
-      "Published 2 peer-reviewed articles on phishing detection",
-      "3rd article under peer review (LLM orchestration)",
-      "Designed multi-layer detection system combining 3 approaches",
-      "Developed vision-based email content analysis",
-      "Created LLM orchestration framework for intelligent routing"
+      "Researching ML and deep learning methods for phishing detection and prevention",
+      "Developing cybersecurity strategies using modern AI techniques",
+      "Contributing to academic work on intelligent, multi-layer threat detection"
     ],
     "technologies": [
       "Python",
-      "LLaMA Index",
-      "OpenAI API",
-      "pgvector",
-      "TensorFlow",
-      "Computer Vision",
+      "PyTorch",
+      "Deep Learning",
       "NLP",
-      "Machine Learning"
+      "Computer Vision",
+      "Cybersecurity"
     ],
     "type": "academic"
   }

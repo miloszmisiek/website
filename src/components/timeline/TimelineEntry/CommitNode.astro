@@ -72,7 +72,7 @@ const { isWork } = Astro.props;
     position: absolute;
     left: 8px;
     top: 43px;
-    width: calc(3rem - 8px);
+    width: calc(2.5rem - 8px);
     height: 1px;
     background-color: var(--color-line);
     transition:
@@ -94,6 +94,12 @@ const { isWork } = Astro.props;
   }
 
   @media (min-width: 768px) {
+    .branch-line {
+      width: calc(3rem - 8px);
+    }
+  }
+
+  @media (min-width: 1024px) {
     .branch-line {
       width: calc(4rem - 8px);
     }

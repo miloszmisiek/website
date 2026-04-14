@@ -15,24 +15,26 @@ const navLinks = [
 ---
 
 <header
-  class="sticky top-0 z-[99999] bg-transparent flex justify-between items-center text-sm font-mono tracking-widest uppercase text-muted border-border pt-4 pb-4 transition-[border-color] duration-300 px-6 md:px-12 lg:px-16"
+  class="sticky top-0 z-[99999] bg-transparent text-sm font-mono tracking-widest uppercase text-muted border-border pt-4 pb-4 transition-[border-color] duration-300"
 >
-  <div class="flex items-center gap-4">
-    <span class="text-foreground/55 hidden md:inline-block">~/</span>
-    <Logo />
+  <div class="page-container flex justify-between items-center">
+    <div class="flex items-center gap-4">
+      <span class="text-foreground/55 hidden md:inline-block">~/</span>
+      <Logo />
+    </div>
+    <nav class="flex items-center gap-6 md:gap-8">
+      <div class="hidden md:flex items-center gap-8">
+        {navLinks.map((link) => <NavLink href={link.href} label={t(link.key)} />)}
+      </div>
+
+      <div class="hidden md:block w-[1px] h-6 bg-foreground/20 mx-2"></div>
+
+      <div class="flex items-center gap-3">
+        <ThemeSwitcher />
+        <LanguageSwitcher />
+      </div>
+    </nav>
   </div>
-  <nav class="flex items-center gap-6 md:gap-8">
-    <div class="hidden md:flex items-center gap-8">
-      {navLinks.map((link) => <NavLink href={link.href} label={t(link.key)} />)}
-    </div>
-
-    <div class="hidden md:block w-[1px] h-6 bg-border/80 mx-2"></div>
-
-    <div class="flex items-center gap-3">
-      <ThemeSwitcher />
-      <LanguageSwitcher />
-    </div>
-  </nav>
 </header>
 
 <script>

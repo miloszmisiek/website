@@ -52,7 +52,7 @@ export function PublicationStackCard({
         tabIndex={isTop ? undefined : 0}
         aria-label={isTop ? undefined : `Bring to front: ${title}`}
         className={cn(
-          "card-interactive p-8 lg:p-10 w-full relative",
+          "card-interactive p-5 sm:p-7 lg:p-10 w-full relative",
           !isTop &&
             "card-hoverable group cursor-pointer hover:border-border/80 focus-ring",
         )}
@@ -68,7 +68,7 @@ export function PublicationStackCard({
         )}
 
         {/* Top Bar */}
-        <div className="flex flex-wrap items-center justify-between mb-8 gap-4 border-b border-border/70 pb-6 relative z-10">
+        <div className="flex flex-wrap items-center justify-between mb-5 sm:mb-8 gap-4 border-b border-border/70 pb-6 relative z-10">
           <div className="flex items-center gap-3">
             <Badge
               variant={
@@ -93,17 +93,17 @@ export function PublicationStackCard({
         </div>
 
         {/* Title */}
-        <div className="mb-8 relative z-10">
+        <div className="mb-5 sm:mb-8 relative z-10">
           <h3 className="text-heading-md mb-4 text-foreground">{title}</h3>
 
           {/* Authors */}
           {authors.length > 0 && (
-            <p className="font-mono text-xs uppercase tracking-widest flex items-center gap-3">
-              <span className="text-foreground/40">{"{ author(s): "}</span>
-              <span className="text-foreground/80 tracking-wide">
+            <p className="font-mono text-xs uppercase tracking-widest flex flex-wrap items-baseline gap-x-2 gap-y-1">
+              <span className="text-foreground/40 whitespace-nowrap">{"{ author(s):"}</span>
+              <span className="text-foreground/80 tracking-wide min-w-0">
                 {authors.join(", ")}
               </span>
-              <span className="text-foreground/40">{" }"}</span>
+              <span className="text-foreground/40 whitespace-nowrap">{"}"}</span>
             </p>
           )}
         </div>
@@ -131,9 +131,9 @@ export function PublicationStackCard({
 
         {/* Footer & Meta Information */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pt-6 border-t border-border/70 mt-auto relative z-10">
-          <div className="flex items-center gap-4 text-[10px] font-mono uppercase tracking-widest text-muted/90">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-[10px] font-mono uppercase tracking-widest text-muted/90 min-w-0">
             {readTime && (
-              <span className="flex items-center gap-2">
+              <span className="flex items-center gap-2 shrink-0">
                 <span className="text-foreground/60">
                   {t("publication.time")}:
                 </span>{" "}
@@ -141,8 +141,9 @@ export function PublicationStackCard({
               </span>
             )}
             {doi && (
-              <span className="flex items-center gap-2 border-l border-border/70 pl-4">
-                <span className="text-foreground/60">doi:</span> {doi}
+              <span className="flex items-center gap-2 border-l border-border/70 pl-4 min-w-0">
+                <span className="text-foreground/60 shrink-0">doi:</span>
+                <span className="truncate">{doi}</span>
               </span>
             )}
           </div>

@@ -2,91 +2,87 @@
   {
     "id": "exp-001",
     "period": {
-      "start": "2024-01",
+      "start": "2023-05",
       "end": "present"
     },
-    "duration": "1+ roku",
-    "role": "Starszy Inżynier Full Stack",
+    "duration": "3 lata",
+    "role": "Inżynier Oprogramowania",
     "company": "Elastic Email",
-    "focus": "Rozwój agentów AI i architektura platformy",
-    "description": "Prowadzę przeprojektowanie architektury i integrację AI dla platformy komunikacyjnej. Mentoruję członków zespołu i ustalam najlepsze praktyki inżynieryjne dla systemów na dużą skalę.",
+    "focus": "Full Stack Development i integracja AI",
+    "description": "Dostarczanie funkcjonalności full-stack obejmujących warstwy frontendu, backendu i bazy danych w wiodącej platformie dostarczania e-maili. Aktualnie wdrażam funkcje automatycznej komunikacji oparte na AI z wykorzystaniem RAG. Budowanie komponentów wielokrotnego użytku, poprawa skalowalności i współpraca z zespołami w zakresie UI/UX i wydajności.",
     "highlights": [
-      "Prowadziłem rozwój agenta AI do inteligentnych odpowiedzi e-mail",
-      "Zaprojektowałem widżet czatu na żywo z możliwościami czasu rzeczywistego",
-      "Mentorowałem 3+ juniorów",
-      "Zredukowałem czas odpowiedzi API o 40% poprzez optymalizację",
-      "Ustaliłem standardy GraphQL dla API platformy"
+      "Wdrażanie funkcji automatycznej komunikacji opartej na AI z wykorzystaniem RAG",
+      "Dostarczanie funkcjonalności full-stack obejmujących frontend, backend i bazę danych",
+      "Budowanie komponentów wielokrotnego użytku wspierających długoterminowy rozwój produktu",
+      "Współpraca przy wysokiej jakości rozwiązaniach UI/UX z zespołami wielofunkcyjnymi",
+      "Monitorowanie wydajności, identyfikowanie wąskich gardeł i usprawnianie infrastruktury"
     ],
     "technologies": [
-      "React",
-      "Next.js",
       "TypeScript",
-      "GraphQL",
+      "React.js",
       "Node.js",
-      "Express",
+      "Express.js",
+      "RAG",
+      "OpenAI API",
       "MongoDB",
-      "WebSocket",
-      "OpenAI API"
+      "pgvector",
+      "REST API",
+      "Git"
     ],
     "type": "work"
   },
   {
     "id": "exp-002",
     "period": {
-      "start": "2020-06",
-      "end": "2023-12"
+      "start": "2023-03",
+      "end": "2023-05"
     },
-    "duration": "3+ lata",
-    "role": "Inżynier Full Stack",
-    "company": "Poprzednia firma",
-    "focus": "Architektura backendowa i optymalizacja baz danych",
-    "description": "Budowałem i utrzymywałem kluczowe systemy backendowe podczas skalowania platformy od 1 tys. do 50 tys.+ użytkowników. Skupiałem się na optymalizacji baz danych i niezawodności systemu.",
+    "duration": "3 miesiące",
+    "role": "Programista Web",
+    "company": "Maritime University of Szczecin",
+    "focus": "System Zamówień Publicznych",
+    "description": "Zaprojektowanie i budowa systemu zamówień publicznych (v1.0.0) — od architektury po wdrożenie produkcyjne na serwerze Debian. Utrzymanie oficjalnych stron uczelni oraz wsparcie IT.",
     "highlights": [
-      "Zaprojektowałem i wdrożyłem architekturę mikroserwisów",
-      "Zoptymalizowałem zapytania PostgreSQL, redukując czas zapytań o 60%",
-      "Prowadziłem projekt migracji bazy danych bez przestojów",
-      "Ustanowiłem pipeline'y CI/CD dla automatycznego wdrażania",
-      "Osiągnąłem 99,95% dostępności SLA"
+      "Zbudowanie systemu zamówień publicznych v1.0.0 w oparciu o React, Redux, Express, TypeScript, MySQL",
+      "Wdrożenie i konfiguracja na serwerze Debian z bezpiecznym zarządzaniem bazą danych",
+      "Kierowanie rozwojem przez cały cykl życia projektu z dotrzymaniem terminu",
+      "Utrzymanie oficjalnych stron uczelni i wsparcie IT"
     ],
     "technologies": [
-      "Node.js",
-      "Express",
-      "PostgreSQL",
-      "Redis",
-      "Docker",
-      "Kubernetes",
-      "GraphQL",
-      "TypeScript"
+      "React.js",
+      "Redux",
+      "Express.js",
+      "TypeScript",
+      "MySQL",
+      "HTML5",
+      "CSS3",
+      "Debian Linux"
     ],
     "type": "work"
   },
   {
     "id": "exp-003",
     "period": {
-      "start": "2022-09",
-      "end": "present"
+      "start": "2024-10",
+      "end": "2028-10"
     },
-    "duration": "2+ lata",
-    "role": "Doktorant (rok 2 z 4)",
-    "company": "Uczelnia – Badania nad bezpieczeństwem AI",
-    "focus": "Wielowarstwowe wykrywanie phishingu z AI",
-    "description": "Prowadzę badania nad systemami bezpieczeństwa opartymi na AI. Łączę wykrywanie oparte na URL, analizę wizyjną i orkiestrację LLM w celu kompleksowego wykrywania zagrożeń.",
+    "duration": "program 4-letni",
+    "role": "Doktorant",
+    "company": "West Pomeranian University of Technology",
+    "focus": "Cyberbezpieczeństwo i wykrywanie phishingu",
+    "description": "Badania doktoranckie na styku AI i cyberbezpieczeństwa. Eksploracja metod uczenia maszynowego i głębokiego uczenia w celu wykrywania i zapobiegania atakom phishingowym, przyczyniając się do bezpieczniejszego środowiska cyfrowego.",
     "highlights": [
-      "Opublikowałem 2 recenzowane artykuły o wykrywaniu phishingu",
-      "3. artykuł jest pod recenzją (orkiestracja LLM)",
-      "Zaprojektowałem wielowarstwowy system wykrywania łączący 3 podejścia",
-      "Opracowałem wizyjną analizę zawartości e-maili",
-      "Stworzyłem framework orkiestracji LLM do inteligentnego routingu"
+      "Badanie metod ML i deep learningu do wykrywania i zapobiegania phishingowi",
+      "Rozwijanie strategii cyberbezpieczeństwa z wykorzystaniem nowoczesnych technik AI",
+      "Udział w pracach naukowych dotyczących inteligentnego, wielowarstwowego wykrywania zagrożeń"
     ],
     "technologies": [
       "Python",
-      "LLaMA Index",
-      "OpenAI API",
-      "pgvector",
-      "TensorFlow",
-      "Computer Vision",
+      "PyTorch",
+      "Deep Learning",
       "NLP",
-      "Machine Learning"
+      "Computer Vision",
+      "Cybersecurity"
     ],
     "type": "academic"
   }
