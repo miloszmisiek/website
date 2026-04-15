@@ -19,7 +19,7 @@ const ROTATE_Y_PER_STEP = 8; // degrees of Y-rotation per depth position
 const SCALE_PER_STEP = 0.04; // scale reduction per depth position
 const Y_SINK_PER_STEP = 6; // px — subtle vertical drop per depth
 
-const MOBILE_BREAKPOINT = 1024; // px — carousel on tablet and smaller
+const MOBILE_BREAKPOINT = 960; // px — carousel on tablet and smaller
 const FALLBACK_HEIGHT = 400; // px — shown before first measurement
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -78,7 +78,7 @@ export function PublicationDeck({ publications }: PublicationDeckProps) {
   const minHeight = containerHeight > 0 ? containerHeight : FALLBACK_HEIGHT;
 
   return (
-    <div className="w-full overflow-hidden lg:overflow-visible">
+    <div className={`w-full ${isMobile ? "overflow-hidden" : "overflow-visible"}`}>
       {isMobile ? (
         /* ── Mobile / Tablet Carousel ─────────────────────────────────────── */
         <PublicationCarousel

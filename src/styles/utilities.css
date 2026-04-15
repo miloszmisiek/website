@@ -90,6 +90,37 @@
     background: linear-gradient(to right, transparent, var(--gradient-hover-via), transparent);
   }
 
+  /* Carousel peek fades — CSS mask to actual transparency, color-independent (sm+ only) */
+  @media (min-width: 640px) {
+    .carousel-fade-right {
+      -webkit-mask-image: linear-gradient(to right, black calc(100% - 3.5rem), transparent);
+      mask-image: linear-gradient(to right, black calc(100% - 3.5rem), transparent);
+    }
+    .carousel-fade-left {
+      -webkit-mask-image: linear-gradient(to left, black calc(100% - 3.5rem), transparent);
+      mask-image: linear-gradient(to left, black calc(100% - 3.5rem), transparent);
+    }
+    .carousel-fade-both {
+      -webkit-mask-image: linear-gradient(to right, transparent, black 3.5rem, black calc(100% - 3.5rem), transparent);
+      mask-image: linear-gradient(to right, transparent, black 3.5rem, black calc(100% - 3.5rem), transparent);
+    }
+  }
+  /* md+ override — larger 5rem peek matches md slide flex-basis */
+  @media (min-width: 768px) {
+    .carousel-fade-right {
+      -webkit-mask-image: linear-gradient(to right, black calc(100% - 5rem), transparent);
+      mask-image: linear-gradient(to right, black calc(100% - 5rem), transparent);
+    }
+    .carousel-fade-left {
+      -webkit-mask-image: linear-gradient(to left, black calc(100% - 5rem), transparent);
+      mask-image: linear-gradient(to left, black calc(100% - 5rem), transparent);
+    }
+    .carousel-fade-both {
+      -webkit-mask-image: linear-gradient(to right, transparent, black 5rem, black calc(100% - 5rem), transparent);
+      mask-image: linear-gradient(to right, transparent, black 5rem, black calc(100% - 5rem), transparent);
+    }
+  }
+
   /* Smooth scrolling */
   html {
     @apply scroll-smooth;

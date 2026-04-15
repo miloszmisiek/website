@@ -67,17 +67,16 @@ export function PublicationCarousel({
         {`Showing publication ${currentIndex + 1} of ${publications.length}`}
       </div>
 
-      {/* ── Right fade — fades the peeking next card only (sm+ where peek is active) */}
-      <div
-        className="hidden sm:block absolute inset-y-0 right-0 w-10 pointer-events-none z-10"
-        style={{ background: "linear-gradient(to right, transparent, rgb(var(--color-background)))" }}
-        aria-hidden="true"
-      />
-
       {/* ── Viewport ────────────────────────────────────────────────────────── */}
       <div
         ref={emblaRef}
-        className="overflow-hidden w-full"
+        className={cn(
+          "overflow-hidden w-full",
+          canGoPrev && canGoNext ? "carousel-fade-both"
+            : canGoPrev ? "carousel-fade-left"
+            : canGoNext ? "carousel-fade-right"
+            : "",
+        )}
         onKeyDown={handleKeyDown}
         tabIndex={0}
         role="region"
@@ -89,7 +88,7 @@ export function PublicationCarousel({
             <div
               key={pub.id}
               ref={idx === currentIndex ? activeCardRef : null}
-              className="flex-[0_0_100%] sm:flex-[0_0_calc(100%-3.5rem)] min-w-0"
+              className="flex-[0_0_100%] sm:flex-[0_0_calc(100%-3.5rem)] md:flex-[0_0_calc(100%-5rem)] min-w-0"
             >
               <PublicationStackCard
                 publication={pub}

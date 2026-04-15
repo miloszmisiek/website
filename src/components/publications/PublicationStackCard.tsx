@@ -52,7 +52,7 @@ export function PublicationStackCard({
         tabIndex={isTop ? undefined : 0}
         aria-label={isTop ? undefined : `Bring to front: ${title}`}
         className={cn(
-          "card-interactive p-5 sm:p-7 lg:p-10 w-full relative",
+          "card-interactive p-5 sm:p-7 lg:p-10 w-full relative flex flex-col h-full",
           !isTop &&
             "card-hoverable group cursor-pointer hover:border-border/80 focus-ring",
         )}

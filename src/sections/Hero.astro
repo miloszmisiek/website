@@ -11,7 +11,7 @@ const M_LOGO = "█▀▄▀█\n█ ▀ █";
 
 <section
   id="hero"
-  class="pb-12 min-h-[calc(100svh-76px)] flex flex-col justify-start lg:pb-0 relative short:mb-16"
+  class="pb-12 min-h-[calc(100svh-76px)] flex flex-col justify-start md2:pb-0 relative short:mb-16"
 >
   <div class="flex-1 " aria-hidden="true"></div>
   <FadeIn client:load delay={0.1}>
@@ -21,9 +21,9 @@ const M_LOGO = "█▀▄▀█\n█ ▀ █";
       {t("hero.typewriter")}
     </h1>
     <div
-      class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 text-muted font-light leading-relaxed text-sm md:border-l-2 md:border-line md:pl-6 lg:pl-10 md:ml-2"
+      class="grid grid-cols-1 md2:grid-cols-12 gap-8 md2:gap-12 text-muted font-light leading-relaxed text-sm md:border-l-2 md:border-line md:pl-6 md2:pl-10 md:ml-2"
     >
-      <div class="lg:col-span-7 max-w-2xl pt-2">
+      <div class="md2:col-span-6 mlg:col-span-7 max-w-2xl pt-2">
         <p class="text-body mb-6">
           <span class="text-foreground/50 font-mono mr-3" aria-hidden="true"
             >{"//"}</span
@@ -52,7 +52,7 @@ const M_LOGO = "█▀▄▀█\n█ ▀ █";
         </div>
 
         {/* Compact terminal bar — mobile/tablet only */}
-        <div class="lg:hidden mt-12 font-mono short:hidden" aria-hidden="true">
+        <div class="md2:hidden mt-12 font-mono short:hidden" aria-hidden="true">
           <!-- Green line with badge, line visible on both sides -->
           <div class="flex items-center">
             <div class="flex-1 h-px bg-emerald-400"></div>
@@ -92,7 +92,7 @@ const M_LOGO = "█▀▄▀█\n█ ▀ █";
       </div>
 
       {/* Terminal Window Stats */}
-      <div class="lg:col-span-5 terminal-widget self-start hidden lg:block">
+      <div class="md2:col-span-6 mlg:col-span-5 terminal-widget self-start hidden md2:block">
         <div
           class="terminal-frame relative overflow-hidden rounded-none font-mono text-[11px] sm:text-xs"
         >
@@ -189,7 +189,7 @@ const M_LOGO = "█▀▄▀█\n█ ▀ █";
   {/* Scroll indicator */}
   <div
     id="hero-scroll-indicator"
-    class="flex lg:hidden justify-center pointer-events-none absolute bottom-8 inset-x-0 short:hidden"
+    class="flex md2:hidden justify-center pointer-events-none absolute bottom-8 inset-x-0 short:hidden"
     aria-hidden="true"
   >
     <div
