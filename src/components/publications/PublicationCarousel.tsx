@@ -1,14 +1,20 @@
-import { useState, useEffect, useLayoutEffect, useRef, useCallback } from "react";
+import {
+  useState,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useCallback,
+} from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { useReducedMotion } from "framer-motion";
 import type { Publication } from "../../data/schema";
 import { cn } from "../../styles/cn";
 import { PublicationStackCard } from "./PublicationStackCard";
 
-interface PublicationCarouselProps {
+type PublicationCarouselProps = {
   publications: Publication[];
   onHeightChange?: (height: number) => void;
-}
+};
 
 export function PublicationCarousel({
   publications,
@@ -31,7 +37,9 @@ export function PublicationCarousel({
     if (!emblaApi) return;
     const onSelect = () => setCurrentIndex(emblaApi.selectedScrollSnap());
     emblaApi.on("select", onSelect);
-    return () => { emblaApi.off("select", onSelect); };
+    return () => {
+      emblaApi.off("select", onSelect);
+    };
   }, [emblaApi]);
 
   // ── Report active card height to parent ───────────────────────────────────
@@ -47,22 +55,30 @@ export function PublicationCarousel({
   // ── Navigation ────────────────────────────────────────────────────────────
   const goPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const goNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
-  const goToIndex = useCallback((i: number) => emblaApi?.scrollTo(i), [emblaApi]);
+  const goToIndex = useCallback(
+    (i: number) => emblaApi?.scrollTo(i),
+    [emblaApi],
+  );
 
   const canGoPrev = currentIndex > 0;
   const canGoNext = currentIndex < publications.length - 1;
 
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent) => {
-      if (e.key === "ArrowLeft") { e.preventDefault(); goPrev(); }
-      if (e.key === "ArrowRight") { e.preventDefault(); goNext(); }
+      if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        goPrev();
+      }
+      if (e.key === "ArrowRight") {
+        e.preventDefault();
+        goNext();
+      }
     },
     [goPrev, goNext],
   );
 
   return (
     <div className="w-full relative">
-      {/* ARIA live region — must be outside the Embla viewport */}
       <div aria-live="polite" aria-atomic="true" className="sr-only">
         {`Showing publication ${currentIndex + 1} of ${publications.length}`}
       </div>
@@ -72,10 +88,13 @@ export function PublicationCarousel({
         ref={emblaRef}
         className={cn(
           "overflow-hidden w-full",
-          canGoPrev && canGoNext ? "carousel-fade-both"
-            : canGoPrev ? "carousel-fade-left"
-            : canGoNext ? "carousel-fade-right"
-            : "",
+          canGoPrev && canGoNext
+            ? "carousel-fade-both"
+            : canGoPrev
+              ? "carousel-fade-left"
+              : canGoNext
+                ? "carousel-fade-right"
+                : "",
         )}
         onKeyDown={handleKeyDown}
         tabIndex={0}

@@ -4,7 +4,7 @@ import { getTranslations, type TranslationKey } from "../../i18n";
 import { cn } from "../../styles/cn";
 import { Badge } from "../Badge";
 import { Button } from "../button/Button";
-import { PublicationAbstractDialog } from "./PublicationAbstractDialog";
+import { PublicationAbstractDialog } from "./dialog";
 
 type PublicationStackCardProps = {
   publication: Publication;
@@ -44,7 +44,7 @@ export function PublicationStackCard({
   };
 
   return (
-    <PublicationAbstractDialog>
+    <PublicationAbstractDialog.Root>
       <div
         onClick={isTop ? undefined : onClick}
         onKeyDown={onKeyDown}
@@ -99,11 +99,15 @@ export function PublicationStackCard({
           {/* Authors */}
           {authors.length > 0 && (
             <p className="font-mono text-xs uppercase tracking-widest flex flex-wrap items-baseline gap-x-2 gap-y-1">
-              <span className="text-foreground/40 whitespace-nowrap">{"{ author(s):"}</span>
+              <span className="text-foreground/40 whitespace-nowrap">
+                {"{ author(s):"}
+              </span>
               <span className="text-foreground/80 tracking-wide min-w-0">
                 {authors.join(", ")}
               </span>
-              <span className="text-foreground/40 whitespace-nowrap">{"}"}</span>
+              <span className="text-foreground/40 whitespace-nowrap">
+                {"}"}
+              </span>
             </p>
           )}
         </div>
@@ -141,7 +145,7 @@ export function PublicationStackCard({
               </span>
             )}
             {doi && (
-              <span className="flex items-center gap-2 border-l border-border/70 pl-4 min-w-0">
+              <span className="flex items-center gap-2 sm:border-l sm:border-border/70 sm:pl-4 min-w-0">
                 <span className="text-foreground/60 shrink-0">doi:</span>
                 <span className="truncate">{doi}</span>
               </span>
@@ -173,6 +177,6 @@ export function PublicationStackCard({
         />
         <PublicationAbstractDialog.Footer year={year} doi={doi} link={link} />
       </PublicationAbstractDialog.Panel>
-    </PublicationAbstractDialog>
+    </PublicationAbstractDialog.Root>
   );
 }
