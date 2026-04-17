@@ -40,7 +40,7 @@ const t = getTranslations(Astro.currentLocale);
             {t("contact.email.label")}
           </span>
           <a
-            href="mailto:hello@milosz.dev"
+            href="mailto:milosz.workspace@gmail.com?subject=Contact%20from%20Portfolio&body=Hi%20Milosz%2C%0A%0AI%20came%20across%20your%20portfolio%20and%20would%20like%20to%20get%20in%20touch.%0A%0A[Please%20replace%20this%20with%20your%20message]%0A%0ABest%20Regards%0A"
             class="group inline-flex items-center gap-3 w-fit border border-foreground/15 rounded-none px-4 py-3 hover:border-foreground/30 hover:bg-foreground/[0.03] transition-[border-color,background-color] duration-300 cursor-pointer focus-ring"
             translate="no"
           >
@@ -61,7 +61,7 @@ const t = getTranslations(Astro.currentLocale);
             <span
               class="text-xs font-mono text-foreground/80 group-hover:text-foreground tracking-wide transition-colors duration-200"
             >
-              hello@milosz.dev
+              milosz.workspace@gmail.com
             </span>
           </a>
         </div>
@@ -70,8 +70,9 @@ const t = getTranslations(Astro.currentLocale);
         <div class="flex flex-wrap gap-3">
           {/* GitHub */}
           <Button
-            href="#"
+            href="https://github.com/miloszmisiek"
             variant="secondary"
+            target="_blank"
             class="focus-ring gap-2"
             aria-label="GitHub profile"
           >
@@ -88,9 +89,10 @@ const t = getTranslations(Astro.currentLocale);
 
           {/* LinkedIn */}
           <Button
-            href="#"
+            href="https://www.linkedin.com/in/milosz-misiek/"
             variant="secondary"
             class="focus-ring gap-2"
+            target="_blank"
             aria-label="LinkedIn profile"
           >
             <img
@@ -106,8 +108,9 @@ const t = getTranslations(Astro.currentLocale);
 
           {/* ResearchGate */}
           <Button
-            href="#"
+            href="https://www.researchgate.net/profile/Milosz-Misiek"
             variant="secondary"
+            target="_blank"
             class="focus-ring gap-2"
             aria-label="ResearchGate profile"
           >
