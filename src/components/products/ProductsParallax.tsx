@@ -125,7 +125,7 @@ function ProductMobileItem({ product, index }: ProductMobileItemProps) {
       {/* Name + Role */}
       <h3 className="text-heading-md mb-2 text-foreground">{product.name}</h3>
       {product.role && (
-        <p className="font-mono text-xs text-muted uppercase tracking-[0.2em] mb-6">
+        <p className="font-mono text-xs text-muted uppercase tracking-technical mb-6">
           {`// ${product.role}`}
         </p>
       )}
@@ -213,7 +213,7 @@ function ProductCard({
             <div className="hover-gradient-bg" />
             {/* Header: Number & Year */}
             <div className="flex items-center justify-between mb-10">
-              <span className="font-mono text-xs tracking-[0.2em] text-muted">
+              <span className="font-mono text-xs tracking-technical text-muted">
                 {String(index).padStart(2, "0")}
               </span>
               {product.year && (
@@ -229,7 +229,7 @@ function ProductCard({
                 {product.name}
               </h3>
               {product.role && (
-                <p className="font-mono text-xs text-muted/80 uppercase tracking-[0.2em]">{`// ${product.role}`}</p>
+                <p className="font-mono text-xs text-muted/80 uppercase tracking-technical">{`// ${product.role}`}</p>
               )}
             </div>
 

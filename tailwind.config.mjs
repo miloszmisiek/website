@@ -16,8 +16,10 @@ export default {
     },
     extend: {
       fontSize: {
-        micro: "0.625rem", // 10px
+        nano: "0.55rem",    // ~8.8px
+        micro: "0.625rem",  // 10px
         caption: "0.6875rem", // 11px
+        label: "0.8125rem", // 13px
       },
       letterSpacing: {
         technical: "0.2em",

@@ -1,10 +1,18 @@
+// GOOD
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Badge } from "../Badge";
 
-interface TimelineTechStackProps {
+const STAGGER_STEP = 0.05;
+
+type TimelineTechStackProps = {
   technologies: string[];
   maxTech?: number;
+};
+
+function getEntryDelay(index: number, isExpanded: boolean, maxTech: number) {
+  const isNewlyRevealed = isExpanded && index >= maxTech;
+  return isNewlyRevealed ? (index - maxTech) * STAGGER_STEP : 0;
 }
 
 export function TimelineTechStack({
@@ -13,13 +21,14 @@ export function TimelineTechStack({
 }: TimelineTechStackProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
-  if (!technologies || technologies.length === 0) return null;
+  if (technologies.length === 0) return null;
 
   const visibleTech = isExpanded
     ? technologies
     : technologies.slice(0, maxTech);
   const overflowCount = technologies.length - maxTech;
-  const hasOverflow = overflowCount > 0;
+
+  const expand = () => setIsExpanded(true);
 
   return (
     <div className="flex flex-wrap items-center gap-2">
@@ -31,8 +40,7 @@ export function TimelineTechStack({
             animate={{ opacity: 1, scale: 1 }}
             transition={{
               duration: 0.2,
-              delay:
-                isExpanded && index >= maxTech ? (index - maxTech) * 0.05 : 0,
+              delay: getEntryDelay(index, isExpanded, maxTech),
             }}
           >
             <Badge variant="neutral">{tech}</Badge>
@@ -40,10 +48,10 @@ export function TimelineTechStack({
         ))}
       </AnimatePresence>
 
-      {hasOverflow && !isExpanded && (
+      {overflowCount > 0 && !isExpanded && (
         <button
-          onClick={() => setIsExpanded(true)}
-          className="bg-foreground/5 cursor-pointer hover:bg-foreground/10 hover:border-foreground/30 transition-colors focus-ring text-[0.55rem] px-[6px] py-[2px] rounded-none border border-dashed border-[var(--color-line)] text-[var(--color-muted)] font-mono-system tracking-[0.1em]"
+          onClick={expand}
+          className="bg-foreground/5 cursor-pointer hover:bg-foreground/10 hover:border-foreground/30 transition-colors focus-ring text-nano px-1.5 py-0.5 rounded-none border border-dashed border-line text-muted font-mono-system tracking-widest"
           aria-label={`Show ${overflowCount} more technologies`}
         >
           + {overflowCount}

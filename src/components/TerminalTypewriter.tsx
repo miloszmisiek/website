@@ -37,7 +37,7 @@ export const TerminalTypewriter = ({
         <motion.span
           animate={{ opacity: [1, 0] }}
           transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
-          className="inline-block w-[0.6em] h-[1em] bg-foreground/60 ml-1 translate-y-[2px]"
+          className="inline-block w-[0.6em] h-[1em] bg-foreground/60 ml-1 translate-y-0.5"
         />
       )}
     </span>

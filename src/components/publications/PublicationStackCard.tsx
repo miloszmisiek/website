@@ -116,7 +116,7 @@ export function PublicationStackCard({
         {topics.length > 0 && (
           <div className="flex flex-wrap gap-2 mb-8 relative z-10">
             {topics.map((topic) => (
-              <Badge key={topic} variant="neutral" className="tracking-[0.1em]">
+              <Badge key={topic} variant="neutral" className="tracking-widest">
                 {topic}
               </Badge>
             ))}
