@@ -1,5 +1,5 @@
 import { getTranslations } from "../../i18n";
-import { IconSpinner, IconArrow, IconCheck } from "./icons";
+import { IconCheck, Loader } from "./icons";
 import { Form } from "./form";
 
 export { FORM_STATE } from "./types";
@@ -72,13 +72,9 @@ export function ContactForm() {
         <div className="flex items-center justify-between pt-6 pb-1">
           <Form.StatusText />
           <Form.SubmitButton>
-            <Form.SubmitIdle>
-              {t("contact.form.submit")}
-              <IconArrow className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
-            </Form.SubmitIdle>
+            <Form.SubmitIdle>{t("contact.form.submit")}</Form.SubmitIdle>
             <Form.SubmitLoading>
-              <IconSpinner className="w-3 h-3 animate-spin" />
-              {t("contact.form.sending")}
+              <Loader className="w-6 h-6" />
             </Form.SubmitLoading>
           </Form.SubmitButton>
         </div>

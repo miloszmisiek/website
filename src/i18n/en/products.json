@@ -14,6 +14,7 @@
     ],
     "link": "https://elasticemail.com/inbox",
     "image": "/inbox.webp",
+		"image_mobile": "/inbox_raw.webp",
     "year": 2025,
     "featured": true
   },
@@ -44,7 +45,8 @@
 			"WordPress Gutenberg"
 	],
 	"link": "https://elasticemail.com/email-designer",
-	"image": "/ee-te.webp",
+	"image": "/te_desktop.webp",
+		"image_mobile": "/te_mobile.webp",
 	"year": 2023,
 	"featured": true
 	}

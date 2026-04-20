@@ -1,14 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <style>
-    .bg  { display: none; }
-    .mm  { font-family: Inter, "Helvetica Neue", Arial, sans-serif;
-           font-weight: 800;
-           font-size: 19px;
-           letter-spacing: -0.5px;
-           fill: #0f0f0f; }
+    .m { font-family: "Courier New", Courier, monospace;
+         font-size: 10px;
+         fill: #0f0f0f; }
     @media (prefers-color-scheme: dark) {
-      .mm { fill: #ffffff; }
+      .m { fill: #ffffff; }
     }
   </style>
-  <text class="mm" x="1" y="23">mm</text>
+  <text class="m" x="1" y="13">█▀▄▀█</text>
+  <text class="m" x="1" y="25">█ ▀ █</text>
 </svg>

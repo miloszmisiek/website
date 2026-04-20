@@ -9,7 +9,7 @@ export function Header() {
 
   return (
     <div className="flex items-center justify-between px-6 sm:px-8 py-5 border-b border-border/70 flex-shrink-0">
-      <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted/70">
+      <span className="section-num">
         {t("publication.abstract")}
       </span>
       {isDrawer ? (
@@ -30,7 +30,7 @@ function CloseButton() {
     <Button
       type="button"
       variant="secondary"
-      size="sm"
+      size="compact"
       aria-label="Close"
       className="text-muted hover:text-foreground"
       onClick={close}

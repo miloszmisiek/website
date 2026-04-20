@@ -21,9 +21,9 @@ export function Panel({ children }: PropsWithChildren) {
           <Drawer.Overlay className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm" />
           <Drawer.Content
             aria-labelledby="pub-dialog-title"
-            className="fixed bottom-0 left-0 right-0 z-50 flex flex-col bg-card-bg rounded-t-2xl max-h-[90vh] outline-none border border-border/50 overflow-hidden touch-auto pointer-events-auto"
+            className="fixed bottom-0 left-0 right-0 z-50 flex flex-col bg-card-bg rounded-none max-h-[90dvh] pb-[env(safe-area-inset-bottom)] outline-none border border-border/50 overflow-hidden touch-auto pointer-events-auto"
           >
-            <Drawer.Handle className="mx-auto mt-3 mb-1 flex-shrink-0 relative h-[5px] w-10 rounded-full bg-foreground/20 touch-none" />
+            <Drawer.Handle className="mx-auto mt-3 mb-1 flex-shrink-0 relative h-[5px] w-10 rounded-none bg-foreground/20 touch-none" />
             <div className="overflow-y-auto flex-1 min-h-0 flex flex-col">
               {children}
             </div>

@@ -1,6 +1,6 @@
 ---
 import { AnimatedSectionTitle } from "../components/arrayTitle/AnimatedSectionTitle";
-import { FadeIn } from "../components/FadeIn";
+import { FadeIn, FADE_DELAY } from "../components/FadeIn";
 import { PublicationDeck } from "../components/publications/PublicationDeck";
 import { getPublications, getTranslations } from "../i18n";
 
@@ -16,7 +16,7 @@ const t = getTranslations(Astro.currentLocale);
   </div>
 
   {/* Publications Stacked Deck */}
-  <FadeIn client:load delay={0.3} scrollTriggered>
+  <FadeIn client:load delay={FADE_DELAY.sm} scrollTriggered>
     <PublicationDeck client:load publications={publications} />
   </FadeIn>
 </section>

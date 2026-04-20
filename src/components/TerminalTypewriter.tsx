@@ -1,13 +1,18 @@
+// GOOD
 import { motion, useReducedMotion } from "framer-motion";
 import { useTypewriter } from "./useTypewriter";
 
+type TypewriterOptions = Partial<{
+  typingSpeed: number;
+  deletingSpeed: number;
+  pauseDelay: number;
+  disabled: boolean;
+}>;
+
 type TerminalTypewriterProps = {
   words: string[];
-  typingSpeed?: number;
-  deletingSpeed?: number;
-  pauseDelay?: number;
   className?: string;
-};
+} & TypewriterOptions;
 
 export const TerminalTypewriter = ({
   words,
@@ -17,7 +22,13 @@ export const TerminalTypewriter = ({
   className = "",
 }: TerminalTypewriterProps) => {
   const shouldReduceMotion = useReducedMotion();
-  const text = useTypewriter(words, { typingSpeed, deletingSpeed, pauseDelay, disabled: shouldReduceMotion ?? false });
+  const typewriterOptions = {
+    typingSpeed,
+    deletingSpeed,
+    pauseDelay,
+    disabled: !!shouldReduceMotion,
+  };
+  const text = useTypewriter(words, typewriterOptions);
 
   return (
     <span className={className}>

@@ -1,58 +1,64 @@
-import { useRef } from "react";
-import type { ReactNode } from "react";
+// GOOD
+import { type ReactNode, useRef } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 
-interface FadeInProps {
-  children: ReactNode;
-  delay?: number;
-  className?: string;
+export const FADE_DELAY = { xs: 0.1, sm: 0.3, md: 0.4 } as const;
+
+type FadeInOptions = Partial<{
+  delay: number;
   /**
    * When true the fade-in triggers when the element scrolls into the
    * viewport instead of on mount.  Use this for section content so it
    * stays on the same clock as AnimatedSectionTitle (which also uses
-   G
+   * useInView), enabling a staggered cascade via the delay prop.
    */
-  scrollTriggered?: boolean;
+  scrollTriggered: boolean;
   /**
    * When true only opacity is animated — no Y translation.  Use this when
    * the child uses position:sticky or scroll-driven layout (e.g. parallax)
    * where a translateY on a parent would break the sticky containing block.
    */
-  noTranslate?: boolean;
+  noTranslate: boolean;
+}>;
+type FadeInProps = Partial<{
+  children: ReactNode;
+  className?: string;
+}> &
+  FadeInOptions;
+
+function makeVariants(noTranslate: boolean) {
+  const hidden = { opacity: 0, ...(!noTranslate && { y: 10 }) };
+  const visible = { opacity: 1, ...(!noTranslate && { y: 0 }) };
+  return { hidden, visible };
 }
 
-export const FadeIn = ({
+export function FadeIn({
   children,
   delay = 0,
   className = "",
   scrollTriggered = false,
   noTranslate = false,
-}: FadeInProps) => {
-  const shouldReduceMotion = useReducedMotion() ?? false;
-  const ref = useRef<HTMLDivElement>(null);
-
-  // scroll-triggered path: useInView fires once when element enters viewport
-  const isInView = useInView(ref, { once: true, margin: "-5% 0px" });
-
+}: FadeInProps) {
+  const shouldReduceMotion = useReducedMotion();
+  const fadeInRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(fadeInRef, { once: true, margin: "-5% 0px" });
   const isVisible = scrollTriggered ? isInView : true;
 
-  // Skip all animation for users who prefer reduced motion
   if (shouldReduceMotion) {
     return (
-      <div ref={ref} className={className}>
+      <div ref={fadeInRef} className={className}>
         {children}
       </div>
     );
   }
 
-  const hiddenState = noTranslate ? { opacity: 0 } : { opacity: 0, y: 10 };
-  const visibleState = noTranslate ? { opacity: 1 } : { opacity: 1, y: 0 };
+  const { hidden, visible } = makeVariants(noTranslate);
 
   return (
     <motion.div
-      ref={ref}
-      initial={hiddenState}
-      animate={isVisible ? visibleState : hiddenState}
+      ref={fadeInRef}
+      initial={hidden}
+      animate={isVisible ? visible : hidden}
       transition={{
         duration: 0.8,
         ease: [0.16, 1, 0.3, 1],
@@ -63,4 +69,4 @@ export const FadeIn = ({
       {children}
     </motion.div>
   );
-};
+}

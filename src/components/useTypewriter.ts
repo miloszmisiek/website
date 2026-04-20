@@ -1,3 +1,4 @@
+// GOOD
 import { useState, useEffect } from "react";
 
 type UseTypewriterOptions = {
@@ -17,7 +18,7 @@ export function useTypewriter(
   }: UseTypewriterOptions,
 ) {
   const [wordIndex, setWordIndex] = useState(0);
-  const [text, setText] = useState(disabled ? (words[0] ?? "") : "");
+  const [text, setText] = useState(disabled ? words[0] : "");
   const [isDeleting, setIsDeleting] = useState(false);
 
   const scheduleTyping = () => {

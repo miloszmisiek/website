@@ -48,6 +48,7 @@ export type Product = {
   technologies: string[];
   link?: string;
   image?: string;
+  image_mobile?: string;
   year?: number;
   featured?: boolean;
 };

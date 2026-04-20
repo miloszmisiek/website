@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import {
   motion,
   useScroll,
@@ -9,12 +9,34 @@ import { Badge } from "../Badge";
 import { Button } from "../button/Button";
 import type { Product } from "../../data/schema";
 import { getTranslations } from "../../i18n";
+import { cn } from "../../styles/cn";
+
+const MOBILE_BREAKPOINT = 960; // mlg breakpoint
+
+const Z_CLASSES = ["z-[10]", "z-[11]", "z-[12]", "z-[13]"] as const;
 
 interface ProductsParallaxProps {
   products: Product[];
 }
 
 export function ProductsParallax({ products }: ProductsParallaxProps) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  if (isMobile) {
+    return <ProductsMobileList products={products} />;
+  }
+
+  return <ProductsParallaxDesktop products={products} />;
+}
+
+function ProductsParallaxDesktop({ products }: ProductsParallaxProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -22,9 +44,8 @@ export function ProductsParallax({ products }: ProductsParallaxProps) {
   });
 
   return (
-    <div ref={containerRef} className="relative mt-8 md:mt-16">
+    <div ref={containerRef} className="relative mt-8 mlg:mt-16">
       {products.map((product, index) => {
-        // Earlier cards scale down more as they get pushed back further
         const targetScale = 1 - (products.length - index) * 0.05;
 
         return (
@@ -41,6 +62,107 @@ export function ProductsParallax({ products }: ProductsParallaxProps) {
     </div>
   );
 }
+
+// ─── Mobile / small-tablet list ──────────────────────────────────────────────
+
+function ProductsMobileList({ products }: ProductsParallaxProps) {
+  return (
+    <div className="mt-8 divide-y divide-border">
+      {products.map((product, index) => (
+        <ProductMobileItem
+          key={product.id}
+          product={product}
+          index={index}
+          total={products.length}
+        />
+      ))}
+    </div>
+  );
+}
+
+interface ProductMobileItemProps {
+  product: Product;
+  index: number;
+  total: number;
+}
+
+function ProductMobileItem({ product, index }: ProductMobileItemProps) {
+  const t = getTranslations();
+  const prefersReducedMotion = useReducedMotion();
+
+  return (
+    <motion.article
+      initial={prefersReducedMotion ? false : { opacity: 0, y: 40 }}
+      whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+      transition={{
+        duration: 0.6,
+        ease: [0.16, 1, 0.3, 1],
+        delay: index * 0.08,
+      }}
+      viewport={{ once: true, margin: "-40px" }}
+      className="py-12 first:pt-4"
+    >
+      {/* Year */}
+      {product.year && (
+        <div className="mb-6">
+          <span className="font-mono text-[10px] text-muted/90 tracking-[0.3em] uppercase">
+            {product.year}
+          </span>
+        </div>
+      )}
+
+      {/* Image */}
+      {product.image && (
+        <div className="w-full aspect-video overflow-hidden mb-8 bg-foreground/[0.05]">
+          <img
+            src={product.image_mobile || product.image}
+            alt={product.name}
+            className="w-full h-full object-cover object-top"
+          />
+        </div>
+      )}
+
+      {/* Name + Role */}
+      <h3 className="text-heading-md mb-2 text-foreground">{product.name}</h3>
+      {product.role && (
+        <p className="font-mono text-xs text-muted uppercase tracking-[0.2em] mb-6">
+          {`// ${product.role}`}
+        </p>
+      )}
+
+      {/* Description */}
+      {product.description && (
+        <p className="text-body text-muted mb-6">{product.description}</p>
+      )}
+
+      {/* Tech badges */}
+      {product.technologies && product.technologies.length > 0 && (
+        <div className="flex flex-wrap gap-2 mb-8">
+          {product.technologies.map((tech) => (
+            <Badge key={tech} variant="neutral">
+              {tech}
+            </Badge>
+          ))}
+        </div>
+      )}
+
+      {/* CTA */}
+      {product.link && (
+        <Button
+          href={product.link}
+          variant="secondary"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-fit"
+        >
+          {t("product.viewProduct")}
+        </Button>
+      )}
+    </motion.article>
+  );
+}
+
+// ─── Desktop parallax card ────────────────────────────────────────────────────
 
 interface ProductCardProps {
   product: Product;
@@ -60,12 +182,9 @@ function ProductCard({
   const t = getTranslations();
   const prefersReducedMotion = useReducedMotion();
 
-  // Calculate when this specific card should start its stacking animation.
-  // We want it to start scaling down when the NEXT card starts coming up.
   const startRange = index / total;
   const endRange = 1;
 
-  // Parallax transforms applied as the user scrolls past this card
   const scale = useTransform(
     progress,
     [startRange, endRange],
@@ -74,11 +193,11 @@ function ProductCard({
 
   return (
     <div
-      className="md:sticky md:top-24 flex items-center justify-center"
-      style={{
-        zIndex: 10 + index,
-        marginBottom: index < total - 1 ? "16vh" : 0,
-      }}
+      className={cn(
+        "mlg:sticky mlg:top-24 flex items-center justify-center",
+        "mlg:[&:not(:last-child)]:mb-[16vh]",
+        Z_CLASSES[index],
+      )}
     >
       <motion.article
         style={prefersReducedMotion ? {} : { scale }}
@@ -88,13 +207,9 @@ function ProductCard({
         viewport={{ once: true, margin: "-60px" }}
         className="w-full origin-top"
       >
-        <div
-          className="card-base overflow-hidden flex flex-col-reverse lg:flex-row lg:min-h-[36rem] border border-border/60 shadow-xl group bg-card-bg"
-        >
+        <div className="card-base overflow-hidden flex flex-col-reverse lg:flex-row lg:min-h-[36rem] border border-border/60 shadow-xl group bg-card-bg">
           {/* Left: Content */}
-          <div
-            className="flex-1 p-8 lg:p-12 flex flex-col border-t lg:border-t-0 lg:border-r border-border/50 z-10 hover-gradient bg-card-bg"
-          >
+          <div className="flex-1 p-8 lg:p-12 flex flex-col border-t lg:border-t-0 lg:border-r border-border/50 z-10 hover-gradient bg-card-bg">
             <div className="hover-gradient-bg" />
             {/* Header: Number & Year */}
             <div className="flex items-center justify-between mb-10">

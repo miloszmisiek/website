@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { FadeIn } from "../components/FadeIn";
+import { FadeIn, FADE_DELAY } from "../components/FadeIn";
 import Header from "../sections/Header.astro";
 import ExperienceTimeline from "../sections/ExperienceTimeline.astro";
 import PublicationsSection from "../sections/PublicationsSection.astro";
@@ -45,7 +45,7 @@ const t = getTranslations(Astro.currentLocale);
   <!-- Footer zone: mirrors hero-zone with fade at top -->
   <div class="footer-zone relative z-10">
     <div class="page-container">
-      <FadeIn client:load delay={0.4}>
+      <FadeIn client:load delay={FADE_DELAY.md}>
         <footer class="flex items-center text-xs font-mono text-muted py-8">
           <span class="tracking-widest"
             >© {new Date().getFullYear()} MILOSZ MISIEK</span

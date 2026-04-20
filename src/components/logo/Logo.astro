@@ -1,15 +1,18 @@
 ---
+
 ---
+
 <a
   href="/"
   class="inline-flex select-none cursor-pointer font-nav text-2xl leading-none tracking-wide"
   aria-label="milosz misiek — home"
 >
-  {/* Mobile: mm() */}
-  <span class="inline-flex items-baseline md:hidden">
-    <span class="text-foreground">mm</span>
-    <span class="text-muted">()</span>
-  </span>
+  {/* Mobile: block-art M */}
+  <span
+    class="md:hidden font-mono text-xs leading-[1.15] whitespace-pre text-foreground select-none"
+    aria-hidden="true"
+    set:text={"█▀▄▀█\n█ ▀ █"}
+  />
 
   {/* Desktop: milosz.misiek */}
   <span class="hidden md:inline-flex items-baseline">

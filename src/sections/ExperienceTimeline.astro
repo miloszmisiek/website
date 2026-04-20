@@ -1,5 +1,5 @@
 ---
-import { FadeIn } from "../components/FadeIn";
+import { FadeIn, FADE_DELAY } from "../components/FadeIn";
 import TimelineEntry from "../components/timeline/TimelineEntry/index.astro";
 import TimelineAnimator from "../components/timeline/TimelineAnimator";
 import { AnimatedSectionTitle } from "../components/arrayTitle/AnimatedSectionTitle";
@@ -17,13 +17,13 @@ const t = getTranslations(Astro.currentLocale);
   </div>
 
   {/* Timeline */}
-  <FadeIn client:load delay={0.3} scrollTriggered>
+  <FadeIn client:load delay={FADE_DELAY.sm} scrollTriggered>
     <div class="pt-4">
       <div class="timeline-container">
         <span class="trunk-label">* main</span>
         <div class="trunk"></div>
 
-        <TimelineAnimator client:load items={experience} staggerDelay={0.12}>
+        <TimelineAnimator client:load items={experience}>
           {
             experience.map((entry, index) => (
               <TimelineEntry entry={entry} index={index} />

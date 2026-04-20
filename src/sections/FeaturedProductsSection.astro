@@ -1,7 +1,7 @@
 ---
 import { ProductsParallax } from "../components/products/ProductsParallax";
 import { AnimatedSectionTitle } from "../components/arrayTitle/AnimatedSectionTitle";
-import { FadeIn } from "../components/FadeIn";
+import { FadeIn, FADE_DELAY } from "../components/FadeIn";
 import { getProducts, getTranslations } from "../i18n";
 
 const products = getProducts(Astro.currentLocale);
@@ -16,7 +16,7 @@ const t = getTranslations(Astro.currentLocale);
   </div>
 
   {/* Products — sticky stacking cards with entrance animations */}
-  <FadeIn client:load delay={0.3} scrollTriggered noTranslate>
+  <FadeIn client:load delay={FADE_DELAY.sm} scrollTriggered noTranslate>
     <ProductsParallax client:load products={products} />
   </FadeIn>
 </section>

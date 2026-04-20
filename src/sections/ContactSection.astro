@@ -1,7 +1,7 @@
 ---
 import Button from "../components/button/Button.astro";
 import { AnimatedSectionTitle } from "../components/arrayTitle/AnimatedSectionTitle";
-import { FadeIn } from "../components/FadeIn";
+import { FadeIn, FADE_DELAY } from "../components/FadeIn";
 import { ContactForm } from "../components/contact/ContactForm";
 import { getTranslations } from "../i18n";
 
@@ -15,7 +15,7 @@ const t = getTranslations(Astro.currentLocale);
     <AnimatedSectionTitle client:load text={t("section.contact")} />
   </div>
 
-  <FadeIn client:load delay={0.3} scrollTriggered>
+  <FadeIn client:load delay={FADE_DELAY.sm} scrollTriggered>
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
       {/* ── Left: info + social links ── */}
       <div class="lg:col-span-5 flex flex-col gap-8">
@@ -40,7 +40,7 @@ const t = getTranslations(Astro.currentLocale);
             {t("contact.email.label")}
           </span>
           <a
-            href="mailto:milosz.workspace@gmail.com?subject=Contact%20from%20Portfolio&body=Hi%20Milosz%2C%0A%0AI%20came%20across%20your%20portfolio%20and%20would%20like%20to%20get%20in%20touch.%0A%0A[Please%20replace%20this%20with%20your%20message]%0A%0ABest%20Regards%0A"
+            href="mailto:contact@miloszmisiek.com?subject=Contact%20from%20Portfolio&body=Hi%20Milosz%2C%0A%0AI%20came%20across%20your%20portfolio%20and%20would%20like%20to%20get%20in%20touch.%0A%0A[Please%20replace%20this%20with%20your%20message]%0A%0ABest%20Regards%0A"
             class="group inline-flex items-center gap-3 w-fit border border-foreground/15 rounded-none px-4 py-3 hover:border-foreground/30 hover:bg-foreground/[0.03] transition-[border-color,background-color] duration-300 cursor-pointer focus-ring"
             translate="no"
           >
@@ -61,7 +61,7 @@ const t = getTranslations(Astro.currentLocale);
             <span
               class="text-xs font-mono text-foreground/80 group-hover:text-foreground tracking-wide transition-colors duration-200"
             >
-              milosz.workspace@gmail.com
+              contact@miloszmisiek.com
             </span>
           </a>
         </div>

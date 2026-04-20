@@ -135,7 +135,7 @@ export function PublicationStackCard({
 
         {/* Footer & Meta Information */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pt-6 border-t border-border/70 mt-auto relative z-10">
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-[10px] font-mono uppercase tracking-widest text-muted/90 min-w-0">
+          <div className="flex items-center gap-x-4 overflow-hidden text-[10px] font-mono uppercase tracking-widest text-muted/90 min-w-0">
             {readTime && (
               <span className="flex items-center gap-2 shrink-0">
                 <span className="text-foreground/60">
@@ -145,7 +145,7 @@ export function PublicationStackCard({
               </span>
             )}
             {doi && (
-              <span className="flex items-center gap-2 sm:border-l sm:border-border/70 sm:pl-4 min-w-0">
+              <span className="flex items-center gap-2 sm:border-l sm:border-border/70 sm:pl-4 min-w-0 shrink overflow-hidden">
                 <span className="text-foreground/60 shrink-0">doi:</span>
                 <span className="truncate">{doi}</span>
               </span>
@@ -159,7 +159,7 @@ export function PublicationStackCard({
               variant="secondary"
               target="_blank"
               rel="noopener noreferrer"
-              className={cn(!isTop && "pointer-events-none")}
+              className={cn("shrink-0", !isTop && "pointer-events-none")}
               onClick={stopPropagation}
             >
               {t("publication.viewPaper")}

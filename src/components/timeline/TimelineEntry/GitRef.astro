@@ -31,7 +31,7 @@ const { branchName, shortHash } = getGitDisplay(entry);
   .git-ref {
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: 0;
     font-family: theme("fontFamily.mono-system");
     font-size: 0.65rem;
@@ -40,6 +40,7 @@ const { branchName, shortHash } = getGitDisplay(entry);
   }
 
   .ref-hash {
+    flex-shrink: 0;
     opacity: 0.8;
     letter-spacing: 0.08em;
   }
@@ -51,22 +52,18 @@ const { branchName, shortHash } = getGitDisplay(entry);
   }
 
   .ref-sep {
+    flex-shrink: 0;
     opacity: 0.5;
     font-size: 0.55rem;
+    white-space: nowrap;
   }
   .ref-branch {
     opacity: 0.7;
     letter-spacing: 0.05em;
-    max-width: 120px;
+    min-width: 0;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
-
-  @media (min-width: 640px) {
-    .ref-branch {
-      max-width: none;
-    }
   }
 
   .ref-head {
