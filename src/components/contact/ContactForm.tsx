@@ -1,8 +1,7 @@
+// GOOD
 import { getTranslations } from "../../i18n";
 import { IconCheck, Loader } from "./icons";
 import { Form } from "./form";
-
-export { FORM_STATE } from "./types";
 
 export function ContactForm() {
   const t = getTranslations();

@@ -70,6 +70,16 @@
     @apply text-xs font-mono uppercase tracking-[0.2em] text-muted;
   }
 
+  /* Year/date annotations — 10px, 0.3em tracking */
+  .text-mono-date {
+    @apply font-mono text-[10px] uppercase tracking-[0.3em] text-muted;
+  }
+
+  /* Author bylines, company labels, metadata rows — 12px, widest tracking */
+  .text-mono-meta {
+    @apply font-mono text-xs uppercase tracking-widest text-muted;
+  }
+
   /* Gradient heading text — theme-aware */
   .text-gradient-heading {
     @apply bg-gradient-to-br from-gradient-from to-gradient-to;

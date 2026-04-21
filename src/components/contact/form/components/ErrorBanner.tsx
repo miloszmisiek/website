@@ -1,13 +1,15 @@
+// GOOD
+import { type PropsWithChildren } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useFormContext } from "../context/FormContext";
 import { IconWarning } from "../../icons";
-import { FORM_STATE } from "../../types";
+import { FORM_STATE } from "../../constants";
 
-export function ErrorBanner({ children }: { children: React.ReactNode }) {
+export function ErrorBanner({ children }: PropsWithChildren) {
   const { state } = useFormContext();
   return (
     <AnimatePresence>
-      {state === FORM_STATE.ERROR ? (
+      {state === FORM_STATE.ERROR && (
         <motion.div
           key="error-banner"
           initial={{ opacity: 0, height: 0 }}
@@ -24,7 +26,7 @@ export function ErrorBanner({ children }: { children: React.ReactNode }) {
             </span>
           </div>
         </motion.div>
-      ) : null}
+      )}
     </AnimatePresence>
   );
 }

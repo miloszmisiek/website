@@ -1,14 +1,12 @@
-import { useId } from "react";
+// GOOD
+import { useId, type PropsWithChildren } from "react";
 import { FieldContext } from "../context/FieldContext";
 import type { ContactFieldName } from "../../types";
 
 export function Field({
   name,
   children,
-}: {
-  name: ContactFieldName;
-  children: React.ReactNode;
-}) {
+}: PropsWithChildren<{ name: ContactFieldName }>) {
   const id = useId();
   return (
     <FieldContext.Provider value={{ id, name }}>

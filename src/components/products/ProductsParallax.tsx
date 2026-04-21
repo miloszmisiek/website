@@ -105,7 +105,7 @@ function ProductMobileItem({ product, index }: ProductMobileItemProps) {
       {/* Year */}
       {product.year && (
         <div className="mb-6">
-          <span className="font-mono text-[10px] text-muted/90 tracking-[0.3em] uppercase">
+          <span className="text-mono-date text-muted/90">
             {product.year}
           </span>
         </div>
@@ -125,7 +125,7 @@ function ProductMobileItem({ product, index }: ProductMobileItemProps) {
       {/* Name + Role */}
       <h3 className="text-heading-md mb-2 text-foreground">{product.name}</h3>
       {product.role && (
-        <p className="font-mono text-xs text-muted uppercase tracking-technical mb-6">
+        <p className="text-label mb-6">
           {`// ${product.role}`}
         </p>
       )}
@@ -217,7 +217,7 @@ function ProductCard({
                 {String(index).padStart(2, "0")}
               </span>
               {product.year && (
-                <span className="font-mono text-[10px] text-muted/90 tracking-[0.3em] uppercase">
+                <span className="text-mono-date text-muted/90">
                   {product.year}
                 </span>
               )}
@@ -229,7 +229,7 @@ function ProductCard({
                 {product.name}
               </h3>
               {product.role && (
-                <p className="font-mono text-xs text-muted/80 uppercase tracking-technical">{`// ${product.role}`}</p>
+                <p className="text-label text-muted/80">{`// ${product.role}`}</p>
               )}
             </div>
 

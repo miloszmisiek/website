@@ -1,6 +1,8 @@
-interface Props {
+// GOOD
+
+type Props = {
   text: string;
-}
+};
 
 export function ArrayTitle({ text }: Props) {
   return <span>{`[ ${text} ]`}</span>;

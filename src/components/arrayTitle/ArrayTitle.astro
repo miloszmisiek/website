@@ -1,13 +1,15 @@
 ---
-import { getTranslations, type TranslationKey } from '../../i18n';
+// GOOD
+import { getTranslations, type TranslationKey } from "../../i18n";
 
-interface Props {
+type Props = {
   translationKey: TranslationKey;
-}
+};
 
 const { translationKey } = Astro.props;
 const t = getTranslations(Astro.currentLocale);
 ---
+
 <span>
   {`[ ${t(translationKey)} ]`}
 </span>

@@ -37,7 +37,7 @@ export function Root({
     setState(FORM_STATE.IDLE);
   }
 
-  async function submitForm(e: React.FormEvent<HTMLFormElement>) {
+  async function submitForm(e: React.SubmitEvent<HTMLFormElement>) {
     e.preventDefault();
     if (state === FORM_STATE.LOADING) return;
 

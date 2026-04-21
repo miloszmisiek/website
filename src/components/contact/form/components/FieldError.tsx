@@ -1,3 +1,4 @@
+// GOOD
 import { motion, AnimatePresence } from "framer-motion";
 import { useFormContext } from "../context/FormContext";
 import { useFieldContext } from "../context/FieldContext";
@@ -9,7 +10,7 @@ export function FieldError() {
 
   return (
     <AnimatePresence>
-      {error ? (
+      {error && (
         <motion.span
           key={`err-${name}`}
           initial={{ opacity: 0, y: -4 }}
@@ -21,7 +22,7 @@ export function FieldError() {
         >
           {error}
         </motion.span>
-      ) : null}
+      )}
     </AnimatePresence>
   );
 }

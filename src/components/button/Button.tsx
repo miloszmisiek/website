@@ -1,3 +1,4 @@
+// GOOD
 import { cn } from "../../styles/cn";
 import { buttonVariants } from "./button-variants";
 import type { ButtonProps } from "./types";
@@ -16,13 +17,14 @@ export function Button({
   ...rest
 }: ButtonProps) {
   const isDisabled = "disabled" in rest && rest.disabled;
+  const isLink = "href" in rest && rest.href !== undefined;
   const classes = cn(
     buttonVariants({ variant, size }),
     isDisabled && "opacity-50 cursor-not-allowed",
     className,
   );
 
-  if ("href" in rest && rest.href !== undefined) {
+  if (isLink) {
     return (
       <a
         className={classes}

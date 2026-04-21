@@ -85,7 +85,7 @@ export function PublicationStackCard({
 
           <div className="flex items-center gap-3">
             {year && (
-              <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted/90">
+              <span className="text-mono-date text-muted/90">
                 {year}
               </span>
             )}
@@ -98,7 +98,7 @@ export function PublicationStackCard({
 
           {/* Authors */}
           {authors.length > 0 && (
-            <p className="font-mono text-xs uppercase tracking-widest flex flex-wrap items-baseline gap-x-2 gap-y-1">
+            <p className="text-mono-meta flex flex-wrap items-baseline gap-x-2 gap-y-1">
               <span className="text-foreground/40 whitespace-nowrap">
                 {"{ author(s):"}
               </span>

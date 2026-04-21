@@ -1,14 +1,21 @@
-export function Loader({ className = "" }: { className?: string }) {
+// GOOD
+import { cn } from "../../styles/cn";
+
+type IconProps = {
+  className?: string;
+};
+
+export function Loader({ className }: IconProps) {
   return (
     <span
       aria-hidden="true"
-      className={`inline-block aspect-square bg-current ${className}`}
+      className={cn("inline-block aspect-square bg-current", className)}
       style={{ animation: "organicBlob 2s infinite linear" }}
     />
   );
 }
 
-export function IconArrow({ className }: { className?: string }) {
+export function IconArrow({ className }: IconProps) {
   return (
     <svg
       aria-hidden="true"
@@ -27,7 +34,7 @@ export function IconArrow({ className }: { className?: string }) {
   );
 }
 
-export function IconCheck({ className }: { className?: string }) {
+export function IconCheck({ className }: IconProps) {
   return (
     <svg
       aria-hidden="true"
@@ -46,7 +53,7 @@ export function IconCheck({ className }: { className?: string }) {
   );
 }
 
-export function IconWarning({ className }: { className?: string }) {
+export function IconWarning({ className }: IconProps) {
   return (
     <svg
       aria-hidden="true"

@@ -24,7 +24,7 @@ export function Body({ title, authors, excerpt }: BodyProps) {
           {title}
         </h3>
         {authors.length > 0 && (
-          <p className="font-mono text-xs uppercase tracking-widest flex flex-wrap items-center gap-2">
+          <p className="text-mono-meta flex flex-wrap items-center gap-2">
             <span className="text-foreground/40">{"{ author(s): "}</span>
             <span className="text-foreground/80 tracking-wide">
               {authors.join(", ")}
