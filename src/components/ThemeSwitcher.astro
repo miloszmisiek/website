@@ -53,7 +53,7 @@ import IconMoon from "./icons/IconMoon.astro";
   const isTheme = (value: string | null): value is Theme =>
     value === Theme.DARK || value === Theme.LIGHT;
 
-  function getEffectiveTheme(): Theme {
+  const getEffectiveTheme = (): Theme => {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (isTheme(stored)) return stored;
     return window.matchMedia("(prefers-color-scheme: dark)").matches
@@ -61,7 +61,7 @@ import IconMoon from "./icons/IconMoon.astro";
       : Theme.LIGHT;
   }
 
-  function applyTheme(theme: Theme) {
+  const applyTheme = (theme: Theme) => {
     const { color, show, hide, label } = THEME_CONFIG[theme];
     document.documentElement.setAttribute("data-theme", theme);
     document
@@ -72,7 +72,7 @@ import IconMoon from "./icons/IconMoon.astro";
     document.getElementById(IDS.toggle)?.setAttribute("aria-label", label);
   }
 
-  function init() {
+  const init = () => {
     applyTheme(getEffectiveTheme());
 
     document.getElementById(IDS.toggle)?.addEventListener("click", () => {

@@ -1,8 +1,11 @@
+// GOOD
 import { AnimatePresence, motion } from "framer-motion";
 import { useFormContext } from "../context/FormContext";
-import { FORM_STATE } from "../../types";
+import { FORM_STATE } from "../../constants";
+import type { PropsWithChildren } from "react";
+import { FADE_SLIDE_ANIMATION } from "../animations";
 
-export function View({ children }: { children: React.ReactNode }) {
+export function View({ children }: PropsWithChildren) {
   const { state, submitForm } = useFormContext();
   return (
     <AnimatePresence initial={false}>
@@ -13,29 +16,25 @@ export function View({ children }: { children: React.ReactNode }) {
           name="contact"
           data-netlify="true"
           data-netlify-honeypot="bot-field"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{
-            opacity: 0,
-            y: -10,
-            position: "absolute",
-            top: 0,
-            left: 0,
-            right: 0,
-          }}
-          transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+          {...FADE_SLIDE_ANIMATION}
           onSubmit={submitForm}
           noValidate
         >
           <input type="hidden" name="form-name" value="contact" />
-          <p className="hidden">
-            <label>
-              Do not fill this out if you are human: <input name="bot-field" />
-            </label>
-          </p>
+          <HoneypotField />
           {children}
         </motion.form>
       )}
     </AnimatePresence>
+  );
+}
+
+function HoneypotField() {
+  return (
+    <p className="hidden">
+      <label>
+        Do not fill this out if you are human: <input name="bot-field" />
+      </label>
+    </p>
   );
 }

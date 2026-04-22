@@ -1,15 +1,15 @@
-import type { Publication } from "../../data/schema";
-import { PublicationStatusEnum } from "../../data/types";
-import { getTranslations, type TranslationKey } from "../../i18n";
-import { cn } from "../../styles/cn";
-import { Badge } from "../Badge";
-import { Button } from "../button/Button";
-import { PublicationAbstractDialog } from "./dialog";
+import type { Publication } from "../../../data/schema";
+import { PublicationStatusEnum } from "../../../data/types";
+import { getTranslations, type TranslationKey } from "../../../i18n";
+import { cn } from "../../../styles/cn";
+import { Badge } from "../../Badge";
+import { Button } from "../../button/Button";
+import { PublicationAbstractDialog } from "../dialog";
 
 type PublicationStackCardProps = {
   publication: Publication;
   isTop: boolean;
-  onClick: () => void;
+  onClick?: () => void;
 };
 
 const statusLabels = {
@@ -18,33 +18,35 @@ const statusLabels = {
   [PublicationStatusEnum.Preprint]: "publication.status.preprint",
 } satisfies Record<PublicationStatusEnum, TranslationKey>;
 
+const STATUS_BADGE_VARIANTS: Record<
+  PublicationStatusEnum,
+  "success" | "warning" | "info"
+> = {
+  [PublicationStatusEnum.Published]: "success",
+  [PublicationStatusEnum.UnderReview]: "warning",
+  [PublicationStatusEnum.Preprint]: "info",
+};
+
 export function PublicationStackCard({
-  publication: {
-    excerpt,
-    status,
-    title,
-    authors,
-    topics,
-    year,
-    readTime,
-    doi,
-    link,
-  },
+  publication,
   isTop,
   onClick,
 }: PublicationStackCardProps) {
+  const { excerpt, status, title, authors, topics, year, readTime, doi, link } =
+    publication;
   const t = getTranslations();
-  const statusLabel = t(statusLabels[status as keyof typeof statusLabels]);
+  const statusLabel = t(statusLabels[status]);
+  const statusVariant = STATUS_BADGE_VARIANTS[status];
 
   const stopPropagation = (e: React.MouseEvent) => e.stopPropagation();
   const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (isTop || (e.key !== "Enter" && e.key !== " ")) return;
     e.preventDefault();
-    onClick();
+    onClick?.();
   };
 
   return (
-    <PublicationAbstractDialog.Root>
+    <PublicationAbstractDialog.Root publication={publication}>
       <div
         onClick={isTop ? undefined : onClick}
         onKeyDown={onKeyDown}
@@ -59,7 +61,6 @@ export function PublicationStackCard({
       >
         <div className="hover-gradient-bg absolute inset-0 transition-opacity duration-700 opacity-0 group-hover:opacity-100 rounded-none pointer-events-none"></div>
 
-        {/* Right-edge depth shadow — active card only, reinforces 3D elevation */}
         {isTop && (
           <div
             className="absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-background/60 to-transparent pointer-events-none rounded-none"
@@ -67,36 +68,21 @@ export function PublicationStackCard({
           />
         )}
 
-        {/* Top Bar */}
         <div className="flex flex-wrap items-center justify-between mb-5 sm:mb-8 gap-4 border-b border-border/70 pb-6 relative z-10">
           <div className="flex items-center gap-3">
-            <Badge
-              variant={
-                status === "published"
-                  ? "success"
-                  : status === "underreview"
-                    ? "warning"
-                    : "info"
-              }
-            >
-              {statusLabel}
-            </Badge>
+            <Badge variant={statusVariant}>{statusLabel}</Badge>
           </div>
 
           <div className="flex items-center gap-3">
             {year && (
-              <span className="text-mono-date text-muted/90">
-                {year}
-              </span>
+              <span className="text-mono-date text-muted/90">{year}</span>
             )}
           </div>
         </div>
 
-        {/* Title */}
         <div className="mb-5 sm:mb-8 relative z-10">
           <h3 className="text-heading-md mb-4 text-foreground">{title}</h3>
 
-          {/* Authors */}
           {authors.length > 0 && (
             <p className="text-mono-meta flex flex-wrap items-baseline gap-x-2 gap-y-1">
               <span className="text-foreground/40 whitespace-nowrap">
@@ -112,7 +98,6 @@ export function PublicationStackCard({
           )}
         </div>
 
-        {/* Topics */}
         {topics.length > 0 && (
           <div className="flex flex-wrap gap-2 mb-8 relative z-10">
             {topics.map((topic) => (
@@ -123,7 +108,6 @@ export function PublicationStackCard({
           </div>
         )}
 
-        {/* Excerpt — already normalized to correct locale by PublicationsSection.astro */}
         {excerpt && (
           <p className="text-body mb-10 text-muted/80 relative z-10 pl-4 border-l-2 border-border/70">
             {excerpt.length > 180
@@ -133,7 +117,6 @@ export function PublicationStackCard({
           </p>
         )}
 
-        {/* Footer & Meta Information */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pt-6 border-t border-border/70 mt-auto relative z-10">
           <div className="flex items-center gap-x-4 overflow-hidden text-[10px] font-mono uppercase tracking-widest text-muted/90 min-w-0">
             {readTime && (
@@ -152,7 +135,6 @@ export function PublicationStackCard({
             )}
           </div>
 
-          {/* CTA */}
           {link && (
             <Button
               href={link}
@@ -170,12 +152,8 @@ export function PublicationStackCard({
 
       <PublicationAbstractDialog.Panel>
         <PublicationAbstractDialog.Header />
-        <PublicationAbstractDialog.Body
-          title={title}
-          authors={authors}
-          excerpt={excerpt}
-        />
-        <PublicationAbstractDialog.Footer year={year} doi={doi} link={link} />
+        <PublicationAbstractDialog.Body />
+        <PublicationAbstractDialog.Footer />
       </PublicationAbstractDialog.Panel>
     </PublicationAbstractDialog.Root>
   );

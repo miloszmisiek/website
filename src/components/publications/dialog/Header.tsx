@@ -1,3 +1,4 @@
+// GOOD
 import { Drawer } from "@hanzo/react-drawer";
 import { getTranslations } from "../../../i18n";
 import { Button } from "../../button/Button";
@@ -9,9 +10,7 @@ export function Header() {
 
   return (
     <div className="flex items-center justify-between px-6 sm:px-8 py-5 border-b border-border/70 flex-shrink-0">
-      <span className="section-num">
-        {t("publication.abstract")}
-      </span>
+      <span className="section-num">{t("publication.abstract")}</span>
       {isDrawer ? (
         <Drawer.Close asChild>
           <CloseButton />

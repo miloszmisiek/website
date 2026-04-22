@@ -1,27 +1,39 @@
+// GOOD
 import { useFormContext } from "../context/FormContext";
 import { useFieldContext } from "../context/FieldContext";
 import { cn } from "../../../../styles/cn";
-import { FORM_STATE, inputBase } from "../../types";
+import { FORM_STATE, INPUT_BASE } from "../../constants";
+import type { TextareaHTMLAttributes } from "react";
 
-export function Textarea(
-  props: Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, "id" | "name">,
-) {
+type TextareaProps = Omit<
+  TextareaHTMLAttributes<HTMLTextAreaElement>,
+  "id" | "name"
+>;
+export function Textarea({
+  className,
+  disabled,
+  onChange,
+  ...props
+}: TextareaProps) {
   const { id, name } = useFieldContext();
   const { state, errors, clearFieldError } = useFormContext();
   const error = errors[name];
+  const isDisabled = state === FORM_STATE.LOADING || disabled;
+
+  const onTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    if (error) clearFieldError(name);
+    onChange?.(e);
+  };
 
   return (
     <textarea
       {...props}
       id={id}
       name={name}
-      className={cn(inputBase, props.className)}
+      className={cn(INPUT_BASE, className)}
       aria-invalid={!!error}
-      disabled={state === FORM_STATE.LOADING || props.disabled}
-      onChange={(e) => {
-        if (errors[name]) clearFieldError(name);
-        props.onChange?.(e);
-      }}
+      disabled={isDisabled}
+      onChange={onTextareaChange}
     />
   );
 }

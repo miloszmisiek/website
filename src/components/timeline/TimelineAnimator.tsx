@@ -1,6 +1,6 @@
 // GOOD
 import React, { type ReactNode } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, MotionConfig } from "framer-motion";
 import { type TimelineEntry } from "../../data/schema";
 
 type TimelineAnimatorProps = {
@@ -22,20 +22,21 @@ export default function TimelineAnimator({
   children,
   items,
 }: TimelineAnimatorProps) {
-  const shouldReduceMotion = useReducedMotion();
   const childArray = React.Children.toArray(children);
 
   return (
-    <>
-      {childArray.map((child, index) => (
-        <motion.div
-          key={items[index]?.id || `timeline-entry-${index}`}
-          viewport={{ once: true, margin: "-100px" }}
-          {...(!shouldReduceMotion && ANIMATION_CONFIG)}
-        >
-          {child}
-        </motion.div>
-      ))}
-    </>
+    <MotionConfig reducedMotion="user">
+      <>
+        {childArray.map((child, index) => (
+          <motion.div
+            key={items[index]?.id || `timeline-entry-${index}`}
+            viewport={{ once: true, margin: "-100px" }}
+            {...ANIMATION_CONFIG}
+          >
+            {child}
+          </motion.div>
+        ))}
+      </>
+    </MotionConfig>
   );
 }

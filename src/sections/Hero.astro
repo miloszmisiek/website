@@ -342,7 +342,7 @@ const M_LOGO = "█▀▄▀█\n█ ▀ █";
   // All screens: first wheel/touch scroll snaps directly to the experience section
   let userInitiatedScroll = false;
 
-  function cancelSnap() {
+  const cancelSnap = () => {
     window.removeEventListener("scroll", snapToExperience);
   }
 
@@ -366,7 +366,7 @@ const M_LOGO = "█▀▄▀█\n█ ▀ █";
     link.addEventListener("click", cancelSnap, { once: true });
   });
 
-  function snapToExperience() {
+  const snapToExperience = () => {
     if (!userInitiatedScroll) return;
 
     // Abort snap scroll on very short screens (let the user scroll naturally)

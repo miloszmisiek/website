@@ -1,4 +1,5 @@
 // GOOD
+import { MotionConfig } from "framer-motion";
 import { getTranslations } from "../../i18n";
 import { IconCheck, Loader } from "./icons";
 import { Form } from "./form";
@@ -7,6 +8,7 @@ export function ContactForm() {
   const t = getTranslations();
 
   return (
+    <MotionConfig reducedMotion="user">
     <Form.Root>
       <Form.LiveRegion
         successText={t("contact.form.success")}
@@ -79,5 +81,6 @@ export function ContactForm() {
         </div>
       </Form.View>
     </Form.Root>
+    </MotionConfig>
   );
 }

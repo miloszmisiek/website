@@ -1,14 +1,13 @@
+// GOOD
 import { getTranslations } from "../../../i18n";
 import { Button } from "../../button/Button";
+import { usePublicationAbstractDialogContext } from "./context";
 
-type FooterProps = Partial<{
-  year: number;
-  doi: string;
-  link: string;
-}>;
-
-export function Footer({ year, doi, link }: FooterProps) {
+export function Footer() {
   const t = getTranslations();
+  const {
+    publication: { year, doi, link },
+  } = usePublicationAbstractDialogContext();
   return (
     <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 px-6 sm:px-8 py-5 border-t border-border/70 flex-shrink-0">
       <div className="flex items-center gap-4 text-[10px] font-mono uppercase tracking-widest text-muted/70 min-w-0 overflow-hidden">

@@ -1,14 +1,12 @@
+// GOOD
 import { cn } from "../../../styles/cn";
 import { usePublicationAbstractDialogContext } from "./context";
 
-type BodyProps = {
-  title: string;
-  authors: string[];
-  excerpt?: string;
-};
-
-export function Body({ title, authors, excerpt }: BodyProps) {
-  const { isDrawer } = usePublicationAbstractDialogContext();
+export function Body() {
+  const {
+    isDrawer,
+    publication: { title, authors, excerpt },
+  } = usePublicationAbstractDialogContext();
   return (
     <div
       className={cn(

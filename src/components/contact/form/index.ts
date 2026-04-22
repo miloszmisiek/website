@@ -1,3 +1,4 @@
+// GOOD
 import { Root } from "./components/Root";
 import { View } from "./components/View";
 import { SuccessView } from "./components/SuccessView";
@@ -9,8 +10,10 @@ import { Textarea } from "./components/Textarea";
 import { FieldError } from "./components/FieldError";
 import { ErrorBanner } from "./components/ErrorBanner";
 import { StatusText } from "./components/StatusText";
-import { SubmitButton, SubmitIdle, SubmitLoading } from "./components/SubmitButton";
-import { ResetButton } from "./components/ResetButton";
+import { SubmitButton } from "./components/buttons/SubmitButton";
+import { SubmitIdle } from "./components/buttons/SubmitIdle";
+import { SubmitLoading } from "./components/buttons/SubmitLoading";
+import { ResetButton } from "./components/buttons/ResetButton";
 
 export const Form = {
   Root,

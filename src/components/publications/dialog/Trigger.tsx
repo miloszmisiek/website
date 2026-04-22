@@ -1,3 +1,4 @@
+// GOOD
 import { getTranslations } from "../../../i18n";
 import { Button } from "../../button/Button";
 import { usePublicationAbstractDialogContext } from "./context";

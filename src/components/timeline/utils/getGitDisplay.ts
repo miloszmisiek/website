@@ -1,6 +1,7 @@
-import type { TimelineEntry } from "../../../data/schema";
+// GOOD
 import { isWorkEntry } from "./isWorkEntry";
 import { GitBranchPrefixEnum } from "../../../data/types";
+import type { TimelineEntry } from "../../../data/schema";
 
 const NOT_ALPHANUMERIC_REGEX = /[^a-z0-9]/g; // Matches any non-alphanumeric character
 const GROUP_NOT_ALPHANUMERIC_REGEX = /[^a-z0-9]+/gi; // Matches one or more non-alphanumeric characters

@@ -1,45 +1,62 @@
-import { useState } from "react";
+// GOOD
+import { useState, type PropsWithChildren } from "react";
 import { FormContext } from "../context/FormContext";
-import { FORM_STATE, EMAIL_REGEX } from "../../types";
+import { FORM_STATE, EMAIL_REGEX } from "../../constants";
+import { getTranslations } from "../../../../i18n";
+import { cn } from "../../../../styles/cn";
 import type { FormState, ContactFieldName, FieldErrors } from "../../types";
 
-function validate(data: Record<ContactFieldName, string>): FieldErrors {
-  const errors: FieldErrors = {};
-  if (!data.name.trim()) errors.name = "Required";
-  if (!data.email.trim()) {
-    errors.email = "Required";
-  } else if (!EMAIL_REGEX.test(data.email)) {
-    errors.email = "Invalid email address";
-  }
-  if (!data.message.trim()) errors.message = "Required";
-  return errors;
-}
+const { IDLE, LOADING, SUCCESS, ERROR } = FORM_STATE;
 
 export function Root({
   children,
   className,
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  const [state, setState] = useState<FormState>(FORM_STATE.IDLE);
+}: PropsWithChildren<{ className?: string }>) {
+  const { state, errors, clearFieldError, resetForm, submitForm } =
+    useFormData();
+  return (
+    <FormContext.Provider
+      value={{ state, errors, clearFieldError, resetForm, submitForm }}
+    >
+      <div className={cn("relative", className)}>{children}</div>
+    </FormContext.Provider>
+  );
+}
+
+const validate = (data: Record<ContactFieldName, string>): FieldErrors => {
+  const t = getTranslations();
+  const errors: FieldErrors = {};
+  if (!data.name.trim()) errors.name = t("contact.errors.required");
+
+  if (!data.email.trim()) {
+    errors.email = t("contact.errors.required");
+  } else if (!EMAIL_REGEX.test(data.email)) {
+    errors.email = t("contact.errors.invalidEmail");
+  }
+
+  if (!data.message.trim()) errors.message = t("contact.errors.required");
+  return errors;
+}
+
+const useFormData = () => {
+  const [state, setState] = useState<FormState>(IDLE);
   const [errors, setErrors] = useState<FieldErrors>({});
 
-  function clearFieldError(field: ContactFieldName) {
+  const clearFieldError = (field: ContactFieldName) => {
     setErrors((prev) => {
       if (!prev[field]) return prev;
       return { ...prev, [field]: undefined };
     });
   }
 
-  function resetForm() {
+  const resetForm = () => {
     setErrors({});
-    setState(FORM_STATE.IDLE);
+    setState(IDLE);
   }
 
-  async function submitForm(e: React.SubmitEvent<HTMLFormElement>) {
+  const submitForm = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (state === FORM_STATE.LOADING) return;
+    if (state === LOADING) return;
 
     const form = e.currentTarget;
     const fd = new FormData(form);
@@ -50,15 +67,17 @@ export function Root({
     };
 
     const fieldErrors = validate(data);
-    if (Object.keys(fieldErrors).length > 0) {
+    const errorNames = Object.keys(fieldErrors);
+
+    if (errorNames.length > 0) {
       setErrors(fieldErrors);
-      const first = Object.keys(fieldErrors)[0] as ContactFieldName;
+      const first = errorNames[0] as ContactFieldName;
       (form.elements.namedItem(first) as HTMLElement | null)?.focus();
       return;
     }
 
     setErrors({});
-    setState(FORM_STATE.LOADING);
+    setState(LOADING);
 
     try {
       const payload = new URLSearchParams();
@@ -67,7 +86,6 @@ export function Root({
       payload.set("email", data.email);
       payload.set("message", data.message);
 
-      await new Promise((r) => setTimeout(r, 3000));
       const res = await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -76,19 +94,11 @@ export function Root({
 
       if (!res.ok) throw new Error("Netlify form submission failed");
 
-      setState(FORM_STATE.SUCCESS);
+      setState(SUCCESS);
     } catch {
-      setState(FORM_STATE.ERROR);
+      setState(ERROR);
     }
   }
 
-  return (
-    <FormContext.Provider
-      value={{ state, errors, clearFieldError, resetForm, submitForm }}
-    >
-      <div className={className} style={{ position: "relative" }}>
-        {children}
-      </div>
-    </FormContext.Provider>
-  );
+  return { state, errors, clearFieldError, resetForm, submitForm };
 }

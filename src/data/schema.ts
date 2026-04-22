@@ -3,7 +3,8 @@
  * Ensures type safety across all data files and components
  */
 
-export { ExperienceTypeEnum, PublicationStatusEnum } from "./types";
+import { ExperienceTypeEnum, PublicationStatusEnum } from "./types";
+export { ExperienceTypeEnum, PublicationStatusEnum };
 
 export type TimelineEntry = {
   id: string;

@@ -1,15 +1,15 @@
 ---
-
+// GOOD
 ---
 
 <a
   href="/"
-  class="inline-flex select-none cursor-pointer font-nav text-2xl leading-none tracking-wide"
+  class="inline-flex select-none cursor-pointer font-nav text-2xl leading-none tracking-wide focus-ring"
   aria-label="milosz misiek — home"
 >
   {/* Mobile: block-art M */}
   <span
-    class="md:hidden font-mono text-xs leading-[1.15] whitespace-pre text-foreground select-none"
+    class="md:hidden font-mono text-xs leading-[1.15] whitespace-pre text-foreground"
     aria-hidden="true"
     set:text={"█▀▄▀█\n█ ▀ █"}
   />
@@ -21,37 +21,3 @@
     <span class="text-foreground">misiek</span>
   </span>
 </a>
-
-<!-- scroll-collapse animation — disabled for now
-<style>
-  .logo-full,
-  .logo-short {
-    grid-area: 1 / 1;
-    transition: opacity 0.25s ease, transform 0.25s ease;
-  }
-
-  @media (min-width: 768px) {
-    .logo-short {
-      opacity: 0;
-      transform: translateY(4px);
-    }
-  }
-
-  :global(header[data-scrolled]) .logo-full {
-    opacity: 0;
-    transform: translateY(-4px);
-    pointer-events: none;
-  }
-
-  :global(header[data-scrolled]) .logo-short {
-    opacity: 1;
-    transform: translateY(0);
-  }
-</style>
-
-To re-enable:
-1. Change <a> class from inline-flex to inline-grid
-2. Replace mobile span with: <span class="logo-short inline-flex items-baseline">
-3. Replace desktop span with: <span class="logo-full hidden md:inline-flex items-baseline">
-4. Uncomment the <style> block above
--->

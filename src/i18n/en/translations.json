@@ -48,5 +48,7 @@
   "contact.form.error": "Something went wrong. Try again.",
   "contact.github": "GITHUB",
   "contact.linkedin": "LINKEDIN",
-  "contact.researchgate": "RESEARCHGATE"
+  "contact.researchgate": "RESEARCHGATE",
+  "contact.errors.required": "Required.",
+  "contact.errors.invalidEmail": "Invalid email address."
 }

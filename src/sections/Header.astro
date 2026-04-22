@@ -41,7 +41,7 @@ const navLinks = [
   const header = document.querySelector("header");
   const THRESHOLD = 40;
 
-  function updateScrollState() {
+  const updateScrollState = () => {
     if (!header) return;
     if (window.scrollY > THRESHOLD) {
       header.setAttribute("data-scrolled", "");

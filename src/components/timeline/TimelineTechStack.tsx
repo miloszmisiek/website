@@ -2,18 +2,12 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Badge } from "../Badge";
-
-const STAGGER_STEP = 0.05;
+import { getEntryDelay } from "./utils/getEntryDelay";
 
 type TimelineTechStackProps = {
   technologies: string[];
   maxTech?: number;
 };
-
-function getEntryDelay(index: number, isExpanded: boolean, maxTech: number) {
-  const isNewlyRevealed = isExpanded && index >= maxTech;
-  return isNewlyRevealed ? (index - maxTech) * STAGGER_STEP : 0;
-}
 
 export function TimelineTechStack({
   technologies,

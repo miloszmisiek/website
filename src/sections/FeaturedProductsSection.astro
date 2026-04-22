@@ -1,4 +1,5 @@
 ---
+// GOOD
 import { ProductsParallax } from "../components/products/ProductsParallax";
 import { AnimatedSectionTitle } from "../components/arrayTitle/AnimatedSectionTitle";
 import { FadeIn, FADE_DELAY } from "../components/FadeIn";
@@ -9,13 +10,11 @@ const t = getTranslations(Astro.currentLocale);
 ---
 
 <section id="products" class="mb-32 scroll-mt-28 short:mb-16">
-  {/* Section Header */}
   <div class="section-label">
     <span class="section-num">03</span>
     <AnimatedSectionTitle client:load text={t("section.products")} />
   </div>
 
-  {/* Products — sticky stacking cards with entrance animations */}
   <FadeIn client:load delay={FADE_DELAY.sm} scrollTriggered noTranslate>
     <ProductsParallax client:load products={products} />
   </FadeIn>

@@ -1,7 +1,8 @@
 ---
+// GOOD
 import { AnimatedSectionTitle } from "../components/arrayTitle/AnimatedSectionTitle";
 import { FadeIn, FADE_DELAY } from "../components/FadeIn";
-import { PublicationDeck } from "../components/publications/PublicationDeck";
+import { PublicationDeck } from "../components/publications/deck";
 import { getPublications, getTranslations } from "../i18n";
 
 const publications = getPublications(Astro.currentLocale);
@@ -9,13 +10,11 @@ const t = getTranslations(Astro.currentLocale);
 ---
 
 <section id="publications" class="mb-32 scroll-mt-28 short:mb-16">
-  {/* Section Header */}
   <div class="section-label">
     <span class="section-num">02</span>
     <AnimatedSectionTitle client:load text={t("section.publications")} />
   </div>
 
-  {/* Publications Stacked Deck */}
   <FadeIn client:load delay={FADE_DELAY.sm} scrollTriggered>
     <PublicationDeck client:load publications={publications} />
   </FadeIn>

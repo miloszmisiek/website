@@ -1,3 +1,4 @@
+// GOOD
 import {
   createContext,
   useCallback,
@@ -9,11 +10,13 @@ import {
   type ReactNode,
   type RefObject,
 } from "react";
+import type { Publication } from "../../../data/schema";
 
 type DialogContextValue = {
   dialogRef: RefObject<HTMLDialogElement | null>;
   isOpen: boolean;
   isDrawer: boolean;
+  publication: Publication;
   open: () => void;
   close: () => void;
 };
@@ -29,8 +32,10 @@ export function usePublicationAbstractDialogContext(): DialogContextValue {
 }
 
 export function PublicationAbstractDialog({
+  publication,
   children,
 }: {
+  publication: Publication;
   children: ReactNode;
 }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -55,7 +60,10 @@ export function PublicationAbstractDialog({
     [isDrawer],
   );
 
-  const ctx = { dialogRef, isOpen, isDrawer, open, close };
+  const ctx = useMemo(
+    () => ({ dialogRef, isOpen, isDrawer, publication, open, close }),
+    [isOpen, isDrawer, publication, open, close],
+  );
 
   return (
     <PublicationAbstractDialogContext.Provider value={ctx}>

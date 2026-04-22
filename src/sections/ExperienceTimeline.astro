@@ -36,7 +36,7 @@ const t = getTranslations(Astro.currentLocale);
 </section>
 
 <script>
-  function setupTimelineObserver() {
+  const setupTimelineObserver = () => {
     const entries = document.querySelectorAll(".timeline-entry");
     if (!entries.length) return;
 
