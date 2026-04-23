@@ -1,15 +1,17 @@
 {
   "layout.title": "Milosz Misiek | Inżynier Oprogramowania",
 
-  "nav.work": "PRACA",
+  "nav.work": "PROJEKTY",
   "nav.research": "BADANIA",
   "nav.contact": "KONTAKT",
 
-  "hero.typewriter": "Buduje skalowalne systemy o wysokiej wydajności i precyzji.",
-  "hero.bio.first": "Inżynier oprogramowania z Polski. Projektuję i buduję niezawodne systemy działające na dużą skalę.",
-  "hero.bio.second": "Pracuję w pełnym zakresie programistycznym — od architektury systemu po implementację — z naciskiem na wydajność, skalowalność i łatwość w utrzymaniu kodu.",
-  "hero.cta.viewWork": "ZOBACZ PRACE",
+  "hero.typewriter": "Inżynieria skalowalnych i wydajnych systemów z dbałością o każdy detal.",
+  "hero.bio.first": "Inżynier oprogramowania z Polski. Projektuję i buduję niezawodne systemy działające na dużą skalę, łącząc solidną architekturę z przemyślaną implementacją.",
+  "hero.bio.second": "Działam na każdej warstwie aplikacji – od projektu systemu po wdrożenie na produkcję. Rozwiązuję złożone problemy techniczne z naciskiem na wydajność, skalowalność i kod, który łatwo utrzymać.",
+  "hero.cta.viewWork": "ZOBACZ PROJEKTY",
   "hero.cta.contact": "KONTAKT",
+
+  "hero.terminal.greeting": "Cześć, dobrze Cię widzieć!",
 
   "footer.github": "GITHUB",
   "footer.linkedin": "LINKEDIN",
@@ -20,7 +22,7 @@
 
   "timeline.present": "Obecnie",
 
-  "publication.abstract": "Abstrakt",
+  "publication.abstract": "Streszczenie",
   "publication.viewPaper": "CZYTAJ ARTYKUŁ",
   "publication.status.published": "Opublikowano",
   "publication.status.underreview": "W recenzji",
@@ -29,26 +31,26 @@
   "publication.more": "więcej",
 
   "product.viewProduct": "ZOBACZ PROJEKT",
-  "product.imagePlaceholder": "Grafika produktu",
+  "product.imagePlaceholder": "Podgląd projektu",
 
   "section.contact": "KONTAKT",
   "contact.headline": "Stwórzmy coś razem.",
   "contact.subheadline": "// otwarty na nowe projekty, współpracę i ciekawe wyzwania",
-  "contact.email.label": "E-MAIL",
-  "contact.form.title": "contact.form",
+  "contact.email.label": "WYŚLIJ E-MAIL",
+  "contact.form.title": "Formularz kontaktowy",
   "contact.form.name.label": "IMIĘ",
   "contact.form.name.placeholder": "np. Jan Kowalski…",
-  "contact.form.email.label": "EMAIL",
-  "contact.form.email.placeholder": "jan@example.com…",
+  "contact.form.email.label": "E-MAIL",
+  "contact.form.email.placeholder": "twoj.adres@email.pl…",
   "contact.form.message.label": "WIADOMOŚĆ",
-  "contact.form.message.placeholder": "Opisz swój projekt…",
+  "contact.form.message.placeholder": "Opowiedz mi o swoim projekcie…",
   "contact.form.submit": "WYŚLIJ",
   "contact.form.sending": "Wysyłanie…",
-  "contact.form.success": "Wysłano — odezwę się wkrótce.",
+  "contact.form.success": "Wiadomość wysłana. Wkrótce się odezwę.",
   "contact.form.error": "Coś poszło nie tak. Spróbuj ponownie.",
   "contact.github": "GITHUB",
   "contact.linkedin": "LINKEDIN",
   "contact.researchgate": "RESEARCHGATE",
   "contact.errors.required": "Pole wymagane.",
-  "contact.errors.invalidEmail": "Podaj prawidłowy adres email."
+  "contact.errors.invalidEmail": "Nieprawidłowy adres e-mail."
 }

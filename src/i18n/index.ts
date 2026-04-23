@@ -25,6 +25,13 @@ export const LOCALE_LABELS: Record<Locale, string> = {
 
 export type TranslationKey = keyof typeof enTranslations;
 
+function detectLocale(): Locale {
+  if (typeof document !== "undefined") {
+    return toLocale(document.documentElement.lang);
+  }
+  return defaultLocale;
+}
+
 function toLocale(raw: string | undefined): Locale {
   return (locales.includes(raw as Locale) ? raw : defaultLocale) as Locale;
 }
@@ -38,7 +45,7 @@ const dicts: Record<Locale, Record<string, string>> = {
 };
 
 export function getTranslations(locale?: string) {
-  const lang = toLocale(locale);
+  const lang = locale ? toLocale(locale) : detectLocale();
   return (key: TranslationKey): string =>
     dicts[lang]?.[key] ?? dicts.en[key] ?? key;
 }

@@ -3,19 +3,19 @@
     "id": "exp-001",
     "period": {
       "start": "2023-05",
-      "end": "present"
+      "end": "obecnie"
     },
     "duration": "3 lata",
     "role": "Inżynier Oprogramowania",
     "company": "Elastic Email",
-    "focus": "Programowanie i integracja AI",
-    "description": "Realizacja funkcjonalności full-stack — frontend, backend i bazy danych — w wiodącej platformie do dostarczania e-maili. Obecnie wdrażam automatyzację komunikacji opartą na AI z wykorzystaniem RAG. Tworzę komponenty wielokrotnego użytku, dbam o skalowalność i współpracuję z zespołami nad UI/UX i wydajnością.",
+    "focus": "Full-stack i integracja AI",
+    "description": "Rozwijam funkcjonalności full-stack (frontend, backend, bazy danych) w wiodącej platformie email marketingowej. Wdrażam automatyczną komunikację opartą na AI z architekturą RAG. Tworzę uniwersalne komponenty, dbam o skalowalność i współpracuję z zespołami produktowymi nad wydajnością i UX/UI.",
     "highlights": [
-      "Automatyzacja komunikacji opartej na AI z wykorzystaniem RAG",
-      "Implementacja funkcjonalności w zakresie full-stack obejmujących frontend, backend i bazy danych",
-      "Tworzenie komponentów wielokrotnego użytku wspierających rozwój produktu",
-      "Współpraca z zespołami nad rozwiązaniami UI/UX o wysokiej jakości",
-      "Monitorowanie wydajności, identyfikacja wąskich gardeł i usprawnianie infrastruktury"
+      "Wdrażanie automatycznej komunikacji opartej na AI z architekturą RAG",
+      "Rozwój funkcjonalności po stronie frontendu, backendu i baz danych",
+      "Tworzenie uniwersalnych komponentów wspierających rozwój platformy",
+      "Współpraca nad intuicyjnymi rozwiązaniami UI/UX z zespołami cross-funkcyjnymi",
+      "Monitorowanie wydajności, eliminacja wąskich gardeł i usprawnianie infrastruktury"
     ],
     "technologies": [
       "TypeScript",
@@ -38,15 +38,15 @@
       "end": "2023-05"
     },
     "duration": "3 miesiące",
-    "role": "Web Developer",
+    "role": "Programista Web",
     "company": "Akademia Morska w Szczecinie",
-    "focus": "Budowa systemu zamówień publicznych",
-    "description": "Projekt i budowa systemu zamówień publicznych (v1.0.0) od podstaw — od architektury po wdrożenie produkcyjne na serwerze Debian. Utrzymanie stron uczelni i wsparcie IT.",
+    "focus": "Rozwój systemu zamówień publicznych",
+    "description": "Zaprojektowałem i zbudowałem od podstaw system zamówień publicznych (v1.0.0) – od architektury po wdrożenie na produkcję (Debian). Utrzymywałem też strony uczelni i zapewniałem wsparcie IT.",
     "highlights": [
-      "Budowa systemu zamówień publicznych v1.0.0 (React, Redux, Express, TypeScript, MySQL)",
-      "Wdrożenie projektu na serwer Debian z konfiguracją bazy danych",
-      "Prowadzenie projektu przez cały cykl życia",
-      "Utrzymanie stron uczelni i wsparcie IT"
+      "Budowa systemu zamówień publicznych v1.0.0 w React, Redux, Express, TypeScript i MySQL",
+      "Wdrożenie i konfiguracja aplikacji z bazą danych na serwerze Linux Debian",
+      "Samodzielne prowadzenie projektu przez cały cykl życia – od wymagań po wdrożenie",
+      "Utrzymanie stron uczelni i bieżące wsparcie IT"
     ],
     "technologies": [
       "React.js",
@@ -66,23 +66,23 @@
       "start": "2024-10",
       "end": "2028-10"
     },
-    "duration": "program 4-letni",
+    "duration": "Studia 4-letnie",
     "role": "Doktorant",
     "company": "Zachodniopomorski Uniwersytet Technologiczny",
-    "focus": "Cyberbezpieczeństwo i wykrywanie phishingu",
-    "description": "Badania doktoranckie na styku AI i cyberbezpieczeństwa. Wykorzystuję uczenie maszynowe i głębokie uczenie do wykrywania i przeciwdziałania atakom phishingowym.",
+    "focus": "Cyberbezpieczeństwo i detekcja phishingu",
+    "description": "Prowadzę badania doktoranckie na styku AI i cyberbezpieczeństwa. Badam metody uczenia maszynowego i deep learningu w wykrywaniu oraz zapobieganiu atakom phishingowym.",
     "highlights": [
-      "Badanie metod uczenia maszynowego w kontekście wykrywania phishingu",
-      "Opracowywanie strategii cyberbezpieczeństwa z użyciem nowoczesnych technik AI",
-      "Współtworzenie publikacji naukowych o wykrywaniu zagrożeń w cyberprzestrzeni"
+      "Badanie modeli uczenia maszynowego i sieci neuronowych pod kątem ochrony przed phishingiem",
+      "Opracowywanie strategii cyberbezpieczeństwa opartych na technikach AI",
+      "Publikacje w recenzowanych czasopismach i na konferencjach naukowych"
     ],
     "technologies": [
       "Python",
       "PyTorch",
-      "Uczenie Maszynowe",
-      "Sieci Neuronowe",
-      "Analiza Danych",
-      "Cyberbezpieczeństwo"
+      "Deep Learning",
+      "NLP",
+      "Computer Vision",
+      "Cybersecurity"
     ],
     "type": "academic"
   }

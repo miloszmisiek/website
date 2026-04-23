@@ -1,9 +1,9 @@
 [
   {
     "id": "prod-001",
-    "name": "Inbox: Platforma Komunikacyjna",
-    "role": "Główny Inżynier",
-    "description": "Centrum komunikacji łączące czat zespołowy, e-mail i wspólną skrzynkę wiadomości. Zaprojektowane z myślą o płynnej współpracy — z powiadomieniami w czasie rzeczywistym i obsługą multimediów.",
+    "name": "Inbox: Platforma komunikacyjna",
+    "role": "Główny inżynier",
+    "description": "Centrum komunikacji łączące czat zespołowy, e-mail i wspólną skrzynkę odbiorczą. Zaprojektowane z myślą o płynnej współpracy – powiadomienia w czasie rzeczywistym i obsługa multimediów.",
     "technologies": [
        "Next.js",
        "NodeJS",
@@ -20,9 +20,9 @@
   },
   {
     "id": "prod-002",
-    "name": "Strona Główna: Elastic Email",
+    "name": "Strona produktowa: Elastic Email",
     "role": "Inżynier",
-    "description": "Nowoczesna strona Elastic Email — platformy do email marketingu i API. Zbudowana w Next.js z myślą o wydajności i SEO. Responsywny design, interaktywne prezentacje produktów i landing page'e nastawione na konwersję.",
+    "description": "Nowoczesna strona marketingowa platformy Elastic Email do email marketingu i API. Zbudowana w Next.js z naciskiem na wydajność i SEO – responsywny design, interaktywne demo produktu i landing page'e nastawione na konwersję.",
     "technologies": [
        "Next.js",
        "TypeScript",
@@ -35,14 +35,14 @@
   },
   {
     "id": "prod-003",
-    "name": "Edytor Szablonów: Elastic Email",
+    "name": "Kreator szablonów: Elastic Email",
     "role": "Inżynier",
-    "description": "Intuicyjny edytor szablonów e-mail — drag-and-drop i edycja HTML. Generowanie szablonów z pomocą AI, konfigurowalne bloki treści, responsywne układy, zarządzanie kolorami marki i personalizacja przez pola scalające.",
+    "description": "Intuicyjny edytor szablonów e-mail z drag-and-drop i edycją surowego HTML. Generowanie szablonów z AI, konfigurowalne bloki treści, responsywne układy, kolory marki i personalizacja przez merge fields – wszystko, czego potrzeba do tworzenia skutecznych kampanii.",
     "technologies": [
-       "React",
-       "TypeScript",
-       "Styled Components",
-       "WordPress Gutenberg"
+      "React",
+      "TypeScript",
+      "Styled Components",
+      "WordPress Gutenberg"
     ],
     "link": "https://elasticemail.com/email-designer",
     "image": "/te_desktop.webp",

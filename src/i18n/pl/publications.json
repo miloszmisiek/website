@@ -7,11 +7,11 @@
     "year": 2025,
     "topics": [
       "Cyberbezpieczeństwo",
-      "Wykrywanie phishingu",
-      "Inżynieria oprogramowania",
-      "Wtyczki przeglądarki"
+      "Detekcja phishingu",
+      "Analiza URL",
+      "Wtyczka do przeglądarki"
     ],
-    "excerpt": "Jednym ze sposobów ochrony użytkowników jest bieżące sprawdzanie wszystkich odnośników widocznych na stronie i ostrzeganie, gdy wykryty zostanie podejrzany adres. Artykuł przedstawia wtyczkę do przeglądarki służącą do identyfikacji złośliwych adresów URL wykorzystywanych w atakach phishingowych. Wtyczka opiera się na modelu uczenia maszynowego — drzewie decyzyjnym Extreme Gradient Boosting. Wyniki potwierdzają wysoką skuteczność identyfikacji złośliwych adresów. Choć model XGBoost nie osiąga najwyższej możliwej dokładności, zapewnia doskonały kompromis między poszczególnymi metrykami przy zachowaniu efektywności obliczeniowej i interpretowalności. To czyni go solidną bazą do dalszego rozwoju i wdrożenia w systemach wykrywania phishingu, w szczególności w serwisach społecznościowych. Wtyczka identyfikuje i oznacza wszystkie zewnętrzne odnośniki na danej stronie, informując użytkownika o potencjalnym zagrożeniu.",
+    "excerpt": "Skuteczną metodą ochrony użytkowników przed złośliwymi linkami jest bieżąca analiza wszystkich adresów URL wyświetlanych na stronie i ostrzeganie o potencjalnym zagrożeniu. W artykule zaprezentowano wtyczkę do przeglądarki, która wykrywa adresy wykorzystywane w atakach phishingowych. Narzędzie to opiera się na modelu uczenia maszynowego wykorzystującym algorytm Extreme Gradient Boosting (XGBoost). Osiągnięte wyniki potwierdzają wysoką skuteczność w identyfikacji złośliwych adresów URL. Chociaż model XGBoost nie osiąga najwyższej możliwej dokładności, oferuje doskonały kompromis między kluczowymi metrykami. Jego główne atuty to wydajność obliczeniowa i prosta interpretowalność wyników, co stanowi solidną podstawę do dalszego rozwoju oraz wdrożenia w systemach antyphishingowych, np. w mediach społecznościowych. Rozszerzenie automatycznie oznacza wszystkie zewnętrzne linki na przeglądanej stronie, informując użytkownika o stopniu ich bezpieczeństwa.",
     "link": "https://hdl.handle.net/10125/109726",
     "doi": "10.24251/hicss.2025.874",
     "readTime": "15 min"
@@ -23,12 +23,12 @@
     "status": "published",
     "year": 2026,
     "topics": [
-      "Uczenie maszynowe",
+      "Uczenie Maszynowe",
       "XGBoost",
       "Wykrywanie phishingu",
-      "Inżynieria oprogramowania"
+      "Analiza URL"
     ],
-    "excerpt": "Artykuł analizuje skuteczność modeli XGBoost na wielu zbiorach danych w kontekście wykrywania phishingowych adresów URL, rozszerzając naszą wcześniejszą pracę konferencyjną o walidację międzyzbiorową i analizę porównawczą. Na podstawie trzech zbiorów danych — własnego zbioru phishingowego (75 738 próbek), dużego zbioru GramBeddings (639 723 próbek) oraz zbioru PhiUSIIL (47 103 próbek) — wykazujemy, że XGBoost zapewnia wysoką skuteczność niezależnie od źródła danych. Nasze podejście adresuje problem niestabilności cech, pokazując, że zrównoważona inżynieria cech jest kluczowa dla niezawodnej detekcji. Model osiąga dokładność 90,7% i F1 na poziomie 91,2% na własnym zbiorze, przy średniej dokładności 77,8% na trzech niezależnych zbiorach testowych. W porównaniu z sieciami neuronowymi XGBoost okazał się lepszy pod względem efektywności trenowania i jakości detekcji — o 2,1% wyższa dokładność, 12,6-krotnie szybsze trenowanie (0,95 s vs 12,01 s) i 3,6-krotnie mniejsze zużycie pamięci. Choć sieci neuronowe oferują szybszą inferencję (7,51 ms vs 20,6 ms) i mniejsze modele, równowaga XGBoosta między dokładnością a szybkością trenowania czyni go wysoce praktycznym narzędziem do wykrywania phishingu w rzeczywistych warunkach.",
+    "excerpt": "Artykuł analizuje skuteczność modeli XGBoost na różnorodnych zbiorach danych w kontekście wykrywania phishingowych adresów URL, rozszerzając naszą wcześniejszą pracę konferencyjną o kompleksową walidację krzyżową (cross-dataset) oraz pogłębioną analizę porównawczą. Na podstawie trzech niezależnych zbiorów danych – autorskiego zbioru phishingowego (75 738 próbek), rozbudowanego zestawu GramBeddings (639 723 próbek) oraz PhiUSIIL (47 103 próbek) – wykazujemy, że algorytm XGBoost zapewnia wysoką i stabilną skuteczność niezależnie od źródła danych. Zaproponowane podejście skutecznie minimalizuje problem niestabilności cech (feature instability), dowodząc, że staranna inżynieria cech jest podstawą niezawodnej detekcji. Model osiąga dokładność 90,7% i wynik F1 na poziomie 91,2% na autorskim zbiorze, przy średniej dokładności 77,8% na trzech niezależnych zbiorach testowych. W porównaniu z sieciami neuronowymi XGBoost okazał się lepszy pod względem efektywności trenowania i jakości detekcji – o 2,1% wyższa dokładność, 12,6-krotnie szybsze trenowanie (0,95 s vs 12,01 s) i 3,6-krotnie mniejsze zużycie pamięci. Choć sieci neuronowe oferują szybsze wnioskowanie (7,51 ms vs 20,6 ms) i mniejsze modele, równowaga między dokładnością a szybkością trenowania czyni XGBoost wysoce praktycznym narzędziem do wykrywania phishingu w rzeczywistych systemach.",
     "link": "https://ieeexplore.ieee.org/document/11428202/",
     "doi": "10.1109/access.2026.3672690",
     "readTime": "30 min"
