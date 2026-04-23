@@ -1,7 +1,8 @@
 // GOOD
 import { MotionConfig } from "framer-motion";
 import { getTranslations } from "../../i18n";
-import { IconCheck, Loader } from "./icons";
+import { IconCheck } from "./icons/IconCheck";
+import { Loader } from "./icons/Loader";
 import { Form } from "./form";
 
 export function ContactForm() {

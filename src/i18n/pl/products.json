@@ -3,7 +3,7 @@
     "id": "prod-001",
     "name": "Inbox: Platforma Komunikacyjna",
     "role": "Główny Inżynier",
-    "description": "Kompleksowe centrum komunikacyjne łączące czat zespołowy, usługę e-mail i ujednolicone wiadomości. Zaprojektowane do bezproblemowej współpracy z powiadomieniami w czasie rzeczywistym i obsługą multimediów.",
+    "description": "Centrum komunikacji łączące czat zespołowy, e-mail i wspólną skrzynkę wiadomości. Zaprojektowane z myślą o płynnej współpracy — z powiadomieniami w czasie rzeczywistym i obsługą multimediów.",
     "technologies": [
        "Next.js",
        "NodeJS",
@@ -13,7 +13,8 @@
        "WebSocket"
     ],
     "link": "https://elasticemail.com/inbox",
-    "image": "/hero-2-desktop2x.png",
+    "image": "/inbox.webp",
+    "image_mobile": "/inbox_raw.webp",
     "year": 2025,
     "featured": true
   },
@@ -21,14 +22,14 @@
     "id": "prod-002",
     "name": "Strona Główna: Elastic Email",
     "role": "Inżynier",
-    "description": "Nowoczesna strona internetowa Elastic Email - kompleksowej platformy do email marketingu i API. Zbudowana z Next.js dla optymalnej wydajności i SEO, z responsywnym designem, interaktywnymi demonstracjami produktów i stronami lądowymi skoncentrowanymi na konwersji.",
+    "description": "Nowoczesna strona Elastic Email — platformy do email marketingu i API. Zbudowana w Next.js z myślą o wydajności i SEO. Responsywny design, interaktywne prezentacje produktów i landing page'e nastawione na konwersję.",
     "technologies": [
        "Next.js",
        "TypeScript",
        "TailwindCSS"
     ],
     "link": "https://elasticemail.com",
-    "image": "/elasticemail_homepage.png",
+    "image": "/ee-home.webp",
     "year": 2024,
     "featured": true
   },
@@ -36,7 +37,7 @@
     "id": "prod-003",
     "name": "Edytor Szablonów: Elastic Email",
     "role": "Inżynier",
-    "description": "Intuicyjny edytor szablonów e-mail z interfejsem drag-and-drop i możliwością edycji surowego HTML. Zawiera generowanie szablonów zasilane sztuczną inteligencją, dostosowalne bloki treści, responsywne układy, zarządzanie kolorami marki i personalizację pól scalających.",
+    "description": "Intuicyjny edytor szablonów e-mail — drag-and-drop i edycja HTML. Generowanie szablonów z pomocą AI, konfigurowalne bloki treści, responsywne układy, zarządzanie kolorami marki i personalizacja przez pola scalające.",
     "technologies": [
        "React",
        "TypeScript",
@@ -44,7 +45,8 @@
        "WordPress Gutenberg"
     ],
     "link": "https://elasticemail.com/email-designer",
-    "image": "https://cms.elasticemail.com/wp-content/uploads/next-pages/email-editor/Feature-emaildesigner-top.webp",
+    "image": "/te_desktop.webp",
+    "image_mobile": "/te_mobile.webp",
     "year": 2023,
     "featured": true
   }

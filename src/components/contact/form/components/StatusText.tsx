@@ -2,12 +2,13 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useFormContext } from "../context/FormContext";
 import { FORM_STATE } from "../../constants";
+import { EASE_SMOOTH } from "../../../../styles/animations";
 
 const TICKER_ANIMATION = {
   initial: { y: "-100%", opacity: 0 },
   animate: { y: "0%", opacity: 1 },
   exit: { y: "100%", opacity: 0 },
-  transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] as const },
+  transition: { duration: 0.3, ease: EASE_SMOOTH },
 };
 
 const STATUS_LABELS = {

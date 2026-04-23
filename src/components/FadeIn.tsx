@@ -1,8 +1,7 @@
 // GOOD
 import { type ReactNode, useRef } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
-
-export const FADE_DELAY = { xs: 0.1, sm: 0.3, md: 0.4 } as const;
+import { EASE_SMOOTH } from "../styles/animations";
 
 type FadeInOptions = Partial<{
   delay: number;
@@ -61,7 +60,7 @@ export function FadeIn({
       animate={isVisible ? visible : hidden}
       transition={{
         duration: 0.8,
-        ease: [0.16, 1, 0.3, 1],
+        ease: EASE_SMOOTH,
         delay: isVisible ? delay : 0,
       }}
       className={className}

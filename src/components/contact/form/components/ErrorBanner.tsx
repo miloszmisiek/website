@@ -2,7 +2,7 @@
 import { type PropsWithChildren } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useFormContext } from "../context/FormContext";
-import { IconWarning } from "../../icons";
+import { IconWarning } from "../../icons/IconWarning";
 import { FORM_STATE } from "../../constants";
 
 export function ErrorBanner({ children }: PropsWithChildren) {

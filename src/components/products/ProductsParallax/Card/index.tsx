@@ -10,15 +10,16 @@ import { Z_CLASSES } from "../constants";
 import { CardContent } from "./Content";
 import { CardImage } from "./Image";
 import type { Product } from "../../../../data/schema";
+import { EASE_SMOOTH } from "../../../../styles/animations";
 
 const CARD_ENTER_ANIMATION = {
   initial: { opacity: 0, y: 80 },
   whileInView: { opacity: 1, y: 0 },
-  transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const },
+  transition: { duration: 0.8, ease: EASE_SMOOTH },
   viewport: { once: true, margin: "-60px" },
 };
 
-export type ProductCardProps = {
+type ProductCardProps = {
   product: Product;
   index: number;
   progress: MotionValue<number>;
@@ -52,12 +53,12 @@ export function ProductCard({
       )}
     >
       <motion.article
-        style={prefersReducedMotion ? {} : { scale }}
-        {...CARD_ENTER_ANIMATION}
+        style={!prefersReducedMotion && { scale }}
+        {...(index === 0 && CARD_ENTER_ANIMATION)}
         className="w-full origin-top"
       >
         <motion.div
-          style={prefersReducedMotion ? {} : { opacity }}
+          style={!prefersReducedMotion && { opacity }}
           className="w-full h-full"
         >
           <div className="card-base overflow-hidden flex flex-col-reverse lg:flex-row lg:min-h-[36rem] border border-border/60 shadow-xl group bg-card-bg">

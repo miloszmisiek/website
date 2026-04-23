@@ -1,6 +1,6 @@
 // GOOD
 import { motion, useReducedMotion } from "framer-motion";
-import { useTypewriter } from "./useTypewriter";
+import { useTypewriter } from "../hooks/useTypewriter";
 
 type TypewriterOptions = Partial<{
   typingSpeed: number;
@@ -31,7 +31,7 @@ export const TerminalTypewriter = ({
   const text = useTypewriter(words, typewriterOptions);
 
   return (
-    <span className={className}>
+    <span className={`lowercase tracking-normal text-sm ${className}`}>
       {text}
       {!shouldReduceMotion && (
         <motion.span

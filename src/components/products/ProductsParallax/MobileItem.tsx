@@ -4,6 +4,7 @@ import { Badge } from "../../Badge";
 import { Button } from "../../button/Button";
 import { getTranslations } from "../../../i18n";
 import type { Product } from "../../../data/schema";
+import { EASE_SMOOTH } from "../../../styles/animations";
 
 const MOBILE_ITEM_ANIMATION = {
   initial: { opacity: 0, y: 40 },
@@ -36,7 +37,7 @@ export function ProductMobileItem({
       {...MOBILE_ITEM_ANIMATION}
       transition={{
         duration: 0.6,
-        ease: [0.16, 1, 0.3, 1] as const,
+        ease: EASE_SMOOTH,
         delay: index * 0.08,
       }}
       className="py-12 first:pt-4"

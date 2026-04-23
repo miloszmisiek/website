@@ -2,6 +2,7 @@
 import React, { type ReactNode } from "react";
 import { motion, MotionConfig } from "framer-motion";
 import { type TimelineEntry } from "../../data/schema";
+import { EASE_SMOOTH } from "../../styles/animations";
 
 type TimelineAnimatorProps = {
   children: ReactNode;
@@ -13,12 +14,12 @@ const ANIMATION_CONFIG = {
   whileInView: { opacity: 1, x: 0 },
   transition: {
     duration: 0.8,
-    ease: [0.16, 1, 0.3, 1],
+    ease: EASE_SMOOTH,
     delay: 0.12,
   },
 } as const;
 
-export default function TimelineAnimator({
+export function TimelineAnimator({
   children,
   items,
 }: TimelineAnimatorProps) {

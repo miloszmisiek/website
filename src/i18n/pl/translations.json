@@ -5,10 +5,10 @@
   "nav.research": "BADANIA",
   "nav.contact": "KONTAKT",
 
-  "hero.typewriter": "Buduję spokojne, precyzyjne doświadczenia cyfrowe.",
-  "hero.bio.first": "Jestem inżynierem oprogramowania z Polski. Łączę głęboką architekturę techniczną z rygorem projektowym, tworząc interfejsy, które są przemyślane, szybkie i ponadczasowe.",
-  "hero.bio.second": "Specjalizuję się w wysoko wydajnych frontendach, złożonym zarządzaniu stanem i systemach animacji dla zespołów dbających o dopracowane detale.",
-  "hero.cta.viewWork": "MOJE PRACE",
+  "hero.typewriter": "Buduje skalowalne systemy o wysokiej wydajności i precyzji.",
+  "hero.bio.first": "Inżynier oprogramowania z Polski. Projektuję i buduję niezawodne systemy działające na dużą skalę.",
+  "hero.bio.second": "Pracuję w pełnym zakresie programistycznym — od architektury systemu po implementację — z naciskiem na wydajność, skalowalność i łatwość w utrzymaniu kodu.",
+  "hero.cta.viewWork": "ZOBACZ PRACE",
   "hero.cta.contact": "KONTAKT",
 
   "footer.github": "GITHUB",
@@ -16,11 +16,11 @@
 
   "section.experience": "DOŚWIADCZENIE",
   "section.publications": "PUBLIKACJE",
-  "section.products": "WYRÓŻNIONE PROJEKTY",
+  "section.products": "WYBRANE PROJEKTY",
 
   "timeline.present": "Obecnie",
 
-  "publication.abstract": "Streszczenie",
+  "publication.abstract": "Abstrakt",
   "publication.viewPaper": "CZYTAJ ARTYKUŁ",
   "publication.status.published": "Opublikowano",
   "publication.status.underreview": "W recenzji",
@@ -28,28 +28,27 @@
   "publication.time": "Czas",
   "publication.more": "więcej",
 
-  "product.viewProduct": "PRZEJDŹ DO PROJEKTU",
-  "product.imagePlaceholder": "Zdjęcie produktu",
+  "product.viewProduct": "ZOBACZ PROJEKT",
+  "product.imagePlaceholder": "Grafika produktu",
 
   "section.contact": "KONTAKT",
-  "contact.headline": "Zbudujmy coś razem.",
-  "contact.subheadline": "// otwarty na nowe projekty, współprace i ciekawe problemy",
-  "contact.email.label": "BEZPOŚREDNIO",
+  "contact.headline": "Stwórzmy coś razem.",
+  "contact.subheadline": "// otwarty na nowe projekty, współpracę i ciekawe wyzwania",
+  "contact.email.label": "E-MAIL",
   "contact.form.title": "contact.form",
   "contact.form.name.label": "IMIĘ",
   "contact.form.name.placeholder": "np. Jan Kowalski…",
   "contact.form.email.label": "EMAIL",
-  "contact.form.email.placeholder": "ty@przykład.pl…",
+  "contact.form.email.placeholder": "jan@example.com…",
   "contact.form.message.label": "WIADOMOŚĆ",
-  "contact.form.message.placeholder": "Opowiedz mi o swoim projekcie…",
+  "contact.form.message.placeholder": "Opisz swój projekt…",
   "contact.form.submit": "WYŚLIJ",
   "contact.form.sending": "Wysyłanie…",
-  "contact.form.success": "Wiadomość wysłana. Odezwę się wkrótce.",
+  "contact.form.success": "Wysłano — odezwę się wkrótce.",
   "contact.form.error": "Coś poszło nie tak. Spróbuj ponownie.",
   "contact.github": "GITHUB",
   "contact.linkedin": "LINKEDIN",
   "contact.researchgate": "RESEARCHGATE",
-  "contact.errors.required": "To pole jest wymagane.",
-  "contact.errors.invalidEmail": "Nieprawidłowy adres email."
-
+  "contact.errors.required": "Pole wymagane.",
+  "contact.errors.invalidEmail": "Podaj prawidłowy adres email."
 }

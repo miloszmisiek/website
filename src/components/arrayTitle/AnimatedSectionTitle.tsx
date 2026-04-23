@@ -2,6 +2,7 @@
 import { useRef } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import { ArrayTitle } from "./ArrayTitle";
+import { EASE_SMOOTH } from "../../styles/animations";
 
 type Props = {
   text: string;
@@ -16,7 +17,7 @@ const reducedMotionFade = (isInView: boolean) => ({
 const bracketExpand = (isInView: boolean) => ({
   initial: { width: 0 },
   animate: { width: isInView ? "auto" : 0 },
-  transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] as const },
+  transition: { duration: 0.55, ease: EASE_SMOOTH },
 });
 
 const textReveal = (isInView: boolean) => ({
