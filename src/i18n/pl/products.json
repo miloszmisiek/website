@@ -23,7 +23,7 @@
     "id": "prod-002",
     "name": "Strona główna: Elastic Email",
     "role": "Inżynier",
-    "description": "Współtworzyłem stronę marketingową platformy Elastic Email, koncentrując się na wydajności oraz optymalizacji renderowania w celu poprawy doświadczenia użytkownika.",
+    "description": "Brałem udział w tworzeniu strony marketingowej platformy Elastic Email, dbając o wydajność i optymalizację renderowania, aby poprawić doświadczenie użytkownika.",
     "technologies": ["Next.js", "TypeScript", "TailwindCSS"],
     "link": "https://elasticemail.com",
     "image": "/ee-home.webp",

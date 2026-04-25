@@ -68,7 +68,7 @@
     "focus": "Rozwój systemu zamówień publicznych",
     "description": "Zaprojektowałem i dostarczyłem pierwszą wersję systemu zamówień publicznych (NDA), implementując rozwiązanie full-stack z użyciem React, Redux, Express, TypeScript i MySQL.”",
     "highlights": [
-      "Zaprojektowałem i dostarczyłem pierwszą wersję systemu zamówień publicznych (NDA), implementując rozwiązanie full-stack z użyciem React, Redux, Express, TypeScript i MySQL.”",
+      "Zaprojektowałem i dostarczyłem pierwszą wersję systemu zamówień publicznych (NDA), implementując rozwiązanie full-stack z użyciem React, Redux, Express, TypeScript i MySQL.",
       "Wdrożenie i konfiguracja aplikacji z bazą danych na serwerze Linux Debian",
       "Samodzielne prowadzenie projektu przez cały cykl życia – od wymagań po wdrożenie"
     ],
