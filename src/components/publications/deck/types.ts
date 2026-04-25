@@ -11,6 +11,8 @@ export type PublicationDeckCardProps = {
   numCards: number;
   cardRef: RefObject<HTMLDivElement | null> | null;
   onBringToFront: (id: string) => void;
+  cardWidth: number;
+  stepX: number;
 };
 
 export type DeckCardVisualState = {

@@ -12,7 +12,7 @@ const DotButton = ({ item, isActive, onSelect }: DotButtonProps) => {
       aria-selected={isActive}
       aria-label={`Go to publication: ${item.label}`}
       onClick={selectItem}
-      className="min-w-[44px] min-h-[44px] flex items-center justify-center cursor-pointer focus-ring rounded-none"
+      className="min-w-11 min-h-11 flex items-center justify-center cursor-pointer focus-ring rounded-none"
     >
       <span
         className={cn(

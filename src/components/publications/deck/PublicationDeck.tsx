@@ -1,4 +1,4 @@
-import { useState, useRef, useLayoutEffect, useCallback } from "react";
+import { useState, useRef, useLayoutEffect, useCallback, useEffect } from "react";
 import { MotionConfig } from "framer-motion";
 import { PublicationCarousel, DotNav } from "../carousel";
 import { PublicationDeckCard } from "./PublicationDeckCard";
@@ -8,14 +8,29 @@ import { BREAKPOINT_MLG as MOBILE_BREAKPOINT } from "../../../styles/breakpoints
 import { CARD_WIDTH, FALLBACK_HEIGHT, H_STEP_X } from "./constants";
 import type { PublicationDeckProps } from "./types";
 
+const SHORT_CARD_WIDTH = 560;
+const SHORT_H_STEP_X = 90;
+
 export function PublicationDeck({ publications }: PublicationDeckProps) {
   const [orderedPublications, setOrderedPublications] = useState(publications);
   const [containerHeight, setContainerHeight] = useState(0);
+  const [isShort, setIsShort] = useState(false);
   const isMobile = useIsMobile(MOBILE_BREAKPOINT);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-height: 800px)");
+    const update = () => setIsShort(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
+  const cardWidth = isShort ? SHORT_CARD_WIDTH : CARD_WIDTH;
+  const stepX = isShort ? SHORT_H_STEP_X : H_STEP_X;
 
   const topCardRef = useRef<HTMLDivElement | null>(null);
   const numCards = orderedPublications.length;
-  const containerWidth = `${CARD_WIDTH + H_STEP_X * (numCards - 1)}px`;
+  const containerWidth = `${cardWidth + stepX * (numCards - 1)}px`;
   const minHeight = `${containerHeight > 0 ? containerHeight : FALLBACK_HEIGHT}px`;
 
   const measureTopCard = useCallback(() => {
@@ -78,12 +93,14 @@ export function PublicationDeck({ publications }: PublicationDeckProps) {
                   numCards={numCards}
                   cardRef={stackPos === 0 ? topCardRef : null}
                   onBringToFront={bringToFront}
+                  cardWidth={cardWidth}
+                  stepX={stepX}
                 />
               ))}
             </div>
 
             {numCards > 1 && (
-              <div className="flex items-center justify-center mt-12">
+              <div className="flex items-center justify-center mt-12 short:mt-6">
                 <DotNav
                   items={dotItems}
                   activeIndex={dotActiveIndex}

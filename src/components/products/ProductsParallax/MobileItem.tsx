@@ -64,9 +64,9 @@ export function ProductMobileItem({
         </div>
       )}
 
-      <h3 className="text-heading-md mb-2 text-foreground">{name}</h3>
+      <h3 className="text-heading-md !text-4xl md:!text-3xl mb-2 text-foreground">{name}</h3>
       <p className="text-label mb-6">{`// ${role}`}</p>
-      <p className="text-body text-muted mb-6">{description}</p>
+      <p className="text-body !text-lg md:!text-lg text-muted mb-6">{description}</p>
 
       {technologies.length > 0 && (
         <div className="flex flex-wrap gap-2 mb-8">

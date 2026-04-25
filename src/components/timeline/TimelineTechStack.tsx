@@ -42,13 +42,24 @@ export function TimelineTechStack({
       </AnimatePresence>
 
       {overflowCount > 0 && !isExpanded && (
-        <button
-          onClick={expand}
-          className="bg-foreground/5 cursor-pointer hover:bg-foreground/10 hover:border-foreground/30 transition-colors focus-ring text-nano px-1.5 py-0.5 rounded-none border border-dashed border-line text-muted font-mono-system tracking-widest"
-          aria-label={`Show ${overflowCount} more technologies`}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.2 }}
         >
-          + {overflowCount}
-        </button>
+          <button
+            onClick={expand}
+            className="appearance-none p-0 m-0 bg-transparent border-0 cursor-pointer focus-ring rounded-none"
+            aria-label={`Show ${overflowCount} more technologies`}
+          >
+            <Badge
+              variant="neutral"
+              className="border-dashed bg-foreground/5 hover:bg-foreground/10 hover:border-foreground/30 transition-colors"
+            >
+              + {overflowCount}
+            </Badge>
+          </button>
+        </motion.div>
       )}
     </div>
   );

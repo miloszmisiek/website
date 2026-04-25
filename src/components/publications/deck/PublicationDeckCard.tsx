@@ -10,12 +10,15 @@ export function PublicationDeckCard({
   numCards,
   cardRef,
   onBringToFront,
+  cardWidth,
+  stepX,
 }: PublicationDeckCardProps) {
   const { isTop, opacity, visualStyle } = getDeckCardVisualState(
     stackPos,
     numCards,
+    cardWidth,
   );
-  const animationState = getDeckCardAnimationState(stackPos, opacity);
+  const animationState = getDeckCardAnimationState(stackPos, opacity, stepX);
 
   const movePublicationToFront = () => {
     onBringToFront(publication.id);

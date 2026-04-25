@@ -16,7 +16,7 @@ export function Trigger() {
     <Button
       type="button"
       variant="ghost"
-      className="min-h-0"
+      className="!min-h-0"
       onClick={triggerOpen}
     >
       {t("publication.more")}

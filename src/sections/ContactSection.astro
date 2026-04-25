@@ -26,22 +26,22 @@ const t = getTranslations(Astro.currentLocale);
 
 <section id="contact" class="mb-16 scroll-mt-28 short:mb-10">
   {/* Section Header */}
-  <div class="section-label">
+  <div class="section-label short:!mb-8">
     <span class="section-num">04</span>
     <AnimatedSectionTitle client:load text={t("section.contact")} />
   </div>
 
   <FadeIn client:load delay={FADE_DELAY.sm} scrollTriggered>
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 short:lg:gap-10 items-start">
       {/* ── Left: info + social links ── */}
-      <div class="lg:col-span-5 flex flex-col gap-8">
+      <div class="lg:col-span-5 flex flex-col gap-8 short:gap-5">
         {/* Headline */}
-        <div class="flex flex-col gap-4">
-          <h2 class="text-heading-lg [text-wrap:balance]">
+        <div class="flex flex-col gap-4 short:gap-3">
+          <h2 class="text-heading-contact short:!text-4xl max-w-[12ch] short:max-w-md [text-wrap:balance]">
             {t("contact.headline")}
           </h2>
           <p
-            class="text-foreground/65 text-base md:text-lg leading-relaxed max-w-sm"
+            class="text-foreground/65 text-lg md:text-xl short:text-sm leading-relaxed max-w-sm"
           >
             <span class="text-foreground/50 font-mono mr-3">{"//"}</span>
             {t("contact.subheadline").replace("// ", "")}
@@ -51,13 +51,13 @@ const t = getTranslations(Astro.currentLocale);
         {/* Email pill */}
         <div class="flex flex-col gap-2">
           <span
-            class="text-[10px] font-mono uppercase tracking-[0.2em] text-foreground/55"
+            class="text-micro font-mono uppercase tracking-technical text-foreground/55"
           >
             {t("contact.email.label")}
           </span>
           <a
             href="mailto:contact@miloszmisiek.com?subject=Contact%20from%20Portfolio&body=Hi%20Milosz%2C%0A%0AI%20came%20across%20your%20portfolio%20and%20would%20like%20to%20get%20in%20touch.%0A%0A[Please%20replace%20this%20with%20your%20message]%0A%0ABest%20Regards%0A"
-            class="group inline-flex items-center gap-3 w-fit border border-foreground/15 rounded-none px-4 py-3 hover:border-foreground/30 hover:bg-foreground/[0.03] transition-[border-color,background-color] duration-300 cursor-pointer focus-ring"
+            class="group inline-flex items-center gap-3 w-fit border border-foreground/15 rounded-none px-4 py-3 short:px-3 short:py-2 hover:border-foreground/30 hover:bg-foreground/[0.03] transition-[border-color,background-color] duration-300 cursor-pointer focus-ring"
             translate="no"
           >
             {/* Arrow */}
@@ -143,9 +143,9 @@ const t = getTranslations(Astro.currentLocale);
         </div>
 
         {/* Decorative code-like notation */}
-        <div class="hidden lg:block mt-auto pt-8">
+        <div class="hidden lg:block mt-auto pt-8 short:pt-4">
           <div
-            class="font-mono text-[10px] text-foreground/40 tracking-widest leading-relaxed select-none"
+            class="font-mono text-micro text-foreground/40 tracking-widest leading-relaxed select-none"
           >
             <div>$ whoami</div>
             <div>milosz.misiek</div>

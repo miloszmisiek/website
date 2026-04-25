@@ -16,13 +16,14 @@ import type { DeckCardAnimationState, DeckCardVisualState } from "./types";
 export const getDeckCardVisualState = (
   stackPos: number,
   numCards: number,
+  cardWidth: number = CARD_WIDTH,
 ): DeckCardVisualState => {
   const isTop = stackPos === 0;
   const zIndex = (numCards - stackPos) * DECK_Z_INDEX_STEP;
   const boxShadow = isTop ? DECK_TOP_SHADOW : DECK_STACK_SHADOW;
   const visualStyle = {
     zIndex,
-    width: `${CARD_WIDTH}px`,
+    width: `${cardWidth}px`,
     boxShadow,
   };
   return {
@@ -40,9 +41,10 @@ export const getDeckCardVisualState = (
 export const getDeckCardAnimationState = (
   stackPos: number,
   opacity: number,
+  stepX: number = H_STEP_X,
 ): DeckCardAnimationState => {
   return {
-    x: stackPos * H_STEP_X,
+    x: stackPos * stepX,
     y: stackPos * DECK_Y_OFFSET_STEP,
     rotate: 0,
     rotateY: stackPos * -DECK_ROTATE_Y_STEP,

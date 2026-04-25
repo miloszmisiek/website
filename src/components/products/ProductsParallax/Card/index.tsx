@@ -60,7 +60,7 @@ export function ProductCard({
           style={!prefersReducedMotion && { opacity }}
           className="w-full h-full"
         >
-          <div className="card-base overflow-hidden flex flex-col-reverse lg:flex-row lg:min-h-[36rem] border border-border/60 shadow-xl group bg-card-bg">
+          <div className="card-base overflow-hidden flex flex-col-reverse lg:flex-row lg:min-h-[36rem] short:lg:min-h-[26rem] border border-border/60 shadow-xl group bg-card-bg">
             <CardContent product={product} index={index} />
             <CardImage product={product} />
           </div>

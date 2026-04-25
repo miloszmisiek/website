@@ -70,7 +70,7 @@ export function ContactForm() {
 
         <Form.ErrorBanner>{t("contact.form.error")}</Form.ErrorBanner>
 
-        <div className="flex items-center justify-between pt-6 pb-1">
+        <div className="flex items-center justify-between pt-6 short:pt-3 pb-1">
           <Form.StatusText />
           <Form.SubmitButton>
             <Form.SubmitIdle>{t("contact.form.submit")}</Form.SubmitIdle>

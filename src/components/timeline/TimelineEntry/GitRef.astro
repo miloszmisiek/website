@@ -12,7 +12,7 @@ const { entry, isHead, isWork } = Astro.props;
 const { branchName, shortHash } = getGitDisplay(entry);
 ---
 
-<div class="git-ref mb-6">
+<div class="git-ref mb-6 short:mb-3">
   <span
     class:list={["ref-hash", isWork ? "ref-hash--work" : "ref-hash--academic"]}
   >

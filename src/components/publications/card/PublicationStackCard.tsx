@@ -64,7 +64,7 @@ export function PublicationStackCard({
         tabIndex={isTop ? undefined : 0}
         aria-label={isTop ? undefined : `Bring to front: ${title}`}
         className={cn(
-          "card-interactive p-5 sm:p-7 lg:p-10 w-full relative flex flex-col h-full",
+          "card-interactive p-5 sm:p-7 lg:p-10 short:!p-8 w-full relative flex flex-col h-full",
           !isTop &&
             "card-hoverable group cursor-pointer hover:border-border/80 focus-ring",
         )}
@@ -78,7 +78,7 @@ export function PublicationStackCard({
           />
         )}
 
-        <div className="flex flex-wrap items-center justify-between mb-5 sm:mb-8 gap-4 border-b border-border/70 pb-6 relative z-10">
+        <div className="flex flex-wrap items-center justify-between mb-5 sm:mb-8 short:mb-3 gap-4 border-b border-border/70 pb-6 short:pb-4 relative z-10">
           <div className="flex items-center gap-3">
             <Badge variant={statusVariant}>{statusLabel}</Badge>
           </div>
@@ -90,8 +90,8 @@ export function PublicationStackCard({
           </div>
         </div>
 
-        <div className="mb-5 sm:mb-8 relative z-10">
-          <h3 className="text-heading-md mb-4 text-foreground">{title}</h3>
+        <div className="mb-5 sm:mb-8 short:mb-3 relative z-10">
+          <h3 className="text-heading-md short:!text-2xl mb-4 short:mb-2 text-foreground">{title}</h3>
 
           {authors.length > 0 && (
             <p className="text-mono-meta flex flex-wrap items-baseline gap-x-2 gap-y-1">
@@ -109,7 +109,7 @@ export function PublicationStackCard({
         </div>
 
         {topics.length > 0 && (
-          <div className="flex flex-wrap gap-2 mb-8 relative z-10">
+          <div className="flex flex-wrap gap-2 short:gap-1 mb-8 short:mb-4 relative z-10">
             {topics.map((topic) => (
               <Badge key={topic} variant="neutral" className="tracking-widest">
                 {topic}
@@ -119,7 +119,7 @@ export function PublicationStackCard({
         )}
 
         {(tldr || excerpt) && (
-          <p className="text-body mb-10 text-muted/80 relative z-10 pl-4 border-l-2 border-border/70">
+          <p className="text-body short:text-sm mb-10 short:mb-5 text-muted/80 relative z-10 pl-4 border-l-2 border-border/70">
             {tldr ? (
               <span>{tldr}</span>
             ) : (
@@ -134,8 +134,8 @@ export function PublicationStackCard({
           </p>
         )}
 
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pt-6 border-t border-border/70 mt-auto relative z-10">
-          <div className="flex items-center gap-x-4 overflow-hidden text-[10px] font-mono uppercase tracking-widest text-muted/90 min-w-0">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 short:gap-3 pt-6 short:pt-4 border-t border-border/70 mt-auto relative z-10">
+          <div className="flex items-center gap-x-4 overflow-hidden text-micro font-mono uppercase tracking-widest text-muted/90 min-w-0">
             {readTime && (
               <span className="flex items-center gap-2 shrink-0">
                 <span className="text-foreground/60">

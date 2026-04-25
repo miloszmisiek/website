@@ -12,7 +12,7 @@ export default {
       lg: "1024px",
       xl: "1280px",
       "2xl": "1536px",
-      short: { raw: "(max-height: 750px)" },
+      short: { raw: "(max-height: 800px)" },
     },
     extend: {
       fontSize: {
@@ -23,6 +23,7 @@ export default {
       },
       letterSpacing: {
         technical: "0.2em",
+        display: "0.3em",
       },
       colors: {
         background: "rgb(var(--color-background) / <alpha-value>)",
