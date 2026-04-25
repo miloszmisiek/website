@@ -109,7 +109,7 @@ npm run preview
 
 ## Deployment
 
-The site is designed for **Netlify**. Push to your connected branch — Netlify handles the build (`astro build`) and serves `/dist`. The contact form backend is provided by Netlify Forms automatically; no additional configuration is needed beyond the `data-netlify` attributes already present in the markup.
+The site is designed for **Netlify**. Push to your connected branch — Netlify handles the build (`astro build`) and serves `/dist`. The contact form backend is provided by Netlify Forms automatically. No additional configuration is needed beyond the `data-netlify` attributes already present in the markup.
 
 ---
 
