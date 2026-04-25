@@ -131,6 +131,25 @@
     }
   }
 
+  /* Scroll-aware background — hero bg by default, solid when [data-scrolled] */
+  .scroll-bg {
+    background: rgb(var(--color-hero-bg));
+    transition:
+      background 0.3s ease,
+      backdrop-filter 0.3s ease;
+  }
+
+  :root[data-theme="dark"] .scroll-bg[data-scrolled],
+  .scroll-bg[data-scrolled] {
+    background: rgb(var(--color-background));
+    backdrop-filter: none;
+  }
+
+  :root[data-theme="light"] .scroll-bg[data-scrolled] {
+    background: rgba(248, 245, 239, 0.85);
+    backdrop-filter: blur(12px);
+  }
+
   /* Smooth scrolling */
   html {
     @apply scroll-smooth;

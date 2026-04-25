@@ -1,0 +1,26 @@
+---
+type Props = Partial<{
+  id: string;
+  size: number;
+  class: string;
+}>;
+
+const { id, size = 14, class: className } = Astro.props;
+---
+
+<svg
+  id={id}
+  xmlns="http://www.w3.org/2000/svg"
+  width={size}
+  height={size}
+  viewBox="0 0 24 24"
+  fill="currentColor"
+  stroke="none"
+  aria-hidden="true"
+  class={className}
+>
+  <rect x="4.5" y="4.5" width="5" height="5"></rect>
+  <rect x="14.5" y="4.5" width="5" height="5"></rect>
+  <rect x="4.5" y="14.5" width="5" height="5"></rect>
+  <rect x="14.5" y="14.5" width="5" height="5"></rect>
+</svg>

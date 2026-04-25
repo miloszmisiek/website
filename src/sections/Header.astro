@@ -3,6 +3,7 @@ import Logo from "../components/logo/Logo.astro";
 import NavLink from "../components/nav-links/NavLink.astro";
 import LanguageSwitcher from "../components/LanguageSwitcher.astro";
 import ThemeSwitcher from "../components/ThemeSwitcher.astro";
+import MobileMenu from "../components/MobileMenu.astro";
 import { getTranslations } from "../i18n";
 
 const t = getTranslations(Astro.currentLocale);
@@ -12,10 +13,15 @@ const navLinks = [
   { key: "nav.work" as const, href: "#products" },
   { key: "nav.contact" as const, href: "#contact" },
 ];
+
+const translatedLinks = navLinks.map((link) => ({
+  label: t(link.key),
+  href: link.href,
+}));
 ---
 
 <header
-  class="sticky top-0 z-[99999] bg-transparent text-sm font-mono tracking-widest uppercase text-muted border-border pt-4 pb-4 transition-[border-color] duration-300"
+  class="scroll-bg sticky top-0 z-[99999] text-sm font-mono tracking-widest uppercase text-muted border-border pt-4 pb-4 transition-[border-color] duration-300"
 >
   <div class="page-container flex justify-between items-center">
     <div class="flex items-center gap-4">
@@ -36,6 +42,7 @@ const navLinks = [
       <div class="flex items-center gap-3">
         <ThemeSwitcher />
         <LanguageSwitcher />
+        <MobileMenu links={translatedLinks} />
       </div>
     </nav>
   </div>
@@ -43,14 +50,17 @@ const navLinks = [
 
 <script>
   const header = document.querySelector("header");
+  const mobileMenu = document.getElementById("mobile-menu");
   const THRESHOLD = 40;
 
   const updateScrollState = () => {
     if (!header) return;
     if (window.scrollY > THRESHOLD) {
       header.setAttribute("data-scrolled", "");
+      mobileMenu?.setAttribute("data-scrolled", "");
     } else {
       header.removeAttribute("data-scrolled");
+      mobileMenu?.removeAttribute("data-scrolled");
     }
   };
 
@@ -58,26 +68,3 @@ const navLinks = [
   updateScrollState();
 </script>
 
-<style>
-  header {
-    background: rgb(var(--color-hero-bg));
-    transition:
-      background 0.3s ease,
-      backdrop-filter 0.3s ease;
-  }
-
-  /* Dark mode scrolled */
-  :root[data-theme="dark"] header[data-scrolled],
-  header[data-scrolled] {
-    background: rgb(var(--color-background));
-    backdrop-filter: none;
-    /* border-bottom: 1px solid rgba(230, 226, 221, 0.06); */
-  }
-
-  /* Light mode scrolled — warm paper */
-  :root[data-theme="light"] header[data-scrolled] {
-    background: rgba(248, 245, 239, 0.85);
-    backdrop-filter: blur(12px);
-    /* border-bottom: 1px solid rgba(26, 21, 16, 0.1); */
-  }
-</style>

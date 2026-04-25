@@ -1,0 +1,127 @@
+---
+import IconMenu from "./icons/IconMenu.astro";
+import IconClose from "./icons/IconClose.astro";
+
+type Props = {
+  links: { label: string; href: string }[];
+};
+
+const { links } = Astro.props;
+---
+
+<button
+  id="mobile-menu-toggle"
+  type="button"
+  class="md:hidden cursor-pointer min-h-[44px] min-w-[44px] inline-flex items-center justify-center text-foreground/90 hover:text-foreground transition-colors duration-300"
+  aria-label="Open menu"
+  aria-expanded="false"
+  aria-controls="mobile-menu"
+>
+  <IconMenu id="icon-menu-open" size={18} />
+  <IconClose id="icon-menu-close" size={18} class="hidden" />
+</button>
+
+<div
+  id="mobile-menu"
+  class="mobile-menu scroll-bg fixed left-0 right-0 bottom-0 z-[99998] flex flex-col items-center justify-center gap-10 pointer-events-none opacity-0 md:hidden"
+  aria-hidden="true"
+>
+  {
+    links.map((link) => (
+      <a
+        href={link.href}
+        class="text-2xl font-mono tracking-[0.3em] uppercase text-foreground/90 hover:text-foreground transition-colors"
+      >
+        {link.label}
+      </a>
+    ))
+  }
+</div>
+
+<script>
+  const toggle = document.getElementById("mobile-menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+  const iconOpen = document.getElementById("icon-menu-open");
+  const iconClose = document.getElementById("icon-menu-close");
+  const menuLinks = menu?.querySelectorAll("a") ?? [];
+
+  const syncMenuTop = () => {
+    const header = document.querySelector("header");
+    if (!header || !menu) return;
+    menu.style.top = `${header.offsetHeight}px`;
+  };
+
+  const openMenu = () => {
+    syncMenuTop();
+    menu?.classList.add("is-open");
+    menu?.classList.remove("pointer-events-none", "opacity-0");
+    menu?.setAttribute("aria-hidden", "false");
+    toggle?.setAttribute("aria-expanded", "true");
+    toggle?.setAttribute("aria-label", "Close menu");
+    iconOpen?.classList.add("hidden");
+    iconClose?.classList.remove("hidden");
+    document.body.style.overflow = "hidden";
+  };
+
+  const closeMenu = () => {
+    menu?.classList.remove("is-open");
+    menu?.classList.add("pointer-events-none", "opacity-0");
+    menu?.setAttribute("aria-hidden", "true");
+    toggle?.setAttribute("aria-expanded", "false");
+    toggle?.setAttribute("aria-label", "Open menu");
+    iconOpen?.classList.remove("hidden");
+    iconClose?.classList.add("hidden");
+    document.body.style.overflow = "";
+  };
+
+  const toggleMenu = () => {
+    const isOpen = toggle?.getAttribute("aria-expanded") === "true";
+    if (isOpen) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  };
+
+  toggle?.addEventListener("click", toggleMenu);
+
+  menuLinks.forEach((link) => {
+    link.addEventListener("click", closeMenu);
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (
+      e.key === "Escape" &&
+      toggle?.getAttribute("aria-expanded") === "true"
+    ) {
+      closeMenu();
+      toggle?.focus();
+    }
+  });
+
+  const largeViewport = window.matchMedia("(min-width: 768px)");
+  const closeMenuOnBreakpoint = (e: MediaQueryList | MediaQueryListEvent) => {
+    if (e.matches && toggle?.getAttribute("aria-expanded") === "true") {
+      closeMenu();
+    }
+  };
+  largeViewport.addEventListener("change", closeMenuOnBreakpoint);
+  closeMenuOnBreakpoint(largeViewport);
+</script>
+
+<style>
+  .mobile-menu {
+    transition: opacity 0.25s ease;
+  }
+
+  .mobile-menu.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mobile-menu {
+      transition: none;
+    }
+  }
+</style>
