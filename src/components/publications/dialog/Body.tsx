@@ -13,7 +13,7 @@ export function Body() {
     <div
       className={cn(
         "px-6 sm:px-8 py-8 space-y-6",
-        !isDrawer && "max-h-[70vh] overflow-y-auto",
+        !isDrawer && "flex-1 min-h-0 overflow-y-auto",
       )}
     >
       <div>
