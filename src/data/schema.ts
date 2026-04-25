@@ -1,25 +1,20 @@
-/**
- * TypeScript Type Definitions for Portfolio Data
- * Ensures type safety across all data files and components
- */
-
 import { ExperienceTypeEnum, PublicationStatusEnum } from "./types";
 export { ExperienceTypeEnum, PublicationStatusEnum };
 
 export type TimelineEntry = {
   id: string;
   period: {
-    start: string; // YYYY-MM-DD or "present"
-    end: string; // YYYY-MM-DD or "present"
+    start: string;
+    end: string;
   };
-  duration: string; // e.g., "1+ years", "2 years"
+  duration: string;
   role: string;
   company: string;
   description: string;
   highlights: string[];
   technologies: string[];
   type: ExperienceTypeEnum;
-  focus?: string; // Optional: main focus area
+  focus?: string;
 };
 
 export type Publication = {
@@ -28,18 +23,18 @@ export type Publication = {
   authors: string[];
   status: PublicationStatusEnum;
   year: number;
-  date?: string; // YYYY-MM-DD
+  date?: string;
   topics: string[];
-  tldr?: string; // Short teaser text shown on card
+  tldr?: string;
   excerpt?: string;
-  readTime?: string; // e.g., "8 min read"
+  readTime?: string;
   link?: string;
   doi?: string;
 };
 
 export type TechLogo = {
   name: string;
-  slug: string; // Simple Icons slug, e.g. "react", "nextdotjs"
+  slug: string;
 };
 
 export type Product = {

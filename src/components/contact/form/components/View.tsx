@@ -1,4 +1,3 @@
-// GOOD
 import { AnimatePresence, motion } from "framer-motion";
 import { useFormContext } from "../context/FormContext";
 import { FORM_STATE } from "../../constants";

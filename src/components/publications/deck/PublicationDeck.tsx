@@ -1,4 +1,3 @@
-// GOOD
 import { useState, useRef, useLayoutEffect, useCallback } from "react";
 import { MotionConfig } from "framer-motion";
 import { PublicationCarousel, DotNav } from "../carousel";

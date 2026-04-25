@@ -1,4 +1,3 @@
-// GOOD
 import {
   motion,
   useTransform,

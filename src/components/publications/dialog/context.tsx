@@ -1,4 +1,3 @@
-// GOOD
 import {
   createContext,
   useCallback,
@@ -40,7 +39,7 @@ export function PublicationAbstractDialog({
 }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [isOpen, setIsOpen] = useState(false);
-  const [isDrawer, setIsDrawer] = useState(false); // false = SSR-safe default
+  const [isDrawer, setIsDrawer] = useState(false);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(max-width: 1023px)");

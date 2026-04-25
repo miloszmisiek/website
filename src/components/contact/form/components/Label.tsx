@@ -1,4 +1,3 @@
-// GOOD
 import type { PropsWithChildren } from "react";
 import { useFieldContext } from "../context/FieldContext";
 

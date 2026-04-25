@@ -1,4 +1,3 @@
-// GOOD
 import { MotionConfig } from "framer-motion";
 import { useIsMobile } from "../../../hooks/useIsMobile";
 import { ProductsParallaxDesktop } from "./Desktop";

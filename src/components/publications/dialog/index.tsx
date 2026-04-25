@@ -1,4 +1,3 @@
-// GOOD
 import { Body } from "./Body";
 import { PublicationAbstractDialog as PublicationAbstractDialogProvider } from "./context";
 import { Footer } from "./Footer";

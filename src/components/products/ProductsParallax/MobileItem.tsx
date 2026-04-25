@@ -1,4 +1,3 @@
-// GOOD
 import { motion } from "framer-motion";
 import { Badge } from "../../Badge";
 import { Button } from "../../button/Button";

@@ -1,4 +1,3 @@
-// GOOD
 import { cn } from "../../styles/cn";
 import { buttonVariants } from "./button-variants";
 import type { ButtonProps } from "./types";

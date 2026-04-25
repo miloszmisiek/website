@@ -1,44 +1,44 @@
-/* Theme CSS - Dual light/dark theme with CSS custom properties */
+
 
 @layer base {
-  /* ─────────── Default / Dark theme ─────────── */
+  
   :root {
     color-scheme: dark;
 
-    /* Color channel values (R G B) — enables Tailwind opacity modifier support */
-    --color-background: 24 22 21; /* #181615 Deep Charcoal */
-    --color-foreground: 230 226 221; /* #e6e2dd Soft Bone White */
-    --color-muted: 163 157 150; /* #a39d96 Light Taupe Gray */
-    --color-border: 48 44 42; /* #302c2a Soft Dark Border */
+    
+    --color-background: 24 22 21; 
+    --color-foreground: 230 226 221; 
+    --color-muted: 163 157 150; 
+    --color-border: 48 44 42; 
 
-    /* Structural / decorative */
+    
     --color-line: rgba(230, 226, 221, 0.15);
     --color-dim: rgba(230, 226, 221, 0.4);
 
-    /* Hover states */
+    
     --color-hover-bg: rgba(230, 226, 221, 0.05);
 
-    /* Accent colors */
+    
     --color-success: #739e73;
     --color-info: #7a9fbf;
 
-    /* Gradient tokens */
+    
     --gradient-text-from: #e6e2dd;
     --gradient-text-to: #a39d96;
     --gradient-hover-via: rgba(230, 226, 221, 0.03);
 
-    /* Hero surface token */
-    --color-hero-bg: 13 11 10;            /* #0d0b0a — darker terminal screen */
+    
+    --color-hero-bg: 13 11 10;            
 
-    /* Card surface tokens */
+    
     --color-card-bg: 32 29 28;
     --color-card-bg-hover: 38 35 34;
 
-    /* Card shadow tokens */
+    
     --shadow-card-top: none;
     --shadow-card-bg: none;
 
-    /* Terminal widget tokens */
+    
     --terminal-body-bg: 32 30 28;
     --terminal-titlebar-bg: rgba(230, 226, 221, 0.05);
     --terminal-border: rgba(230, 226, 221, 0.18);
@@ -48,23 +48,23 @@
     --terminal-glow: radial-gradient(ellipse at 50% 0%, rgba(230, 226, 221, 0.03) 0%, transparent 70%);
   }
 
-  /* ─────────── System preference: light (Warm Paper -> Matte Pastel) ─────────── */
+  
   @media (prefers-color-scheme: light) {
     :root {
       color-scheme: light;
-      --color-background: 248 245 239; /* #f8f5ef — warm cream */
-      --color-foreground: 26 21 16; /* #1a1510 — warm near-black */
-      --color-muted: 100 92 85; /* #645c55 — darker taupe, AA contrast on cream bg */
-      --color-border: 230 223 213; /* #e6dfd5 — flat soft border */
+      --color-background: 248 245 239; 
+      --color-foreground: 26 21 16; 
+      --color-muted: 100 92 85; 
+      --color-border: 230 223 213; 
       --color-line: rgba(26, 21, 16, 0.15);
       --color-dim: rgba(26, 21, 16, 0.4);
       --color-hover-bg: rgba(26, 21, 16, 0.04);
       --gradient-text-from: #1a1510;
       --gradient-text-to: #91877f;
       --gradient-hover-via: rgba(26, 21, 16, 0.02);
-      --color-hero-bg: 228 220 208;       /* #e4dcd0 — warmer/darker than body */
-      --color-card-bg: 252 250 246; /* #fcfaf6 — crisp matte white/cream */
-      --color-card-bg-hover: 245 242 235; /* #f5f2eb — deeper matte on hover */
+      --color-hero-bg: 228 220 208;       
+      --color-card-bg: 252 250 246; 
+      --color-card-bg-hover: 245 242 235; 
       --shadow-card-top: none;
       --shadow-card-bg: none;
       --terminal-body-bg: 236 230 220;
@@ -74,18 +74,18 @@
       --terminal-fieldset: rgba(26, 21, 16, 0.1);
       --terminal-dot: 168 158 148;
       --terminal-glow: none;
-      --color-success: #5a7d5a; /* Matte Sage */
-      --color-info: #5c7c99; /* Matte Slate (Steel Blue) */
+      --color-success: #5a7d5a; 
+      --color-info: #5c7c99; 
     }
   }
 
-  /* ─────────── Explicit dark override ─────────── */
+  
   [data-theme="dark"] {
     color-scheme: dark;
-    --color-background: 24 22 21; /* #181615 Deep Charcoal */
-    --color-foreground: 230 226 221; /* #e6e2dd Soft Bone White */
-    --color-muted: 163 157 150; /* #a39d96 Light Taupe Gray */
-    --color-border: 48 44 42; /* #302c2a Soft Dark Border */
+    --color-background: 24 22 21; 
+    --color-foreground: 230 226 221; 
+    --color-muted: 163 157 150; 
+    --color-border: 48 44 42; 
     --color-line: rgba(230, 226, 221, 0.15);
     --color-dim: rgba(230, 226, 221, 0.4);
     --color-hover-bg: rgba(230, 226, 221, 0.05);
@@ -106,13 +106,13 @@
     --terminal-glow: radial-gradient(ellipse at 50% 0%, rgba(230, 226, 221, 0.03) 0%, transparent 70%);
   }
 
-  /* ─────────── Explicit light override (Matte Pastel) ─────────── */
+  
   [data-theme="light"] {
     color-scheme: light;
-    --color-background: 248 245 239; /* #f8f5ef — warm cream */
-    --color-foreground: 26 21 16; /* #1a1510 — warm near-black */
-    --color-muted: 145 135 127; /* #91877f — taupe gray */
-    --color-border: 230 223 213; /* #e6dfd5 — flat soft border */
+    --color-background: 248 245 239; 
+    --color-foreground: 26 21 16; 
+    --color-muted: 145 135 127; 
+    --color-border: 230 223 213; 
     --color-line: rgba(26, 21, 16, 0.15);
     --color-dim: rgba(26, 21, 16, 0.4);
     --color-hover-bg: rgba(26, 21, 16, 0.04);
@@ -120,8 +120,8 @@
     --gradient-text-to: #91877f;
     --gradient-hover-via: rgba(26, 21, 16, 0.02);
     --color-hero-bg: 228 220 208;
-    --color-card-bg: 252 250 246; /* #fcfaf6 — crisp matte white/cream */
-    --color-card-bg-hover: 245 242 235; /* #f5f2eb — deeper matte on hover */
+    --color-card-bg: 252 250 246; 
+    --color-card-bg-hover: 245 242 235; 
     --shadow-card-top: none;
     --shadow-card-bg: none;
     --terminal-body-bg: 236 230 220;
@@ -131,11 +131,11 @@
     --terminal-fieldset: rgba(26, 21, 16, 0.1);
     --terminal-dot: 168 158 148;
     --terminal-glow: none;
-    --color-success: #5a7d5a; /* Matte Sage */
-    --color-info: #5c7c99; /* Matte Slate (Steel Blue) */
+    --color-success: #5a7d5a; 
+    --color-info: #5c7c99; 
   }
 
-  /* ─────────── Body ─────────── */
+  
   body {
     background-color: rgb(var(--color-background));
     color: rgb(var(--color-foreground));
@@ -148,9 +148,8 @@
     color: rgb(var(--color-foreground));
   }
 
-  /* ─────────── Theme-aware overrides for Tailwind color utilities ─────────── */
-  /* bg-white/5 and hover:bg-white/5 are redirected to --color-hover-bg so the
-     "frosted" tint adapts to both dark and light themes instead of using white. */
+  
+  
 
   .bg-white\/5,
   .hover\:bg-white\/5:hover {
@@ -166,12 +165,10 @@
     color: rgb(var(--color-background));
   }
 
-  /* ─────────── Light mode: accent color adjustments for Matte Pastel ─────────── */
-  /* Bright 400-series Tailwind colors lack contrast on white/cream cards.
-     In light mode we promote to 600-700 series for WCAG AA compliance.
-     Elements inside [data-theme="dark"] (e.g. terminal) are explicitly restored below. */
+  
+  
 
-  /* Emerald (Success) — published badge -> Matte Sage */
+  
   [data-theme="light"] .text-emerald-400 {
     color: #5a7d5a;
   }
@@ -185,7 +182,7 @@
     background-color: #5a7d5a;
   }
 
-  /* Amber (Warning) — under-review badge -> Soft Sand / Oat */
+  
   [data-theme="light"] .text-amber-400 {
     color: #99845e;
   }
@@ -196,7 +193,7 @@
     border-color: #c4b08f;
   }
 
-  /* Blue (Info) — preprint badge -> Matte Slate / Steel Blue */
+  
   [data-theme="light"] .text-blue-400 {
     color: #5c7c99;
   }
@@ -207,12 +204,12 @@
     border-color: #a6bed1;
   }
 
-  /* Red — form errors */
+  
   [data-theme="light"] .text-red-400\/90 {
     color: rgb(185 28 28 / 0.9);
   }
 
-  /* ─── Adjust inside explicit dark containers (Matte Charcoal variants) ─── */
+  
   [data-theme="dark"] .text-emerald-400 {
     color: #739e73;
   }

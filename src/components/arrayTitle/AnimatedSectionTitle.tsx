@@ -1,4 +1,3 @@
-// GOOD
 import { useRef } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import { ArrayTitle } from "./ArrayTitle";
@@ -31,7 +30,6 @@ export function AnimatedSectionTitle({ text }: Props) {
   const isInView = useInView(headingRef, { once: true, margin: "0px" });
   const prefersReducedMotion = useReducedMotion();
 
-  // Reduced-motion: skip width expansion, just fade in
   if (prefersReducedMotion) {
     return (
       <h2 ref={headingRef} className="section-title">

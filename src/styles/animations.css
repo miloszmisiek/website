@@ -1,4 +1,4 @@
-/* Animations CSS - Smooth and performant animations */
+
 
 @keyframes organicBlob {
   0%, 100% { clip-path: shape(from 88.17% 44.57%,curve to 83.91% 54.42% with 80.53% 50.00%,curve to 87.09% 63.68% with 87.29% 58.84%,curve to 82.15% 70.76% with 86.89% 68.52%,curve to 78.45% 81.30% with 77.42% 73.00%,curve to 73.45% 89.98% with 79.48% 89.60%,curve to 62.06% 89.23% with 67.41% 90.37%,curve to 52.45% 84.62% with 56.72% 88.09%,curve to 43.33% 84.81% with 48.19% 81.14%,curve to 35.31% 84.71% with 38.48% 88.49%,curve to 27.93% 79.39% with 32.14% 80.93%,curve to 23.86% 72.48% with 23.73% 77.85%,curve to 21.30% 64.27% with 23.99% 67.11%,curve to 20.07% 57.38% with 18.60% 61.43%,curve to 13.68% 49.08% with 21.53% 53.33%,curve to 11.55% 41.46% with 5.84% 44.84%,curve to 13.34% 30.70% with 17.26% 38.08%,curve to 13.91% 19.90% with 9.42% 23.31%,curve to 25.30% 17.85% with 18.39% 16.50%,curve to 34.95% 14.04% with 32.22% 19.20%,curve to 42.89% 13.03% with 37.69% 8.89%,curve to 52.68% 12.97% with 48.09% 17.17%,curve to 59.46% 15.87% with 57.27% 8.77%,curve to 66.23% 22.52% with 61.66% 22.97%,curve to 78.26% 21.04% with 70.80% 22.07%,curve to 85.25% 26.28% with 85.73% 20.02%,curve to 90.29% 35.84% with 84.77% 32.54%,curve to 88.17% 44.57% with 95.81% 39.14%) }
@@ -7,7 +7,7 @@
 }
 
 @layer utilities {
-  /* Reduce motion support */
+  
   @media (prefers-reduced-motion: reduce) {
     *,
     *::before,

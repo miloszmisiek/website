@@ -1,4 +1,3 @@
-// GOOD
 import { cn } from "../../../styles/cn";
 import { DotNav } from "./DotNav";
 import type { CarouselArrowButtonProps, CarouselControlsProps } from "./types";

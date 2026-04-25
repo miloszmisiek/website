@@ -1,7 +1,7 @@
-/* Utilities CSS - Custom utility classes for portfolio-specific patterns */
+
 
 @layer utilities {
-  /* Section labels — prominent numbered section anchor */
+  
   .section-label {
     @apply flex flex-col gap-2 mb-14;
   }
@@ -11,17 +11,17 @@
     content: none;
   }
 
-  /* Number within section-label */
+  
   .section-num {
     @apply font-mono text-[10px] text-muted tracking-[0.3em] uppercase font-semibold;
   }
 
-  /* Title within section-label (use as h2) */
+  
   .section-title {
     @apply text-xl md:text-2xl font-mono text-foreground tracking-widest uppercase leading-none font-bold;
   }
 
-  /* Card styles */
+  
   .card-base {
     @apply border border-border rounded-none transition-[border-color,box-shadow,background-color] duration-300;
   }
@@ -34,7 +34,7 @@
     @apply hover:shadow-xl hover:bg-card-bg-hover hover:border-foreground/10;
   }
 
-  /* Social icons designed for dark bg — invert in light mode */
+  
   .icon-invert {
     filter: none;
   }
@@ -44,12 +44,12 @@
   [data-theme="light"] .icon-invert { filter: invert(1); }
   [data-theme="dark"] .icon-invert { filter: none; }
 
-  /* Container styles */
+  
   .page-container {
     @apply max-w-7xl mx-auto px-6 md:px-12 lg:px-16;
   }
 
-  /* Typography utilities */
+  
   .text-heading-xl {
     @apply text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.05] text-foreground;
   }
@@ -70,27 +70,27 @@
     @apply text-xs font-mono uppercase tracking-[0.2em] text-muted;
   }
 
-  /* Year/date annotations — 10px, 0.3em tracking */
+  
   .text-mono-date {
     @apply font-mono text-[10px] uppercase tracking-[0.3em] text-muted;
   }
 
-  /* Author bylines, company labels, metadata rows — 12px, widest tracking */
+  
   .text-mono-meta {
     @apply font-mono text-xs uppercase tracking-widest text-muted;
   }
 
-  /* Gradient heading text — theme-aware */
+  
   .text-gradient-heading {
     @apply bg-gradient-to-br from-gradient-from to-gradient-to;
   }
 
-  /* Focus utilities for accessibility */
+  
   .focus-ring {
     @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background;
   }
 
-  /* Hover gradient effect */
+  
   .hover-gradient {
     @apply relative overflow-hidden;
   }
@@ -100,7 +100,7 @@
     background: linear-gradient(to right, transparent, var(--gradient-hover-via), transparent);
   }
 
-  /* Carousel peek fades — CSS mask to actual transparency, color-independent (sm+ only) */
+  
   @media (min-width: 640px) {
     .carousel-fade-right {
       -webkit-mask-image: linear-gradient(to right, black calc(100% - 3.5rem), transparent);
@@ -115,7 +115,7 @@
       mask-image: linear-gradient(to right, transparent, black 3.5rem, black calc(100% - 3.5rem), transparent);
     }
   }
-  /* md+ override — larger 5rem peek matches md slide flex-basis */
+  
   @media (min-width: 768px) {
     .carousel-fade-right {
       -webkit-mask-image: linear-gradient(to right, black calc(100% - 5rem), transparent);
@@ -131,7 +131,7 @@
     }
   }
 
-  /* Scroll-aware background — hero bg by default, solid when [data-scrolled] */
+  
   .scroll-bg {
     background: rgb(var(--color-hero-bg));
     transition:
@@ -150,12 +150,12 @@
     backdrop-filter: blur(12px);
   }
 
-  /* Smooth scrolling */
+  
   html {
     @apply scroll-smooth;
   }
 
-  /* Publication dialog — native <dialog> with theme-aware backdrop */
+  
   .publication-dialog {
     background-color: rgb(var(--color-card-bg));
     color: rgb(var(--color-foreground));

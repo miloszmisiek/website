@@ -1,4 +1,3 @@
-// GOOD
 import { Button } from "../../../../button/Button";
 import { useFormContext } from "../../context/FormContext";
 import { FORM_STATE } from "../../../constants";

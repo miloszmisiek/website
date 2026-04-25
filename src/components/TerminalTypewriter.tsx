@@ -1,4 +1,3 @@
-// GOOD
 import { motion, useReducedMotion } from "framer-motion";
 import { useTypewriter } from "../hooks/useTypewriter";
 

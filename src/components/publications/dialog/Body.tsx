@@ -1,4 +1,3 @@
-// GOOD
 import { cn } from "../../../styles/cn";
 import { usePublicationAbstractDialogContext } from "./context";
 
@@ -8,7 +7,6 @@ export function Body() {
     publication: { title, authors, excerpt },
   } = usePublicationAbstractDialogContext();
   
-  // Split excerpt into paragraphs if it exists
   const paragraphs = excerpt ? excerpt.split('\n\n').filter(p => p.trim().length > 0) : [];
 
   return (

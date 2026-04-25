@@ -1,4 +1,3 @@
-// GOOD
 import { useState, useEffect, useLayoutEffect, useRef } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { useReducedMotion } from "framer-motion";

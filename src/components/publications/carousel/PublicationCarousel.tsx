@@ -1,4 +1,3 @@
-// GOOD
 import { cn } from "../../../styles/cn";
 import { PublicationStackCard } from "../card";
 import { CarouselControls } from "./CarouselControls";

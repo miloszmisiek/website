@@ -1,4 +1,3 @@
-// GOOD
 import { useState, useEffect } from "react";
 
 export function useIsMobile(breakpoint: number): boolean {

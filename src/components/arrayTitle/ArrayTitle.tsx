@@ -1,4 +1,3 @@
-// GOOD
 
 type Props = {
   text: string;

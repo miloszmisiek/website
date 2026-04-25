@@ -1,4 +1,3 @@
-// GOOD
 import { ImagePlaceholder } from "./ImagePlaceholder";
 import type { Product } from "../../../../data/schema";
 

@@ -1,4 +1,3 @@
-// GOOD
 import { getTranslations } from "../../../../i18n";
 
 export function ImagePlaceholder() {

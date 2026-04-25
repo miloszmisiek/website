@@ -1,4 +1,3 @@
-// GOOD
 import React, { type ReactNode } from "react";
 import { motion, MotionConfig } from "framer-motion";
 import { type TimelineEntry } from "../../data/schema";

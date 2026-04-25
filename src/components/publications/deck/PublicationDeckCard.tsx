@@ -1,4 +1,3 @@
-// GOOD
 import { motion } from "framer-motion";
 import { PublicationStackCard } from "../card";
 import { DECK_CARD_SPRING_TRANSITION } from "./constants";

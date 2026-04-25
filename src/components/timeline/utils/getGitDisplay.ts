@@ -1,11 +1,10 @@
-// GOOD
 import { isWorkEntry } from "./isWorkEntry";
 import { GitBranchPrefixEnum } from "../../../data/types";
 import type { TimelineEntry } from "../../../data/schema";
 
-const NOT_ALPHANUMERIC_REGEX = /[^a-z0-9]/g; // Matches any non-alphanumeric character
-const GROUP_NOT_ALPHANUMERIC_REGEX = /[^a-z0-9]+/gi; // Matches one or more non-alphanumeric characters
-const BEGIN_DASH_OR_END_DASH_REGEX = /^-|-$/g; // Matches a dash at the beginning or end of the string
+const NOT_ALPHANUMERIC_REGEX = /[^a-z0-9]/g;
+const GROUP_NOT_ALPHANUMERIC_REGEX = /[^a-z0-9]+/gi;
+const BEGIN_DASH_OR_END_DASH_REGEX = /^-|-$/g;
 
 export function getGitDisplay(entry: TimelineEntry) {
   const { type, id, company } = entry;

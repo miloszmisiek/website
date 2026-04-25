@@ -1,4 +1,3 @@
-// GOOD
 import { useRef } from "react";
 import { useScroll } from "framer-motion";
 import { ProductCard } from "./Card";

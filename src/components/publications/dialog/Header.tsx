@@ -1,4 +1,3 @@
-// GOOD
 import { Drawer } from "@hanzo/react-drawer";
 import { getTranslations } from "../../../i18n";
 import { Button } from "../../button/Button";

@@ -1,4 +1,3 @@
-// GOOD
 import { Badge } from "../../../Badge";
 import { Button } from "../../../button/Button";
 import { getTranslations } from "../../../../i18n";

@@ -1,4 +1,3 @@
-// GOOD
 import { ProductMobileItem } from "./MobileItem";
 import type { ProductsListProps } from "./types";
 

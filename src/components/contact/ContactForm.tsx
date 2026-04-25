@@ -1,4 +1,3 @@
-// GOOD
 import { MotionConfig } from "framer-motion";
 import { getTranslations } from "../../i18n";
 import { IconCheck } from "./icons/IconCheck";

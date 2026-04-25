@@ -1,4 +1,3 @@
-// GOOD
 import { Root } from "./components/Root";
 import { View } from "./components/View";
 import { SuccessView } from "./components/SuccessView";

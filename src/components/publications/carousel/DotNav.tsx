@@ -1,4 +1,3 @@
-// GOOD
 import { cn } from "../../../styles/cn";
 import type { DotButtonProps, DotNavProps } from "./types";
 
