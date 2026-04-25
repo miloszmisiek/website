@@ -1,5 +1,5 @@
 ---
-import '../styles/global.css';
+import "../styles/global.css";
 
 interface Props {
   title: string;
@@ -9,7 +9,7 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang={Astro.currentLocale}>
+<html lang={Astro.currentLocale} class="[scrollbar-gutter:stable]">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="Milosz Misiek Portfolio" />
@@ -22,17 +22,25 @@ const { title } = Astro.props;
     <script is:inline>
       (function () {
         // Prevent browser scroll restoration so page always starts at top
-        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-        var stored = localStorage.getItem('theme');
-        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        var theme = stored === 'dark' || stored === 'light'
-          ? stored
-          : (prefersDark ? 'dark' : 'light');
-        document.documentElement.setAttribute('data-theme', theme);
+        if ("scrollRestoration" in history)
+          history.scrollRestoration = "manual";
+        var stored = localStorage.getItem("theme");
+        var prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
+        var theme =
+          stored === "dark" || stored === "light"
+            ? stored
+            : prefersDark
+              ? "dark"
+              : "light";
+        document.documentElement.setAttribute("data-theme", theme);
       })();
     </script>
   </head>
-  <body class="selection:bg-foreground selection:text-background overflow-x-hidden">
+  <body
+    class="selection:bg-foreground selection:text-background overflow-x-hidden"
+  >
     <slot />
   </body>
 </html>
