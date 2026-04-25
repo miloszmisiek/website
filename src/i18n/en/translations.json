@@ -5,16 +5,13 @@
   "nav.research": "RESEARCH",
   "nav.contact": "CONTACT",
 
-  "hero.typewriter": "Engineering scalable, high-performance systems with precision.",
-  "hero.bio.first": "Software engineer based in Poland, focused on designing and building reliable systems at scale.",
-  "hero.bio.second": "I work across the stack — from system architecture to implementation — solving complex problems with an emphasis on performance, scalability, and maintainability.",
+  "hero.typewriter": "Faster, more stable, built to scale.",
+  "hero.bio.first": "Software engineer working on production systems.",
+  "hero.bio.second": "I build and improve systems, focusing on performance.",
   "hero.cta.viewWork": "VIEW WORK",
   "hero.cta.contact": "CONTACT",
 
   "hero.terminal.greeting": "Hello there!",
-
-  "footer.github": "GITHUB",
-  "footer.linkedin": "LINKEDIN",
 
   "section.experience": "EXPERIENCE",
   "section.publications": "PUBLICATIONS",
@@ -30,14 +27,14 @@
   "publication.time": "Time",
   "publication.more": "more",
 
-  "product.viewProduct": "VIEW PRODUCT",
+  "product.viewProduct": "VIEW LIVE",
+  "product.nda": "NDA",
   "product.imagePlaceholder": "Product Image",
 
   "section.contact": "CONTACT",
-  "contact.headline": "Let's Build Something.",
+  "contact.headline": "Let’s build something that scales.",
   "contact.subheadline": "// open to new projects, collaborations, and interesting problems",
   "contact.email.label": "DIRECT",
-  "contact.form.title": "contact.form",
   "contact.form.name.label": "NAME",
   "contact.form.name.placeholder": "e.g. Jane Smith…",
   "contact.form.email.label": "EMAIL",
@@ -45,7 +42,6 @@
   "contact.form.message.label": "MESSAGE",
   "contact.form.message.placeholder": "Tell me about your project…",
   "contact.form.submit": "SEND",
-  "contact.form.sending": "Sending…",
   "contact.form.success": "Message sent. I'll get back to you soon.",
   "contact.form.error": "Something went wrong. Try again.",
   "contact.github": "GITHUB",

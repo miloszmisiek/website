@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FORM_STATE, EMAIL_REGEX } from "../constants";
 import { getTranslations } from "../../../i18n";
 import type { FormState, ContactFieldName, FieldErrors } from "../types";
@@ -22,7 +22,27 @@ const validate = (data: Record<ContactFieldName, string>): FieldErrors => {
 
 export function useContactForm() {
   const [state, setState] = useState<FormState>(IDLE);
+  const [isTyping, setIsTyping] = useState(false);
   const [errors, setErrors] = useState<FieldErrors>({});
+
+  const handleInput = (e: Event) => {
+    const form = e.currentTarget as HTMLFormElement;
+    const fd = new FormData(form);
+    const hasValue = !!(
+      String(fd.get("name") || "").trim() ||
+      String(fd.get("email") || "").trim() ||
+      String(fd.get("message") || "").trim()
+    );
+    setIsTyping(hasValue);
+  };
+
+  useEffect(() => {
+    const form = document.forms.namedItem("contact");
+    if (form) {
+      form.addEventListener("input", handleInput);
+      return () => form.removeEventListener("input", handleInput);
+    }
+  }, []);
 
   const clearFieldError = (field: ContactFieldName) => {
     setErrors((prev) => {
@@ -34,6 +54,7 @@ export function useContactForm() {
   const resetForm = () => {
     setErrors({});
     setState(IDLE);
+    setIsTyping(false);
   };
 
   const submitForm = async (e: React.SubmitEvent<HTMLFormElement>) => {
@@ -82,5 +103,5 @@ export function useContactForm() {
     }
   };
 
-  return { state, errors, clearFieldError, resetForm, submitForm };
+  return { state, isTyping, errors, clearFieldError, resetForm, submitForm };
 }

@@ -9,13 +9,12 @@
     "role": "Software Engineer",
     "company": "Elastic Email",
     "focus": "Full Stack Development & AI Integration",
-    "description": "Delivering full-stack features across frontend, backend, and database layers at a leading email delivery platform. Currently implementing AI-powered automated communication features using RAG. Building reusable components, enhancing scalability, and collaborating cross-functionally on UI/UX and performance.",
+    "description": "Core engineer on the Inbox product at an email platform handling 100M+ emails/month. Building end-to-end features across React, Node.js, and MongoDB. Currently shipping AI-powered automated communication using RAG and pgvector.",
     "highlights": [
-      "Implementing AI-powered automated communication features using RAG",
-      "Deliver full-stack features across frontend, backend, and database layers",
-      "Build reusable components supporting long-term product growth",
-      "Collaborate on high-quality UI/UX solutions with cross-functional teams",
-      "Monitor performance, identify bottlenecks, and drive infrastructure improvements"
+      "Implementing AI-powered features using RAG architecture and large language models",
+      "Core engineer on Inbox — owning features across frontend, backend, and data layers",
+      "Building shared component library and reusable patterns adopted across product teams",
+      "Identifying performance bottlenecks and driving infrastructure improvements"
     ],
     "technologies": [
       "TypeScript",
@@ -32,6 +31,32 @@
     "type": "work"
   },
   {
+    "id": "exp-003",
+    "period": {
+      "start": "2024-10",
+      "end": "2028-10"
+    },
+    "duration": "4-year program",
+    "role": "PhD Candidate",
+    "company": "West Pomeranian University of Technology",
+    "focus": "Cybersecurity & Phishing Detection",
+    "description": "Doctoral research at the intersection of AI and cybersecurity. Building ML-based phishing detection systems using XGBoost, NLP, and computer vision approaches.",
+    "highlights": [
+      "Published 2 papers (HICSS 2025, IEEE Access 2026), 3rd under review for CISIM 2026",
+      "Built browser extension for real-time phishing URL detection using XGBoost",
+      "Developing multi-layer detection pipeline combining NLP and computer vision"
+    ],
+    "technologies": [
+      "Python",
+      "PyTorch",
+      "Deep Learning",
+      "NLP",
+      "Computer Vision",
+      "Cybersecurity"
+    ],
+    "type": "academic"
+  },
+  {
     "id": "exp-002",
     "period": {
       "start": "2023-03",
@@ -41,12 +66,11 @@
     "role": "Web Developer",
     "company": "Maritime University of Szczecin",
     "focus": "Procurement System Development",
-    "description": "Designed and built a public procurement system (v1.0.0) from architecture to production deployment on a Debian server. Also maintained official university websites and provided IT support.",
+    "description": "Built and delivered the first version of a procurement system (NDA project), designing and implementing a full-stack solution using React, Redux, Express, TypeScript, and MySQL.",
     "highlights": [
-      "Built full procurement system v1.0.0 with React, Redux, Express, TypeScript, MySQL",
+      "Built and delivered the first version of a procurement system (NDA project), designing and implementing a full-stack solution using React, Redux, Express, TypeScript, and MySQL.",
       "Deployed and configured on Debian server with secure database management",
-      "Led development across the entire project lifecycle to on-time delivery",
-      "Maintained official university websites and provided IT support"
+      "Led development across the entire project lifecycle to on-time delivery"
     ],
     "technologies": [
       "React.js",
@@ -59,31 +83,5 @@
       "Debian Linux"
     ],
     "type": "work"
-  },
-  {
-    "id": "exp-003",
-    "period": {
-      "start": "2024-10",
-      "end": "2028-10"
-    },
-    "duration": "4-year program",
-    "role": "PhD Candidate",
-    "company": "West Pomeranian University of Technology",
-    "focus": "Cybersecurity & Phishing Detection",
-    "description": "Doctoral research at the intersection of AI and cybersecurity. Exploring machine learning and deep learning approaches to detect and prevent phishing attacks, contributing to safer digital environments.",
-    "highlights": [
-      "Researching ML and deep learning methods for phishing detection and prevention",
-      "Developing cybersecurity strategies using modern AI techniques",
-      "Contributing to academic work on intelligent, multi-layer threat detection"
-    ],
-    "technologies": [
-      "Python",
-      "PyTorch",
-      "Deep Learning",
-      "NLP",
-      "Computer Vision",
-      "Cybersecurity"
-    ],
-    "type": "academic"
   }
 ]

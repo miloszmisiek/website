@@ -1,53 +1,52 @@
 [
   {
     "id": "prod-001",
-    "name": "Inbox: Communication Platfrom",
+    "name": "Inbox: Communication Platform",
     "role": "Core Engineer",
-    "description": "Comprehensive communication hub combining team chat, email service, and unified messaging. Designed for seamless collaboration with real-time notifications and rich media support.",
+    "description": "Built a real-time communication system as a core contributor. Improved performance and reliability under high load to support low-latency messaging.",
     "technologies": [
-       "Next.js",
-       "NodeJS",
-       "MongoDB",
-       "GraphQL",
-       "TypeScript",
-       "WebSocket"
+      "Next.js",
+      "NodeJS",
+      "MongoDB",
+      "GraphQL",
+      "TypeScript",
+      "WebSocket"
     ],
     "link": "https://elasticemail.com/inbox",
     "image": "/inbox.webp",
-		"image_mobile": "/inbox_raw.webp",
+    "image_mobile": "/inbox_raw.webp",
     "year": 2025,
-    "featured": true
+    "featured": true,
+    "nda": true
   },
   {
     "id": "prod-002",
     "name": "Home Page: Elastic Email",
     "role": "Engineer",
-    "description": "Modern marketing website for Elastic Email, a comprehensive email marketing and API platform. Built with Next.js for optimal performance and SEO, featuring responsive design, interactive product demonstrations, and conversion-focused landing pages.",
-    "technologies": [
-       "Next.js",
-       "TypeScript",
-       "TailwindCSS"
-    ],
+    "description": "Contributed to the Elastic Email marketing website. Focused on performance and rendering efficiency to improve user experience.",
+    "technologies": ["Next.js", "TypeScript", "TailwindCSS"],
     "link": "https://elasticemail.com",
     "image": "/ee-home.webp",
     "year": 2024,
-    "featured": true
+    "featured": true,
+    "nda": true
   },
-	{
-	"id": "prod-003",
-     "name": "Template Editor: Elastic Email",
-	"role": "Engineer",
-	"description": "Intuitive email template editor with drag-and-drop interface and raw HTML editing capabilities. Features AI-powered template generation, customizable content blocks, mobile-responsive layouts, brand color management, and merge field personalization for creating stunning newsletters.",
-	"technologies": [
-	"React",
-	"TypeScript",
-			"Styled Components",
-			"WordPress Gutenberg"
-	],
-	"link": "https://elasticemail.com/email-designer",
-	"image": "/te_desktop.webp",
-		"image_mobile": "/te_mobile.webp",
-	"year": 2023,
-	"featured": true
-	}
+  {
+    "id": "prod-003",
+    "name": "Template Editor: Elastic Email",
+    "role": "Engineer",
+    "description": "Worked on a complex, client-heavy email template editor, addressing drag-and-drop integration, state synchronization challenges, and rendering performance for complex layouts.",
+    "technologies": [
+      "React",
+      "TypeScript",
+      "Styled Components",
+      "WordPress Gutenberg"
+    ],
+    "link": "https://elasticemail.com/email-designer",
+    "image": "/te_desktop.webp",
+    "image_mobile": "/te_mobile.webp",
+    "year": 2023,
+    "featured": true,
+    "nda": true
+  }
 ]

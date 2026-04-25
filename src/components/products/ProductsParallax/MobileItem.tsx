@@ -20,6 +20,7 @@ type ProductMobileItemProps = {
 export function ProductMobileItem({
   product: {
     year,
+    nda,
     name,
     link,
     image,
@@ -43,8 +44,14 @@ export function ProductMobileItem({
       className="py-12 first:pt-4"
     >
       {year && (
-        <div className="mb-6">
+        <div className="mb-6 flex items-center gap-2">
+          {nda && <Badge variant="warning">{t("product.nda")}</Badge>}
           <span className="text-mono-date text-muted/90">{year}</span>
+        </div>
+      )}
+      {!year && nda && (
+        <div className="mb-6">
+          <Badge variant="warning">{t("product.nda")}</Badge>
         </div>
       )}
 

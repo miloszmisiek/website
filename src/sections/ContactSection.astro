@@ -9,6 +9,12 @@ import { getTranslations } from "../i18n";
 const t = getTranslations(Astro.currentLocale);
 ---
 
+<form name="contact" netlify netlify-honeypot="bot-field" hidden>
+  <input type="text" name="name" />
+  <input type="email" name="email" />
+  <textarea name="message"></textarea>
+</form>
+
 <section id="contact" class="mb-16 scroll-mt-28 short:mb-10">
   {/* Section Header */}
   <div class="section-label">
@@ -132,11 +138,14 @@ const t = getTranslations(Astro.currentLocale);
           <div
             class="font-mono text-[10px] text-foreground/40 tracking-widest leading-relaxed select-none"
           >
-            <div>{"// milosz.misiek"}</div>
+            <div>$ whoami</div>
+            <div>milosz.misiek</div>
+            <br />
+            <div>$ cat profile.json</div>
             <div>{"{"}</div>
             <div class="pl-4">{'role: "software engineer",'}</div>
             <div class="pl-4">{'location: "Szczecin, PL",'}</div>
-            <div class="pl-4">{'status: "available"'}</div>
+            <div class="pl-4">{'focus: "performance & scalable systems"'}</div>
             <div>{"}"}</div>
           </div>
         </div>

@@ -51,7 +51,7 @@
 
   /* Typography utilities */
   .text-heading-xl {
-    @apply text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.05] text-foreground;
+    @apply text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.05] text-foreground;
   }
 
   .text-heading-lg {

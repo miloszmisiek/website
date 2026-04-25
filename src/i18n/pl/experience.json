@@ -9,13 +9,12 @@
     "role": "Inżynier Oprogramowania",
     "company": "Elastic Email",
     "focus": "Full-stack i integracja AI",
-    "description": "Rozwijam funkcjonalności full-stack (frontend, backend, bazy danych) w wiodącej platformie email marketingowej. Wdrażam automatyczną komunikację opartą na AI z architekturą RAG. Tworzę uniwersalne komponenty, dbam o skalowalność i współpracuję z zespołami produktowymi nad wydajnością i UX/UI.",
+    "description": "Kluczowy inżynier produktu Inbox w platformie obsługującej 100M+ e-maili miesięcznie. Rozwijam funkcjonalności end-to-end w React, Node.js i MongoDB. Aktualnie wdrażam automatyczną komunikację AI opartą na architekturze RAG i pgvector.",
     "highlights": [
-      "Wdrażanie automatycznej komunikacji opartej na AI z architekturą RAG",
-      "Rozwój funkcjonalności po stronie frontendu, backendu i baz danych",
-      "Tworzenie uniwersalnych komponentów wspierających rozwój platformy",
-      "Współpraca nad intuicyjnymi rozwiązaniami UI/UX z zespołami cross-funkcyjnymi",
-      "Monitorowanie wydajności, eliminacja wąskich gardeł i usprawnianie infrastruktury"
+      "Wdrażanie funkcjonalności AI opartych na architekturze RAG i modelach językowych",
+      "Kluczowy inżynier produktu Inbox — pełna odpowiedzialność za frontend, backend i bazę danych",
+      "Budowa biblioteki współdzielonych komponentów wykorzystywanych przez zespoły produktowe",
+      "Analiza problemów wydajnościowych i usprawnianie infrastruktury"
     ],
     "technologies": [
       "TypeScript",
@@ -32,21 +31,46 @@
     "type": "work"
   },
   {
+    "id": "exp-003",
+    "period": {
+      "start": "2024-10",
+      "end": "2028-10"
+    },
+    "duration": "Studia 4-letnie",
+    "role": "Doktorant",
+    "company": "Zachodniopomorski Uniwersytet Technologiczny",
+    "focus": "Cyberbezpieczeństwo i detekcja phishingu",
+    "description": "Badania doktoranckie na styku AI i cyberbezpieczeństwa. Buduję systemy wykrywania phishingu oparte na XGBoost, NLP i metodach computer vision.",
+    "highlights": [
+      "2 opublikowane artykuły (HICSS 2025, IEEE Access 2026), 3. w recenzji na CISIM 2026",
+      "Budowa rozszerzenia przeglądarkowego do wykrywania phishingu w czasie rzeczywistym (XGBoost)",
+      "Rozwój wielowarstwowego systemu detekcji łączącego NLP i computer vision"
+    ],
+    "technologies": [
+      "Python",
+      "PyTorch",
+      "Deep Learning",
+      "NLP",
+      "Computer Vision",
+      "Cybersecurity"
+    ],
+    "type": "academic"
+  },
+  {
     "id": "exp-002",
     "period": {
       "start": "2023-03",
       "end": "2023-05"
     },
     "duration": "3 miesiące",
-    "role": "Programista Web",
+    "role": "Web Developer",
     "company": "Akademia Morska w Szczecinie",
     "focus": "Rozwój systemu zamówień publicznych",
-    "description": "Zaprojektowałem i zbudowałem od podstaw system zamówień publicznych (v1.0.0) – od architektury po wdrożenie na produkcję (Debian). Utrzymywałem też strony uczelni i zapewniałem wsparcie IT.",
+    "description": "Zaprojektowałem i dostarczyłem pierwszą wersję systemu zamówień publicznych (NDA), implementując rozwiązanie full-stack z użyciem React, Redux, Express, TypeScript i MySQL.”",
     "highlights": [
-      "Budowa systemu zamówień publicznych v1.0.0 w React, Redux, Express, TypeScript i MySQL",
+      "Zaprojektowałem i dostarczyłem pierwszą wersję systemu zamówień publicznych (NDA), implementując rozwiązanie full-stack z użyciem React, Redux, Express, TypeScript i MySQL.”",
       "Wdrożenie i konfiguracja aplikacji z bazą danych na serwerze Linux Debian",
-      "Samodzielne prowadzenie projektu przez cały cykl życia – od wymagań po wdrożenie",
-      "Utrzymanie stron uczelni i bieżące wsparcie IT"
+      "Samodzielne prowadzenie projektu przez cały cykl życia – od wymagań po wdrożenie"
     ],
     "technologies": [
       "React.js",
@@ -59,31 +83,5 @@
       "Debian Linux"
     ],
     "type": "work"
-  },
-  {
-    "id": "exp-003",
-    "period": {
-      "start": "2024-10",
-      "end": "2028-10"
-    },
-    "duration": "Studia 4-letnie",
-    "role": "Doktorant",
-    "company": "Zachodniopomorski Uniwersytet Technologiczny",
-    "focus": "Cyberbezpieczeństwo i detekcja phishingu",
-    "description": "Prowadzę badania doktoranckie na styku AI i cyberbezpieczeństwa. Badam metody uczenia maszynowego i deep learningu w wykrywaniu oraz zapobieganiu atakom phishingowym.",
-    "highlights": [
-      "Badanie modeli uczenia maszynowego i sieci neuronowych pod kątem ochrony przed phishingiem",
-      "Opracowywanie strategii cyberbezpieczeństwa opartych na technikach AI",
-      "Publikacje w recenzowanych czasopismach i na konferencjach naukowych"
-    ],
-    "technologies": [
-      "Python",
-      "PyTorch",
-      "Deep Learning",
-      "NLP",
-      "Computer Vision",
-      "Cybersecurity"
-    ],
-    "type": "academic"
   }
 ]

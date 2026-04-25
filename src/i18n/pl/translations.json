@@ -5,16 +5,13 @@
   "nav.research": "BADANIA",
   "nav.contact": "KONTAKT",
 
-  "hero.typewriter": "Inżynieria skalowalnych i wydajnych systemów z dbałością o każdy detal.",
-  "hero.bio.first": "Inżynier oprogramowania z Polski. Projektuję i buduję niezawodne systemy działające na dużą skalę, łącząc solidną architekturę z przemyślaną implementacją.",
-  "hero.bio.second": "Działam na każdej warstwie aplikacji – od projektu systemu po wdrożenie na produkcję. Rozwiązuję złożone problemy techniczne z naciskiem na wydajność, skalowalność i kod, który łatwo utrzymać.",
-  "hero.cta.viewWork": "ZOBACZ PROJEKTY",
-  "hero.cta.contact": "KONTAKT",
+  "hero.typewriter": "Szybciej, stabilniej, z myślą o skali.",
+  "hero.bio.first": "Inżynier oprogramowania pracujący przy systemach produkcyjnych.",
+  "hero.bio.second": "Tworzę i rozwijam systemy, dbając o ich wydajność.",
+  "hero.cta.viewWork": "Projekty",
+  "hero.cta.contact": "Kontakt",
 
   "hero.terminal.greeting": "Cześć, dobrze Cię widzieć!",
-
-  "footer.github": "GITHUB",
-  "footer.linkedin": "LINKEDIN",
 
   "section.experience": "DOŚWIADCZENIE",
   "section.publications": "PUBLIKACJE",
@@ -30,14 +27,14 @@
   "publication.time": "Czas",
   "publication.more": "więcej",
 
-  "product.viewProduct": "ZOBACZ PROJEKT",
+  "product.viewProduct": "ZOBACZ LIVE",
+  "product.nda": "NDA",
   "product.imagePlaceholder": "Podgląd projektu",
 
   "section.contact": "KONTAKT",
-  "contact.headline": "Stwórzmy coś razem.",
+  "contact.headline": "Zbudujmy coś skalowalnego.",
   "contact.subheadline": "// otwarty na nowe projekty, współpracę i ciekawe wyzwania",
   "contact.email.label": "WYŚLIJ E-MAIL",
-  "contact.form.title": "Formularz kontaktowy",
   "contact.form.name.label": "IMIĘ",
   "contact.form.name.placeholder": "np. Jan Kowalski…",
   "contact.form.email.label": "E-MAIL",
@@ -45,7 +42,6 @@
   "contact.form.message.label": "WIADOMOŚĆ",
   "contact.form.message.placeholder": "Opowiedz mi o swoim projekcie…",
   "contact.form.submit": "WYŚLIJ",
-  "contact.form.sending": "Wysyłanie…",
   "contact.form.success": "Wiadomość wysłana. Wkrótce się odezwę.",
   "contact.form.error": "Coś poszło nie tak. Spróbuj ponownie.",
   "contact.github": "GITHUB",

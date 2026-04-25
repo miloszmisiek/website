@@ -39,13 +39,13 @@
     --shadow-card-bg: none;
 
     /* Terminal widget tokens */
-    --terminal-body-bg: 28 26 25;
-    --terminal-titlebar-bg: rgba(230, 226, 221, 0.03);
-    --terminal-border: rgba(230, 226, 221, 0.15);
+    --terminal-body-bg: 32 30 28;
+    --terminal-titlebar-bg: rgba(230, 226, 221, 0.05);
+    --terminal-border: rgba(230, 226, 221, 0.18);
     --terminal-divider: rgba(230, 226, 221, 0.07);
     --terminal-fieldset: rgba(230, 226, 221, 0.1);
     --terminal-dot: 85 80 75;
-    --terminal-glow: none;
+    --terminal-glow: radial-gradient(ellipse at 50% 0%, rgba(230, 226, 221, 0.03) 0%, transparent 70%);
   }
 
   /* ─────────── System preference: light (Warm Paper -> Matte Pastel) ─────────── */
@@ -97,13 +97,13 @@
     --color-card-bg-hover: 38 35 34;
     --shadow-card-top: none;
     --shadow-card-bg: none;
-    --terminal-body-bg: 28 26 25;
-    --terminal-titlebar-bg: rgba(230, 226, 221, 0.03);
-    --terminal-border: rgba(230, 226, 221, 0.15);
+    --terminal-body-bg: 32 30 28;
+    --terminal-titlebar-bg: rgba(230, 226, 221, 0.05);
+    --terminal-border: rgba(230, 226, 221, 0.18);
     --terminal-divider: rgba(230, 226, 221, 0.07);
     --terminal-fieldset: rgba(230, 226, 221, 0.1);
     --terminal-dot: 85 80 75;
-    --terminal-glow: none;
+    --terminal-glow: radial-gradient(ellipse at 50% 0%, rgba(230, 226, 221, 0.03) 0%, transparent 70%);
   }
 
   /* ─────────── Explicit light override (Matte Pastel) ─────────── */

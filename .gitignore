@@ -25,9 +25,13 @@ dist.zip
 theme-drafts/
 .opencode/
 .claude/
+.agents/
 
 # Markdown files (except README)
 *.md
 !README.md
 
 .playwright-mcp/
+
+# Root-level screenshot artifacts
+/*.png

@@ -30,6 +30,7 @@ export type Publication = {
   year: number;
   date?: string; // YYYY-MM-DD
   topics: string[];
+  tldr?: string; // Short teaser text shown on card
   excerpt?: string;
   readTime?: string; // e.g., "8 min read"
   link?: string;
@@ -52,4 +53,5 @@ export type Product = {
   image_mobile?: string;
   year?: number;
   featured?: boolean;
+  nda?: boolean;
 };

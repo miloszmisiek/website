@@ -19,9 +19,12 @@ export function CardContent({ product, index }: CardContentProps) {
         <span className="font-mono text-xs tracking-technical text-muted">
           {String(index).padStart(2, "0")}
         </span>
-        {product.year && (
-          <span className="text-mono-date text-muted/90">{product.year}</span>
-        )}
+        <div className="flex items-center gap-2">
+          {product.nda && <Badge variant="warning">{t("product.nda")}</Badge>}
+          {product.year && (
+            <span className="text-mono-date text-muted/90">{product.year}</span>
+          )}
+        </div>
       </div>
 
       <div className="mb-8">

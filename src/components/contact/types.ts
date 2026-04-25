@@ -6,6 +6,7 @@ export type FieldErrors = Partial<Record<ContactFieldName, string>>;
 
 export type FormContextValue = {
   state: FormState;
+  isTyping: boolean;
   errors: FieldErrors;
   clearFieldError: (field: ContactFieldName) => void;
   resetForm: () => void;

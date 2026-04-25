@@ -8,11 +8,11 @@ export function Root({
   children,
   className,
 }: PropsWithChildren<{ className?: string }>) {
-  const { state, errors, clearFieldError, resetForm, submitForm } =
+  const { state, isTyping, errors, clearFieldError, resetForm, submitForm } =
     useContactForm();
   return (
     <FormContext.Provider
-      value={{ state, errors, clearFieldError, resetForm, submitForm }}
+      value={{ state, isTyping, errors, clearFieldError, resetForm, submitForm }}
     >
       <div className={cn("relative", className)}>{children}</div>
     </FormContext.Provider>

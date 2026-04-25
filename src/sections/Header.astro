@@ -8,8 +8,8 @@ import { getTranslations } from "../i18n";
 const t = getTranslations(Astro.currentLocale);
 
 const navLinks = [
-  { key: "nav.work" as const, href: "#products" },
   { key: "nav.research" as const, href: "#publications" },
+  { key: "nav.work" as const, href: "#products" },
   { key: "nav.contact" as const, href: "#contact" },
 ];
 ---
@@ -24,7 +24,11 @@ const navLinks = [
     </div>
     <nav class="flex items-center gap-6 md:gap-8">
       <div class="hidden md:flex items-center gap-8">
-        {navLinks.map((link) => <NavLink href={link.href} label={t(link.key)} />)}
+        {
+          navLinks.map((link) => (
+            <NavLink href={link.href} label={t(link.key)} />
+          ))
+        }
       </div>
 
       <div class="hidden md:block w-[1px] h-6 bg-foreground/20 mx-2"></div>
@@ -48,7 +52,7 @@ const navLinks = [
     } else {
       header.removeAttribute("data-scrolled");
     }
-  }
+  };
 
   window.addEventListener("scroll", updateScrollState, { passive: true });
   updateScrollState();

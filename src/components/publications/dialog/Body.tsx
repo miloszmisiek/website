@@ -7,6 +7,10 @@ export function Body() {
     isDrawer,
     publication: { title, authors, excerpt },
   } = usePublicationAbstractDialogContext();
+  
+  // Split excerpt into paragraphs if it exists
+  const paragraphs = excerpt ? excerpt.split('\n\n').filter(p => p.trim().length > 0) : [];
+
   return (
     <div
       className={cn(
@@ -31,10 +35,14 @@ export function Body() {
           </p>
         )}
       </div>
-      {excerpt && (
-        <p className="text-body text-muted/80 pl-4 border-l-2 border-border/70 leading-relaxed">
-          {excerpt}
-        </p>
+      {paragraphs.length > 0 && (
+        <div className="space-y-4 pl-4 border-l-2 border-border/70">
+          {paragraphs.map((paragraph, index) => (
+            <p key={index} className="text-body text-muted/80 leading-relaxed">
+              {paragraph}
+            </p>
+          ))}
+        </div>
       )}
     </div>
   );

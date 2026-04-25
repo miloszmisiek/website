@@ -3,41 +3,39 @@
     "id": "prod-001",
     "name": "Inbox: Platforma komunikacyjna",
     "role": "Główny inżynier",
-    "description": "Centrum komunikacji łączące czat zespołowy, e-mail i wspólną skrzynkę odbiorczą. Zaprojektowane z myślą o płynnej współpracy – powiadomienia w czasie rzeczywistym i obsługa multimediów.",
+    "description": "Współtworzyłem system komunikacji w czasie rzeczywistym. Dbałem o jego wydajność i stabilność przy dużym obciążeniu, żeby działał bez opóźnień.",
     "technologies": [
-       "Next.js",
-       "NodeJS",
-       "MongoDB",
-       "GraphQL",
-       "TypeScript",
-       "WebSocket"
+      "Next.js",
+      "NodeJS",
+      "MongoDB",
+      "GraphQL",
+      "TypeScript",
+      "WebSocket"
     ],
     "link": "https://elasticemail.com/inbox",
     "image": "/inbox.webp",
     "image_mobile": "/inbox_raw.webp",
     "year": 2025,
-    "featured": true
+    "featured": true,
+    "nda": true
   },
   {
     "id": "prod-002",
     "name": "Strona produktowa: Elastic Email",
     "role": "Inżynier",
-    "description": "Nowoczesna strona marketingowa platformy Elastic Email do email marketingu i API. Zbudowana w Next.js z naciskiem na wydajność i SEO – responsywny design, interaktywne demo produktu i landing page'e nastawione na konwersję.",
-    "technologies": [
-       "Next.js",
-       "TypeScript",
-       "TailwindCSS"
-    ],
+    "description": "Współtworzyłem stronę marketingową platformy Elastic Email, koncentrując się na wydajności oraz optymalizacji renderowania w celu poprawy doświadczenia użytkownika.",
+    "technologies": ["Next.js", "TypeScript", "TailwindCSS"],
     "link": "https://elasticemail.com",
     "image": "/ee-home.webp",
     "year": 2024,
-    "featured": true
+    "featured": true,
+    "nda": true
   },
   {
     "id": "prod-003",
     "name": "Kreator szablonów: Elastic Email",
     "role": "Inżynier",
-    "description": "Intuicyjny edytor szablonów e-mail z drag-and-drop i edycją surowego HTML. Generowanie szablonów z AI, konfigurowalne bloki treści, responsywne układy, kolory marki i personalizacja przez merge fields – wszystko, czego potrzeba do tworzenia skutecznych kampanii.",
+    "description": "Pracowałem nad rozbudowanym edytorem szablonów e-mail, koncentrując się na integracji mechanizmów drag-and-drop, synchronizacji stanu oraz optymalizacji renderowania złożonych układów.",
     "technologies": [
       "React",
       "TypeScript",
@@ -48,6 +46,7 @@
     "image": "/te_desktop.webp",
     "image_mobile": "/te_mobile.webp",
     "year": 2023,
-    "featured": true
+    "featured": true,
+    "nda": true
   }
 ]

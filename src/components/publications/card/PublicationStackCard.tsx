@@ -32,8 +32,18 @@ export function PublicationStackCard({
   isTop,
   onClick,
 }: PublicationStackCardProps) {
-  const { excerpt, status, title, authors, topics, year, readTime, doi, link } =
-    publication;
+  const {
+    excerpt,
+    tldr,
+    status,
+    title,
+    authors,
+    topics,
+    year,
+    readTime,
+    doi,
+    link,
+  } = publication;
   const t = getTranslations();
   const statusLabel = t(statusLabels[status]);
   const statusVariant = STATUS_BADGE_VARIANTS[status];
@@ -108,11 +118,18 @@ export function PublicationStackCard({
           </div>
         )}
 
-        {excerpt && (
+        {(tldr || excerpt) && (
           <p className="text-body mb-10 text-muted/80 relative z-10 pl-4 border-l-2 border-border/70">
-            {excerpt.length > 180
-              ? `${excerpt.substring(0, 180).trim()}... `
-              : `${excerpt} `}
+            {tldr ? (
+              <span>{tldr}</span>
+            ) : (
+              <span>
+                {excerpt && excerpt.length > 180
+                  ? `${excerpt.substring(0, 180).trim()}... `
+                  : `${excerpt} `}
+              </span>
+            )}
+            {" "}
             <PublicationAbstractDialog.Trigger />
           </p>
         )}
