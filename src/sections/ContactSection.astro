@@ -9,10 +9,19 @@ import { getTranslations } from "../i18n";
 const t = getTranslations(Astro.currentLocale);
 ---
 
-<form name="contact" netlify netlify-honeypot="bot-field" hidden>
+<form
+  name="contact"
+  method="POST"
+  action="/"
+  data-netlify="true"
+  data-netlify-honeypot="bot-field"
+  hidden
+>
+  <input type="hidden" name="form-name" value="contact" />
   <input type="text" name="name" />
   <input type="email" name="email" />
   <textarea name="message"></textarea>
+  <input type="text" name="bot-field" />
 </form>
 
 <section id="contact" class="mb-16 scroll-mt-28 short:mb-10">

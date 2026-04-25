@@ -88,6 +88,7 @@ export function useContactForm() {
       payload.set("name", data.name);
       payload.set("email", data.email);
       payload.set("message", data.message);
+      payload.set("bot-field", "");
 
       const res = await fetch("/", {
         method: "POST",
