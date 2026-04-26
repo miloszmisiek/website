@@ -49,6 +49,8 @@ const translatedLinks = navLinks.map((link) => ({
 </header>
 
 <script>
+  import { scrollToInitialHash } from "../scripts/scroll-to-initial-hash";
+
   const SCROLL_THRESHOLD = 40;
   const HIDE_DELTA = 8;
   const HASH_OFFSET = 16;
@@ -73,38 +75,6 @@ const translatedLinks = navLinks.map((link) => ({
   const toggleScrolled = (scrolled: boolean) => {
     header.toggleAttribute("data-scrolled", scrolled);
     mobileMenu?.toggleAttribute("data-scrolled", scrolled);
-  };
-
-  // Initial hash load: the browser jumps before fonts/images/hydration settle,
-  // so the target keeps moving after we land on it. Wait for full load, then
-  // compute the offset ourselves and scroll once.
-  const scrollToInitialHash = () => {
-    if (!location.hash) return;
-    if ("scrollRestoration" in history) history.scrollRestoration = "manual";
-
-    const performScroll = () => {
-      const target = document.querySelector(location.hash);
-      if (!(target instanceof HTMLElement)) return;
-      const top =
-        target.getBoundingClientRect().top +
-        window.scrollY -
-        getHeaderHeight() -
-        HASH_OFFSET;
-      window.scrollTo({ top, behavior: "smooth" });
-    };
-
-    const onReady = () => {
-      const fontsReady = document.fonts?.ready ?? Promise.resolve();
-      fontsReady.then(() => {
-        requestAnimationFrame(() => requestAnimationFrame(performScroll));
-      });
-    };
-
-    if (document.readyState === "complete") {
-      onReady();
-    } else {
-      window.addEventListener("load", onReady, { once: true });
-    }
   };
 
   let lastY = window.scrollY;
@@ -135,7 +105,7 @@ const translatedLinks = navLinks.map((link) => ({
   };
 
   setHeaderHeightVar();
-  scrollToInitialHash();
+  scrollToInitialHash({ getHeaderHeight, hashOffset: HASH_OFFSET });
   updateScrollState();
 
   window.addEventListener("resize", setHeaderHeightVar, { passive: true });
