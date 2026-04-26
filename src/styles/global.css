@@ -8,11 +8,13 @@
 
 @layer base {
   html {
-    @apply bg-background;
+    background-color: rgb(var(--color-background));
+    overscroll-behavior-y: none;
   }
 
   body {
-    @apply bg-background text-foreground antialiased font-sans;
+    @apply text-foreground antialiased font-sans;
+    background-color: rgb(var(--color-background));
     position: relative;
     min-height: 100vh;
   }
