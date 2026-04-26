@@ -1,0 +1,126 @@
+---
+import { TerminalTypewriter } from "../TerminalTypewriter";
+import { getTranslations } from "../../i18n";
+
+const t = getTranslations(Astro.currentLocale);
+// prettier-ignore
+const M_LOGO = "█▀▄▀█\n█ ▀ █";
+---
+
+<div class="md2:col-span-6 mlg:col-span-5 terminal-widget self-start hidden md2:block">
+  <div
+    class="terminal-frame relative overflow-hidden rounded-none font-mono text-caption sm:text-xs"
+  >
+    <div
+      class="terminal-titlebar flex items-center justify-between px-4 py-3"
+    >
+      <div class="flex items-center gap-2" aria-hidden="true">
+        <span class="terminal-dot w-2.5 h-2.5 rounded-full"></span>
+        <span class="terminal-dot w-2.5 h-2.5 rounded-full"></span>
+        <span class="terminal-dot w-2.5 h-2.5 rounded-full"></span>
+      </div>
+      <span
+        class="text-micro font-mono text-foreground/45 tracking-widest"
+        >milosz@dev:~</span
+      >
+    </div>
+
+    <div class="terminal-glow pointer-events-none absolute inset-0"></div>
+
+    <div class="relative p-0 flex flex-col text-muted">
+      <div class="p-4 md:p-5 short:p-3">
+        <fieldset
+          class="terminal-fieldset rounded-none px-4 pb-5 pt-3 mb-1 short:pb-4 short:pt-3 short:mb-0"
+        >
+          <legend class="px-2 text-[12px] text-foreground/45 tracking-wider"
+            >milosz-cli</legend
+          >
+
+          <div
+            class="flex flex-col items-center justify-center text-center space-y-4 short:space-y-2"
+          >
+            <span class="text-foreground/90 font-medium tracking-wide"
+              >{t("hero.terminal.greeting")}</span
+            >
+
+            <div
+              class="text-emerald-400 leading-heading-tight whitespace-pre font-bold select-none text-[15px] text-center pt-2 pb-2 short:pt-1 short:pb-1"
+              aria-hidden="true"
+              set:text={M_LOGO}
+            />
+
+            <div
+              class="text-foreground/60 flex flex-col items-center text-micro tracking-wider uppercase pt-1"
+            >
+              <span>Node: Szczecin, PL · UTC+1</span>
+              <span class="lowercase mt-1 tracking-normal"
+                >~/workspace/portfolio</span
+              >
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="flex flex-col">
+        <div class="terminal-divider h-px w-full"></div>
+
+        <div
+          class="flex items-center gap-2 px-4 md:px-5 py-3 short:py-2 text-foreground/80 font-mono text-label"
+        >
+          <span class="text-emerald-400">❯</span>
+          <TerminalTypewriter
+            client:load
+            words={["frontend", "backend", "full-stack", "builder"]}
+          />
+        </div>
+
+        <div class="terminal-divider h-px w-full"></div>
+
+        <div
+          class="flex items-center gap-2 px-4 md:px-5 py-3 short:py-2 text-emerald-400 font-mono text-caption"
+        >
+          <div class="flex gap-0.5">
+            <div class="w-1 h-3 bg-emerald-400"></div>
+            <div class="w-1 h-3 bg-emerald-400"></div>
+          </div>
+          <span>plan mode on</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .terminal-frame {
+    background-color: rgb(var(--terminal-body-bg));
+    border: 1px solid var(--terminal-border);
+    box-shadow:
+      0 0 0 1px rgba(230, 226, 221, 0.05),
+      0 8px 30px rgba(0, 0, 0, 0.3),
+      0 0 60px rgba(230, 226, 221, 0.03);
+    transition:
+      background-color 0.3s ease,
+      border-color 0.3s ease;
+  }
+
+  .terminal-titlebar {
+    background-color: var(--terminal-titlebar-bg);
+    border-bottom: 1px solid var(--terminal-border);
+  }
+
+  .terminal-dot {
+    background-color: rgb(var(--terminal-dot));
+  }
+
+  .terminal-glow {
+    background: var(--terminal-glow);
+  }
+
+  .terminal-fieldset {
+    border: 1px solid var(--terminal-fieldset);
+  }
+
+  .terminal-divider {
+    background-color: var(--terminal-divider);
+  }
+</style>

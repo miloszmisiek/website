@@ -21,7 +21,7 @@ const translatedLinks = navLinks.map((link) => ({
 ---
 
 <header
-  class="scroll-bg sticky top-0 z-[99999] text-sm font-mono tracking-widest uppercase text-muted border-border pt-4 pb-4 will-change-transform data-[hidden]:-translate-y-full"
+  class="scroll-bg sticky top-0 z-header text-sm font-mono tracking-widest uppercase text-muted border-border pt-4 pb-4 will-change-transform data-[hidden]:-translate-y-full"
 >
   <div class="page-container flex justify-between items-center">
     <div class="flex items-center gap-4">
@@ -49,44 +49,54 @@ const translatedLinks = navLinks.map((link) => ({
 </header>
 
 <script>
-  const header = document.querySelector("header");
-  const mobileMenu = document.getElementById("mobile-menu");
-  const THRESHOLD = 40;
+  const SCROLL_THRESHOLD = 40;
   const HIDE_DELTA = 8;
+  const HASH_OFFSET = 16;
+  const FALLBACK_HEADER_HEIGHT = 76;
 
-  let lastY = window.scrollY;
-  let ticking = false;
+  const header = document.querySelector<HTMLElement>("header");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  if (!header) {
+    throw new Error("Header element not found");
+  }
+
+  const getHeaderHeight = () => header.offsetHeight || FALLBACK_HEADER_HEIGHT;
 
   const setHeaderHeightVar = () => {
-    if (!header) return;
     document.documentElement.style.setProperty(
       "--header-height",
-      `${header.offsetHeight}px`,
+      `${getHeaderHeight()}px`,
     );
   };
-  setHeaderHeightVar();
-  window.addEventListener("resize", setHeaderHeightVar, { passive: true });
+
+  const toggleScrolled = (scrolled: boolean) => {
+    header.toggleAttribute("data-scrolled", scrolled);
+    mobileMenu?.toggleAttribute("data-scrolled", scrolled);
+  };
 
   // Initial hash load: the browser jumps before fonts/images/hydration settle,
   // so the target keeps moving after we land on it. Wait for full load, then
   // compute the offset ourselves and scroll once.
-  if (location.hash) {
-    const hash = location.hash;
+  const scrollToInitialHash = () => {
+    if (!location.hash) return;
     if ("scrollRestoration" in history) history.scrollRestoration = "manual";
 
-    const scrollToHash = () => {
-      const target = document.querySelector(hash);
+    const performScroll = () => {
+      const target = document.querySelector(location.hash);
       if (!(target instanceof HTMLElement)) return;
-      const headerH = header?.offsetHeight ?? 76;
       const top =
-        target.getBoundingClientRect().top + window.scrollY - headerH - 16;
+        target.getBoundingClientRect().top +
+        window.scrollY -
+        getHeaderHeight() -
+        HASH_OFFSET;
       window.scrollTo({ top, behavior: "smooth" });
     };
 
     const onReady = () => {
-      const fonts = (document as any).fonts?.ready ?? Promise.resolve();
-      fonts.then(() => {
-        requestAnimationFrame(() => requestAnimationFrame(scrollToHash));
+      const fontsReady = document.fonts?.ready ?? Promise.resolve();
+      fontsReady.then(() => {
+        requestAnimationFrame(() => requestAnimationFrame(performScroll));
       });
     };
 
@@ -95,30 +105,22 @@ const translatedLinks = navLinks.map((link) => ({
     } else {
       window.addEventListener("load", onReady, { once: true });
     }
-  }
+  };
+
+  let lastY = window.scrollY;
+  let ticking = false;
 
   const updateScrollState = () => {
-    if (!header) return;
-
     const y = window.scrollY;
     const delta = y - lastY;
+    const scrolled = y > SCROLL_THRESHOLD;
 
-    if (y > THRESHOLD) {
-      header.setAttribute("data-scrolled", "");
-      mobileMenu?.setAttribute("data-scrolled", "");
-    } else {
-      header.removeAttribute("data-scrolled");
-      mobileMenu?.removeAttribute("data-scrolled");
-    }
+    toggleScrolled(scrolled);
 
     const menuOpen = mobileMenu?.hasAttribute("data-open");
-    if (!menuOpen && y > THRESHOLD && Math.abs(delta) > HIDE_DELTA) {
-      if (delta > 0) {
-        header.setAttribute("data-hidden", "");
-      } else {
-        header.removeAttribute("data-hidden");
-      }
-    } else if (y <= THRESHOLD) {
+    if (!menuOpen && scrolled && Math.abs(delta) > HIDE_DELTA) {
+      header.toggleAttribute("data-hidden", delta > 0);
+    } else if (!scrolled) {
       header.removeAttribute("data-hidden");
     }
 
@@ -126,15 +128,16 @@ const translatedLinks = navLinks.map((link) => ({
     ticking = false;
   };
 
-  window.addEventListener(
-    "scroll",
-    () => {
-      if (!ticking) {
-        requestAnimationFrame(updateScrollState);
-        ticking = true;
-      }
-    },
-    { passive: true },
-  );
+  const onScroll = () => {
+    if (ticking) return;
+    requestAnimationFrame(updateScrollState);
+    ticking = true;
+  };
+
+  setHeaderHeightVar();
+  scrollToInitialHash();
   updateScrollState();
+
+  window.addEventListener("resize", setHeaderHeightVar, { passive: true });
+  window.addEventListener("scroll", onScroll, { passive: true });
 </script>

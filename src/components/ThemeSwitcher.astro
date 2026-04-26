@@ -16,18 +16,18 @@ import IconMoon from "./icons/IconMoon.astro";
 </Button>
 
 <script>
-  const Theme = { DARK: "dark", LIGHT: "light" } as const;
+  import {
+    THEME,
+    THEME_COLORS,
+    THEME_STORAGE_KEY,
+    type Theme,
+  } from "../styles/theme-constants";
 
-  type Theme = (typeof Theme)[keyof typeof Theme];
   type ThemeProps = {
-    color: string;
     show: string;
     hide: string;
     label: string;
   };
-  type ThemeConfig = Record<Theme, ThemeProps>;
-
-  const STORAGE_KEY = "theme" as const;
 
   const IDS = {
     toggle: "theme-toggle",
@@ -35,15 +35,13 @@ import IconMoon from "./icons/IconMoon.astro";
     moon: "theme-icon-moon",
   } as const;
 
-  const THEME_CONFIG: ThemeConfig = {
-    [Theme.DARK]: {
-      color: "#050505",
+  const THEME_CONFIG: Record<Theme, ThemeProps> = {
+    [THEME.DARK]: {
       show: IDS.sun,
       hide: IDS.moon,
       label: "Switch to light theme",
     },
-    [Theme.LIGHT]: {
-      color: "#f8f5ef",
+    [THEME.LIGHT]: {
       show: IDS.moon,
       hide: IDS.sun,
       label: "Switch to dark theme",
@@ -51,43 +49,44 @@ import IconMoon from "./icons/IconMoon.astro";
   };
 
   const isTheme = (value: string | null): value is Theme =>
-    value === Theme.DARK || value === Theme.LIGHT;
+    value === THEME.DARK || value === THEME.LIGHT;
 
   const getEffectiveTheme = (): Theme => {
-    const stored = localStorage.getItem(STORAGE_KEY);
+    const stored = localStorage.getItem(THEME_STORAGE_KEY);
     if (isTheme(stored)) return stored;
     return window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? Theme.DARK
-      : Theme.LIGHT;
-  }
+      ? THEME.DARK
+      : THEME.LIGHT;
+  };
 
   const applyTheme = (theme: Theme) => {
-    const { color, show, hide, label } = THEME_CONFIG[theme];
+    const { show, hide, label } = THEME_CONFIG[theme];
     document.documentElement.setAttribute("data-theme", theme);
     document
       .querySelector<HTMLMetaElement>('meta[name="theme-color"]')
-      ?.setAttribute("content", color);
+      ?.setAttribute("content", THEME_COLORS[theme]);
     document.getElementById(show)?.classList.remove("hidden");
     document.getElementById(hide)?.classList.add("hidden");
     document.getElementById(IDS.toggle)?.setAttribute("aria-label", label);
-  }
+  };
 
   const init = () => {
     applyTheme(getEffectiveTheme());
 
     document.getElementById(IDS.toggle)?.addEventListener("click", () => {
       const next =
-        getEffectiveTheme() === Theme.DARK ? Theme.LIGHT : Theme.DARK;
-      localStorage.setItem(STORAGE_KEY, next);
+        getEffectiveTheme() === THEME.DARK ? THEME.LIGHT : THEME.DARK;
+      localStorage.setItem(THEME_STORAGE_KEY, next);
       applyTheme(next);
     });
 
     window
       .matchMedia("(prefers-color-scheme: dark)")
       .addEventListener("change", () => {
-        if (!localStorage.getItem(STORAGE_KEY)) applyTheme(getEffectiveTheme());
+        if (!localStorage.getItem(THEME_STORAGE_KEY))
+          applyTheme(getEffectiveTheme());
       });
-  }
+  };
 
   init();
 </script>

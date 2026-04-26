@@ -91,7 +91,7 @@ export function PublicationStackCard({
         </div>
 
         <div className="mb-5 sm:mb-8 short:mb-3 relative z-10">
-          <h3 className="text-heading-md short:!text-2xl mb-4 short:mb-2 text-foreground">{title}</h3>
+          <h3 className="text-heading-md text-2xl md:text-3xl short:text-2xl mb-4 short:mb-2">{title}</h3>
 
           {authors.length > 0 && (
             <p className="text-mono-meta flex flex-wrap items-baseline gap-x-2 gap-y-1">
@@ -109,7 +109,7 @@ export function PublicationStackCard({
         </div>
 
         {topics.length > 0 && (
-          <div className="flex flex-wrap gap-2 short:gap-1 mb-8 short:mb-4 relative z-10">
+          <div className="hidden sm:flex flex-wrap gap-2 short:gap-1 mb-8 short:mb-4 relative z-10">
             {topics.map((topic) => (
               <Badge key={topic} variant="neutral" className="tracking-widest">
                 {topic}
@@ -119,7 +119,7 @@ export function PublicationStackCard({
         )}
 
         {(tldr || excerpt) && (
-          <p className="text-body short:text-sm mb-10 short:mb-5 text-muted/80 relative z-10 pl-4 border-l-2 border-border/70">
+          <p className="text-body text-base md:text-lg short:text-sm mb-6 sm:mb-10 short:mb-5 text-muted/80 relative z-10 pl-4 border-l-2 border-border/70">
             {tldr ? (
               <span>{tldr}</span>
             ) : (

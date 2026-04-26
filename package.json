@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "check": "astro check"
   },
   "keywords": [],
   "author": "",
@@ -16,7 +17,6 @@
     "@astrojs/tailwind": "^6.0.2",
     "@fontsource/inter": "^5.2.8",
     "@fontsource/jetbrains-mono": "^5.2.8",
-    "@fontsource/space-mono": "^5.2.9",
     "@fontsource/vt323": "^5.2.7",
     "@hanzo/react-drawer": "^0.1.8",
     "astro": "^5.18.1",
@@ -32,6 +32,7 @@
   },
   "devDependencies": {
     "prettier": "^3.8.1",
-    "prettier-plugin-astro": "^0.14.1"
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.7.3"
   }
 }

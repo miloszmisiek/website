@@ -44,13 +44,13 @@ export function ProductMobileItem({
     >
       {year && (
         <div className="mb-6 flex items-center gap-2">
-          {nda && <Badge variant="warning">{t("product.nda")}</Badge>}
+          {nda && <Badge variant="restricted">{t("product.nda")}</Badge>}
           <span className="text-mono-date text-muted/90">{year}</span>
         </div>
       )}
       {!year && nda && (
         <div className="mb-6">
-          <Badge variant="warning">{t("product.nda")}</Badge>
+          <Badge variant="restricted">{t("product.nda")}</Badge>
         </div>
       )}
 
@@ -64,9 +64,9 @@ export function ProductMobileItem({
         </div>
       )}
 
-      <h3 className="text-heading-md !text-4xl md:!text-3xl mb-2 text-foreground">{name}</h3>
+      <h3 className="text-heading-md text-4xl md:text-3xl mb-2">{name}</h3>
       <p className="text-label mb-6">{`// ${role}`}</p>
-      <p className="text-body !text-lg md:!text-lg text-muted mb-6">{description}</p>
+      <p className="text-body text-lg text-muted mb-6">{description}</p>
 
       {technologies.length > 0 && (
         <div className="flex flex-wrap gap-2 mb-8">

@@ -8,7 +8,7 @@ export function Footer() {
     publication: { year, doi, link },
   } = usePublicationAbstractDialogContext();
   return (
-    <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 px-6 sm:px-8 py-5 border-t border-border/70 flex-shrink-0">
+    <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-3 sm:gap-4 px-5 sm:px-8 py-4 sm:py-5 border-t border-border/70 flex-shrink-0">
       <div className="flex items-center gap-4 text-micro font-mono uppercase tracking-widest text-muted/70 min-w-0 overflow-hidden">
         {year && <span className="shrink-0">{year}</span>}
         {doi && (

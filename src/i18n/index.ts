@@ -1,5 +1,5 @@
 export type { Locale } from "./config";
-export { locales, defaultLocale, LOCALE_LABELS } from "./config";
+export { locales, defaultLocale, LOCALE_META } from "./config";
 
 export type { TranslationKey } from "./dictionaries";
 

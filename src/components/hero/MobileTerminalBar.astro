@@ -1,0 +1,40 @@
+---
+import { TerminalTypewriter } from "../TerminalTypewriter";
+---
+
+<div class="md2:hidden heroShortAny:hidden mt-12 font-mono" aria-hidden="true">
+  <div class="flex items-center">
+    <div class="flex-1 h-px bg-emerald-400"></div>
+    <span
+      class="px-2 py-0.5 bg-emerald-400 text-white text-micro tracking-wider font-medium shrink-0"
+    >
+      milosz-cli
+    </span>
+    <div class="w-6 h-px bg-emerald-400 shrink-0"></div>
+  </div>
+
+  <div
+    class="flex items-center gap-2 pb-2.5 text-foreground/80 text-label"
+  >
+    <span class="text-emerald-400">❯</span>
+    <TerminalTypewriter
+      client:load
+      words={["frontend", "backend", "full-stack", "builder"]}
+    />
+  </div>
+
+  <div class="flex items-center">
+    <div class="flex-1 h-px bg-emerald-400"></div>
+  </div>
+
+  <div class="flex items-center justify-between pt-2 text-caption">
+    <div class="flex items-center gap-2 text-emerald-400">
+      <div class="flex gap-0.5">
+        <div class="w-1 h-3 bg-emerald-400"></div>
+        <div class="w-1 h-3 bg-emerald-400"></div>
+      </div>
+      <span>plan mode on</span>
+    </div>
+    <span class="text-foreground/30 tracking-wider">Szczecin, PL</span>
+  </div>
+</div>

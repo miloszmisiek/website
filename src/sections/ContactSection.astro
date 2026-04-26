@@ -26,7 +26,7 @@ const t = getTranslations(Astro.currentLocale);
 
 <section id="contact" class="mb-16 short:mb-10">
   {/* Section Header */}
-  <div class="section-label short:!mb-8">
+  <div class="section-label">
     <span class="section-num">04</span>
     <AnimatedSectionTitle client:load text={t("section.contact")} />
   </div>
@@ -37,11 +37,11 @@ const t = getTranslations(Astro.currentLocale);
       <div class="lg:col-span-5 flex flex-col gap-8 short:gap-5">
         {/* Headline */}
         <div class="flex flex-col gap-4 short:gap-3">
-          <h2 class="text-heading-contact short:!text-4xl max-w-[12ch] short:max-w-md [text-wrap:balance]">
+          <h2 class="text-heading-contact text-5xl md:text-5xl lg:text-6xl short:text-[2.5rem] max-w-[12ch] short:max-w-[15ch] [text-wrap:balance]">
             {t("contact.headline")}
           </h2>
           <p
-            class="text-foreground/70 text-base md:text-lg short:text-sm leading-relaxed max-w-md [text-wrap:balance]"
+            class="text-foreground/70 text-base md:text-lg short:text-base leading-relaxed max-w-md [text-wrap:balance]"
           >
             <span class="text-foreground/45 font-mono mr-2">{"//"}</span>
             {t("contact.subheadline").replace("// ", "")}

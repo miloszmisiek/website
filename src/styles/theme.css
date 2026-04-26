@@ -5,8 +5,10 @@
   :root {
     color-scheme: dark;
 
-    
-    --color-background: 24 22 21; 
+    --header-height: 5rem;
+
+
+    --color-background: 24 22 21;
     --color-foreground: 230 226 221; 
     --color-muted: 163 157 150; 
     --color-border: 48 44 42; 

@@ -1,21 +1,75 @@
 ---
 import "../styles/global.css";
 import vt323Url from "@fontsource/vt323/files/vt323-latin-400-normal.woff2?url";
+import { LOCALE_META, defaultLocale, locales, type Locale } from "../i18n";
+import {
+  THEME,
+  THEME_COLORS,
+  THEME_STORAGE_KEY,
+} from "../styles/theme-constants";
 
-interface Props {
+type Props = {
   title: string;
-}
+  description?: string;
+};
 
-const { title } = Astro.props;
+const SEO = {
+  ogType: "website",
+  twitterCard: "summary_large_image",
+  ogImagePath: "/og-milosz-full.png",
+  defaultDescription:
+    "Milosz Misiek — software engineer focused on performance and scalable systems.",
+} as const;
+
+const { title, description = SEO.defaultDescription } = Astro.props;
+
+const locale = (Astro.currentLocale ?? defaultLocale) as Locale;
+const altLocale =
+  locales.find((l) => l !== locale) ?? defaultLocale;
+
+const toAbsolute = (path: string) => new URL(path, Astro.site).toString();
+
+const altPath =
+  locale === defaultLocale
+    ? `/${altLocale}${Astro.url.pathname}`
+    : Astro.url.pathname.replace(
+        new RegExp(`^/${locale}(/|$)`),
+        "/",
+      );
+
+const canonical = toAbsolute(Astro.url.pathname);
+const ogImage = toAbsolute(SEO.ogImagePath);
+const altHref = toAbsolute(altPath);
+const defaultHref = toAbsolute("/");
 ---
 
 <!doctype html>
-<html lang={Astro.currentLocale} class="[scrollbar-gutter:stable]">
+<html lang={locale} class="[scrollbar-gutter:stable]">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Milosz Misiek Portfolio" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#050505" />
+    <meta name="theme-color" content={THEME_COLORS[THEME.DARK]} />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang={locale} href={canonical} />
+    <link rel="alternate" hreflang={altLocale} href={altHref} />
+    <link rel="alternate" hreflang="x-default" href={defaultHref} />
+
+    <meta property="og:type" content={SEO.ogType} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content={LOCALE_META[locale].og} />
+
+    <meta name="twitter:card" content={SEO.twitterCard} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link
       rel="preload"
@@ -24,23 +78,28 @@ const { title } = Astro.props;
       type="font/woff2"
       crossorigin="anonymous"
     />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-    <!-- Anti-FOUC: apply stored theme before first paint -->
-    <script is:inline>
-      (function () {
+
+    <!-- Anti-FOUC: apply stored theme before first paint. Must be inline and
+         synchronous so the data-theme attribute is set before stylesheets resolve. -->
+    <script
+      is:inline
+      define:vars={{
+        STORAGE_KEY: THEME_STORAGE_KEY,
+        DARK: THEME.DARK,
+        LIGHT: THEME.LIGHT,
+      }}
+    >
+      (() => {
         if ("scrollRestoration" in history)
           history.scrollRestoration = "manual";
-        var stored = localStorage.getItem("theme");
-        var prefersDark = window.matchMedia(
-          "(prefers-color-scheme: dark)",
-        ).matches;
-        var theme =
-          stored === "dark" || stored === "light"
+        const stored = localStorage.getItem(STORAGE_KEY);
+        const prefersDark = matchMedia("(prefers-color-scheme: dark)").matches;
+        const theme =
+          stored === DARK || stored === LIGHT
             ? stored
             : prefersDark
-              ? "dark"
-              : "light";
+              ? DARK
+              : LIGHT;
         document.documentElement.setAttribute("data-theme", theme);
       })();
     </script>
@@ -50,7 +109,7 @@ const { title } = Astro.props;
   >
     <a
       href="#main-content"
-      class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100000] focus:px-4 focus:py-2 focus:bg-foreground focus:text-background focus:font-mono focus:text-xs focus:tracking-technical focus:uppercase focus:outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-2"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-skip focus:px-4 focus:py-2 focus:bg-foreground focus:text-background focus:font-mono focus:text-xs focus:tracking-technical focus:uppercase focus:outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-2"
     >
       Skip to content
     </a>

@@ -4,8 +4,6 @@ import type { ButtonProps } from "./types";
 import type {
   AnchorHTMLAttributes,
   ButtonHTMLAttributes,
-  HTMLAttributes,
-  PropsWithChildren,
 } from "react";
 
 export function Button({
@@ -44,13 +42,3 @@ export function Button({
   );
 }
 
-Button.Icon = function ButtonIcon({
-  children,
-  className,
-}: PropsWithChildren<HTMLAttributes<HTMLSpanElement>>) {
-  return (
-    <span className={cn("flex-shrink-0 flex items-center", className)}>
-      {children}
-    </span>
-  );
-};

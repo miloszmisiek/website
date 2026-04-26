@@ -46,7 +46,7 @@ export function ProductCard({
   return (
     <div
       className={cn(
-        "mlg:sticky mlg:top-24 flex items-center justify-center",
+        "mlg:sticky mlg:top-24 short:mlg:top-20 flex items-center justify-center",
         "mlg:[&:not(:last-child)]:mb-[16vh]",
         Z_CLASSES[index],
       )}
@@ -60,7 +60,7 @@ export function ProductCard({
           style={!prefersReducedMotion && { opacity }}
           className="w-full h-full"
         >
-          <div className="card-base overflow-hidden flex flex-col-reverse lg:flex-row lg:min-h-[36rem] short:lg:min-h-[26rem] border border-border/60 shadow-xl group bg-card-bg">
+          <div className="card-base overflow-hidden flex flex-col-reverse lg:flex-row lg:min-h-[36rem] short:lg:min-h-[28rem] short:max-w-5xl short:mx-auto border border-border/60 shadow-xl group bg-card-bg">
             <CardContent product={product} index={index} />
             <CardImage product={product} />
           </div>

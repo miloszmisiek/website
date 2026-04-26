@@ -12,14 +12,14 @@ export function Body() {
   return (
     <div
       className={cn(
-        "px-6 sm:px-8 py-8 space-y-6",
+        "px-5 sm:px-8 py-6 sm:py-8 space-y-5 sm:space-y-6",
         !isDrawer && "flex-1 min-h-0 overflow-y-auto",
       )}
     >
       <div>
         <h3
           id="pub-dialog-title"
-          className="text-heading-md mb-4 text-foreground"
+          className="text-heading-md text-2xl md:text-3xl mb-4"
         >
           {title}
         </h3>
@@ -36,7 +36,7 @@ export function Body() {
       {paragraphs.length > 0 && (
         <div className="space-y-4 pl-4 border-l-2 border-border/70">
           {paragraphs.map((paragraph, index) => (
-            <p key={index} className="text-body text-muted/80 leading-relaxed">
+            <p key={index} className="text-body text-base md:text-lg text-muted/80">
               {paragraph}
             </p>
           ))}

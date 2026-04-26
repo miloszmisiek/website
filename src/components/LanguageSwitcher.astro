@@ -1,9 +1,8 @@
 ---
 // GOOD
 import { getRelativeLocaleUrl } from "astro:i18n";
-import { LOCALE_LABELS, locales } from "../i18n";
+import { LOCALE_META, locales, type Locale } from "../i18n";
 import Button from "./button/Button.astro";
-import { type Locale } from "../i18n";
 
 const currentLang = Astro.currentLocale as Locale;
 const otherLocales = locales.filter((lang) => lang !== currentLang);
@@ -14,7 +13,7 @@ const otherLocales = locales.filter((lang) => lang !== currentLang);
     <Button
       href={getRelativeLocaleUrl(lang, "/")}
       variant="icon"
-      aria-label={`Switch to ${LOCALE_LABELS[lang]}`}
+      aria-label={`Switch to ${LOCALE_META[lang].label}`}
     >
       {lang.toUpperCase()}
     </Button>

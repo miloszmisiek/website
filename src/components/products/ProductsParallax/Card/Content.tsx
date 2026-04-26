@@ -19,7 +19,7 @@ export function CardContent({ product, index }: CardContentProps) {
           {String(index).padStart(2, "0")}
         </span>
         <div className="flex items-center gap-2">
-          {product.nda && <Badge variant="warning">{t("product.nda")}</Badge>}
+          {product.nda && <Badge variant="restricted">{t("product.nda")}</Badge>}
           {product.year && (
             <span className="text-mono-date text-muted/90">{product.year}</span>
           )}
@@ -27,11 +27,11 @@ export function CardContent({ product, index }: CardContentProps) {
       </div>
 
       <div className="mb-8 short:mb-4">
-        <h3 className="text-heading-contact short:!text-4xl mb-4 short:mb-2 text-foreground">{product.name}</h3>
-        <p className="text-label text-muted/80">{`// ${product.role}`}</p>
+        <h3 className="text-heading-contact text-5xl md:text-5xl lg:text-6xl short:text-4xl short:leading-heading mb-4 short:mb-2">{product.name}</h3>
+        <p className="text-label short:text-sm text-muted/80">{`// ${product.role}`}</p>
       </div>
 
-      <p className="text-body short:text-sm text-muted/90 mb-10 short:mb-5 grow max-w-xl">
+      <p className="text-body text-base md:text-lg short:text-base mb-10 short:mb-5 grow max-w-xl">
         {product.description}
       </p>
 
@@ -52,7 +52,7 @@ export function CardContent({ product, index }: CardContentProps) {
             variant="secondary"
             target="_blank"
             rel="noopener noreferrer"
-            className="self-start w-fit"
+            className="self-start w-fit short:text-xs"
           >
             {t("product.viewProduct")}
           </Button>

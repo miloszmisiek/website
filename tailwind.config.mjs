@@ -13,6 +13,8 @@ export default {
       xl: "1280px",
       "2xl": "1536px",
       short: { raw: "(max-height: 800px) and (min-width: 768px)" },
+      heroShort: { raw: "(max-height: 640px) and (min-width: 768px)" },
+      heroShortAny: { raw: "(max-height: 800px)" },
     },
     extend: {
       fontSize: {
@@ -24,6 +26,17 @@ export default {
       letterSpacing: {
         technical: "0.2em",
         display: "0.3em",
+      },
+      lineHeight: {
+        "heading-xl": "1.05",
+        heading: "1.1",
+        "heading-tight": "1.15",
+        "body-loose": "1.4",
+      },
+      zIndex: {
+        header: "99999",
+        menu: "99998",
+        skip: "100000",
       },
       colors: {
         background: "rgb(var(--color-background) / <alpha-value>)",

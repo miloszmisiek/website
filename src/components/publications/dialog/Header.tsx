@@ -8,7 +8,7 @@ export function Header() {
   const t = getTranslations();
 
   return (
-    <div className="flex items-center justify-between px-6 sm:px-8 py-5 border-b border-border/70 flex-shrink-0">
+    <div className="flex items-center justify-between px-5 sm:px-8 py-4 sm:py-5 border-b border-border/70 flex-shrink-0">
       <span className="section-num">{t("publication.abstract")}</span>
       {isDrawer ? (
         <Drawer.Close asChild>

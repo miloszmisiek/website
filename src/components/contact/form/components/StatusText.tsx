@@ -30,7 +30,7 @@ export function StatusText() {
   const { state, isTyping } = useFormContext();
   const label = getStatus(state, isTyping);
   return (
-    <span className="text-micro font-mono tracking-widest select-none inline-flex items-center">
+    <span className="text-micro font-mono tracking-widest select-none hidden sm:inline-flex items-center">
       <span className="text-foreground/45">
         {"{ state: "}
         <span className="inline-block overflow-hidden align-bottom">
