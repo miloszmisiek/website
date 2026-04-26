@@ -10,7 +10,7 @@ const publications = getPublications(Astro.currentLocale);
 const t = getTranslations(Astro.currentLocale);
 ---
 
-<section id="publications" class="mb-32 scroll-mt-28 short:mb-16">
+<section id="publications" class="mb-32 short:mb-16">
   <div class="section-label short:!mb-8">
     <span class="section-num">02</span>
     <AnimatedSectionTitle client:load text={t("section.publications")} />

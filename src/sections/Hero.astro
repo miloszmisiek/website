@@ -328,11 +328,6 @@ const M_LOGO = "█▀▄▀█\n█ ▀ █";
 </style>
 
 <script>
-  // Force scroll to top on every load and on BFCache restore
-  const scrollTop = () => window.scrollTo({ top: 0, behavior: "instant" });
-  scrollTop();
-  window.addEventListener("pageshow", scrollTop);
-
   // Lock hero min-height once at load on touch devices. iOS Safari does not
   // reliably honour `svh`/`lvh` as stable units, so the section visibly resizes
   // when the URL bar collapses. Setting an inline px value once eliminates that.
@@ -355,49 +350,4 @@ const M_LOGO = "█▀▄▀█\n█ ▀ █";
     );
   }
 
-  // All screens: first wheel/touch scroll snaps directly to the experience section
-  let userInitiatedScroll = false;
-
-  const cancelSnap = () => {
-    window.removeEventListener("scroll", snapToExperience);
-  }
-
-  window.addEventListener(
-    "wheel",
-    () => {
-      userInitiatedScroll = true;
-    },
-    { passive: true, once: true },
-  );
-  window.addEventListener(
-    "touchmove",
-    () => {
-      userInitiatedScroll = true;
-    },
-    { passive: true, once: true },
-  );
-
-  // Any anchor link click disables the snap entirely
-  document.querySelectorAll('a[href^="#"]').forEach((link) => {
-    link.addEventListener("click", cancelSnap, { once: true });
-  });
-
-  const snapToExperience = () => {
-    if (!userInitiatedScroll) return;
-
-    // Abort snap scroll on very short screens (let the user scroll naturally)
-    if (window.innerHeight <= 800) {
-      cancelSnap();
-      return;
-    }
-
-    if (window.scrollY > 0) {
-      cancelSnap();
-      const experience = document.getElementById("experience");
-      if (experience) {
-        experience.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    }
-  }
-  window.addEventListener("scroll", snapToExperience, { passive: true });
 </script>
