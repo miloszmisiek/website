@@ -57,6 +57,7 @@ src/
 ├── data/           # TypeScript types and schemas
 ├── hooks/          # useIsMobile, useTypewriter
 ├── layouts/        # Layout.astro — <head>, theme script, global structure
+├── scripts/        # Browser-only TS modules imported by Astro <script> blocks
 └── styles/         # Global CSS, theme variables, animations
 public/             # Static assets (images, icons, favicon)
 ```
