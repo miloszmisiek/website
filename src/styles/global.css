@@ -7,6 +7,10 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    @apply bg-background;
+  }
+
   body {
     @apply bg-background text-foreground antialiased font-sans;
     position: relative;

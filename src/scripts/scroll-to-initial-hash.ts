@@ -10,6 +10,7 @@ const SETTLE_MS = 3000;
 const QUIET_MS = 250;
 const POLL_MS = 64;
 const SCROLL_TOLERANCE_PX = 1;
+const NO_ANIMATE_ATTR = "data-no-animate";
 
 const SCROLL_KEYS = new Set([
   " ",
