@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { FadeIn } from "../components/FadeIn";
+import { ProfileAvatar } from "../components/ProfileAvatar";
 import { FADE_DELAY } from "../styles/animations";
 import Header from "../sections/Header.astro";
 import ExperienceTimeline from "../sections/ExperienceTimeline.astro";
@@ -47,7 +48,8 @@ const t = getTranslations(Astro.currentLocale);
   <div class="footer-zone relative z-10">
     <div class="page-container">
       <FadeIn client:load delay={FADE_DELAY.md}>
-        <footer class="flex items-center text-xs font-mono text-muted py-8">
+        <footer class="flex items-center gap-3 text-xs font-mono text-muted py-8">
+          <ProfileAvatar client:load />
           <span class="tracking-widest"
             >© {new Date().getFullYear()} MILOSZ MISIEK</span
           >

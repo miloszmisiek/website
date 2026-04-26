@@ -230,4 +230,56 @@
       backdrop-filter: blur(0px);
     }
   }
+
+
+  .profile-dialog {
+    background: transparent;
+    border: 0;
+    padding: 0;
+    margin: auto;
+    max-width: none;
+    max-height: none;
+    overflow: visible;
+    opacity: 0;
+    transform: scale(0.92);
+    transition:
+      opacity 200ms cubic-bezier(0.4, 0, 0.2, 1),
+      transform 200ms cubic-bezier(0.4, 0, 0.2, 1),
+      display 200ms allow-discrete,
+      overlay 200ms allow-discrete;
+  }
+
+  .profile-dialog[open] {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  @starting-style {
+    .profile-dialog[open] {
+      opacity: 0;
+      transform: scale(0.92);
+    }
+  }
+
+  .profile-dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(0px);
+    transition:
+      background-color 200ms cubic-bezier(0.4, 0, 0.2, 1),
+      backdrop-filter 200ms cubic-bezier(0.4, 0, 0.2, 1),
+      display 200ms allow-discrete,
+      overlay 200ms allow-discrete;
+  }
+
+  .profile-dialog[open]::backdrop {
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+  }
+
+  @starting-style {
+    .profile-dialog[open]::backdrop {
+      background-color: rgba(0, 0, 0, 0);
+      backdrop-filter: blur(0px);
+    }
+  }
 }
