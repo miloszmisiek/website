@@ -21,7 +21,7 @@ const translatedLinks = navLinks.map((link) => ({
 ---
 
 <header
-  class="scroll-bg sticky top-0 z-[99999] text-sm font-mono tracking-widest uppercase text-muted border-border pt-4 pb-4 transition-[border-color] duration-300"
+  class="scroll-bg sticky top-0 z-[99999] text-sm font-mono tracking-widest uppercase text-muted border-border pt-4 pb-4 will-change-transform data-[hidden]:-translate-y-full"
 >
   <div class="page-container flex justify-between items-center">
     <div class="flex items-center gap-4">
@@ -52,19 +52,50 @@ const translatedLinks = navLinks.map((link) => ({
   const header = document.querySelector("header");
   const mobileMenu = document.getElementById("mobile-menu");
   const THRESHOLD = 40;
+  const HIDE_DELTA = 8;
+
+  let lastY = window.scrollY;
+  let ticking = false;
 
   const updateScrollState = () => {
     if (!header) return;
-    if (window.scrollY > THRESHOLD) {
+
+    const y = window.scrollY;
+    const delta = y - lastY;
+
+    if (y > THRESHOLD) {
       header.setAttribute("data-scrolled", "");
       mobileMenu?.setAttribute("data-scrolled", "");
     } else {
       header.removeAttribute("data-scrolled");
       mobileMenu?.removeAttribute("data-scrolled");
     }
+
+    const menuOpen = mobileMenu?.hasAttribute("data-open");
+    if (!menuOpen && y > THRESHOLD && Math.abs(delta) > HIDE_DELTA) {
+      if (delta > 0) {
+        header.setAttribute("data-hidden", "");
+      } else {
+        header.removeAttribute("data-hidden");
+      }
+    } else if (y <= THRESHOLD) {
+      header.removeAttribute("data-hidden");
+    }
+
+    lastY = y;
+    ticking = false;
   };
 
-  window.addEventListener("scroll", updateScrollState, { passive: true });
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (!ticking) {
+        requestAnimationFrame(updateScrollState);
+        ticking = true;
+      }
+    },
+    { passive: true },
+  );
   updateScrollState();
 </script>
 
