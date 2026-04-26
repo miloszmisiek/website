@@ -333,6 +333,16 @@ const M_LOGO = "█▀▄▀█\n█ ▀ █";
   scrollTop();
   window.addEventListener("pageshow", scrollTop);
 
+  // Lock hero min-height once at load on touch devices. iOS Safari does not
+  // reliably honour `svh`/`lvh` as stable units, so the section visibly resizes
+  // when the URL bar collapses. Setting an inline px value once eliminates that.
+  // Desktop falls back to the CSS svh value (no JS).
+  const hero = document.getElementById("hero");
+  if (hero && matchMedia("(hover: none) and (pointer: coarse)").matches) {
+    const headerH = document.querySelector("header")?.offsetHeight ?? 76;
+    hero.style.minHeight = `${window.innerHeight - headerH}px`;
+  }
+
   // Hide scroll indicator on first scroll
   const indicator = document.getElementById("hero-scroll-indicator");
   if (indicator) {
