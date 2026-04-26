@@ -24,7 +24,7 @@
 
 
   .section-title {
-    @apply text-2xl md:text-3xl font-mono text-foreground tracking-wide sm:tracking-widest uppercase leading-none font-bold;
+    @apply text-2xl md:text-[1.75rem] font-mono text-foreground tracking-wide sm:tracking-widest uppercase leading-none font-bold;
   }
 
   @media (max-height: 700px) and (min-width: 768px) {
