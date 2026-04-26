@@ -12,7 +12,7 @@ export default {
       lg: "1024px",
       xl: "1280px",
       "2xl": "1536px",
-      short: { raw: "(max-height: 800px)" },
+      short: { raw: "(max-height: 800px) and (min-width: 768px)" },
     },
     extend: {
       fontSize: {
