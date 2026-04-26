@@ -328,7 +328,10 @@ const M_LOGO = "█▀▄▀█\n█ ▀ █";
 </style>
 
 <script>
-  // Ensure page starts at top on every load
+  // Ensure page starts at top on every load (prevent browser scroll restoration)
+  if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
+  }
   window.scrollTo({ top: 0, behavior: "instant" });
 
   // Hide scroll indicator on first scroll
