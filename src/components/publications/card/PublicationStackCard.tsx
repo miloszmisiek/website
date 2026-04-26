@@ -96,13 +96,10 @@ export function PublicationStackCard({
           {authors.length > 0 && (
             <p className="text-mono-meta flex flex-wrap items-baseline gap-x-2 gap-y-1">
               <span className="text-foreground/40 whitespace-nowrap">
-                {"{ author(s):"}
+                authors:
               </span>
               <span className="text-foreground/80 tracking-wide min-w-0">
                 {authors.join(", ")}
-              </span>
-              <span className="text-foreground/40 whitespace-nowrap">
-                {"}"}
               </span>
             </p>
           )}
