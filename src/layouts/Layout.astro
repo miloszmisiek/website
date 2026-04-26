@@ -29,6 +29,8 @@ const { title } = Astro.props;
     <!-- Anti-FOUC: apply stored theme before first paint -->
     <script is:inline>
       (function () {
+        if ("scrollRestoration" in history)
+          history.scrollRestoration = "manual";
         var stored = localStorage.getItem("theme");
         var prefersDark = window.matchMedia(
           "(prefers-color-scheme: dark)",
