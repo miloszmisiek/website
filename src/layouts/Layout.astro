@@ -103,6 +103,38 @@ const defaultHref = toAbsolute("/");
         document.documentElement.setAttribute("data-theme", theme);
       })();
     </script>
+
+    <!-- 90s Retro Easter Egg trigger: Konami code (↑↑↓↓←→←→BA) + persistence.
+         Self-contained, no DOM mutation unless the sequence matches. -->
+    <script is:inline>
+      (() => {
+        const SEQ = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
+        const path = location.pathname;
+        const isRetro = path === "/retro" || path === "/pl/retro";
+        const isPl = document.documentElement.lang === "pl";
+        const retroPath = isPl ? "/pl/retro" : "/retro";
+
+        try {
+          if (!isRetro && localStorage.getItem("retro_mode") === "on") {
+            location.replace(retroPath);
+            return;
+          }
+        } catch (e) {}
+
+        let i = 0;
+        addEventListener("keydown", (e) => {
+          if (e.keyCode === SEQ[i]) {
+            i++;
+            if (i === SEQ.length) {
+              try { localStorage.setItem("retro_mode", "on"); } catch (e) {}
+              location.href = retroPath;
+            }
+          } else {
+            i = e.keyCode === SEQ[0] ? 1 : 0;
+          }
+        });
+      })();
+    </script>
   </head>
   <body
     class="relative selection:bg-foreground selection:text-background overflow-x-hidden"

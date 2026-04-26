@@ -1,0 +1,348 @@
+---
+/*
+ * 90s Retro Easter Egg page (1996 Edition).
+ * Triggered via /retro URL or Konami code (↑↑↓↓←→←→BA) from Layout.astro.
+ * Mirrors all index sections in period-authentic styling using <table>,
+ * <marquee>, <hr>, beveled buttons, blink, and a fake hit counter.
+ * Self-contained: no global stylesheet, no Tailwind, no React hydration.
+ * Stylesheet: /public/retro.css served raw (bypasses build).
+ */
+import { getExperience, getPublications, getProducts } from "../../i18n/data";
+import { getTranslations } from "../../i18n/translations";
+import type { Locale } from "../../i18n/config";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getTranslations(locale);
+
+const experience = getExperience(locale);
+const publications = getPublications(locale);
+const products = getProducts(locale);
+
+const homeHref = locale === "pl" ? "/pl/" : "/";
+const year = new Date().getFullYear();
+const buildDate = new Date().toISOString().slice(0, 10);
+
+const newestExpYear = experience.reduce((max, e) => {
+  const startYear = parseInt(e.period.start.slice(0, 4), 10);
+  return startYear > max ? startYear : max;
+}, 0);
+
+const isOngoing = (e: typeof experience[number]) => e.period.end === "present";
+
+const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const formatPeriod = (ym: string) => {
+  const [y, m] = ym.split("-");
+  const mi = parseInt(m ?? "0", 10) - 1;
+  return mi >= 0 && mi < 12 ? `${MONTHS[mi]} ${y}` : ym;
+};
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MILOSZ MISIEK | SOFTWARE ENGINEER (1996 EDITION)</title>
+    <link rel="stylesheet" href="/retro.css" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <div class="dialup" id="dialup"><div class="dialup-bar"></div></div>
+
+    <div class="page">
+      <div class="topbar">
+        <a class="exit-retro" href={homeHref} id="exit-retro">[Exit retro mode]</a>
+      </div>
+
+      <div class="center">
+        <h1>~ MILOSZ MISIEK ~</h1>
+        <h3 class="mono">{t("hero.typewriter")}</h3>
+      </div>
+
+      <div class="retro-nav">
+        <a href={homeHref}>Home</a> |
+        <a href="#research">Research</a> |
+        <a href="#work">Work</a> |
+        <a href="#products">Products</a> |
+        <a href="#contact">Contact</a> |
+        <a href={homeHref} id="exit-retro-2">[Exit retro mode]</a>
+      </div>
+
+      <div class="badges">
+        <span class="bevel-in">Best viewed in Netscape Navigator 4.0 at 800x600</span>
+        <span class="bevel-in">HTML 3.2 Approved</span>
+        <span class="bevel-in">Powered by Coffee &amp; Dial-Up</span>
+      </div>
+
+      <marquee scrollamount="6">
+        ★ NEW! Welcome to my homepage — under construction since 1996 ★ Sign my guestbook! ★ Best viewed at 800x600 ★
+      </marquee>
+
+      <hr />
+
+      <!-- HERO / BIO -->
+      <table width="100%" cellpadding="6" cellspacing="2" border="1">
+        <tr>
+          <td width="120" align="center">
+            <img
+              src="https://i.pravatar.cc/100?img=68"
+              alt="[Photo of Milosz Misiek]"
+              width="100"
+              height="100"
+            />
+          </td>
+          <td>
+            <h2>About the Webmaster</h2>
+            <p><b>Name:</b> Milosz Misiek</p>
+            <p><b>Occupation:</b> Software Engineer</p>
+            <p>// {t("hero.bio.first")}</p>
+            <p>// {t("hero.bio.second")}</p>
+            <p>
+              <a href="#products" class="retro-btn">[ {t("hero.cta.viewWork")} ]</a>
+              &nbsp;
+              <a href="#contact" class="retro-btn">[ {t("hero.cta.contact")} ]</a>
+            </p>
+          </td>
+        </tr>
+      </table>
+
+      <hr />
+
+      <!-- EXPERIENCE -->
+      <a id="work"></a>
+      <h2>{t("section.experience")} <span class="blink">*</span></h2>
+      <table width="100%" cellpadding="4" cellspacing="2" border="1" class="zebra">
+        <tr>
+          <th>Period</th>
+          <th>Type</th>
+          <th>Role</th>
+          <th>Company</th>
+          <th>Focus</th>
+          <th>Highlights</th>
+          <th>Technologies</th>
+        </tr>
+        {experience.map((e) => {
+          const ongoing = isOngoing(e);
+          const startYear = parseInt(e.period.start.slice(0, 4), 10);
+          const isLatest = startYear === newestExpYear;
+          const endLabel = ongoing ? t("timeline.present") : formatPeriod(e.period.end);
+          const startLabel = formatPeriod(e.period.start);
+          const typeLabel = e.type === "academic" ? "[ACADEMIC]" : "[WORK]";
+          return (
+            <tr class={ongoing ? "row-current" : ""}>
+              <td class="mono period-cell">
+                <div><b>From:</b> {startLabel}</div>
+                <div><b>To:</b>&nbsp;&nbsp;&nbsp;{endLabel}</div>
+                <div><small>Duration: {e.duration}</small></div>
+              </td>
+              <td class="mono"><small>{typeLabel}</small></td>
+              <td>
+                <b>{e.role}</b>
+                {ongoing && <><br /><span class="new-badge">NEW!</span></>}
+                {!ongoing && isLatest && <><br /><span class="new-badge">NEW!</span></>}
+              </td>
+              <td>{e.company}</td>
+              <td>{e.focus ?? ""}</td>
+              <td>
+                <ul class="tags">
+                  {e.highlights.map((h) => <li>{h}</li>)}
+                </ul>
+              </td>
+              <td class="mono"><small>{e.technologies.join(", ")}</small></td>
+            </tr>
+          );
+        })}
+      </table>
+
+      <hr />
+
+      <!-- PUBLICATIONS -->
+      <a id="research"></a>
+      <h2>{t("section.publications")}</h2>
+      <table width="100%" cellpadding="4" cellspacing="2" border="1">
+        <tr>
+          <th>Year</th>
+          <th>Title</th>
+          <th>Authors</th>
+          <th>Status</th>
+          <th>Topics</th>
+          <th>Link</th>
+        </tr>
+        {publications.map((p) => {
+          const isRecent = p.year >= year - 1;
+          const statusKey = `publication.status.${p.status}` as const;
+          return (
+            <tr>
+              <td class="mono">{p.year}</td>
+              <td>
+                <b>{p.title}</b>
+                {isRecent && <span class="new-badge">NEW!</span>}
+                {p.tldr && <p><small><i>{p.tldr}</i></small></p>}
+              </td>
+              <td><small>{p.authors.join("; ")}</small></td>
+              <td><i>{t(statusKey)}</i></td>
+              <td><small>{p.topics.join(", ")}</small></td>
+              <td>
+                {p.link && <a href={p.link} target="_blank" rel="noopener">{t("publication.viewPaper")}</a>}
+                {p.doi && <div class="mono"><small>doi:{p.doi}</small></div>}
+              </td>
+            </tr>
+          );
+        })}
+      </table>
+
+      <hr />
+
+      <!-- FEATURED PRODUCTS -->
+      <a id="products"></a>
+      <h2>{t("section.products")}</h2>
+      <table width="100%" cellpadding="4" cellspacing="2" border="1">
+        <tr>
+          <th>Name</th>
+          <th>Year</th>
+          <th>Role</th>
+          <th>Description</th>
+          <th>Tech</th>
+          <th>Image</th>
+          <th>Link</th>
+        </tr>
+        {products.map((pr) => (
+          <tr>
+            <td>
+              <b>{pr.name}</b>
+              {pr.featured && <><br /><blink class="blink">★ FEATURED ★</blink></>}
+              {pr.nda && <><br /><small>[ {t("product.nda")} ]</small></>}
+            </td>
+            <td class="mono">{pr.year ?? "—"}</td>
+            <td>{pr.role}</td>
+            <td><small>{pr.description}</small></td>
+            <td class="mono"><small>{pr.technologies.join(", ")}</small></td>
+            <td align="center">
+              {pr.image ? (
+                <img src={pr.image} alt={`[Screenshot of ${pr.name}]`} width="120" />
+              ) : (
+                <span class="bevel-in">[IMG]</span>
+              )}
+            </td>
+            <td>
+              {pr.link && <a href={pr.link} target="_blank" rel="noopener">{t("product.viewProduct")}</a>}
+            </td>
+          </tr>
+        ))}
+      </table>
+
+      <hr />
+
+      <!-- CONTACT -->
+      <a id="contact"></a>
+      <h2>{t("section.contact")}</h2>
+      <p><b>{t("contact.headline")}</b></p>
+      <p><i>{t("contact.subheadline")}</i></p>
+
+      <div class="contact-cols">
+        <div class="contact-col">
+          <h3>{t("contact.email.label")}</h3>
+          <p>
+            <a href="mailto:contact@miloszmisiek.com">contact@miloszmisiek.com</a>
+          </p>
+        </div>
+        <div class="contact-col">
+          <h3>Links</h3>
+          <ul>
+            <li><a href="https://github.com/miloszmisiek">{t("contact.github")}</a></li>
+            <li><a href="https://www.linkedin.com/in/milosz-misiek/">{t("contact.linkedin")}</a></li>
+            <li><a href="https://www.researchgate.net/profile/Milosz-Misiek">{t("contact.researchgate")}</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Drop a line</h3>
+      <form name="retro-contact" method="POST" data-netlify="true" class="retro-form">
+        <input type="hidden" name="form-name" value="retro-contact" />
+        <p>
+          <label>{t("contact.form.name.label")}<br />
+            <input type="text" name="name" size="40" required />
+          </label>
+        </p>
+        <p>
+          <label>{t("contact.form.email.label")}<br />
+            <input type="email" name="email" size="40" required />
+          </label>
+        </p>
+        <p>
+          <label>{t("contact.form.message.label")}<br />
+            <textarea name="message" rows="6" cols="60" required></textarea>
+          </label>
+        </p>
+        <p>
+          <input type="submit" value={t("contact.form.submit")} />
+        </p>
+      </form>
+
+      <hr />
+
+      <div class="center">
+        <button id="midi-toggle" type="button">♪ MIDI: OFF</button>
+        &nbsp;&nbsp;
+        <span class="bevel-in">Sign Guestbook</span>
+        &nbsp;&nbsp;
+        <span class="bevel-in">Webring »</span>
+      </div>
+
+      <footer class="retro-footer">
+        <p>
+          © {year} MILOSZ MISIEK &nbsp;|&nbsp;
+          Webmaster: <a href="mailto:contact@miloszmisiek.com">contact@miloszmisiek.com</a> &nbsp;|&nbsp;
+          Last Updated: <span class="mono">{buildDate}</span> &nbsp;|&nbsp;
+          Visitor #<span class="hits" id="hits">0000000</span>
+        </p>
+        <p><small>This page is best viewed with a 28.8k modem or faster.</small></p>
+      </footer>
+    </div>
+
+    <script is:inline>
+      console.log("Welcome to MILOSZ MISIEK v1.0 (1996 Edition)");
+
+      // Hide dial-up bar after fill animation
+      setTimeout(function () {
+        var d = document.getElementById("dialup");
+        if (d) d.style.display = "none";
+      }, 3100);
+
+      // Hit counter (persisted)
+      try {
+        var k = "retro_hits";
+        var n = parseInt(localStorage.getItem(k) || "1336521", 10) + 1;
+        localStorage.setItem(k, String(n));
+        var el = document.getElementById("hits");
+        if (el) el.textContent = String(n).padStart(7, "0");
+      } catch (e) {}
+
+      // MIDI toggle (cosmetic)
+      var midi = document.getElementById("midi-toggle");
+      if (midi) {
+        var on = false;
+        midi.addEventListener("click", function () {
+          on = !on;
+          midi.textContent = "♪ MIDI: " + (on ? "ON " : "OFF");
+        });
+      }
+
+      // Exit retro mode: clear flag
+      function clearRetro() {
+        try { localStorage.removeItem("retro_mode"); } catch (e) {}
+      }
+      var ex1 = document.getElementById("exit-retro");
+      var ex2 = document.getElementById("exit-retro-2");
+      if (ex1) ex1.addEventListener("click", clearRetro);
+      if (ex2) ex2.addEventListener("click", clearRetro);
+
+      // Mark this session as retro-on so refreshes stay
+      try { localStorage.setItem("retro_mode", "on"); } catch (e) {}
+    </script>
+  </body>
+</html>

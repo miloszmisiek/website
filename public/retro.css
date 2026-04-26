@@ -1,0 +1,289 @@
+/*
+ * 90s Retro Easter Egg stylesheet (1996 Edition).
+ * Served from /public so it never enters the Tailwind/PostCSS build
+ * and has zero impact on the modern site when retro mode is OFF.
+ * Loaded only by /retro and /pl/retro routes.
+ */
+
+* {
+  border-radius: 0 !important;
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #c0c0c0;
+  color: #000;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 16px;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.35;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='4' height='4'><rect width='1' height='1' fill='%23a8a8a8'/><rect x='2' y='2' width='1' height='1' fill='%23d8d8d8'/></svg>");
+  background-repeat: repeat;
+}
+
+code, pre, kbd, samp, .mono {
+  font-family: "Courier New", Courier, monospace;
+}
+
+a {
+  color: #0000EE;
+  text-decoration: underline;
+}
+a:visited { color: #551A8B; }
+a:active  { color: #FF0000; }
+
+h1, h2, h3, h4 {
+  font-family: "Times New Roman", Times, serif;
+  margin: 0.4em 0;
+}
+h1 { font-size: 36px; }
+h2 { font-size: 26px; }
+h3 { font-size: 20px; }
+
+hr {
+  border: none;
+  border-top: 2px groove #888;
+  margin: 16px 0;
+}
+
+table {
+  border-collapse: separate;
+  background: #fff;
+  margin: 8px 0;
+}
+th {
+  background: #000080;
+  color: #fff;
+  padding: 4px 8px;
+  text-align: left;
+}
+td { padding: 4px 8px; vertical-align: top; }
+
+table.zebra tr:nth-child(even) td { background: #ececec; }
+table.zebra tr.row-current td { background: #ffffcc; }
+table.zebra tr.row-current td.period-cell b,
+table.zebra tr.row-current td b { color: #000080; }
+
+td.period-cell { white-space: nowrap; min-width: 140px; line-height: 1.5; }
+td.period-cell div { margin: 1px 0; }
+
+/* beveled buttons + bars */
+.bevel-out, button, input[type="submit"], input[type="button"] {
+  border: 2px outset #fff;
+  background: #c0c0c0;
+  color: #000;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 14px;
+  padding: 4px 12px;
+  cursor: pointer;
+}
+.bevel-out:active, button:active {
+  border-style: inset;
+}
+.bevel-in {
+  border: 2px inset #888;
+  background: #c0c0c0;
+  display: inline-block;
+  padding: 2px 8px;
+}
+
+/* form inputs: browser-default look */
+input[type="text"], input[type="email"], textarea {
+  border: 2px inset #888;
+  background: #fff;
+  font-family: "Courier New", Courier, monospace;
+  padding: 2px 4px;
+}
+
+/* blink */
+@keyframes blink-anim {
+  50% { visibility: hidden; }
+}
+.blink, blink {
+  animation: blink-anim 1s steps(2, start) infinite;
+}
+
+/* NEW! badge */
+@keyframes new-badge-anim {
+  0%, 49%   { background: #ffff00; color: #ff0000; }
+  50%, 100% { background: #ff0000; color: #ffff00; }
+}
+.new-badge {
+  display: inline-block;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  font-size: 11px;
+  padding: 1px 5px;
+  border: 1px solid #000;
+  animation: new-badge-anim 0.8s steps(2) infinite;
+  margin-left: 6px;
+  letter-spacing: 1px;
+}
+
+/* dial-up loading bar */
+@keyframes dialup-fill {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+.dialup {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 14px;
+  background: #808080;
+  border-bottom: 2px outset #fff;
+  z-index: 999;
+  overflow: hidden;
+}
+.dialup-bar {
+  height: 100%;
+  background: repeating-linear-gradient(
+    90deg, #000080 0 8px, #4040c0 8px 16px
+  );
+  animation: dialup-fill 3s linear forwards;
+}
+
+/* hit counter LCD */
+.hits {
+  display: inline-block;
+  background: #000;
+  color: #00ff00;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  border: 2px inset #444;
+  padding: 1px 6px;
+  letter-spacing: 2px;
+}
+
+/* nav pipes */
+.retro-nav {
+  text-align: center;
+  font-family: "Times New Roman", Times, serif;
+  margin: 8px 0;
+}
+.retro-nav a { margin: 0 4px; }
+
+/* badge bar */
+.badges {
+  display: block;
+  text-align: center;
+  margin: 8px 0;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 11px;
+}
+.badges .bevel-in { margin: 0 4px; background: #ffffcc; }
+
+/* exit link */
+.topbar {
+  text-align: right;
+  margin: 0 0 8px;
+}
+.exit-retro {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 12px;
+}
+
+/* retro button (link styled as beveled button, immune to :visited) */
+a.retro-btn {
+  display: inline-block;
+  border: 2px outset #fff;
+  background: #c0c0c0;
+  color: #000 !important;
+  text-decoration: none !important;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 14px;
+  padding: 4px 12px;
+  margin: 4px 2px;
+}
+a.retro-btn:visited { color: #000 !important; }
+a.retro-btn:active  { border-style: inset; color: #000 !important; }
+
+/* container */
+.page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 24px 16px 40px;
+  position: relative;
+}
+
+/* broken-image fallback */
+img {
+  border: 2px solid #000;
+  background: #fff;
+}
+img.broken::before {
+  content: "[IMG]";
+}
+
+/* misc */
+.center { text-align: center; }
+
+/* override aggressive normalize/preflight that may strip list bullets */
+ul, ol {
+  list-style: revert !important;
+  padding-left: 28px !important;
+  margin: 6px 0 !important;
+}
+ul li, ol li { display: list-item !important; }
+ul.tags { padding-left: 22px !important; margin: 4px 0 !important; }
+ul.tags li {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 12px;
+  list-style: square !important;
+  margin-bottom: 4px;
+}
+
+/* contact columns (float layout — period authentic; sidesteps an Astro
+   compiler quirk where <a> in a <ul><table> reconstructs after </table>) */
+.contact-cols {
+  background: #fff;
+  border: 1px solid #000;
+  padding: 4px;
+  margin: 8px 0;
+}
+.contact-cols::after { content: ""; display: block; clear: both; }
+.contact-col {
+  float: left;
+  width: 50%;
+  padding: 8px 12px;
+  box-sizing: border-box;
+}
+
+/* contact form */
+.retro-form {
+  background: #fff;
+  border: 2px inset #888;
+  padding: 12px 16px;
+  margin: 8px 0;
+}
+.retro-form textarea, .retro-form input[type="text"], .retro-form input[type="email"] {
+  width: 100%;
+  max-width: 480px;
+  box-sizing: border-box;
+}
+
+footer.retro-footer {
+  text-align: center;
+  font-size: 12px;
+  margin-top: 24px;
+  padding: 8px;
+  border-top: 2px groove #888;
+}
+
+marquee {
+  background: #000080;
+  color: #ffff00;
+  font-family: "Courier New", Courier, monospace;
+  padding: 4px 0;
+  border: 2px inset #888;
+  margin: 8px 0;
+}

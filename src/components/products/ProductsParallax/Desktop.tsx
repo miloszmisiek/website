@@ -12,7 +12,7 @@ export function ProductsParallaxDesktop({ products }: ProductsListProps) {
   });
 
   return (
-    <div ref={containerRef} className="relative mt-8 mlg:mt-16 mlg:pb-[16vh]">
+    <div ref={containerRef} className="relative mt-8 mlg:mt-16 mlg:pb-[8vh]">
       {products.map((product, index) => {
         const isLast = index === products.length - 1;
         const targetScale = isLast

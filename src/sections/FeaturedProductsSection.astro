@@ -10,7 +10,7 @@ const products = getProducts(Astro.currentLocale);
 const t = getTranslations(Astro.currentLocale);
 ---
 
-<section id="products" class="mb-32 short:mb-16">
+<section id="products" class="mb-24 short:mb-12">
   <div class="section-label">
     <span class="section-num">03</span>
     <AnimatedSectionTitle client:load text={t("section.products")} />
