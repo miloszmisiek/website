@@ -36,3 +36,13 @@ skills-lock.json
 
 # Root-level screenshot artifacts
 /*.png
+
+# LaTeX build artifacts (keep docs/cv.tex, ignore generated outputs)
+docs/*.pdf
+docs/*.aux
+docs/*.log
+docs/*.out
+docs/*.toc
+docs/*.synctex.gz
+docs/*.fls
+docs/*.fdb_latexmk

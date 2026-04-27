@@ -9,7 +9,7 @@ type TimelineAnimatorProps = {
 };
 
 const ANIMATION_CONFIG = {
-  initial: { opacity: 0, x: -20 },
+  initial: { opacity: 1, x: -20 },
   whileInView: { opacity: 1, x: 0 },
   transition: {
     duration: 0.8,
@@ -30,7 +30,7 @@ export function TimelineAnimator({
         {childArray.map((child, index) => (
           <motion.div
             key={items[index]?.id || `timeline-entry-${index}`}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: "0px" }}
             {...ANIMATION_CONFIG}
           >
             {child}

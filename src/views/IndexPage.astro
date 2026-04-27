@@ -14,6 +14,7 @@ import "@fontsource/vt323";
 import { getTranslations } from "../i18n";
 
 const t = getTranslations(Astro.currentLocale);
+const retroHref = Astro.currentLocale === "pl" ? "/pl/retro" : "/retro";
 ---
 
 <Layout title={t("layout.title")}>
@@ -63,7 +64,44 @@ const t = getTranslations(Astro.currentLocale);
           <span class="tracking-widest"
             >© {new Date().getFullYear()} MILOSZ MISIEK</span
           >
+          <a
+            href={retroHref}
+            id="retro-link"
+            aria-label="Enter retro mode"
+            title="Enter retro mode (1996 edition)"
+            class="ml-auto inline-flex items-center gap-1.5 text-muted hover:text-foreground transition-colors tracking-widest"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 16"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.25"
+              aria-hidden="true"
+            >
+              <rect x="1.5" y="1.5" width="13" height="13" rx="0.5" />
+              <rect x="3.5" y="1.5" width="9" height="5" />
+              <rect x="9.5" y="2.5" width="2" height="3" fill="currentColor" />
+              <rect x="4" y="9" width="8" height="5" />
+              <line x1="5.5" y1="10.5" x2="10.5" y2="10.5" />
+              <line x1="5.5" y1="12" x2="10.5" y2="12" />
+            </svg>
+            <span>RETRO_MODE.EXE</span>
+          </a>
         </footer>
+        <script is:inline>
+          (function () {
+            var link = document.getElementById("retro-link");
+            if (!link) return;
+            link.addEventListener("click", function () {
+              try {
+                localStorage.setItem("retro_mode", "on");
+              } catch (e) {}
+            });
+          })();
+        </script>
       </FadeIn>
     </div>
   </div>

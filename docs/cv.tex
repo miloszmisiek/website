@@ -1,0 +1,160 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\input{glyphtounicode}
+
+% --- Public/private toggle ------------------------------------------------
+% Hide phone number when building a public copy (e.g. for the website).
+% Default: private (phone shown). Override from CLI:
+%   pdflatex "\def\public{1}\input{cv.tex}"
+\newif\ifpublic
+\ifdefined\public\publictrue\else\publicfalse\fi
+% --------------------------------------------------------------------------
+
+\pagestyle{fancy}
+\fancyhf{} \fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\addtolength{\oddsidemargin}{-0.6in}
+\addtolength{\evensidemargin}{-0.6in}
+\addtolength{\textwidth}{1.2in}
+\addtolength{\topmargin}{-.7in}
+\addtolength{\textheight}{1.4in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{\vspace{-4pt}\scshape\raggedright\large}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+\pdfgentounicode=1
+
+\newcommand{\resumeItem}[1]{\item\small{#1 \vspace{-2pt}}}
+\newcommand{\resumeSubheading}[4]{%
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge \scshape Miłosz Misiek} \\ \vspace{2pt}
+    \small Szczecin, Poland $|$ \href{mailto:contact@miloszmisiek.com}{contact@miloszmisiek.com}\ifpublic\else\ $|$ +48 696 472 220\fi \\
+    \href{https://miloszmisiek.com}{miloszmisiek.com} $|$
+    \href{https://linkedin.com/in/milosz-misiek}{linkedin.com/in/milosz-misiek} $|$
+    \href{https://github.com/miloszmisiek}{github.com/miloszmisiek} $|$
+    \href{https://www.researchgate.net/profile/Milosz-Misiek}{ResearchGate}
+\end{center}
+
+%-----------SUMMARY-----------
+\section{Summary}
+Software engineer working across the full stack on production systems, with a focus on performance and applied AI. Currently building LLM-powered features using RAG and pgvector for Inbox, a real-time communication product. PhD candidate researching ML-based phishing detection --- published in HICSS 2025 and IEEE Access 2026. Former professional mariner who brings a builder's discipline and a researcher's rigor to engineering problems.
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+\resumeSubHeadingListStart
+
+  \resumeSubheading
+    {Software Engineer}{May 2023 -- Present}
+    {Elastic Email}{Szczecin, PL}
+    \resumeItemListStart
+      \resumeItem{Core engineer on \textbf{Inbox}, a real-time communication product --- owning features across frontend (React/Next.js), backend (Node.js/Express, GraphQL), and data layers (MongoDB, pgvector). Currently developing AI-powered automated communication using Retrieval-Augmented Generation (RAG) and the OpenAI API.}
+      \resumeItem{Built a shared component library adopted across product teams and drove infrastructure improvements after identifying performance bottlenecks.}
+      \resumeItem{Led migration of the marketing site from WordPress to Next.js 14 --- Lighthouse SEO 83$\rightarrow$100, Performance 86$\rightarrow$92, Best Practices 77$\rightarrow$100.}
+    \resumeItemListEnd
+
+  \resumeSubheading
+    {Web Developer}{Mar 2023 -- May 2023}
+    {Maritime University in Szczecin}{Szczecin, PL}
+    \resumeItemListStart
+      \resumeItem{Built and delivered v0.0.1 of an internal procurement system (React, Redux, Express, TypeScript, MySQL), deployed on a Debian server. Led development end-to-end to on-time delivery.}
+    \resumeItemListEnd
+
+  \resumeSubheading
+    {Deck Officer}{Aug 2015 -- Sep 2021}
+    {Chevron Shipping Ltd.}{}
+    \vspace{2pt}
+    \item[]\small\textit{LNG carriers and oil tankers. Safety-critical operations.}\vspace{-4pt}
+
+\resumeSubHeadingListEnd
+
+%-----------EDUCATION-----------
+\section{Education}
+\resumeSubHeadingListStart
+
+  \resumeSubheading
+    {West Pomeranian University of Technology in Szczecin}{Oct 2024 -- Oct 2028}
+    {PhD Candidate, Computer Science --- Cybersecurity \& Applied ML}{}
+    \resumeItemListStart
+      \resumeItem{Research: ML-based phishing detection using XGBoost, NLP, and computer vision in multi-layer detection pipelines.}
+    \resumeItemListEnd
+
+  \resumeSubheading
+    {West Pomeranian University of Technology in Szczecin}{Oct 2022 -- Jun 2024}
+    {MSc in Computer Science --- Grade 5 / GPA 4.0}{}
+
+  \resumeSubheading
+    {Maritime University in Szczecin}{Oct 2010 -- May 2015}
+    {BSc in Nautical Science}{}
+
+\resumeSubHeadingListEnd
+
+%-----------PUBLICATIONS-----------
+\section{Publications}
+\resumeSubHeadingListStart
+
+  \resumeSubheading
+    {XGBoost-Based URL Phishing Detection With Cross-Dataset Validation}{2026}
+    {\textit{Miłosz Misiek}, Tomasz Hyla --- IEEE Access}{}
+    \resumeItemListStart
+      \resumeItem{Cross-dataset validation across 760K+ samples reaching 90.7\% accuracy, with 12.6$\times$ faster training and 3.6$\times$ less memory than comparable neural networks. \href{https://doi.org/10.1109/ACCESS.2026.3672690}{10.1109/ACCESS.2026.3672690}}
+    \resumeItemListEnd
+
+  \resumeSubheading
+    {Preventing Phishing Attacks with Browser-Based URL Detection}{2025}
+    {\textit{Miłosz Misiek}, Tomasz Hyla --- HICSS 2025 Proceedings}{}
+    \resumeItemListStart
+      \resumeItem{Browser extension for real-time phishing URL detection using XGBoost. \href{https://doi.org/10.24251/HICSS.2025.874}{10.24251/HICSS.2025.874}}
+    \resumeItemListEnd
+
+  \resumeSubItem{\textbf{Under review:} multi-layer phishing detection combining NLP and computer vision --- CISIM 2026.}
+
+\resumeSubHeadingListEnd
+
+%-----------SKILLS-----------
+\section{Technologies}
+\begin{itemize}[leftmargin=0.15in, label={}]
+  \small{\item{
+    \textbf{Languages:} TypeScript, JavaScript, Python, SQL \\
+    \textbf{Frontend:} React, Next.js, Astro, Redux, TailwindCSS, GraphQL \\
+    \textbf{Backend:} Node.js, Express.js, FastAPI, GraphQL, REST, WebSockets \\
+    \textbf{Data \& AI:} MongoDB, pgvector, OpenAI API, RAG, XGBoost, PyTorch, NLP, Computer Vision \\
+    \textbf{Tooling:} Docker, Git, Linux, CI/CD
+  }}
+\end{itemize}
+
+\end{document}

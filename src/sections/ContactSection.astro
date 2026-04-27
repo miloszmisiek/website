@@ -31,7 +31,7 @@ const t = getTranslations(Astro.currentLocale);
     <AnimatedSectionTitle client:load text={t("section.contact")} />
   </div>
 
-  <FadeIn client:load delay={FADE_DELAY.sm} scrollTriggered>
+  <FadeIn client:load delay={FADE_DELAY.sm}>
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 short:lg:gap-10 items-start">
       {/* ── Left: info + social links ── */}
       <div class="lg:col-span-5 flex flex-col gap-8 short:gap-5">
@@ -139,6 +139,26 @@ const t = getTranslations(Astro.currentLocale);
               class="w-3.5 h-3.5 shrink-0 icon-invert"
             />
             {t("contact.researchgate")}
+          </Button>
+
+          {/* CV */}
+          <Button
+            href="/Milosz_Misiek_CV.pdf"
+            variant="secondary"
+            target="_blank"
+            class="focus-ring gap-2"
+            aria-label="Download CV"
+            download
+          >
+            <img
+              src="/icons/cv.svg"
+              alt=""
+              aria-hidden="true"
+              width="14"
+              height="14"
+              class="w-3.5 h-3.5 shrink-0 icon-invert"
+            />
+            {t("contact.cv")}
           </Button>
         </div>
 

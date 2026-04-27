@@ -47,6 +47,7 @@
   "contact.github": "GITHUB",
   "contact.linkedin": "LINKEDIN",
   "contact.researchgate": "RESEARCHGATE",
+  "contact.cv": "CV",
   "contact.errors.required": "Pole wymagane.",
   "contact.errors.invalidEmail": "Nieprawidłowy adres e-mail."
 }

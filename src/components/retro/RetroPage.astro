@@ -89,7 +89,7 @@ const formatPeriod = (ym: string) => {
         <tr>
           <td width="120" align="center">
             <img
-              src="https://i.pravatar.cc/100?img=68"
+              src="/retro_milosz_specs.webp"
               alt="[Photo of Milosz Misiek]"
               width="100"
               height="100"
@@ -322,13 +322,27 @@ const formatPeriod = (ym: string) => {
         if (el) el.textContent = String(n).padStart(7, "0");
       } catch (e) {}
 
-      // MIDI toggle (cosmetic)
+      // MIDI toggle (plays /retro_tune.mp3 looped)
       var midi = document.getElementById("midi-toggle");
       if (midi) {
         var on = false;
+        var audio = new Audio("/retro_tune.mp3");
+        audio.loop = true;
+        audio.volume = 0.6;
         midi.addEventListener("click", function () {
           on = !on;
           midi.textContent = "♪ MIDI: " + (on ? "ON " : "OFF");
+          if (on) {
+            audio.play().catch(function () {
+              on = false;
+              midi.textContent = "♪ MIDI: OFF";
+            });
+          } else {
+            audio.pause();
+          }
+        });
+        window.addEventListener("beforeunload", function () {
+          audio.pause();
         });
       }
 

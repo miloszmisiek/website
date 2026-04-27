@@ -16,7 +16,7 @@ const t = getTranslations(Astro.currentLocale);
     <AnimatedSectionTitle client:load text={t("section.experience")} />
   </div>
 
-  <FadeIn client:load delay={FADE_DELAY.sm} scrollTriggered>
+  <FadeIn client:load delay={FADE_DELAY.sm}>
     <div class="pt-4">
       <div class="timeline-container">
         <span class="trunk-label">* main</span>
