@@ -1,0 +1,23 @@
+---
+type Props = Partial<{
+  id: string;
+  class: string;
+}>;
+
+const { id, class: className } = Astro.props;
+---
+
+<svg
+  id={id}
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 10 14"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.5"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+  class={className}
+>
+  <path d="M5 0v10M1 7l4 4 4-4"></path>
+</svg>

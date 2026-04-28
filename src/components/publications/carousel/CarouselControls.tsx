@@ -1,4 +1,5 @@
 import { cn } from "../../../styles/cn";
+import { IconChevron } from "../../icons/IconChevron";
 import { DotNav } from "./DotNav";
 import type { CarouselArrowButtonProps, CarouselControlsProps } from "./types";
 
@@ -21,23 +22,7 @@ const CarouselArrowButton = ({
           : "cursor-pointer text-foreground/70 hover:text-foreground hover:bg-foreground/5",
       )}
     >
-      <svg
-        width="16"
-        height="16"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        aria-hidden="true"
-      >
-        {isPrev ? (
-          <polyline points="15 18 9 12 15 6" />
-        ) : (
-          <polyline points="9 18 15 12 9 6" />
-        )}
-      </svg>
+      <IconChevron direction={isPrev ? "left" : "right"} />
     </button>
   );
 };

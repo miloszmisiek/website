@@ -12,7 +12,7 @@ import type { Product } from "../../../../data/schema";
 import { EASE_SMOOTH } from "../../../../styles/animations";
 
 const CARD_ENTER_ANIMATION = {
-  initial: { opacity: 0, y: 80 },
+  initial: { opacity: 1, y: 80 },
   whileInView: { opacity: 1, y: 0 },
   transition: { duration: 0.8, ease: EASE_SMOOTH },
   viewport: { once: true, margin: "-60px" },

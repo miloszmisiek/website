@@ -1,7 +1,7 @@
 import { MotionConfig } from "framer-motion";
 import { getTranslations } from "../../i18n";
-import { IconCheck } from "./icons/IconCheck";
-import { Loader } from "./icons/Loader";
+import { IconCheck } from "../icons/IconCheck";
+import { Loader } from "../icons/Loader";
 import { Form } from "./form";
 
 export function ContactForm() {

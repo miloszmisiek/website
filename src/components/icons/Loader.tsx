@@ -1,4 +1,4 @@
-import { cn } from "../../../styles/cn";
+import { cn } from "../../styles/cn";
 
 type IconProps = {
   className?: string;

@@ -103,6 +103,39 @@ const defaultHref = toAbsolute("/");
         document.documentElement.setAttribute("data-theme", theme);
       })();
     </script>
+
+    <!-- Stable hash-anchor scrolling: after fonts and images load, re-scroll to
+         #target so font-swap reflow and image layout shift do not leave the
+         section offset on reload. -->
+    <script is:inline>
+      (() => {
+        if (!location.hash) return;
+        const reanchor = () => {
+          const el = document.querySelector(location.hash);
+          if (el) el.scrollIntoView({ behavior: "instant", block: "start" });
+        };
+        const onReady = () => {
+          const fontsReady =
+            document.fonts && document.fonts.ready
+              ? document.fonts.ready
+              : Promise.resolve();
+          const loaded =
+            document.readyState === "complete"
+              ? Promise.resolve()
+              : new Promise((r) =>
+                  window.addEventListener("load", r, { once: true }),
+                );
+          Promise.all([fontsReady, loaded]).then(() =>
+            requestAnimationFrame(reanchor),
+          );
+        };
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", onReady, { once: true });
+        } else {
+          onReady();
+        }
+      })();
+    </script>
   </head>
   <body
     class="relative selection:bg-foreground selection:text-background overflow-x-hidden"

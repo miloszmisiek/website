@@ -9,11 +9,13 @@
 
 
     --color-background: 24 22 21;
-    --color-foreground: 230 226 221; 
-    --color-muted: 163 157 150; 
-    --color-border: 48 44 42; 
+    --color-foreground: 230 226 221;
+    --color-muted: 163 157 150;
+    --color-border: 48 44 42;
+    --color-accent: 217 119 6;
+    --color-accent-fg: 24 22 21;
 
-    
+
     --color-line: rgba(230, 226, 221, 0.15);
     --color-dim: rgba(230, 226, 221, 0.4);
 
@@ -54,10 +56,12 @@
   @media (prefers-color-scheme: light) {
     :root {
       color-scheme: light;
-      --color-background: 248 245 239; 
-      --color-foreground: 26 21 16; 
-      --color-muted: 100 92 85; 
-      --color-border: 230 223 213; 
+      --color-background: 248 245 239;
+      --color-foreground: 26 21 16;
+      --color-muted: 100 92 85;
+      --color-border: 230 223 213;
+      --color-accent: 180 83 9;
+      --color-accent-fg: 248 245 239;
       --color-line: rgba(26, 21, 16, 0.15);
       --color-dim: rgba(26, 21, 16, 0.4);
       --color-hover-bg: rgba(26, 21, 16, 0.04);
@@ -84,10 +88,12 @@
   
   [data-theme="dark"] {
     color-scheme: dark;
-    --color-background: 24 22 21; 
-    --color-foreground: 230 226 221; 
-    --color-muted: 163 157 150; 
-    --color-border: 48 44 42; 
+    --color-background: 24 22 21;
+    --color-foreground: 230 226 221;
+    --color-muted: 163 157 150;
+    --color-border: 48 44 42;
+    --color-accent: 217 119 6;
+    --color-accent-fg: 24 22 21;
     --color-line: rgba(230, 226, 221, 0.15);
     --color-dim: rgba(230, 226, 221, 0.4);
     --color-hover-bg: rgba(230, 226, 221, 0.05);
@@ -114,7 +120,9 @@
     --color-background: 248 245 239;
     --color-foreground: 26 21 16;
     --color-muted: 100 92 85;
-    --color-border: 230 223 213; 
+    --color-border: 230 223 213;
+    --color-accent: 180 83 9;
+    --color-accent-fg: 248 245 239;
     --color-line: rgba(26, 21, 16, 0.15);
     --color-dim: rgba(26, 21, 16, 0.4);
     --color-hover-bg: rgba(26, 21, 16, 0.04);

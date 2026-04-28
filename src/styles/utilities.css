@@ -19,7 +19,7 @@
 
 
   .section-num {
-    @apply font-mono text-micro text-muted tracking-[0.3em] uppercase font-semibold;
+    @apply font-mono text-micro text-accent tracking-[0.3em] uppercase font-semibold;
   }
 
 
@@ -45,16 +45,6 @@
   .card-hoverable {
     @apply hover:shadow-xl hover:bg-card-bg-hover hover:border-foreground/10;
   }
-
-  
-  .icon-invert {
-    filter: none;
-  }
-  @media (prefers-color-scheme: light) {
-    .icon-invert { filter: invert(1); }
-  }
-  [data-theme="light"] .icon-invert { filter: invert(1); }
-  [data-theme="dark"] .icon-invert { filter: none; }
 
   
   .page-container {

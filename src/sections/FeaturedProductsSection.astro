@@ -16,7 +16,7 @@ const t = getTranslations(Astro.currentLocale);
     <AnimatedSectionTitle client:load text={t("section.products")} />
   </div>
 
-  <FadeIn client:load delay={FADE_DELAY.sm} scrollTriggered noTranslate>
+  <FadeIn client:load delay={FADE_DELAY.sm} noTranslate>
     <ProductsParallax client:load products={products} />
   </FadeIn>
 </section>

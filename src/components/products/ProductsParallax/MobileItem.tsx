@@ -6,7 +6,7 @@ import type { Product } from "../../../data/schema";
 import { EASE_SMOOTH } from "../../../styles/animations";
 
 const MOBILE_ITEM_ANIMATION = {
-  initial: { opacity: 0, y: 40 },
+  initial: { opacity: 1, y: 40 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, margin: "-40px" },
 };

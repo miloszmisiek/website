@@ -43,6 +43,8 @@ export default {
         foreground: "rgb(var(--color-foreground) / <alpha-value>)",
         muted: "rgb(var(--color-muted) / <alpha-value>)",
         border: "rgb(var(--color-border) / <alpha-value>)",
+        accent: "rgb(var(--color-accent) / <alpha-value>)",
+        "accent-fg": "rgb(var(--color-accent-fg) / <alpha-value>)",
         // Pre-baked rgba — no opacity modifier support
         line: "var(--color-line)",
         dim: "var(--color-dim)",
@@ -60,6 +62,7 @@ export default {
       },
       fontFamily: {
         sans: ["Inter", "sans-serif"],
+        display: ["Space Grotesk", "Inter", "sans-serif"],
         mono: ["JetBrains Mono", "monospace"],
         nav: ["VT323", "monospace"],
         "mono-system": [
