@@ -6,6 +6,8 @@ import { getTranslations } from "../i18n";
 import MobileTerminalBar from "../components/hero/MobileTerminalBar.astro";
 import DesktopTerminal from "../components/hero/DesktopTerminal.astro";
 import ScrollIndicator from "../components/hero/ScrollIndicator.astro";
+import IconArrowRight from "../components/icons/IconArrowRight.astro";
+import IconMail from "../components/icons/IconMail.astro";
 
 const t = getTranslations(Astro.currentLocale);
 ---
@@ -14,12 +16,29 @@ const t = getTranslations(Astro.currentLocale);
   id="hero"
   class="pb-12 min-h-[calc(100svh-76px)] flex flex-col justify-start short:justify-center md2:pb-0 relative"
 >
+  <div
+    class="hero-signature pointer-events-none absolute hidden lg:block select-none"
+    aria-hidden="true"
+  >
+    <svg
+      viewBox="0 0 200 120"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="6"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="w-full h-full text-accent"
+    >
+      <path d="M30 30 L80 60 L30 90" />
+      <path d="M105 95 L175 95" />
+    </svg>
+  </div>
   <div class="flex-1 short:hidden" aria-hidden="true"></div>
   <FadeIn client:load delay={FADE_DELAY.xs}>
     <h1
-      class="text-heading-xl text-5xl md:text-6xl lg:text-7xl short:text-[3.5rem] heroShort:text-5xl mb-8 sm:mb-12 md:mb-16 short:mb-10 heroShort:mb-8 heroShort:max-w-xl max-w-4xl lg:max-w-3xl text-transparent bg-clip-text text-gradient-heading [text-wrap:balance]"
+      class="font-display text-heading-xl text-4xl sm:text-5xl md:text-6xl lg:text-7xl short:text-[3.5rem] heroShort:text-5xl mb-8 sm:mb-12 md:mb-16 short:mb-10 heroShort:mb-8 heroShort:max-w-xl max-w-4xl lg:max-w-5xl text-transparent bg-clip-text text-gradient-heading [text-wrap:pretty]"
     >
-      {t("hero.typewriter")}
+      {t("hero.headline.first")}<br />{t("hero.headline.second")}
     </h1>
     <div
       class="grid grid-cols-1 md2:grid-cols-12 gap-8 md2:gap-12 text-muted font-light leading-relaxed text-sm md2:border-l-2 md2:border-line md2:pl-10 md2:ml-2"
@@ -38,11 +57,17 @@ const t = getTranslations(Astro.currentLocale);
           {t("hero.bio.second")}
         </p>
         <div class="flex flex-wrap justify-start items-center gap-4">
-          <Button href="#products" variant="primary">
-            {t("hero.cta.viewWork")}
+          <Button href="#products" variant="primary" class="group gap-2.5">
+            <span>{t("hero.cta.viewWork")}</span>
+            <IconArrowRight
+              class="shrink-0 transition-transform duration-200 group-hover:translate-x-0.5"
+            />
           </Button>
-          <Button href="#contact" variant="secondary">
-            {t("hero.cta.contact")}
+          <Button href="#contact" variant="secondary" class="group gap-2.5">
+            <span>{t("hero.cta.contact")}</span>
+            <IconMail
+              class="shrink-0 text-accent transition-transform duration-200 group-hover:translate-y-0.5"
+            />
           </Button>
         </div>
 
@@ -56,6 +81,32 @@ const t = getTranslations(Astro.currentLocale);
 
   <ScrollIndicator />
 </section>
+
+<style>
+  .hero-signature {
+    top: clamp(2rem, 6vh, 5rem);
+    right: clamp(-2rem, -2vw, 0rem);
+    width: clamp(18rem, 28vw, 30rem);
+    aspect-ratio: 200 / 120;
+    opacity: 0.08;
+    z-index: 0;
+    filter: blur(0.3px);
+  }
+
+  @media (prefers-color-scheme: light) {
+    .hero-signature {
+      opacity: 0.13;
+    }
+  }
+
+  :global([data-theme="light"]) .hero-signature {
+    opacity: 0.13;
+  }
+
+  :global([data-theme="dark"]) .hero-signature {
+    opacity: 0.08;
+  }
+</style>
 
 <script>
   // iOS Safari does not reliably honour svh/lvh; the section visibly resizes

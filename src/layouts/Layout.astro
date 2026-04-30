@@ -108,7 +108,11 @@ const defaultHref = toAbsolute("/");
          Self-contained, no DOM mutation unless the sequence matches. -->
     <script is:inline>
       (() => {
-        const SEQ = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
+        const SEQ = [
+          "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown",
+          "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight",
+          "b", "a",
+        ];
         const path = location.pathname;
         const isRetro = path === "/retro" || path === "/pl/retro";
         const isPl = document.documentElement.lang === "pl";
@@ -123,16 +127,50 @@ const defaultHref = toAbsolute("/");
 
         let i = 0;
         addEventListener("keydown", (e) => {
-          if (e.keyCode === SEQ[i]) {
+          const key = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+          if (key === SEQ[i]) {
             i++;
             if (i === SEQ.length) {
               try { localStorage.setItem("retro_mode", "on"); } catch (e) {}
               location.href = retroPath;
             }
           } else {
-            i = e.keyCode === SEQ[0] ? 1 : 0;
+            i = key === SEQ[0] ? 1 : 0;
           }
         });
+      })();
+    </script>
+
+    <!-- Stable hash-anchor scrolling: after fonts and images load, re-scroll to
+         #target so font-swap reflow and image layout shift do not leave the
+         section offset on reload. -->
+    <script is:inline>
+      (() => {
+        if (!location.hash) return;
+        const reanchor = () => {
+          const el = document.querySelector(location.hash);
+          if (el) el.scrollIntoView({ behavior: "instant", block: "start" });
+        };
+        const onReady = () => {
+          const fontsReady =
+            document.fonts && document.fonts.ready
+              ? document.fonts.ready
+              : Promise.resolve();
+          const loaded =
+            document.readyState === "complete"
+              ? Promise.resolve()
+              : new Promise((r) =>
+                  window.addEventListener("load", r, { once: true }),
+                );
+          Promise.all([fontsReady, loaded]).then(() =>
+            requestAnimationFrame(reanchor),
+          );
+        };
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", onReady, { once: true });
+        } else {
+          onReady();
+        }
       })();
     </script>
   </head>

@@ -5,9 +5,10 @@
   "nav.research": "BADANIA",
   "nav.contact": "KONTAKT",
 
-  "hero.typewriter": "Szybciej, stabilniej, z myślą o skali.",
+  "hero.headline.first": "Mało kodu trafia na produkcję.",
+  "hero.headline.second": "Pracuję nad tym, który trafia.",
   "hero.bio.first": "Inżynier oprogramowania pracujący przy systemach produkcyjnych.",
-  "hero.bio.second": "Tworzę i rozwijam systemy, dbając o ich wydajność.",
+  "hero.bio.second": "Doktorant badający zastosowania ML w cyberbezpieczeństwie.",
   "hero.cta.viewWork": "Projekty",
   "hero.cta.contact": "Kontakt",
 

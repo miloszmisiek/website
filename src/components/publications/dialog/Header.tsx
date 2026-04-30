@@ -1,6 +1,7 @@
 import { Drawer } from "@hanzo/react-drawer";
 import { getTranslations } from "../../../i18n";
 import { Button } from "../../button/Button";
+import { IconClose } from "../../icons/IconClose";
 import { usePublicationAbstractDialogContext } from "./context";
 
 export function Header() {
@@ -33,21 +34,7 @@ function CloseButton() {
       className="text-muted hover:text-foreground"
       onClick={close}
     >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="14"
-        height="14"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        aria-hidden="true"
-      >
-        <line x1="18" y1="6" x2="6" y2="18" />
-        <line x1="6" y1="6" x2="18" y2="18" />
-      </svg>
+      <IconClose />
     </Button>
   );
 }

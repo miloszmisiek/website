@@ -20,6 +20,9 @@ importers:
       '@fontsource/jetbrains-mono':
         specifier: ^5.2.8
         version: 5.2.8
+      '@fontsource/space-grotesk':
+        specifier: ^5.2.10
+        version: 5.2.10
       '@fontsource/vt323':
         specifier: ^5.2.7
         version: 5.2.7
@@ -512,6 +515,9 @@ packages:
 
   '@fontsource/jetbrains-mono@5.2.8':
     resolution: {integrity: sha512-6w8/SG4kqvIMu7xd7wt6x3idn1Qux3p9N62s6G3rfldOUYHpWcc2FKrqf+Vo44jRvqWj2oAtTHrZXEP23oSKwQ==}
+
+  '@fontsource/space-grotesk@5.2.10':
+    resolution: {integrity: sha512-XNXEbT74OIITPqw2H6HXwPDp85fy43uxfBwFR5PU+9sLnjuLj12KlhVM9nZVN6q6dlKjkuN8JisW/OBxwxgUew==}
 
   '@fontsource/vt323@5.2.7':
     resolution: {integrity: sha512-8JTMM23vMhQxin9Cn/ijty8cNwXW4INrln0VAJ2227Rz0CVfkzM3qr3l/CqudZJ6BXCnbCGUTdf2ym3cTNex8A==}
@@ -2885,6 +2891,8 @@ snapshots:
   '@fontsource/inter@5.2.8': {}
 
   '@fontsource/jetbrains-mono@5.2.8': {}
+
+  '@fontsource/space-grotesk@5.2.10': {}
 
   '@fontsource/vt323@5.2.7': {}
 

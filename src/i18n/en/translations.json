@@ -5,9 +5,10 @@
   "nav.research": "RESEARCH",
   "nav.contact": "CONTACT",
 
-  "hero.typewriter": "Faster, more stable, built to scale.",
+  "hero.headline.first": "Most code doesn't ship.",
+  "hero.headline.second": "I focus on the parts that do.",
   "hero.bio.first": "Software engineer working on production systems.",
-  "hero.bio.second": "I build and improve systems, focusing on performance.",
+  "hero.bio.second": "PhD candidate researching applied ML for cybersecurity.",
   "hero.cta.viewWork": "VIEW WORK",
   "hero.cta.contact": "CONTACT",
 
