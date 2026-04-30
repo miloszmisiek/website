@@ -3,7 +3,7 @@
     "id": "prod-001",
     "name": "Inbox: Platforma komunikacyjna",
     "role": "Główny inżynier",
-    "description": "Współtworzyłem system komunikacji w czasie rzeczywistym. Dbałem o jego wydajność i stabilność przy dużym obciążeniu, żeby działał bez opóźnień.",
+    "description": "Współtworzyłem system komunikacji w czasie rzeczywistym. Połączyłem różne protokoły komunikacyjne w jedną aplikację, zapewniając spójne doświadczenie między kanałami.",
     "technologies": [
       "Next.js",
       "NodeJS",

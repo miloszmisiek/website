@@ -3,7 +3,7 @@
     "id": "prod-001",
     "name": "Inbox: Communication Platform",
     "role": "Core Engineer",
-    "description": "Built a real-time communication system as a core contributor. Improved performance and reliability under high load to support low-latency messaging.",
+    "description": "Built a real-time communication system as a core contributor. Unified multiple messaging protocols into a single app, delivering a seamless cross-channel experience.",
     "technologies": [
       "Next.js",
       "NodeJS",
