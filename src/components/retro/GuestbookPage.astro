@@ -1,0 +1,154 @@
+---
+import { getTranslations } from "../../i18n/translations";
+import type { Locale } from "../../i18n/config";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getTranslations(locale);
+
+const retroHref = locale === "pl" ? "/pl/retro" : "/retro";
+const year = new Date().getFullYear();
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{t("retro.guestbook.pageTitle")}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=VT323&display=swap" />
+    <link rel="stylesheet" href="/retro.css" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <div class="dialup" id="dialup"><div class="dialup-bar"></div></div>
+
+    <div class="page">
+      <div class="page-titlebar">
+        <span>GUESTBOOK.EXE — Netscape Navigator 4.0</span>
+        <div class="page-titlebar-controls">
+          <span class="page-titlebar-btn" aria-hidden="true">_</span>
+          <span class="page-titlebar-btn" aria-hidden="true">□</span>
+          <a class="page-titlebar-btn page-titlebar-close" href={retroHref} aria-label={t("retro.close")} title={t("retro.close.tooltip")}>✕</a>
+        </div>
+      </div>
+
+      <div class="page-inner">
+        <div class="center">
+          <h1>~ {t("retro.guestbook.entries")} ~</h1>
+        </div>
+
+        <div class="retro-nav">
+          <a href={retroHref}>{t("retro.guestbook.back")}</a>
+        </div>
+
+        <marquee scrollamount="4">{t("retro.guestbook.marquee")}</marquee>
+
+        <hr />
+
+        <!-- ENTRIES TABLE -->
+        <div class="table-scroll">
+          <table width="100%" cellpadding="4" cellspacing="2" border="1" id="guestbook-table" data-empty={t("retro.guestbook.empty")}>
+            <tr>
+              <th>#</th>
+              <th>{t("retro.guestbook.name")}</th>
+              <th>{t("retro.guestbook.location")}</th>
+              <th>{t("retro.guestbook.message")}</th>
+              <th>{t("retro.guestbook.date")}</th>
+            </tr>
+            <tr id="guestbook-loading">
+              <td colspan="5" class="mono"><i>{t("retro.guestbook.loading")}</i></td>
+            </tr>
+          </table>
+        </div>
+
+        <hr />
+
+        <!-- SIGN FORM -->
+        <h2>{t("retro.guestbook.heading")}</h2>
+        <form name="retro-guestbook" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" class="retro-form" id="guestbook-form">
+          <input type="hidden" name="form-name" value="retro-guestbook" />
+          <p style="display:none"><label>Don't fill this out: <input name="bot-field" /></label></p>
+          <p>
+            <label>{t("retro.guestbook.name")}<br />
+              <input type="text" name="name" autocomplete="name" required />
+            </label>
+          </p>
+          <p>
+            <label>{t("retro.guestbook.location")} <small>(optional)</small><br />
+              <input type="text" name="location" autocomplete="off" placeholder={t("retro.guestbook.locationHint")} />
+            </label>
+          </p>
+          <p>
+            <label>{t("retro.guestbook.message")}<br />
+              <textarea name="message" rows="4" autocomplete="off" required></textarea>
+            </label>
+          </p>
+          <p>
+            <input type="submit" value={t("retro.guestbook.submit")} />
+          </p>
+        </form>
+
+        <hr />
+
+        <footer class="retro-footer">
+          <p>© {year} MILOSZ MISIEK &nbsp;|&nbsp; <a href={retroHref}>{t("retro.guestbook.back")}</a></p>
+        </footer>
+      </div>
+    </div>
+
+    <script is:inline>
+      // Hide dial-up bar after fill animation
+      setTimeout(function () {
+        var d = document.getElementById("dialup");
+        if (d) d.style.display = "none";
+      }, 3100);
+
+      // Guestbook entries
+      (function () {
+        var tbody = document.getElementById("guestbook-table");
+        var loadingRow = document.getElementById("guestbook-loading");
+        var emptyMsg = tbody ? tbody.dataset.empty || "[No entries yet]" : "[No entries yet]";
+
+        fetch("/api/guestbook")
+          .then(function (r) { return r.json(); })
+          .then(function (entries) {
+            if (loadingRow) loadingRow.remove();
+            if (!entries.length) {
+              var tr = document.createElement("tr");
+              tr.innerHTML = "<td colspan='5' class='mono'><i>" + emptyMsg + "</i></td>";
+              tbody.appendChild(tr);
+              return;
+            }
+            entries.forEach(function (e, i) {
+              var date = e.date ? new Date(e.date).toLocaleDateString() : "—";
+              var tr = document.createElement("tr");
+              tr.innerHTML =
+                "<td class='mono'>" + (i + 1) + "</td>" +
+                "<td><b>" + escHtml(e.name) + "</b></td>" +
+                "<td><small>" + escHtml(e.location) + "</small></td>" +
+                "<td>" + escHtml(e.message) + "</td>" +
+                "<td class='mono'><small>" + date + "</small></td>";
+              tbody.appendChild(tr);
+            });
+          })
+          .catch(function () {
+            if (loadingRow) loadingRow.remove();
+          });
+      })();
+
+      function escHtml(s) {
+        return String(s)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;");
+      }
+    </script>
+  </body>
+</html>

@@ -22,7 +22,19 @@ const { id, size = 14, class: className } = Astro.props;
   aria-hidden="true"
   class={className}
 >
-  <path
-    d="M3 8l7.89 5.26a2 2 0 0 0 2.22 0L21 8M5 19h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2Z"
-  ></path>
+  <g class="transition-opacity duration-200 group-hover:opacity-0">
+    <path
+      d="M5 19h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2Z"
+    ></path>
+    <path d="M3 8l7.89 5.26a2 2 0 0 0 2.22 0L21 8"></path>
+  </g>
+  <g
+    class="opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+  >
+    <path
+      d="M3 19V9.5a1 1 0 0 1 .47-.85l8-5a1 1 0 0 1 1.06 0l8 5a1 1 0 0 1 .47.85V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"
+    ></path>
+    <path d="M3 9.5l9 6 9-6"></path>
+    <path d="M9 13.5l-6 5.5M21 19l-6-5.5"></path>
+  </g>
 </svg>

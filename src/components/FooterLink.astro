@@ -1,0 +1,25 @@
+---
+type Props = {
+  href: string;
+  label: string;
+  id?: string;
+  title?: string;
+  target?: string;
+  download?: boolean;
+};
+
+const { href, label, id, title, target, download } = Astro.props;
+---
+
+<a
+  href={href}
+  id={id}
+  title={title}
+  target={target}
+  download={download}
+  class="inline-flex items-center gap-1.5 text-muted hover:text-foreground transition-colors tracking-widest"
+  aria-label={label}
+>
+  <slot />
+  <span>{label}</span>
+</a>

@@ -1,0 +1,9 @@
+[[redirects]]
+  from = "/api/hits"
+  to = "/.netlify/functions/hit-counter"
+  status = 200
+
+[[redirects]]
+  from = "/api/guestbook"
+  to = "/.netlify/functions/guestbook-read"
+  status = 200

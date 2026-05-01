@@ -1,32 +1,20 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { FadeIn } from "../components/FadeIn";
-import { ProfileAvatar } from "../components/ProfileAvatar";
-import { FADE_DELAY } from "../styles/animations";
 import Header from "../sections/Header.astro";
 import ExperienceTimeline from "../sections/ExperienceTimeline.astro";
 import PublicationsSection from "../sections/PublicationsSection.astro";
 import FeaturedProductsSection from "../sections/FeaturedProductsSection.astro";
 import ContactSection from "../sections/ContactSection.astro";
 import Hero from "../sections/Hero.astro";
-import "@fontsource/inter";
-import "@fontsource/jetbrains-mono";
-import "@fontsource/vt323";
-import "@fontsource/space-grotesk/500.css";
-import "@fontsource/space-grotesk/600.css";
-import "@fontsource/space-grotesk/700.css";
+import Footer from "../sections/Footer.astro";
 import { getTranslations } from "../i18n";
-import RetroLink from "../components/retro/RetroLink.astro";
 
 const t = getTranslations(Astro.currentLocale);
-const retroHref = Astro.currentLocale === "pl" ? "/pl/retro" : "/retro";
 ---
 
 <Layout title={t("layout.title")}>
-  <!-- Header lives outside hero-zone so sticky works across the full page -->
   <Header />
 
-  <!-- Hero zone: full-viewport-width area covering just the hero section -->
   <div class="hero-zone">
     <div class="page-container">
       <Hero />
@@ -35,47 +23,11 @@ const retroHref = Astro.currentLocale === "pl" ? "/pl/retro" : "/retro";
 
   <div class="page-container">
     <main id="main-content">
-      <!-- Experience Timeline Section -->
       <ExperienceTimeline />
-
-      <!-- Publications & Research Section -->
       <PublicationsSection />
-
-      <!-- Featured Products Section -->
       <FeaturedProductsSection />
-
-      <!-- Contact Section -->
       <ContactSection />
     </main>
   </div>
-
-  <!-- Footer zone: mirrors hero-zone with fade at top -->
-  <div class="footer-zone relative z-10">
-    <div class="page-container">
-      <FadeIn client:load delay={FADE_DELAY.md}>
-        <footer
-          class="flex items-center gap-3 text-xs font-mono text-muted py-8"
-        >
-          <ProfileAvatar client:load />
-          <span class="tracking-widest"
-            >© {new Date().getFullYear()} MILOSZ MISIEK</span
-          >
-          <RetroLink retroHref={retroHref} />
-        </footer>
-        <script is:inline>
-          (function () {
-            const link = document.getElementById("retro-link");
-            if (!link) return;
-            link.addEventListener("click", function () {
-              try {
-                localStorage.setItem("retro_mode", "on");
-              } catch (e) {
-                console.warn("Could not set retro mode in localStorage", e);
-              }
-            });
-          })();
-        </script>
-      </FadeIn>
-    </div>
-  </div>
+  <Footer />
 </Layout>

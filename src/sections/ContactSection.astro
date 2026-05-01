@@ -45,7 +45,7 @@ const t = getTranslations(Astro.currentLocale);
             {t("contact.headline")}
           </h2>
           <p
-            class="text-foreground/70 text-base md:text-lg short:text-base leading-relaxed max-w-md [text-wrap:balance]"
+            class="text-foreground/70 text-base md:text-lg short:text-base leading-relaxed max-w-md [text-wrap:balance] lowercase"
           >
             <span class="text-foreground/45 font-mono mr-2">{"//"}</span>
             {t("contact.subheadline").replace("// ", "")}
@@ -76,7 +76,7 @@ const t = getTranslations(Astro.currentLocale);
         </div>
 
         {/* Social links */}
-        <div class="flex flex-wrap gap-3">
+        <div class="grid grid-cols-2 gap-3 w-fit">
           {/* GitHub */}
           <Button
             href="https://github.com/miloszmisiek"
@@ -111,26 +111,6 @@ const t = getTranslations(Astro.currentLocale);
           >
             <IconResearchGate class="w-3.5 h-3.5 shrink-0" />
             {t("contact.researchgate")}
-          </Button>
-
-          {/* CV */}
-          <Button
-            href="/Milosz_Misiek_CV.pdf"
-            variant="secondary"
-            target="_blank"
-            class="focus-ring gap-2"
-            aria-label="Download CV"
-            download
-          >
-            <img
-              src="/icons/cv.svg"
-              alt=""
-              aria-hidden="true"
-              width="14"
-              height="14"
-              class="w-3.5 h-3.5 shrink-0 icon-invert"
-            />
-            {t("contact.cv")}
           </Button>
         </div>
 

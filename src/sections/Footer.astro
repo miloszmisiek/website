@@ -1,0 +1,76 @@
+---
+import { FadeIn } from "../components/FadeIn";
+import { ProfileAvatar } from "../components/ProfileAvatar";
+import { FADE_DELAY } from "../styles/animations";
+import FooterLink from "../components/FooterLink.astro";
+import { getTranslations } from "../i18n";
+
+const retroHref = Astro.currentLocale === "pl" ? "/pl/retro" : "/retro";
+const t = getTranslations(Astro.currentLocale);
+---
+
+<div class="footer-zone relative z-10">
+  <div class="page-container">
+    <FadeIn client:load delay={FADE_DELAY.md}>
+      <footer class="flex items-center gap-3 text-xs font-mono text-muted py-8">
+        <ProfileAvatar client:load />
+        <span class="tracking-widest">
+          © {new Date().getFullYear()} MILOSZ MISIEK
+        </span>
+        <div class="ml-auto flex items-center gap-6">
+          <!-- <FooterLink -->
+          <!--   href="/Milosz_Misiek_CV.pdf" -->
+          <!--   label={t("contact.cv")} -->
+          <!--   target="_blank" -->
+          <!--   download -->
+          <!-- > -->
+          <!--   <img -->
+          <!--     src="/icons/cv.svg" -->
+          <!--     alt="" -->
+          <!--     aria-hidden="true" -->
+          <!--     width="14" -->
+          <!--     height="14" -->
+          <!--     class="w-3.5 h-3.5 shrink-0 icon-invert" -->
+          <!--   /> -->
+          <!-- </FooterLink> -->
+          <FooterLink
+            href={retroHref}
+            id="retro-link"
+            label="RETRO_MODE"
+            title="Enter retro mode (1996 edition)"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 16"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.25"
+              aria-hidden="true"
+            >
+              <rect x="1.5" y="1.5" width="13" height="13" rx="0.5"></rect>
+              <rect x="3.5" y="1.5" width="9" height="5"></rect>
+              <rect x="9.5" y="2.5" width="2" height="3" fill="currentColor"
+              ></rect>
+              <rect x="4" y="9" width="8" height="5"></rect>
+              <line x1="5.5" y1="10.5" x2="10.5" y2="10.5"></line>
+              <line x1="5.5" y1="12" x2="10.5" y2="12"></line>
+            </svg>
+          </FooterLink>
+        </div>
+      </footer>
+    </FadeIn>
+  </div>
+</div>
+
+<script>
+  const link = document.getElementById("retro-link");
+  link?.addEventListener("click", () => {
+    try {
+      localStorage.setItem("retro_mode", "on");
+    } catch (e) {
+      console.warn("Could not set retro mode in localStorage", e);
+    }
+  });
+</script>

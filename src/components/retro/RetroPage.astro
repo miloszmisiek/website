@@ -1,17 +1,9 @@
 ---
-/*
- * 90s Retro Easter Egg page (1996 Edition).
- * Triggered via /retro URL or Konami code (↑↑↓↓←→←→BA) from Layout.astro.
- * Mirrors all index sections in period-authentic styling using <table>,
- * <marquee>, <hr>, beveled buttons, blink, and a fake hit counter.
- * Self-contained: no global stylesheet, no Tailwind, no React hydration.
- * Stylesheet: /public/retro.css served raw (bypasses build).
- */
 import { getExperience, getPublications, getProducts } from "../../i18n/data";
 import { getTranslations } from "../../i18n/translations";
 import type { Locale } from "../../i18n/config";
 
-interface Props {
+type Props = {
   locale: Locale;
 }
 
@@ -47,6 +39,9 @@ const formatPeriod = (ym: string) => {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>MILOSZ MISIEK | SOFTWARE ENGINEER (1996 EDITION)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=VT323&display=swap" />
     <link rel="stylesheet" href="/retro.css" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
@@ -54,38 +49,42 @@ const formatPeriod = (ym: string) => {
     <div class="dialup" id="dialup"><div class="dialup-bar"></div></div>
 
     <div class="page">
-      <div class="topbar">
-        <a class="exit-retro" href={homeHref} id="exit-retro">[Exit retro mode]</a>
+      <div class="page-titlebar">
+        <span>MILOSZ.EXE — Netscape Navigator 4.0</span>
+        <div class="page-titlebar-controls">
+          <span class="page-titlebar-btn" aria-hidden="true">_</span>
+          <span class="page-titlebar-btn" aria-hidden="true">□</span>
+          <button class="page-titlebar-btn page-titlebar-close" id="exit-retro" type="button" aria-label={t("retro.close")} title={t("retro.close.tooltip")} data-home={homeHref}>✕</button>
+        </div>
       </div>
 
+      <div class="page-inner">
       <div class="center">
         <h1>~ MILOSZ MISIEK ~</h1>
-        <h3 class="mono">{t("hero.typewriter")}</h3>
+        <h3 class="mono">{t("retro.hero.subtitle")}</h3>
       </div>
 
       <div class="retro-nav">
-        <a href={homeHref}>Home</a> |
-        <a href="#research">Research</a> |
-        <a href="#work">Work</a> |
-        <a href="#products">Products</a> |
-        <a href="#contact">Contact</a> |
-        <a href={homeHref} id="exit-retro-2">[Exit retro mode]</a>
+        <a href={homeHref}>{t("retro.nav.home")}</a> |
+        <a href="#research">{t("retro.nav.research")}</a> |
+        <a href="#work">{t("retro.nav.work")}</a> |
+        <a href="#products">{t("retro.nav.products")}</a> |
+        <a href="#contact">{t("retro.nav.contact")}</a> |
+        <a href={locale === "pl" ? "/pl/guestbook" : "/guestbook"}>{t("retro.guestbook.heading")}</a>
       </div>
 
       <div class="badges">
-        <span class="bevel-in">Best viewed in Netscape Navigator 4.0 at 800x600</span>
         <span class="bevel-in">HTML 3.2 Approved</span>
         <span class="bevel-in">Powered by Coffee &amp; Dial-Up</span>
+        <button id="midi-toggle" type="button" aria-pressed="false">♪ MIDI: OFF</button>
       </div>
 
-      <marquee scrollamount="6">
-        ★ NEW! Welcome to my homepage — under construction since 1996 ★ Sign my guestbook! ★ Best viewed at 800x600 ★
-      </marquee>
+      <marquee scrollamount="6">{t("retro.marquee")}</marquee>
 
       <hr />
 
       <!-- HERO / BIO -->
-      <table width="100%" cellpadding="6" cellspacing="2" border="1">
+      <table width="100%" cellpadding="6" cellspacing="2" border="1" class="hero-card">
         <tr>
           <td width="120" align="center">
             <img
@@ -93,58 +92,56 @@ const formatPeriod = (ym: string) => {
               alt="[Photo of Milosz Misiek]"
               width="100"
               height="100"
+              loading="eager"
+              fetchpriority="high"
             />
           </td>
           <td>
-            <h2>About the Webmaster</h2>
-            <p><b>Name:</b> Milosz Misiek</p>
-            <p><b>Occupation:</b> Software Engineer</p>
-            <p>// {t("hero.bio.first")}</p>
-            <p>// {t("hero.bio.second")}</p>
-            <p>
-              <a href="#products" class="retro-btn">[ {t("hero.cta.viewWork")} ]</a>
-              &nbsp;
-              <a href="#contact" class="retro-btn">[ {t("hero.cta.contact")} ]</a>
-            </p>
+            <h2>{t("retro.about.heading")}</h2>
+            <p><b>{t("retro.about.name")}</b> Milosz Misiek</p>
+            <p><b>{t("retro.about.occupation")}</b> {t("retro.about.occupationValue")}</p>
+            <ul>
+              <li>{t("hero.bio.first")}</li>
+              <li>{t("hero.bio.second")}</li>
+            </ul>
           </td>
         </tr>
       </table>
+      <p>
+        <a href="#products" class="retro-btn">{t("hero.cta.viewWork")}</a>
+        &nbsp;
+        <a href="#contact" class="retro-btn">{t("hero.cta.contact")}</a>
+      </p>
 
       <hr />
 
       <!-- EXPERIENCE -->
-      <a id="work"></a>
-      <h2>{t("section.experience")} <span class="blink">*</span></h2>
+      <span id="work" style="display:block;height:0;overflow:hidden;"></span>
+      <h2>{t("section.experience")}</h2>
+      <div class="table-scroll">
       <table width="100%" cellpadding="4" cellspacing="2" border="1" class="zebra">
         <tr>
-          <th>Period</th>
-          <th>Type</th>
-          <th>Role</th>
-          <th>Company</th>
-          <th>Focus</th>
-          <th>Highlights</th>
-          <th>Technologies</th>
+          <th>{t("retro.exp.period")}</th>
+          <th>{t("retro.exp.type")}</th>
+          <th>{t("retro.exp.role")}</th>
+          <th>{t("retro.exp.company")}</th>
+          <th>{t("retro.exp.focus")}</th>
+          <th>{t("retro.exp.highlights")}</th>
+          <th>{t("retro.exp.technologies")}</th>
         </tr>
         {experience.map((e) => {
           const ongoing = isOngoing(e);
-          const startYear = parseInt(e.period.start.slice(0, 4), 10);
-          const isLatest = startYear === newestExpYear;
           const endLabel = ongoing ? t("timeline.present") : formatPeriod(e.period.end);
           const startLabel = formatPeriod(e.period.start);
-          const typeLabel = e.type === "academic" ? "[ACADEMIC]" : "[WORK]";
+          const typeLabel = e.type === "academic" ? t("retro.exp.typeAcademic") : t("retro.exp.typeWork");
           return (
             <tr class={ongoing ? "row-current" : ""}>
               <td class="mono period-cell">
-                <div><b>From:</b> {startLabel}</div>
-                <div><b>To:</b>&nbsp;&nbsp;&nbsp;{endLabel}</div>
-                <div><small>Duration: {e.duration}</small></div>
+                <div><b>{t("retro.exp.from")}</b> {startLabel}</div>
+                <div><b>{t("retro.exp.to")}</b>&nbsp;&nbsp;&nbsp;{endLabel}</div>
               </td>
               <td class="mono"><small>{typeLabel}</small></td>
-              <td>
-                <b>{e.role}</b>
-                {ongoing && <><br /><span class="new-badge">NEW!</span></>}
-                {!ongoing && isLatest && <><br /><span class="new-badge">NEW!</span></>}
-              </td>
+              <td><b>{e.role}</b></td>
               <td>{e.company}</td>
               <td>{e.focus ?? ""}</td>
               <td>
@@ -157,23 +154,26 @@ const formatPeriod = (ym: string) => {
           );
         })}
       </table>
+      </div>
 
       <hr />
 
       <!-- PUBLICATIONS -->
-      <a id="research"></a>
+      <span id="research" style="display:block;height:0;overflow:hidden;"></span>
       <h2>{t("section.publications")}</h2>
+      <div class="table-scroll">
       <table width="100%" cellpadding="4" cellspacing="2" border="1">
         <tr>
-          <th>Year</th>
-          <th>Title</th>
-          <th>Authors</th>
-          <th>Status</th>
-          <th>Topics</th>
-          <th>Link</th>
+          <th>{t("retro.pub.year")}</th>
+          <th>{t("retro.pub.title")}</th>
+          <th>{t("retro.pub.abstract")}</th>
+          <th>{t("retro.pub.authors")}</th>
+          <th>{t("retro.pub.status")}</th>
+          <th>{t("retro.pub.topics")}</th>
+          <th>{t("retro.pub.link")}</th>
         </tr>
         {publications.map((p) => {
-          const isRecent = p.year >= year - 1;
+          const isRecent = p.year >= year;
           const statusKey = `publication.status.${p.status}` as const;
           return (
             <tr>
@@ -181,8 +181,8 @@ const formatPeriod = (ym: string) => {
               <td>
                 <b>{p.title}</b>
                 {isRecent && <span class="new-badge">NEW!</span>}
-                {p.tldr && <p><small><i>{p.tldr}</i></small></p>}
               </td>
+              <td><small><i>{p.tldr ?? ""}</i></small></td>
               <td><small>{p.authors.join("; ")}</small></td>
               <td><i>{t(statusKey)}</i></td>
               <td><small>{p.topics.join(", ")}</small></td>
@@ -194,31 +194,36 @@ const formatPeriod = (ym: string) => {
           );
         })}
       </table>
+      </div>
 
       <hr />
 
       <!-- FEATURED PRODUCTS -->
-      <a id="products"></a>
+      <span id="products" style="display:block;height:0;overflow:hidden;"></span>
       <h2>{t("section.products")}</h2>
+      <div class="table-scroll">
       <table width="100%" cellpadding="4" cellspacing="2" border="1">
         <tr>
-          <th>Name</th>
-          <th>Year</th>
-          <th>Role</th>
-          <th>Description</th>
-          <th>Tech</th>
-          <th>Image</th>
-          <th>Link</th>
+          <th>{t("retro.prod.name")}</th>
+          <th>{t("retro.prod.year")}</th>
+          <th>{t("retro.prod.role")}</th>
+          <th>{t("retro.prod.description")}</th>
+          <th>{t("retro.prod.tech")}</th>
+          <th>{t("retro.prod.image")}</th>
+          <th>{t("retro.prod.link")}</th>
         </tr>
         {products.map((pr) => (
           <tr>
             <td>
               <b>{pr.name}</b>
-              {pr.featured && <><br /><blink class="blink">★ FEATURED ★</blink></>}
               {pr.nda && <><br /><small>[ {t("product.nda")} ]</small></>}
             </td>
             <td class="mono">{pr.year ?? "—"}</td>
-            <td>{pr.role}</td>
+            <td>
+              {(pr.role === "Core Engineer" || pr.role === "Główny inżynier")
+                ? <span style="white-space:nowrap"><span class="blink">★</span> {pr.role} <span class="blink">★</span></span>
+                : pr.role}
+            </td>
             <td><small>{pr.description}</small></td>
             <td class="mono"><small>{pr.technologies.join(", ")}</small></td>
             <td align="center">
@@ -234,14 +239,15 @@ const formatPeriod = (ym: string) => {
           </tr>
         ))}
       </table>
+      </div>
 
       <hr />
 
       <!-- CONTACT -->
-      <a id="contact"></a>
+      <span id="contact" style="display:block;height:0;overflow:hidden;"></span>
       <h2>{t("section.contact")}</h2>
       <p><b>{t("contact.headline")}</b></p>
-      <p><i>{t("contact.subheadline")}</i></p>
+      <p><i>{t("contact.subheadline").replace(/^\/\/\s*/, "")}</i></p>
 
       <div class="contact-cols">
         <div class="contact-col">
@@ -251,7 +257,7 @@ const formatPeriod = (ym: string) => {
           </p>
         </div>
         <div class="contact-col">
-          <h3>Links</h3>
+          <h3>{t("retro.links.heading")}</h3>
           <ul>
             <li><a href="https://github.com/miloszmisiek">{t("contact.github")}</a></li>
             <li><a href="https://www.linkedin.com/in/milosz-misiek/">{t("contact.linkedin")}</a></li>
@@ -260,22 +266,22 @@ const formatPeriod = (ym: string) => {
         </div>
       </div>
 
-      <h3>Drop a line</h3>
+      <h3>{t("retro.contact.drop")}</h3>
       <form name="retro-contact" method="POST" data-netlify="true" class="retro-form">
         <input type="hidden" name="form-name" value="retro-contact" />
         <p>
           <label>{t("contact.form.name.label")}<br />
-            <input type="text" name="name" size="40" required />
+            <input type="text" name="name" autocomplete="name" required />
           </label>
         </p>
         <p>
           <label>{t("contact.form.email.label")}<br />
-            <input type="email" name="email" size="40" required />
+            <input type="email" name="email" autocomplete="email" required />
           </label>
         </p>
         <p>
           <label>{t("contact.form.message.label")}<br />
-            <textarea name="message" rows="6" cols="60" required></textarea>
+            <textarea name="message" rows="6" autocomplete="off" required></textarea>
           </label>
         </p>
         <p>
@@ -285,13 +291,12 @@ const formatPeriod = (ym: string) => {
 
       <hr />
 
+      <!-- GUESTBOOK CTA -->
       <div class="center">
-        <button id="midi-toggle" type="button">♪ MIDI: OFF</button>
-        &nbsp;&nbsp;
-        <span class="bevel-in">Sign Guestbook</span>
-        &nbsp;&nbsp;
-        <span class="bevel-in">Webring »</span>
+        <a href={locale === "pl" ? "/pl/guestbook" : "/guestbook"} class="retro-btn">{t("retro.guestbook.cta")}</a>
       </div>
+
+      <hr />
 
       <footer class="retro-footer">
         <p>
@@ -300,8 +305,9 @@ const formatPeriod = (ym: string) => {
           Last Updated: <span class="mono">{buildDate}</span> &nbsp;|&nbsp;
           Visitor #<span class="hits" id="hits">0000000</span>
         </p>
-        <p><small>This page is best viewed with a 28.8k modem or faster.</small></p>
+        <p><small>{t("retro.footer.modem")}</small></p>
       </footer>
+      </div>{/* end .page-inner */}
     </div>
 
     <script is:inline>
@@ -313,14 +319,24 @@ const formatPeriod = (ym: string) => {
         if (d) d.style.display = "none";
       }, 3100);
 
-      // Hit counter (persisted)
-      try {
-        var k = "retro_hits";
-        var n = parseInt(localStorage.getItem(k) || "1336521", 10) + 1;
-        localStorage.setItem(k, String(n));
+      // Hit counter — real count via Netlify Blobs, localStorage fallback
+      (function () {
         var el = document.getElementById("hits");
-        if (el) el.textContent = String(n).padStart(7, "0");
-      } catch (e) {}
+        fetch("/api/hits", { method: "POST" })
+          .then(function (r) { return r.json(); })
+          .then(function (d) {
+            if (el) el.textContent = String(d.count).padStart(7, "0");
+            try { localStorage.setItem("retro_hits", String(d.count)); } catch (e) {}
+          })
+          .catch(function () {
+            try {
+              var n = parseInt(localStorage.getItem("retro_hits") || "1336521", 10) + 1;
+              localStorage.setItem("retro_hits", String(n));
+              if (el) el.textContent = String(n).padStart(7, "0");
+            } catch (e) {}
+          });
+      })();
+
 
       // MIDI toggle (plays /retro_tune.mp3 looped)
       var midi = document.getElementById("midi-toggle");
@@ -332,6 +348,7 @@ const formatPeriod = (ym: string) => {
         midi.addEventListener("click", function () {
           on = !on;
           midi.textContent = "♪ MIDI: " + (on ? "ON " : "OFF");
+          midi.setAttribute("aria-pressed", on ? "true" : "false");
           if (on) {
             audio.play().catch(function () {
               on = false;
@@ -346,14 +363,13 @@ const formatPeriod = (ym: string) => {
         });
       }
 
-      // Exit retro mode: clear flag
+      // Exit retro mode: clear flag and return home
       function clearRetro() {
         try { localStorage.removeItem("retro_mode"); } catch (e) {}
+        window.location.href = document.getElementById("exit-retro").dataset.home;
       }
       var ex1 = document.getElementById("exit-retro");
-      var ex2 = document.getElementById("exit-retro-2");
       if (ex1) ex1.addEventListener("click", clearRetro);
-      if (ex2) ex2.addEventListener("click", clearRetro);
 
       // Mark this session as retro-on so refreshes stay
       try { localStorage.setItem("retro_mode", "on"); } catch (e) {}

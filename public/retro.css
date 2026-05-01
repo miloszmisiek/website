@@ -5,6 +5,7 @@
  * Loaded only by /retro and /pl/retro routes.
  */
 
+
 * {
   border-radius: 0 !important;
   box-sizing: border-box;
@@ -34,41 +35,54 @@ code, pre, kbd, samp, .mono {
   font-family: "Courier New", Courier, monospace;
 }
 
-a {
+/* Higher specificity to override Tailwind preflight (color:inherit,text-decoration:inherit)
+   which Vite injects globally even on standalone non-Tailwind pages. */
+body a {
   color: #0000EE;
   text-decoration: underline;
+  touch-action: manipulation;
 }
-a:visited { color: #551A8B; }
-a:active  { color: #FF0000; }
+body a:visited { color: #551A8B; }
+body a:active  { color: #FF0000; }
 
 h1, h2, h3, h4 {
-  font-family: "Times New Roman", Times, serif;
-  margin: 0.4em 0;
+  font-family: "VT323", "Times New Roman", Times, serif;
+  margin: 0;
+  line-height: 1.1;
 }
-h1 { font-size: 36px; }
-h2 { font-size: 26px; }
-h3 { font-size: 20px; }
+h1 { font-size: 56px !important; }
+h2 { font-size: 38px !important; }
+h3 { font-size: 26px !important; }
 
 hr {
   border: none;
   border-top: 2px groove #888;
-  margin: 16px 0;
+  margin: 24px 0 !important;
 }
 
 table {
-  border-collapse: separate;
-  background: #fff;
+  border-collapse: collapse;
+  width: 100%;
   margin: 8px 0;
 }
 th {
   background: #000080;
   color: #fff;
-  padding: 4px 8px;
+  padding: 6px 10px;
   text-align: left;
+  font-family: "VT323", "Times New Roman", serif;
+  font-size: 18px;
+  letter-spacing: 0.5px;
 }
-td { padding: 4px 8px; vertical-align: top; }
+td {
+  padding: 6px 10px;
+  vertical-align: top;
+  border-bottom: 1px solid #aaa;
+  background: #fff;
+}
+tr:last-child td { border-bottom: none; }
 
-table.zebra tr:nth-child(even) td { background: #ececec; }
+table.zebra tr:nth-child(even) td { background: #f0f0f0; }
 table.zebra tr.row-current td { background: #ffffcc; }
 table.zebra tr.row-current td.period-cell b,
 table.zebra tr.row-current td b { color: #000080; }
@@ -85,6 +99,7 @@ td.period-cell div { margin: 1px 0; }
   font-size: 14px;
   padding: 4px 12px;
   cursor: pointer;
+  touch-action: manipulation;
 }
 .bevel-out:active, button:active {
   border-style: inset;
@@ -131,8 +146,8 @@ input[type="text"], input[type="email"], textarea {
 
 /* dial-up loading bar */
 @keyframes dialup-fill {
-  from { width: 0; }
-  to   { width: 100%; }
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
 }
 .dialup {
   position: fixed;
@@ -149,6 +164,7 @@ input[type="text"], input[type="email"], textarea {
   background: repeating-linear-gradient(
     90deg, #000080 0 8px, #4040c0 8px 16px
   );
+  transform-origin: left center;
   animation: dialup-fill 3s linear forwards;
 }
 
@@ -162,6 +178,7 @@ input[type="text"], input[type="email"], textarea {
   border: 2px inset #444;
   padding: 1px 6px;
   letter-spacing: 2px;
+  font-variant-numeric: tabular-nums;
 }
 
 /* nav pipes */
@@ -169,8 +186,15 @@ input[type="text"], input[type="email"], textarea {
   text-align: center;
   font-family: "Times New Roman", Times, serif;
   margin: 8px 0;
+  line-height: 1;
 }
-.retro-nav a { margin: 0 4px; }
+.retro-nav a {
+  display: inline-block;
+  margin: 0 4px;
+  min-height: 44px;
+  line-height: 44px;
+  padding: 0 4px;
+}
 
 /* badge bar */
 .badges {
@@ -181,12 +205,17 @@ input[type="text"], input[type="email"], textarea {
   font-size: 11px;
 }
 .badges .bevel-in { margin: 0 4px; background: #ffffcc; }
-
-/* exit link */
-.topbar {
-  text-align: right;
-  margin: 0 0 8px;
+#midi-toggle {
+  font-size: 13px;
+  font-family: "Courier New", Courier, monospace;
+  padding: 2px 10px;
+  margin: 0 4px;
+  background: #000080;
+  color: #ffff00;
+  border: 2px outset #4040c0;
 }
+
+/* exit link in nav */
 .exit-retro {
   font-family: "Courier New", Courier, monospace;
   font-size: 12px;
@@ -203,16 +232,70 @@ a.retro-btn {
   font-size: 14px;
   padding: 4px 12px;
   margin: 4px 2px;
+  touch-action: manipulation;
+  min-height: 32px;
+  line-height: 24px;
 }
 a.retro-btn:visited { color: #000 !important; }
 a.retro-btn:active  { border-style: inset; color: #000 !important; }
 
-/* container */
+/* container + Windows 95 window chrome */
 .page {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 24px 16px 40px;
+  max-width: 1100px;
+  margin: 16px auto;
+  padding: 0;
   position: relative;
+  border: 2px outset #fff;
+  overflow: hidden;
+}
+
+.page-titlebar {
+  background: linear-gradient(90deg, #000080 0%, #1084d0 100%);
+  color: #fff;
+  font-family: "VT323", "Times New Roman", serif;
+  font-size: 20px;
+  padding: 5px 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+  letter-spacing: 0.5px;
+}
+
+.page-titlebar-controls {
+  display: flex;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+.page-titlebar-btn {
+  width: 28px;
+  height: 26px;
+  background: #c0c0c0;
+  border: 2px outset #fff;
+  color: #000;
+  font-size: 11px;
+  font-family: "Times New Roman", serif;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+  line-height: 1;
+}
+.page-titlebar-close {
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.page-titlebar-close:active {
+  border-style: inset;
+}
+.page-titlebar-close:focus-visible {
+  outline: 2px solid #ffff00;
+  outline-offset: 1px;
+}
+
+.page-inner {
+  padding: 20px 24px 56px;
 }
 
 /* broken-image fallback */
@@ -286,4 +369,114 @@ marquee {
   padding: 4px 0;
   border: 2px inset #888;
   margin: 8px 0;
+}
+
+/* Horizontal scroll for wide tables — always enabled so overflow: hidden
+   on .page doesn't clip table content at any viewport width. */
+.table-scroll {
+  position: relative;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 8px 0;
+}
+.table-scroll > table { margin: 0; width: 100%; }
+@media (max-width: 900px) {
+  .table-scroll {
+    border: 2px inset #888;
+  }
+  .table-scroll > table { min-width: 640px; }
+  .table-scroll::after {
+    content: "";
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 28px;
+    background: linear-gradient(90deg, transparent, rgba(0,0,128,0.15));
+    pointer-events: none;
+  }
+}
+
+/* Tablet — contact columns stack earlier */
+@media (max-width: 640px) {
+  .contact-col {
+    float: none;
+    width: 100%;
+    padding: 8px;
+  }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  body { font-size: 15px; }
+  h1 { font-size: 46px !important; }
+  h2 { font-size: 32px !important; }
+  h3 { font-size: 22px !important; }
+  .page-inner { padding: 12px 10px 32px; }
+  .badges { font-size: 10px; }
+  .badges .bevel-in { display: inline-block; margin: 2px; }
+  .retro-nav a { margin: 2px 4px; }
+}
+
+/* Mobile */
+@media (max-width: 500px) {
+  body { font-size: 14px; }
+  h1 { font-size: 38px !important; }
+  h2 { font-size: 28px !important; }
+  h3 { font-size: 20px !important; }
+  .page-inner { padding: 10px 8px 24px; }
+  .page { margin: 8px auto; }
+
+  /* Stack hero table photo above bio */
+  table.hero-card,
+  table.hero-card tbody,
+  table.hero-card tr,
+  table.hero-card td {
+    display: block;
+    width: 100%;
+  }
+  table.hero-card td {
+    border-bottom: 1px solid #888;
+  }
+  table.hero-card td:first-child { text-align: center; padding: 12px; }
+  table.hero-card td:last-child { border-bottom: 0; }
+
+  /* Form inputs go full width */
+  .retro-form input[type="text"],
+  .retro-form input[type="email"],
+  .retro-form textarea {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  /* Marquee a touch shorter */
+  marquee { font-size: 12px; }
+
+  /* Topbar exit + nav size */
+  .exit-retro { font-size: 11px; }
+  .retro-nav { font-size: 14px; }
+
+  /* Tighter table cells inside scroll */
+  .table-scroll th,
+  .table-scroll td {
+    padding: 3px 6px;
+    font-size: 12px;
+  }
+
+  /* Footer pipes wrap nicer */
+  footer.retro-footer p { line-height: 1.6; }
+}
+
+/* Small phones (375–430px) */
+@media (max-width: 430px) {
+  h1 { font-size: 32px !important; }
+  h2 { font-size: 24px !important; }
+  .page-titlebar { font-size: 15px; }
+  .badges .bevel-in { display: block; margin: 2px auto; text-align: center; max-width: 260px; }
+  .retro-nav a { padding: 0 3px; font-size: 13px; }
+}
+
+/* Respect user motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .blink, blink { animation: none; visibility: visible; }
+  .new-badge { animation: none; background: #ff0000; color: #ffff00; }
+  .dialup-bar { animation: none; transform: scaleX(1); }
 }
