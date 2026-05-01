@@ -296,14 +296,13 @@ const formatPeriod = (ym: string) => {
         <a href={locale === "pl" ? "/pl/guestbook" : "/guestbook"} class="retro-btn">{t("retro.guestbook.cta")}</a>
       </div>
 
-      <hr />
 
       <footer class="retro-footer">
         <p>
           © {year} MILOSZ MISIEK &nbsp;|&nbsp;
           Webmaster: <a href="mailto:contact@miloszmisiek.com">contact@miloszmisiek.com</a> &nbsp;|&nbsp;
           Last Updated: <span class="mono">{buildDate}</span> &nbsp;|&nbsp;
-          Visitor #<span class="hits" id="hits">0000000</span>
+          Visitor #<span class="hits" id="hits">-------</span>
         </p>
         <p><small>{t("retro.footer.modem")}</small></p>
       </footer>
@@ -313,11 +312,16 @@ const formatPeriod = (ym: string) => {
     <script is:inline>
       console.log("Welcome to MILOSZ MISIEK v1.0 (1996 Edition)");
 
-      // Hide dial-up bar after fill animation
-      setTimeout(function () {
+      // Hide dial-up bar when page finishes loading
+      function hidedialup() {
         var d = document.getElementById("dialup");
         if (d) d.style.display = "none";
-      }, 3100);
+      }
+      if (document.readyState === "complete") {
+        hidedialup();
+      } else {
+        window.addEventListener("load", hidedialup);
+      }
 
       // Hit counter — real count via Netlify Blobs, localStorage fallback
       (function () {
@@ -329,11 +333,7 @@ const formatPeriod = (ym: string) => {
             try { localStorage.setItem("retro_hits", String(d.count)); } catch (e) {}
           })
           .catch(function () {
-            try {
-              var n = parseInt(localStorage.getItem("retro_hits") || "1336521", 10) + 1;
-              localStorage.setItem("retro_hits", String(n));
-              if (el) el.textContent = String(n).padStart(7, "0");
-            } catch (e) {}
+            if (el) el.textContent = "-------";
           });
       })();
 

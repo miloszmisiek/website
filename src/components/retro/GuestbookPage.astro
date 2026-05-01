@@ -103,11 +103,16 @@ const year = new Date().getFullYear();
     </div>
 
     <script is:inline>
-      // Hide dial-up bar after fill animation
-      setTimeout(function () {
+      // Hide dial-up bar when page finishes loading
+      function hidedialup() {
         var d = document.getElementById("dialup");
         if (d) d.style.display = "none";
-      }, 3100);
+      }
+      if (document.readyState === "complete") {
+        hidedialup();
+      } else {
+        window.addEventListener("load", hidedialup);
+      }
 
       // Guestbook entries
       (function () {
