@@ -22,9 +22,9 @@ const t = getTranslations(Astro.currentLocale);
   hidden
 >
   <input type="hidden" name="form-name" value="contact" />
-  <input type="text" name="name" />
-  <input type="email" name="email" />
-  <textarea name="message"></textarea>
+  <input type="text" name="name" maxlength="100" />
+  <input type="email" name="email" maxlength="254" />
+  <textarea name="message" maxlength="2000"></textarea>
   <input type="text" name="bot-field" />
 </form>
 

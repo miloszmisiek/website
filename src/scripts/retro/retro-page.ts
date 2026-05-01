@@ -59,4 +59,13 @@ initRetroForm(
   "retro-contact-form",
   "retro-contact-submit",
   "retro-contact-status",
+  undefined,
+  (data) => {
+    const name = String(data.get("name") ?? "").trim();
+    const email = String(data.get("email") ?? "").trim();
+    const message = String(data.get("message") ?? "").trim();
+    if (!name || !email || !message) return "[ ERROR ] All fields required.";
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return "[ ERROR ] Invalid email address.";
+    return null;
+  }
 );

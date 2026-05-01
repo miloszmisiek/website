@@ -2,14 +2,15 @@ export function initRetroForm(
   formId: string,
   submitId: string,
   statusId: string,
-  onSuccess?: (data: FormData) => void
+  onSuccess?: (data: FormData) => void,
+  validate?: (data: FormData) => string | null
 ): void {
   const form = document.getElementById(formId) as HTMLFormElement | null;
   const submitBtn = document.getElementById(submitId) as HTMLInputElement | null;
   const statusBox = document.getElementById(statusId);
   if (!form || !submitBtn || !statusBox) return;
 
-  function showStatus(type: "success" | "error"): void {
+  function showStatus(type: "success" | "error", overrideMsg?: string): void {
     statusBox!.className = `guestbook-status guestbook-status--${type}`;
     if (type === "success") {
       const sub = statusBox!.dataset.successSub
@@ -17,7 +18,8 @@ export function initRetroForm(
         : "";
       statusBox!.innerHTML = `<p class="blink"><b>${statusBox!.dataset.success ?? ""}</b></p>${sub}`;
     } else {
-      statusBox!.innerHTML = `<p><b>${statusBox!.dataset.error ?? ""}</b></p>
+      const msg = overrideMsg ?? statusBox!.dataset.error ?? "";
+      statusBox!.innerHTML = `<p><b>${msg}</b></p>
         <button type="button" class="retro-retry-btn">${statusBox!.dataset.tryAgain ?? ""}</button>`;
       statusBox!.querySelector(".retro-retry-btn")?.addEventListener("click", reset);
     }
@@ -34,12 +36,20 @@ export function initRetroForm(
 
   form.addEventListener("submit", async (e: Event) => {
     e.preventDefault();
+    const formData = new FormData(form);
+
+    if (validate) {
+      const err = validate(formData);
+      if (err) {
+        showStatus("error", err);
+        return;
+      }
+    }
+
     submitBtn.dataset.originalValue = submitBtn.value;
     submitBtn.value = submitBtn.dataset.submitting ?? "[ SENDING... ]";
     submitBtn.disabled = true;
     form.style.display = "none";
-
-    const formData = new FormData(form);
     const body = new URLSearchParams();
     formData.forEach((v, k) => body.append(k, String(v)));
 

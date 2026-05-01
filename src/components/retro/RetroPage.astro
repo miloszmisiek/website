@@ -267,21 +267,22 @@ const formatPeriod = (ym: string) => {
       </div>
 
       <h3>{t("retro.contact.drop")}</h3>
-      <form name="retro-contact" id="retro-contact-form" method="POST" data-netlify="true" class="retro-form">
+      <form name="retro-contact" id="retro-contact-form" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" class="retro-form">
         <input type="hidden" name="form-name" value="retro-contact" />
+        <p style="display:none"><label>Don't fill this out: <input name="bot-field" /></label></p>
         <p>
           <label>{t("contact.form.name.label")}<br />
-            <input type="text" name="name" autocomplete="name" required />
+            <input type="text" name="name" autocomplete="name" maxlength="100" required />
           </label>
         </p>
         <p>
           <label>{t("contact.form.email.label")}<br />
-            <input type="email" name="email" autocomplete="email" required />
+            <input type="email" name="email" autocomplete="email" maxlength="254" required />
           </label>
         </p>
         <p>
           <label>{t("contact.form.message.label")}<br />
-            <textarea name="message" rows="6" autocomplete="off" required></textarea>
+            <textarea name="message" rows="6" autocomplete="off" maxlength="2000" required></textarea>
           </label>
         </p>
         <p>

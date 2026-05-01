@@ -39,6 +39,7 @@ export function ContactForm() {
             type="text"
             autoComplete="name"
             placeholder={t("contact.form.name.placeholder")}
+            maxLength={100}
             required
           />
           <Form.FieldError />
@@ -52,6 +53,7 @@ export function ContactForm() {
             autoComplete="email"
             spellCheck={false}
             placeholder={t("contact.form.email.placeholder")}
+            maxLength={254}
             required
           />
           <Form.FieldError />
@@ -63,6 +65,7 @@ export function ContactForm() {
             rows={5}
             placeholder={t("contact.form.message.placeholder")}
             className="resize-none leading-relaxed"
+            maxLength={2000}
             required
           />
           <Form.FieldError />

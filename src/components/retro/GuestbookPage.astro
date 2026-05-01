@@ -103,7 +103,7 @@ const year = new Date().getFullYear();
           <p>
             <label
               >{t("retro.guestbook.name")}<br />
-              <input type="text" name="name" autocomplete="name" required />
+              <input type="text" name="name" autocomplete="name" maxlength="100" required />
             </label>
           </p>
           <p>
@@ -115,13 +115,14 @@ const year = new Date().getFullYear();
                 name="location"
                 autocomplete="off"
                 placeholder={t("retro.guestbook.locationHint")}
+                maxlength="100"
               />
             </label>
           </p>
           <p>
             <label
               >{t("retro.guestbook.message")}<br />
-              <textarea name="message" rows="4" autocomplete="off" required
+              <textarea name="message" rows="4" autocomplete="off" maxlength="2000" required
               ></textarea>
             </label>
           </p>
