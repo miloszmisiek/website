@@ -354,6 +354,38 @@ ul.tags li {
   box-sizing: border-box;
 }
 
+/* Guestbook inline form states */
+.guestbook-status {
+  border: 2px inset #808080;
+  padding: 16px;
+  margin: 12px 0;
+  text-align: center;
+  font-family: "Courier New", monospace;
+}
+.guestbook-status--success {
+  background: #000080;
+  color: #ffff00;
+  border-color: #4040c0;
+}
+.guestbook-status--error {
+  background: #800000;
+  color: #ffffff;
+  border-color: #c04040;
+}
+.guestbook-status button {
+  margin-top: 8px;
+  font-family: "Courier New", monospace;
+  font-size: 13px;
+  background: #808080;
+  color: #ffffff;
+  border: 2px outset #c0c0c0;
+  padding: 2px 12px;
+  cursor: pointer;
+}
+.guestbook-status button:active {
+  border-style: inset;
+}
+
 footer.retro-footer {
   text-align: center;
   font-size: 12px;

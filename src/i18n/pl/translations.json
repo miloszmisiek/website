@@ -92,6 +92,8 @@
   "retro.prod.link": "Link",
   "retro.links.heading": "Linki",
   "retro.contact.drop": "Wyślij Wiadomość",
+  "retro.contact.submitting": "[ WYSYŁANIE... ]",
+  "retro.contact.tryAgain": "[ SPRÓBUJ PONOWNIE ]",
   "retro.footer.modem": "Strona najlepiej wyświetla się przy modemie 28.8k lub szybszym.",
 
   "retro.guestbook.heading": "Wpisz się do Księgi Gości!",
@@ -107,5 +109,10 @@
   "retro.guestbook.pageTitle": "KSIĘGA GOŚCI — MILOSZ MISIEK",
   "retro.guestbook.back": "← Wróć do strony retro",
   "retro.guestbook.cta": "Wpisz się do Księgi Gości!",
-  "retro.guestbook.marquee": "★ Wpisz się do księgi gości! Zostaw swoje imię i wiadomość! ★ Dziękuję za wizytę! ★"
+  "retro.guestbook.marquee": "★ Wpisz się do księgi gości! Zostaw swoje imię i wiadomość! ★ Dziękuję za wizytę! ★",
+  "retro.guestbook.submitting": "[ WYSYŁANIE... ]",
+  "retro.guestbook.success": "★ Wpis przyjęty! Witaj! ★",
+  "retro.guestbook.successSub": "Twoja wiadomość została zapisana.",
+  "retro.guestbook.error": "[ BŁĄD ] Wysyłanie nie powiodło się.",
+  "retro.guestbook.tryAgain": "[ SPRÓBUJ PONOWNIE ]"
 }

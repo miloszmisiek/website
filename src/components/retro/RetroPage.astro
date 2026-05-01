@@ -267,7 +267,7 @@ const formatPeriod = (ym: string) => {
       </div>
 
       <h3>{t("retro.contact.drop")}</h3>
-      <form name="retro-contact" method="POST" data-netlify="true" class="retro-form">
+      <form name="retro-contact" id="retro-contact-form" method="POST" data-netlify="true" class="retro-form">
         <input type="hidden" name="form-name" value="retro-contact" />
         <p>
           <label>{t("contact.form.name.label")}<br />
@@ -285,9 +285,24 @@ const formatPeriod = (ym: string) => {
           </label>
         </p>
         <p>
-          <input type="submit" value={t("contact.form.submit")} />
+          <input
+            type="submit"
+            id="retro-contact-submit"
+            value={t("contact.form.submit")}
+            data-submitting={t("retro.contact.submitting")}
+          />
         </p>
       </form>
+
+      <div
+        id="retro-contact-status"
+        class="guestbook-status"
+        style="display:none"
+        data-success={t("contact.form.success")}
+        data-error={t("contact.form.error")}
+        data-try-again={t("retro.contact.tryAgain")}
+        aria-live="polite"
+      ></div>
 
       <hr />
 
@@ -309,70 +324,8 @@ const formatPeriod = (ym: string) => {
       </div>{/* end .page-inner */}
     </div>
 
-    <script is:inline>
-      console.log("Welcome to MILOSZ MISIEK v1.0 (1996 Edition)");
-
-      // Hide dial-up bar when page finishes loading
-      function hidedialup() {
-        var d = document.getElementById("dialup");
-        if (d) d.style.display = "none";
-      }
-      if (document.readyState === "complete") {
-        hidedialup();
-      } else {
-        window.addEventListener("load", hidedialup);
-      }
-
-      // Hit counter — real count via Netlify Blobs, localStorage fallback
-      (function () {
-        var el = document.getElementById("hits");
-        fetch("/api/hits", { method: "POST" })
-          .then(function (r) { return r.json(); })
-          .then(function (d) {
-            if (el) el.textContent = String(d.count).padStart(7, "0");
-            try { localStorage.setItem("retro_hits", String(d.count)); } catch (e) {}
-          })
-          .catch(function () {
-            if (el) el.textContent = "-------";
-          });
-      })();
-
-
-      // MIDI toggle (plays /retro_tune.mp3 looped)
-      var midi = document.getElementById("midi-toggle");
-      if (midi) {
-        var on = false;
-        var audio = new Audio("/retro_tune.mp3");
-        audio.loop = true;
-        audio.volume = 0.6;
-        midi.addEventListener("click", function () {
-          on = !on;
-          midi.textContent = "♪ MIDI: " + (on ? "ON " : "OFF");
-          midi.setAttribute("aria-pressed", on ? "true" : "false");
-          if (on) {
-            audio.play().catch(function () {
-              on = false;
-              midi.textContent = "♪ MIDI: OFF";
-            });
-          } else {
-            audio.pause();
-          }
-        });
-        window.addEventListener("beforeunload", function () {
-          audio.pause();
-        });
-      }
-
-      // Exit retro mode: clear flag and return home
-      function clearRetro() {
-        try { localStorage.removeItem("retro_mode"); } catch (e) {}
-        window.location.href = document.getElementById("exit-retro").dataset.home;
-      }
-      var ex1 = document.getElementById("exit-retro");
-      if (ex1) ex1.addEventListener("click", clearRetro);
-
-      // Mark this session as retro-on so refreshes stay
-      try { localStorage.setItem("retro_mode", "on"); } catch (e) {}
+    <script>
+      import "../../scripts/retro/retro-page";
     </script>
   </body>
 </html>

@@ -92,6 +92,8 @@
   "retro.prod.link": "Link",
   "retro.links.heading": "Links",
   "retro.contact.drop": "Drop a line",
+  "retro.contact.submitting": "[ SENDING... ]",
+  "retro.contact.tryAgain": "[ TRY AGAIN ]",
   "retro.footer.modem": "This page is best viewed with a 28.8k modem or faster.",
 
   "retro.guestbook.heading": "Sign the Guestbook!",
@@ -107,5 +109,10 @@
   "retro.guestbook.pageTitle": "GUESTBOOK — MILOSZ MISIEK",
   "retro.guestbook.back": "← Back to retro page",
   "retro.guestbook.cta": "Sign the Guestbook!",
-  "retro.guestbook.marquee": "★ Sign my guestbook! Leave your name and a message! ★ Thanks for visiting! ★"
+  "retro.guestbook.marquee": "★ Sign my guestbook! Leave your name and a message! ★ Thanks for visiting! ★",
+  "retro.guestbook.submitting": "[ SENDING... ]",
+  "retro.guestbook.success": "★ Entry accepted! Welcome! ★",
+  "retro.guestbook.successSub": "Your message has been recorded.",
+  "retro.guestbook.error": "[ ERROR ] Submission failed.",
+  "retro.guestbook.tryAgain": "[ TRY AGAIN ]"
 }
