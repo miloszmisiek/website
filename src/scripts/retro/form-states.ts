@@ -1,7 +1,8 @@
 export function initRetroForm(
   formId: string,
   submitId: string,
-  statusId: string
+  statusId: string,
+  onSuccess?: (data: FormData) => void
 ): void {
   const form = document.getElementById(formId) as HTMLFormElement | null;
   const submitBtn = document.getElementById(submitId) as HTMLInputElement | null;
@@ -38,8 +39,9 @@ export function initRetroForm(
     submitBtn.disabled = true;
     form.style.display = "none";
 
+    const formData = new FormData(form);
     const body = new URLSearchParams();
-    new FormData(form).forEach((v, k) => body.append(k, String(v)));
+    formData.forEach((v, k) => body.append(k, String(v)));
 
     try {
       const res = await fetch(window.location.pathname, {
@@ -48,6 +50,7 @@ export function initRetroForm(
         body: body.toString(),
       });
       if (res.ok) {
+        onSuccess?.(formData);
         showStatus("success");
       } else {
         form.style.display = "";

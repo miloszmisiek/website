@@ -38,4 +38,29 @@ fetch("/api/guestbook")
   })
   .catch(() => loadingRow?.remove());
 
-initRetroForm("guestbook-form", "guestbook-submit", "guestbook-status");
+initRetroForm("guestbook-form", "guestbook-submit", "guestbook-status", (data) => {
+  const name = String(data.get("name") ?? "").trim();
+  const location = String(data.get("location") ?? "").trim() || "—";
+  const message = String(data.get("message") ?? "").trim();
+  if (!tbody || !name || !message) return;
+
+  tbody.querySelector("td[colspan]")?.closest("tr")?.remove();
+
+  const existingRows = Array.from(tbody.querySelectorAll("tr:not(:first-child)"));
+  existingRows.forEach((row, i) => {
+    const numCell = row.querySelector("td.mono");
+    if (numCell) numCell.textContent = String(i + 2);
+  });
+
+  const date = new Date().toLocaleDateString();
+  const tr = document.createElement("tr");
+  tr.innerHTML =
+    `<td class="mono">1</td>` +
+    `<td><b>${escHtml(name)}</b></td>` +
+    `<td><small>${escHtml(location)}</small></td>` +
+    `<td>${escHtml(message)}</td>` +
+    `<td class="mono"><small>${date}</small></td>`;
+
+  const firstDataRow = tbody.querySelector("tr:nth-child(2)");
+  tbody.insertBefore(tr, firstDataRow ?? null);
+});
