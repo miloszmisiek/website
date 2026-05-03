@@ -5,10 +5,10 @@
   "nav.research": "RESEARCH",
   "nav.contact": "CONTACT",
 
-  "hero.headline.first": "Most code doesn't ship.",
-  "hero.headline.second": "I focus on the parts that do.",
+  "hero.headline.first": "Code that ships.",
+  "hero.headline.second": "Research that's published.",
   "hero.bio.first": "Software engineer working on production systems.",
-  "hero.bio.second": "PhD candidate researching applied ML for cybersecurity.",
+  "hero.bio.second": "PhD candidate researching applied machine learning for cybersecurity.",
   "hero.cta.viewWork": "VIEW WORK",
   "hero.cta.contact": "CONTACT",
 

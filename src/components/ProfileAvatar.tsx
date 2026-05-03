@@ -14,7 +14,7 @@ export function ProfileAvatar() {
     setIsOpen(false);
   }, []);
 
-  const handleBackdropClick = useCallback(
+  const closeOnBackdropClick = useCallback(
     (e: React.MouseEvent<HTMLDialogElement>) => {
       if (e.target === dialogRef.current) close();
     },
@@ -24,9 +24,9 @@ export function ProfileAvatar() {
   useEffect(() => {
     const dialog = dialogRef.current;
     if (!dialog) return;
-    const handleCancel = () => setIsOpen(false);
-    dialog.addEventListener("close", handleCancel);
-    return () => dialog.removeEventListener("close", handleCancel);
+    const syncClosedState = () => setIsOpen(false);
+    dialog.addEventListener("close", syncClosedState);
+    return () => dialog.removeEventListener("close", syncClosedState);
   }, []);
 
   return (
@@ -53,7 +53,7 @@ export function ProfileAvatar() {
         aria-label="Profile photo"
         aria-modal="true"
         className="profile-dialog"
-        onClick={handleBackdropClick}
+        onClick={closeOnBackdropClick}
       >
         {isOpen && (
           <img

@@ -50,13 +50,38 @@ export function PublicationAbstractDialog({
     return () => mediaQuery.removeEventListener("change", handler);
   }, []);
 
+  const unlockScroll = () => {
+    document.body.style.overflow = "";
+  };
+
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    if (!dialog || isDrawer) return;
+    dialog.addEventListener("close", unlockScroll);
+    return () => dialog.removeEventListener("close", unlockScroll);
+  }, [isDrawer]);
+
+  const openDrawer = () => setIsOpen(true);
+  const openDialog = () => {
+    const scrollY = window.scrollY;
+    dialogRef.current?.showModal();
+    window.scrollTo(0, scrollY);
+    document.body.style.overflow = "hidden";
+  };
+
+  const closeDrawer = () => setIsOpen(false);
+  const closeDialog = () => {
+    dialogRef.current?.close();
+    document.body.style.overflow = "";
+  };
+
   const open = useCallback(
-    () => (isDrawer ? setIsOpen(true) : dialogRef.current?.showModal()),
+    () => (isDrawer ? openDrawer() : openDialog()),
     [isDrawer],
   );
 
   const close = useCallback(
-    () => (isDrawer ? setIsOpen(false) : dialogRef.current?.close()),
+    () => (isDrawer ? closeDrawer() : closeDialog()),
     [isDrawer],
   );
 

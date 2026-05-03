@@ -25,7 +25,7 @@ export function useContactForm() {
   const [isTyping, setIsTyping] = useState(false);
   const [errors, setErrors] = useState<FieldErrors>({});
 
-  const handleInput = (e: Event) => {
+  const updateTypingState = (e: Event) => {
     const form = e.currentTarget as HTMLFormElement;
     const fd = new FormData(form);
     const hasValue = !!(
@@ -39,8 +39,8 @@ export function useContactForm() {
   useEffect(() => {
     const form = document.forms.namedItem("contact");
     if (form) {
-      form.addEventListener("input", handleInput);
-      return () => form.removeEventListener("input", handleInput);
+      form.addEventListener("input", updateTypingState);
+      return () => form.removeEventListener("input", updateTypingState);
     }
   }, []);
 
