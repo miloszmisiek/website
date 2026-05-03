@@ -37,11 +37,7 @@ export function ProductCard({
   const scale = useTransform(progress, [index / total, 1], [1, targetScale]);
 
   const isLast = index === total - 1;
-  const opacity = useTransform(
-    progress,
-    [index / total, (index + 1) / total, (index + 1.05) / total],
-    [1, 1, isLast ? 1 : 0],
-  );
+  const opacity = useTransform(progress, [0, 1], [1, 1]);
 
   return (
     <div
