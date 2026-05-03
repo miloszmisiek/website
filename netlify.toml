@@ -1,3 +1,9 @@
+[dev]
+  command = "astro dev"
+  targetPort = 4321
+  port = 8888
+  framework = "#custom"
+
 [[redirects]]
   from = "/api/hits"
   to = "/.netlify/functions/hit-counter"

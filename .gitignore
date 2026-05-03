@@ -46,3 +46,6 @@ docs/*.toc
 docs/*.synctex.gz
 docs/*.fls
 docs/*.fdb_latexmk
+
+# Local Netlify folder
+.netlify

@@ -2,7 +2,11 @@ import { getStore } from "@netlify/blobs";
 import type { Config } from "@netlify/functions";
 
 const SEED = 0;
-const ALLOWED_ORIGINS = ["https://miloszmisiek.com", "https://www.miloszmisiek.com"];
+const ALLOWED_ORIGINS = [
+  "https://miloszmisiek.com",
+  "https://www.miloszmisiek.com",
+  "http://localhost",
+];
 
 export default async (req: Request): Promise<Response> => {
   const store = getStore("retro");
