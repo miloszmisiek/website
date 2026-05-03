@@ -1,4 +1,5 @@
 import { type PropsWithChildren } from "react";
+import { motion } from "framer-motion";
 import { FormContext } from "../context/FormContext";
 import { cn } from "../../../../styles/cn";
 import { useContactForm } from "../useContactForm";
@@ -13,7 +14,9 @@ export function Root({
     <FormContext.Provider
       value={{ state, isTyping, errors, clearFieldError, resetForm, submitForm }}
     >
-      <div className={cn("relative", className)}>{children}</div>
+      <motion.div layout className={cn("relative", className)}>
+        {children}
+      </motion.div>
     </FormContext.Provider>
   );
 }
