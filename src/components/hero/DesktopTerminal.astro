@@ -12,7 +12,7 @@ const M_LOGO = "█▀▄▀█\n█ ▀ █";
     class="terminal-frame relative overflow-hidden rounded-none font-mono text-caption sm:text-xs"
   >
     <div
-      class="terminal-titlebar flex items-center justify-between px-4 py-3"
+      class="terminal-titlebar flex items-center justify-between px-4 py-3 mlg:py-2 xl:py-3"
     >
       <div class="flex items-center gap-2" aria-hidden="true">
         <span class="terminal-dot w-2.5 h-2.5 rounded-full"></span>
@@ -28,31 +28,31 @@ const M_LOGO = "█▀▄▀█\n█ ▀ █";
     <div class="terminal-glow pointer-events-none absolute inset-0"></div>
 
     <div class="relative p-0 flex flex-col text-muted">
-      <div class="p-4 md:p-5 short:p-3">
+      <div class="p-4 md:p-5 mlg:p-3 xl:p-5 short:p-3">
         <fieldset
-          class="terminal-fieldset rounded-none px-4 pb-5 pt-3 mb-1 short:pb-4 short:pt-3 short:mb-0"
+          class="terminal-fieldset rounded-none px-4 pb-5 pt-3 mb-1 mlg:pb-3 mlg:pt-2 mlg:mb-0 xl:pb-5 xl:pt-3 xl:mb-1 short:pb-4 short:pt-3 short:mb-0"
         >
           <legend class="px-2 text-[12px] text-foreground/60 tracking-wider"
             >milosz-cli</legend
           >
 
           <div
-            class="flex flex-col items-center justify-center text-center space-y-4 short:space-y-2"
+            class="flex flex-col items-center justify-center text-center space-y-4 mlg:space-y-2 xl:space-y-4 short:space-y-2"
           >
             <span class="text-foreground/90 font-medium tracking-wide"
               >{t("hero.terminal.greeting")}</span
             >
 
             <div
-              class="text-emerald-400 leading-heading-tight whitespace-pre font-bold select-none text-[15px] text-center pt-2 pb-2 short:pt-1 short:pb-1"
+              class="text-emerald-400 leading-heading-tight whitespace-pre font-bold select-none text-[15px] text-center pt-2 pb-2 mlg:pt-1 mlg:pb-1 xl:pt-2 xl:pb-2 short:pt-1 short:pb-1"
               aria-hidden="true"
               set:text={M_LOGO}
             />
 
             <div
-              class="text-foreground/60 flex flex-col items-center text-micro tracking-wider uppercase pt-1"
+              class="text-foreground/60 flex flex-col items-center text-micro tracking-wider pt-1"
             >
-              <span>Node: Szczecin, PL · UTC+1</span>
+              <span>Wetware v∞ · hallucinating occasionally</span>
               <span class="lowercase mt-1 tracking-normal"
                 >~/workspace/portfolio</span
               >
@@ -65,7 +65,7 @@ const M_LOGO = "█▀▄▀█\n█ ▀ █";
         <div class="terminal-divider h-px w-full"></div>
 
         <div
-          class="flex items-center gap-2 px-4 md:px-5 py-3 short:py-2 text-foreground/80 font-mono text-label"
+          class="flex items-center gap-2 px-4 md:px-5 py-3 mlg:py-2 xl:py-3 short:py-2 text-foreground/80 font-mono text-label"
         >
           <span class="text-emerald-400">❯</span>
           <TerminalTypewriter
@@ -77,7 +77,7 @@ const M_LOGO = "█▀▄▀█\n█ ▀ █";
         <div class="terminal-divider h-px w-full"></div>
 
         <div
-          class="flex items-center gap-2 px-4 md:px-5 py-3 short:py-2 text-emerald-400 font-mono text-caption"
+          class="flex items-center gap-2 px-4 md:px-5 py-3 mlg:py-2 xl:py-3 short:py-2 text-emerald-400 font-mono text-caption"
         >
           <div class="flex gap-0.5" aria-hidden="true">
             <div class="w-1 h-3 bg-emerald-400"></div>
