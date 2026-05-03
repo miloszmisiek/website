@@ -136,7 +136,8 @@ initRetroForm("guestbook-form", "guestbook-submit", "guestbook-status", (data) =
   const message = String(data.get("message") ?? "").trim();
   if (!name || !message) return;
 
-  const date = new Date().toLocaleDateString();
+  const isoDate = new Date().toISOString();
+  const formattedDate = new Date().toLocaleDateString();
 
   if (tbody) {
     tbody.querySelector("td[colspan]")?.closest("tr")?.remove();
@@ -153,7 +154,7 @@ initRetroForm("guestbook-form", "guestbook-submit", "guestbook-status", (data) =
       `<td><b>${escHtml(name)}</b></td>` +
       `<td><small>${escHtml(location)}</small></td>` +
       `<td>${escHtml(message)}</td>` +
-      `<td class="mono"><small>${date}</small></td>`;
+      `<td class="mono"><small>${formattedDate}</small></td>`;
 
     const firstDataRow = tbody.querySelector("tr:nth-child(2)");
     tbody.insertBefore(tr, firstDataRow ?? null);
@@ -161,7 +162,7 @@ initRetroForm("guestbook-form", "guestbook-submit", "guestbook-status", (data) =
 
   if (cards) {
     cards.querySelector("p.mono")?.remove();
-    const entry: GuestbookEntry = { name, location, message, date };
+    const entry: GuestbookEntry = { name, location, message, date: isoDate };
     const card = makeCard(entry);
     cards.insertBefore(card, cards.firstChild);
   }

@@ -221,23 +221,34 @@ input[type="text"], input[type="email"], textarea {
   font-size: 12px;
 }
 
-/* retro button (link styled as beveled button, immune to :visited) */
-a.retro-btn {
+/* retro button (link or button styled as beveled Win95 button) */
+.retro-btn {
   display: inline-block;
   border: 2px outset #fff;
   background: #c0c0c0;
   color: #000 !important;
   text-decoration: none !important;
-  font-family: "Times New Roman", Times, serif;
-  font-size: 14px;
-  padding: 4px 12px;
+  font-family: "VT323", "Times New Roman", serif;
+  font-size: 18px;
+  padding: 4px 20px;
   margin: 4px 2px;
   touch-action: manipulation;
   min-height: 32px;
   line-height: 24px;
+  cursor: pointer;
+  letter-spacing: 1px;
 }
-a.retro-btn:visited { color: #000 !important; }
-a.retro-btn:active  { border-style: inset; color: #000 !important; }
+.retro-btn:visited { color: #000 !important; }
+.retro-btn:active  { border-style: inset; color: #000 !important; }
+.retro-btn:disabled, .retro-btn[disabled] { color: #808080 !important; cursor: default; }
+
+#guestbook-load-more-wrap {
+  display: none;
+  text-align: center;
+  padding: 6px 0 2px;
+  border-top: 1px dotted #999;
+  margin-top: 4px;
+}
 
 /* container + Windows 95 window chrome */
 .page {
@@ -443,7 +454,7 @@ marquee {
   background: #000080;
   color: #fff;
   font-family: "VT323", "Times New Roman", serif;
-  font-size: 17px;
+  font-size: 21px;
   padding: 5px 10px;
   border-bottom: 2px solid #000040;
 }
@@ -456,7 +467,7 @@ marquee {
   gap: 8px;
   padding: 4px 10px;
   border-bottom: 1px dotted #bbb;
-  font-size: 13px;
+  font-size: 16px;
   align-items: baseline;
 }
 .retro-card .card-field:last-child { border-bottom: none; }
@@ -465,9 +476,9 @@ marquee {
 .retro-card .card-field::before {
   content: attr(data-label);
   font-family: "VT323", "Times New Roman", serif;
-  font-size: 15px;
+  font-size: 18px;
   color: #000080;
-  min-width: 80px;
+  min-width: 90px;
   flex-shrink: 0;
   padding-top: 1px;
 }
