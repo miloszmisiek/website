@@ -62,7 +62,7 @@ export function PublicationStackCard({
         onKeyDown={onKeyDown}
         role={isTop ? undefined : "button"}
         tabIndex={isTop ? undefined : 0}
-        aria-label={isTop ? undefined : `Bring to front: ${title}`}
+        aria-label={isTop ? undefined : title}
         className={cn(
           "card-interactive p-5 sm:p-7 lg:p-10 short:!p-8 w-full relative flex flex-col h-full",
           !isTop &&
@@ -85,7 +85,7 @@ export function PublicationStackCard({
 
           <div className="flex items-center gap-3">
             {year && (
-              <span className="text-mono-date text-muted/90">{year}</span>
+              <span className="text-mono-date">{year}</span>
             )}
           </div>
         </div>
@@ -95,7 +95,7 @@ export function PublicationStackCard({
 
           {authors.length > 0 && (
             <p className="text-mono-meta flex flex-wrap items-baseline gap-x-2 gap-y-1">
-              <span className="text-foreground/40 whitespace-nowrap">
+              <span className="text-foreground/60 whitespace-nowrap">
                 authors:
               </span>
               <span className="text-foreground/80 tracking-wide min-w-0">

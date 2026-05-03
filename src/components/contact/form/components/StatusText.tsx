@@ -31,7 +31,7 @@ export function StatusText() {
   const label = getStatus(state, isTyping);
   return (
     <span className="text-micro font-mono tracking-widest select-none hidden sm:inline-flex items-center">
-      <span className="text-foreground/45">
+      <span className="text-foreground/60">
         {"{ state: "}
         <span className="inline-block overflow-hidden align-bottom">
           <AnimatePresence mode="wait" initial={false}>

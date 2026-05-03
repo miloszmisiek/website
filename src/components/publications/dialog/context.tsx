@@ -16,6 +16,7 @@ type DialogContextValue = {
   isOpen: boolean;
   isDrawer: boolean;
   publication: Publication;
+  titleId: string;
   open: () => void;
   close: () => void;
 };
@@ -59,9 +60,11 @@ export function PublicationAbstractDialog({
     [isDrawer],
   );
 
+  const titleId = `pub-dialog-title-${publication.id}`;
+
   const ctx = useMemo(
-    () => ({ dialogRef, isOpen, isDrawer, publication, open, close }),
-    [isOpen, isDrawer, publication, open, close],
+    () => ({ dialogRef, isOpen, isDrawer, publication, titleId, open, close }),
+    [isOpen, isDrawer, publication, titleId, open, close],
   );
 
   return (

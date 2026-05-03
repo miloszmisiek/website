@@ -4,6 +4,7 @@ import { usePublicationAbstractDialogContext } from "./context";
 export function Body() {
   const {
     isDrawer,
+    titleId,
     publication: { title, authors, excerpt },
   } = usePublicationAbstractDialogContext();
   
@@ -18,7 +19,7 @@ export function Body() {
     >
       <div>
         <h3
-          id="pub-dialog-title"
+          id={titleId}
           className="text-heading-md text-2xl md:text-3xl mb-4"
         >
           {title}
