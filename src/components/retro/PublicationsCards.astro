@@ -38,10 +38,14 @@ const { publications, t, year } = Astro.props;
         <div class="card-field" data-label={t("retro.pub.topics")}>
           <small>{p.topics.join(", ")}</small>
         </div>
-        {(p.link || p.doi) && (
+        {p.link && (
           <div class="card-field" data-label={t("retro.pub.link")}>
-            {p.link && <a href={p.link} target="_blank" rel="noopener">{t("publication.viewPaper")}</a>}
-            {p.doi && <div class="mono card-doi"><small>doi:{p.doi}</small></div>}
+            <a href={p.link} target="_blank" rel="noopener">{t("publication.viewPaper")}</a>
+          </div>
+        )}
+        {p.doi && (
+          <div class="card-field" data-label={t("retro.pub.doi")}>
+            <div class="mono card-doi"><small>doi:{p.doi}</small></div>
           </div>
         )}
       </div>
