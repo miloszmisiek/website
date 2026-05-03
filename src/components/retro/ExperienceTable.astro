@@ -1,0 +1,57 @@
+---
+import type { TimelineEntry } from "../../data/schema";
+import { getTranslations } from "../../i18n/translations";
+
+type Props = {
+  experience: TimelineEntry[];
+  t: ReturnType<typeof getTranslations>;
+};
+
+const { experience, t } = Astro.props;
+
+const isOngoing = (e: TimelineEntry) => e.period.end === "present";
+const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const formatPeriod = (ym: string) => {
+  const [y, m] = ym.split("-");
+  const mi = parseInt(m ?? "0", 10) - 1;
+  return mi >= 0 && mi < 12 ? `${MONTHS[mi]} ${y}` : ym;
+};
+---
+
+<div class="table-scroll">
+  <table width="100%" cellpadding="4" cellspacing="2" border="1" class="zebra">
+    <tr>
+      <th>{t("retro.exp.period")}</th>
+      <th>{t("retro.exp.type")}</th>
+      <th>{t("retro.exp.role")}</th>
+      <th>{t("retro.exp.company")}</th>
+      <th>{t("retro.exp.focus")}</th>
+      <th>{t("retro.exp.highlights")}</th>
+      <th>{t("retro.exp.technologies")}</th>
+    </tr>
+    {experience.map((e) => {
+      const ongoing = isOngoing(e);
+      const endLabel = ongoing ? t("timeline.present") : formatPeriod(e.period.end);
+      const startLabel = formatPeriod(e.period.start);
+      const typeLabel = e.type === "academic" ? t("retro.exp.typeAcademic") : t("retro.exp.typeWork");
+      return (
+        <tr class={ongoing ? "row-current" : ""}>
+          <td class="mono period-cell">
+            <div><b>{t("retro.exp.from")}</b> {startLabel}</div>
+            <div><b>{t("retro.exp.to")}</b>&nbsp;&nbsp;&nbsp;{endLabel}</div>
+          </td>
+          <td class="mono"><small>{typeLabel}</small></td>
+          <td><b>{e.role}</b></td>
+          <td>{e.company}</td>
+          <td>{e.focus ?? ""}</td>
+          <td>
+            <ul class="tags">
+              {e.highlights.map((h) => <li>{h}</li>)}
+            </ul>
+          </td>
+          <td class="mono"><small>{e.technologies.join(", ")}</small></td>
+        </tr>
+      );
+    })}
+  </table>
+</div>

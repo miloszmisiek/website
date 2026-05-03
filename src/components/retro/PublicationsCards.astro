@@ -1,0 +1,50 @@
+---
+import type { Publication } from "../../data/schema";
+import { getTranslations } from "../../i18n/translations";
+
+type Props = {
+  publications: Publication[];
+  t: ReturnType<typeof getTranslations>;
+  year: number;
+};
+
+const { publications, t, year } = Astro.props;
+---
+
+<div class="retro-cards">
+  {publications.map((p) => {
+    const isRecent = p.year >= year;
+    const statusKey = `publication.status.${p.status}` as const;
+    return (
+      <div class="retro-card">
+        <div class="card-head">
+          <b>{p.title}</b>
+          {isRecent && <span class="new-badge">NEW!</span>}
+        </div>
+        <div class="card-field" data-label={t("retro.pub.year")}>
+          <span class="mono">{p.year}</span>
+        </div>
+        {p.tldr && (
+          <div class="card-field" data-label={t("retro.pub.abstract")}>
+            <small><i>{p.tldr}</i></small>
+          </div>
+        )}
+        <div class="card-field" data-label={t("retro.pub.authors")}>
+          <small>{p.authors.join("; ")}</small>
+        </div>
+        <div class="card-field" data-label={t("retro.pub.status")}>
+          <i>{t(statusKey)}</i>
+        </div>
+        <div class="card-field" data-label={t("retro.pub.topics")}>
+          <small>{p.topics.join(", ")}</small>
+        </div>
+        {(p.link || p.doi) && (
+          <div class="card-field" data-label={t("retro.pub.link")}>
+            {p.link && <a href={p.link} target="_blank" rel="noopener">{t("publication.viewPaper")}</a>}
+            {p.doi && <div class="mono card-doi"><small>doi:{p.doi}</small></div>}
+          </div>
+        )}
+      </div>
+    );
+  })}
+</div>

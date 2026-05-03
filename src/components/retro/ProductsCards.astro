@@ -1,0 +1,46 @@
+---
+import type { Product } from "../../data/schema";
+import { getTranslations } from "../../i18n/translations";
+
+type Props = {
+  products: Product[];
+  t: ReturnType<typeof getTranslations>;
+};
+
+const { products, t } = Astro.props;
+---
+
+<div class="retro-cards">
+  {products.map((pr) => (
+    <div class="retro-card">
+      <div class="card-head">
+        <b>{pr.name}</b>
+        {pr.nda && <><br /><small>[ {t("product.nda")} ]</small></>}
+      </div>
+      <div class="card-field" data-label={t("retro.prod.year")}>
+        <span class="mono">{pr.year ?? "—"}</span>
+      </div>
+      <div class="card-field" data-label={t("retro.prod.role")}>
+        {(pr.role === "Core Engineer" || pr.role === "Główny inżynier")
+          ? <span><span class="blink">★</span> {pr.role} <span class="blink">★</span></span>
+          : pr.role}
+      </div>
+      <div class="card-field" data-label={t("retro.prod.description")}>
+        <small>{pr.description}</small>
+      </div>
+      <div class="card-field" data-label={t("retro.prod.tech")}>
+        <small class="mono">{pr.technologies.join(", ")}</small>
+      </div>
+      {pr.image && (
+        <div class="card-field" data-label={t("retro.prod.image")}>
+          <img src={pr.image} alt={`[Screenshot of ${pr.name}]`} width="100" />
+        </div>
+      )}
+      {pr.link && (
+        <div class="card-field" data-label={t("retro.prod.link")}>
+          <a href={pr.link} target="_blank" rel="noopener">{t("product.viewProduct")}</a>
+        </div>
+      )}
+    </div>
+  ))}
+</div>

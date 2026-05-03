@@ -114,5 +114,7 @@
   "retro.guestbook.success": "★ Wpis przyjęty! Witaj! ★",
   "retro.guestbook.successSub": "Twoja wiadomość została zapisana.",
   "retro.guestbook.error": "[ BŁĄD ] Wysyłanie nie powiodło się.",
-  "retro.guestbook.tryAgain": "[ SPRÓBUJ PONOWNIE ]"
+  "retro.guestbook.tryAgain": "[ SPRÓBUJ PONOWNIE ]",
+  "retro.guestbook.loadMore": "[ ZAŁADUJ WIĘCEJ ]",
+  "retro.guestbook.loadingMore": "[ ŁADOWANIE... ]"
 }

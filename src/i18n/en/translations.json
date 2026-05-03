@@ -114,5 +114,7 @@
   "retro.guestbook.success": "★ Entry accepted! Welcome! ★",
   "retro.guestbook.successSub": "Your message has been recorded.",
   "retro.guestbook.error": "[ ERROR ] Submission failed.",
-  "retro.guestbook.tryAgain": "[ TRY AGAIN ]"
+  "retro.guestbook.tryAgain": "[ TRY AGAIN ]",
+  "retro.guestbook.loadMore": "[ LOAD MORE ]",
+  "retro.guestbook.loadingMore": "[ LOADING... ]"
 }

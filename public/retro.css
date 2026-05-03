@@ -260,6 +260,13 @@ a.retro-btn:active  { border-style: inset; color: #000 !important; }
   align-items: center;
   user-select: none;
   letter-spacing: 0.5px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.page-titlebar > span:first-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
 }
 
 .page-titlebar-controls {
@@ -417,14 +424,52 @@ marquee {
     border: 2px inset #888;
   }
   .table-scroll > table { min-width: 640px; }
-  .table-scroll::after {
-    content: "";
-    position: absolute;
-    top: 0; right: 0; bottom: 0;
-    width: 28px;
-    background: linear-gradient(90deg, transparent, rgba(0,0,128,0.15));
-    pointer-events: none;
-  }
+}
+
+/* Desktop/mobile component visibility toggle */
+.retro-desktop { display: block; }
+.retro-mobile  { display: none !important; }
+
+/* Retro card styles (used by mobile card components) */
+.retro-cards { display: flex; flex-direction: column; gap: 14px; margin: 8px 0; }
+
+.retro-card {
+  border: 2px outset #ccc;
+  background: #fff;
+}
+.retro-card.row-current { background: #ffffcc; }
+
+.retro-card .card-head {
+  background: #000080;
+  color: #fff;
+  font-family: "VT323", "Times New Roman", serif;
+  font-size: 17px;
+  padding: 5px 10px;
+  border-bottom: 2px solid #000040;
+}
+.retro-card .card-head a,
+.retro-card .card-head b,
+.retro-card .card-head small { color: #fff; }
+
+.retro-card .card-field {
+  display: flex;
+  gap: 8px;
+  padding: 4px 10px;
+  border-bottom: 1px dotted #bbb;
+  font-size: 13px;
+  align-items: baseline;
+}
+.retro-card .card-field:last-child { border-bottom: none; }
+.retro-card .card-doi { word-break: break-all; }
+
+.retro-card .card-field::before {
+  content: attr(data-label);
+  font-family: "VT323", "Times New Roman", serif;
+  font-size: 15px;
+  color: #000080;
+  min-width: 80px;
+  flex-shrink: 0;
+  padding-top: 1px;
 }
 
 /* Tablet — contact columns stack earlier */
@@ -438,6 +483,9 @@ marquee {
 
 /* Tablet */
 @media (max-width: 768px) {
+  .retro-desktop { display: none !important; }
+  .retro-mobile  { display: block !important; }
+
   body { font-size: 15px; }
   h1 { font-size: 46px !important; }
   h2 { font-size: 32px !important; }
@@ -485,13 +533,6 @@ marquee {
   /* Topbar exit + nav size */
   .exit-retro { font-size: 11px; }
   .retro-nav { font-size: 14px; }
-
-  /* Tighter table cells inside scroll */
-  .table-scroll th,
-  .table-scroll td {
-    padding: 3px 6px;
-    font-size: 12px;
-  }
 
   /* Footer pipes wrap nicer */
   footer.retro-footer p { line-height: 1.6; }

@@ -2,9 +2,9 @@
 import { getTranslations } from "../../i18n/translations";
 import type { Locale } from "../../i18n/config";
 
-interface Props {
+type Props = {
   locale: Locale;
-}
+};
 
 const { locale } = Astro.props;
 const t = getTranslations(locale);
@@ -60,7 +60,7 @@ const year = new Date().getFullYear();
         <hr />
 
         <!-- ENTRIES TABLE -->
-        <div class="table-scroll">
+        <div class="table-scroll retro-desktop">
           <table
             width="100%"
             cellpadding="4"
@@ -68,6 +68,7 @@ const year = new Date().getFullYear();
             border="1"
             id="guestbook-table"
             data-empty={t("retro.guestbook.empty")}
+            data-cta={t("retro.guestbook.cta")}
           >
             <tr>
               <th>#</th>
@@ -82,6 +83,25 @@ const year = new Date().getFullYear();
               >
             </tr>
           </table>
+        </div>
+
+        <div id="guestbook-cards" class="retro-cards retro-mobile"
+          data-empty={t("retro.guestbook.empty")}
+          data-loading={t("retro.guestbook.loading")}
+          data-label-location={t("retro.guestbook.location")}
+          data-label-message={t("retro.guestbook.message")}
+          data-label-date={t("retro.guestbook.date")}
+        >
+          <p id="guestbook-cards-loading" class="mono"><i>{t("retro.guestbook.loading")}</i></p>
+        </div>
+
+        <div id="guestbook-load-more-wrap" style="display:none; margin: 8px 0;">
+          <button
+            id="guestbook-load-more"
+            class="retro-btn"
+            data-label-load={t("retro.guestbook.loadMore")}
+            data-label-loading={t("retro.guestbook.loadingMore")}
+          >{t("retro.guestbook.loadMore")}</button>
         </div>
 
         <hr />

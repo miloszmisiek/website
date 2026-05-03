@@ -1,0 +1,47 @@
+---
+import type { Publication } from "../../data/schema";
+import { getTranslations } from "../../i18n/translations";
+
+type Props = {
+  publications: Publication[];
+  t: ReturnType<typeof getTranslations>;
+  year: number;
+};
+
+const { publications, t, year } = Astro.props;
+---
+
+<div class="table-scroll">
+  <table width="100%" cellpadding="4" cellspacing="2" border="1">
+    <tr>
+      <th>{t("retro.pub.year")}</th>
+      <th>{t("retro.pub.title")}</th>
+      <th>{t("retro.pub.abstract")}</th>
+      <th>{t("retro.pub.authors")}</th>
+      <th>{t("retro.pub.status")}</th>
+      <th>{t("retro.pub.topics")}</th>
+      <th>{t("retro.pub.link")}</th>
+    </tr>
+    {publications.map((p) => {
+      const isRecent = p.year >= year;
+      const statusKey = `publication.status.${p.status}` as const;
+      return (
+        <tr>
+          <td class="mono">{p.year}</td>
+          <td>
+            <b>{p.title}</b>
+            {isRecent && <span class="new-badge">NEW!</span>}
+          </td>
+          <td><small><i>{p.tldr ?? ""}</i></small></td>
+          <td><small>{p.authors.join("; ")}</small></td>
+          <td><i>{t(statusKey)}</i></td>
+          <td><small>{p.topics.join(", ")}</small></td>
+          <td>
+            {p.link && <a href={p.link} target="_blank" rel="noopener">{t("publication.viewPaper")}</a>}
+            {p.doi && <div class="mono"><small>doi:{p.doi}</small></div>}
+          </td>
+        </tr>
+      );
+    })}
+  </table>
+</div>

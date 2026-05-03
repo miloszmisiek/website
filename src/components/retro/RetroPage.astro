@@ -2,6 +2,12 @@
 import { getExperience, getPublications, getProducts } from "../../i18n/data";
 import { getTranslations } from "../../i18n/translations";
 import type { Locale } from "../../i18n/config";
+import ExperienceTable from "./ExperienceTable.astro";
+import ExperienceCards from "./ExperienceCards.astro";
+import PublicationsTable from "./PublicationsTable.astro";
+import PublicationsCards from "./PublicationsCards.astro";
+import ProductsTable from "./ProductsTable.astro";
+import ProductsCards from "./ProductsCards.astro";
 
 type Props = {
   locale: Locale;
@@ -118,42 +124,11 @@ const formatPeriod = (ym: string) => {
       <!-- EXPERIENCE -->
       <span id="work" style="display:block;height:0;overflow:hidden;"></span>
       <h2>{t("section.experience")}</h2>
-      <div class="table-scroll">
-      <table width="100%" cellpadding="4" cellspacing="2" border="1" class="zebra">
-        <tr>
-          <th>{t("retro.exp.period")}</th>
-          <th>{t("retro.exp.type")}</th>
-          <th>{t("retro.exp.role")}</th>
-          <th>{t("retro.exp.company")}</th>
-          <th>{t("retro.exp.focus")}</th>
-          <th>{t("retro.exp.highlights")}</th>
-          <th>{t("retro.exp.technologies")}</th>
-        </tr>
-        {experience.map((e) => {
-          const ongoing = isOngoing(e);
-          const endLabel = ongoing ? t("timeline.present") : formatPeriod(e.period.end);
-          const startLabel = formatPeriod(e.period.start);
-          const typeLabel = e.type === "academic" ? t("retro.exp.typeAcademic") : t("retro.exp.typeWork");
-          return (
-            <tr class={ongoing ? "row-current" : ""}>
-              <td class="mono period-cell">
-                <div><b>{t("retro.exp.from")}</b> {startLabel}</div>
-                <div><b>{t("retro.exp.to")}</b>&nbsp;&nbsp;&nbsp;{endLabel}</div>
-              </td>
-              <td class="mono"><small>{typeLabel}</small></td>
-              <td><b>{e.role}</b></td>
-              <td>{e.company}</td>
-              <td>{e.focus ?? ""}</td>
-              <td>
-                <ul class="tags">
-                  {e.highlights.map((h) => <li>{h}</li>)}
-                </ul>
-              </td>
-              <td class="mono"><small>{e.technologies.join(", ")}</small></td>
-            </tr>
-          );
-        })}
-      </table>
+      <div class="retro-desktop">
+        <ExperienceTable experience={experience} t={t} />
+      </div>
+      <div class="retro-mobile">
+        <ExperienceCards experience={experience} t={t} />
       </div>
 
       <hr />
@@ -161,39 +136,11 @@ const formatPeriod = (ym: string) => {
       <!-- PUBLICATIONS -->
       <span id="research" style="display:block;height:0;overflow:hidden;"></span>
       <h2>{t("section.publications")}</h2>
-      <div class="table-scroll">
-      <table width="100%" cellpadding="4" cellspacing="2" border="1">
-        <tr>
-          <th>{t("retro.pub.year")}</th>
-          <th>{t("retro.pub.title")}</th>
-          <th>{t("retro.pub.abstract")}</th>
-          <th>{t("retro.pub.authors")}</th>
-          <th>{t("retro.pub.status")}</th>
-          <th>{t("retro.pub.topics")}</th>
-          <th>{t("retro.pub.link")}</th>
-        </tr>
-        {publications.map((p) => {
-          const isRecent = p.year >= year;
-          const statusKey = `publication.status.${p.status}` as const;
-          return (
-            <tr>
-              <td class="mono">{p.year}</td>
-              <td>
-                <b>{p.title}</b>
-                {isRecent && <span class="new-badge">NEW!</span>}
-              </td>
-              <td><small><i>{p.tldr ?? ""}</i></small></td>
-              <td><small>{p.authors.join("; ")}</small></td>
-              <td><i>{t(statusKey)}</i></td>
-              <td><small>{p.topics.join(", ")}</small></td>
-              <td>
-                {p.link && <a href={p.link} target="_blank" rel="noopener">{t("publication.viewPaper")}</a>}
-                {p.doi && <div class="mono"><small>doi:{p.doi}</small></div>}
-              </td>
-            </tr>
-          );
-        })}
-      </table>
+      <div class="retro-desktop">
+        <PublicationsTable publications={publications} t={t} year={year} />
+      </div>
+      <div class="retro-mobile">
+        <PublicationsCards publications={publications} t={t} year={year} />
       </div>
 
       <hr />
@@ -201,44 +148,11 @@ const formatPeriod = (ym: string) => {
       <!-- FEATURED PRODUCTS -->
       <span id="products" style="display:block;height:0;overflow:hidden;"></span>
       <h2>{t("section.products")}</h2>
-      <div class="table-scroll">
-      <table width="100%" cellpadding="4" cellspacing="2" border="1">
-        <tr>
-          <th>{t("retro.prod.name")}</th>
-          <th>{t("retro.prod.year")}</th>
-          <th>{t("retro.prod.role")}</th>
-          <th>{t("retro.prod.description")}</th>
-          <th>{t("retro.prod.tech")}</th>
-          <th>{t("retro.prod.image")}</th>
-          <th>{t("retro.prod.link")}</th>
-        </tr>
-        {products.map((pr) => (
-          <tr>
-            <td>
-              <b>{pr.name}</b>
-              {pr.nda && <><br /><small>[ {t("product.nda")} ]</small></>}
-            </td>
-            <td class="mono">{pr.year ?? "—"}</td>
-            <td>
-              {(pr.role === "Core Engineer" || pr.role === "Główny inżynier")
-                ? <span style="white-space:nowrap"><span class="blink">★</span> {pr.role} <span class="blink">★</span></span>
-                : pr.role}
-            </td>
-            <td><small>{pr.description}</small></td>
-            <td class="mono"><small>{pr.technologies.join(", ")}</small></td>
-            <td align="center">
-              {pr.image ? (
-                <img src={pr.image} alt={`[Screenshot of ${pr.name}]`} width="120" />
-              ) : (
-                <span class="bevel-in">[IMG]</span>
-              )}
-            </td>
-            <td>
-              {pr.link && <a href={pr.link} target="_blank" rel="noopener">{t("product.viewProduct")}</a>}
-            </td>
-          </tr>
-        ))}
-      </table>
+      <div class="retro-desktop">
+        <ProductsTable products={products} t={t} />
+      </div>
+      <div class="retro-mobile">
+        <ProductsCards products={products} t={t} />
       </div>
 
       <hr />

@@ -1,0 +1,55 @@
+---
+import type { TimelineEntry } from "../../data/schema";
+import { getTranslations } from "../../i18n/translations";
+
+type Props = {
+  experience: TimelineEntry[];
+  t: ReturnType<typeof getTranslations>;
+};
+
+const { experience, t } = Astro.props;
+
+const isOngoing = (e: TimelineEntry) => e.period.end === "present";
+const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const formatPeriod = (ym: string) => {
+  const [y, m] = ym.split("-");
+  const mi = parseInt(m ?? "0", 10) - 1;
+  return mi >= 0 && mi < 12 ? `${MONTHS[mi]} ${y}` : ym;
+};
+---
+
+<div class="retro-cards">
+  {experience.map((e) => {
+    const ongoing = isOngoing(e);
+    const endLabel = ongoing ? t("timeline.present") : formatPeriod(e.period.end);
+    const startLabel = formatPeriod(e.period.start);
+    const typeLabel = e.type === "academic" ? t("retro.exp.typeAcademic") : t("retro.exp.typeWork");
+    return (
+      <div class={`retro-card${ongoing ? " row-current" : ""}`}>
+        <div class="card-head"><b>{e.role}</b></div>
+        <div class="card-field" data-label={t("retro.exp.period")}>
+          <span class="mono">{startLabel} – {endLabel}</span>
+        </div>
+        <div class="card-field" data-label={t("retro.exp.type")}>
+          <small class="mono">{typeLabel}</small>
+        </div>
+        <div class="card-field" data-label={t("retro.exp.company")}>
+          {e.company}
+        </div>
+        {e.focus && (
+          <div class="card-field" data-label={t("retro.exp.focus")}>
+            {e.focus}
+          </div>
+        )}
+        <div class="card-field" data-label={t("retro.exp.highlights")}>
+          <ul class="tags">
+            {e.highlights.map((h) => <li>{h}</li>)}
+          </ul>
+        </div>
+        <div class="card-field" data-label={t("retro.exp.technologies")}>
+          <small class="mono">{e.technologies.join(", ")}</small>
+        </div>
+      </div>
+    );
+  })}
+</div>

@@ -1,0 +1,51 @@
+---
+import type { Product } from "../../data/schema";
+import { getTranslations } from "../../i18n/translations";
+
+type Props = {
+  products: Product[];
+  t: ReturnType<typeof getTranslations>;
+};
+
+const { products, t } = Astro.props;
+---
+
+<div class="table-scroll">
+  <table width="100%" cellpadding="4" cellspacing="2" border="1">
+    <tr>
+      <th>{t("retro.prod.name")}</th>
+      <th>{t("retro.prod.year")}</th>
+      <th>{t("retro.prod.role")}</th>
+      <th>{t("retro.prod.description")}</th>
+      <th>{t("retro.prod.tech")}</th>
+      <th>{t("retro.prod.image")}</th>
+      <th>{t("retro.prod.link")}</th>
+    </tr>
+    {products.map((pr) => (
+      <tr>
+        <td>
+          <b>{pr.name}</b>
+          {pr.nda && <><br /><small>[ {t("product.nda")} ]</small></>}
+        </td>
+        <td class="mono">{pr.year ?? "—"}</td>
+        <td>
+          {(pr.role === "Core Engineer" || pr.role === "Główny inżynier")
+            ? <span style="white-space:nowrap"><span class="blink">★</span> {pr.role} <span class="blink">★</span></span>
+            : pr.role}
+        </td>
+        <td><small>{pr.description}</small></td>
+        <td class="mono"><small>{pr.technologies.join(", ")}</small></td>
+        <td align="center">
+          {pr.image ? (
+            <img src={pr.image} alt={`[Screenshot of ${pr.name}]`} width="120" />
+          ) : (
+            <span class="bevel-in">[IMG]</span>
+          )}
+        </td>
+        <td>
+          {pr.link && <a href={pr.link} target="_blank" rel="noopener">{t("product.viewProduct")}</a>}
+        </td>
+      </tr>
+    ))}
+  </table>
+</div>
