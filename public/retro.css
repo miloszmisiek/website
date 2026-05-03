@@ -303,6 +303,7 @@ input[type="text"], input[type="email"], textarea {
 .page-titlebar-close {
   cursor: pointer;
   touch-action: manipulation;
+  text-decoration: none !important;
 }
 .page-titlebar-close:active {
   border-style: inset;
