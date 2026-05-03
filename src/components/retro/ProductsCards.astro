@@ -33,7 +33,7 @@ const { products, t } = Astro.props;
       </div>
       {pr.image && (
         <div class="card-field" data-label={t("retro.prod.image")}>
-          <img src={pr.image} alt={`[Screenshot of ${pr.name}]`} width="100" />
+          <img src={pr.image} alt={`[Screenshot of ${pr.name}]`} width="100" height="100" />
         </div>
       )}
       {pr.link && (

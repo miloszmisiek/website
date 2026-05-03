@@ -53,6 +53,7 @@ h1, h2, h3, h4 {
 h1 { font-size: 56px !important; }
 h2 { font-size: 38px !important; }
 h3 { font-size: 26px !important; }
+.retro-subtitle { font-family: "VT323", "Times New Roman", Times, serif; font-size: 26px; margin: 0; line-height: 1.1; }
 
 hr {
   border: none;
@@ -563,6 +564,6 @@ marquee {
 /* Respect user motion preference */
 @media (prefers-reduced-motion: reduce) {
   .blink, blink { animation: none; visibility: visible; }
-  .new-badge { animation: none; background: #ff0000; color: #ffff00; }
+  .new-badge { animation: none; background: #ffff00; color: #ff0000; }
   .dialup-bar { animation: none; transform: scaleX(1); }
 }

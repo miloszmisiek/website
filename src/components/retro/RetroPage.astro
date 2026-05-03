@@ -45,9 +45,11 @@ const formatPeriod = (ym: string) => {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>MILOSZ MISIEK | SOFTWARE ENGINEER (1996 EDITION)</title>
+    <meta name="description" content="Milosz Misiek — retro portfolio. Software engineer and PhD candidate. Experience, publications, and projects in Windows 95 style." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=VT323&display=swap" />
+    <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://fonts.googleapis.com/css2?family=VT323&display=swap" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=VT323&display=swap" /></noscript>
     <link rel="stylesheet" href="/retro.css" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
@@ -65,19 +67,20 @@ const formatPeriod = (ym: string) => {
       </div>
 
       <div class="page-inner">
+      <main>
       <div class="center">
         <h1>~ MILOSZ MISIEK ~</h1>
-        <h3 class="mono">{t("retro.hero.subtitle")}</h3>
+        <p class="retro-subtitle mono">{t("retro.hero.subtitle")}</p>
       </div>
 
-      <div class="retro-nav">
+      <nav class="retro-nav" aria-label="Site navigation">
         <a href={homeHref}>{t("retro.nav.home")}</a> |
         <a href="#research">{t("retro.nav.research")}</a> |
         <a href="#work">{t("retro.nav.work")}</a> |
         <a href="#products">{t("retro.nav.products")}</a> |
         <a href="#contact">{t("retro.nav.contact")}</a> |
         <a href={locale === "pl" ? "/pl/guestbook" : "/guestbook"}>{t("retro.guestbook.heading")}</a>
-      </div>
+      </nav>
 
       <div class="badges">
         <span class="bevel-in">HTML 3.2 Approved</span>
@@ -226,6 +229,8 @@ const formatPeriod = (ym: string) => {
         <a href={locale === "pl" ? "/pl/guestbook" : "/guestbook"} class="retro-btn">{t("retro.guestbook.cta")}</a>
       </div>
 
+
+      </main>
 
       <footer class="retro-footer">
         <p>

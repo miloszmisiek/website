@@ -37,7 +37,7 @@ const { products, t } = Astro.props;
         <td class="mono"><small>{pr.technologies.join(", ")}</small></td>
         <td align="center">
           {pr.image ? (
-            <img src={pr.image} alt={`[Screenshot of ${pr.name}]`} width="120" />
+            <img src={pr.image} alt={`[Screenshot of ${pr.name}]`} width="120" height="120" />
           ) : (
             <span class="bevel-in">[IMG]</span>
           )}
