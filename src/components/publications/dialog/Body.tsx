@@ -37,7 +37,7 @@ export function Body() {
       {paragraphs.length > 0 && (
         <div className="space-y-4 pl-4 border-l-2 border-border/70">
           {paragraphs.map((paragraph, index) => (
-            <p key={index} className="text-body text-base md:text-lg text-muted/80">
+            <p key={index} className="text-body text-base md:text-lg">
               {paragraph}
             </p>
           ))}

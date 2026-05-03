@@ -116,7 +116,7 @@ export function PublicationStackCard({
         )}
 
         {(tldr || excerpt) && (
-          <p className="text-body text-base md:text-lg short:text-sm mb-6 sm:mb-10 short:mb-5 text-muted/80 relative z-10 pl-4 border-l-2 border-border/70">
+          <p className="text-body text-base md:text-lg short:text-sm mb-6 sm:mb-10 short:mb-5 relative z-10 pl-4 border-l-2 border-border/70">
             {tldr ? (
               <span>{tldr}</span>
             ) : (
