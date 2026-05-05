@@ -123,7 +123,7 @@ const defaultHref = toAbsolute("/");
         const retroPath = isPl ? "/pl/retro" : "/retro";
 
         try {
-          if (!isRetro && localStorage.getItem("retro_mode") === "on") {
+          if (!isRetro && sessionStorage.getItem("retro_mode") === "on") {
             location.replace(retroPath);
             return;
           }
@@ -135,7 +135,7 @@ const defaultHref = toAbsolute("/");
           if (key === SEQ[i]) {
             i++;
             if (i === SEQ.length) {
-              try { localStorage.setItem("retro_mode", "on"); } catch (e) {}
+              try { sessionStorage.setItem("retro_mode", "on"); } catch (e) {}
               location.href = retroPath;
             }
           } else {

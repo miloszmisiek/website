@@ -68,7 +68,7 @@ const t = getTranslations(Astro.currentLocale);
   const link = document.getElementById("retro-link");
   link?.addEventListener("click", () => {
     try {
-      localStorage.setItem("retro_mode", "on");
+      sessionStorage.setItem("retro_mode", "on");
     } catch (e) {
       console.warn("Could not set retro mode in localStorage", e);
     }

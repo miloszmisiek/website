@@ -43,14 +43,14 @@ const exitBtn = document.getElementById("exit-retro") as
 if (exitBtn) {
   exitBtn.addEventListener("click", () => {
     try {
-      localStorage.removeItem("retro_mode");
+      sessionStorage.removeItem("retro_mode");
     } catch {}
     window.location.href = exitBtn.dataset.home ?? "/";
   });
 }
 
 try {
-  localStorage.setItem("retro_mode", "on");
+  sessionStorage.setItem("retro_mode", "on");
 } catch {
   console.warn("Could not set retro_mode in localStorage");
 }
