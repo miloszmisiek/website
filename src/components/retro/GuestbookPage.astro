@@ -28,6 +28,7 @@ const year = new Date().getFullYear();
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
   <body>
+    <a href="#main-content" class="skip-link">{t("retro.skipToContent")}</a>
     <div class="dialup" id="dialup"><div class="dialup-bar"></div></div>
 
     <div class="page">
@@ -45,7 +46,7 @@ const year = new Date().getFullYear();
         </div>
       </div>
 
-      <div class="page-inner">
+      <div class="page-inner" id="main-content">
         <div class="center">
           <h1>~ {t("retro.guestbook.entries")} ~</h1>
         </div>

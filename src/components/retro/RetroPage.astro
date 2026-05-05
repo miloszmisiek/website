@@ -54,6 +54,7 @@ const formatPeriod = (ym: string) => {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
   <body>
+    <a href="#main-content" class="skip-link">{t("retro.skipToContent")}</a>
     <div class="dialup" id="dialup"><div class="dialup-bar"></div></div>
 
     <div class="page">
@@ -67,7 +68,7 @@ const formatPeriod = (ym: string) => {
       </div>
 
       <div class="page-inner">
-      <main>
+      <main id="main-content">
       <div class="center">
         <h1>~ MILOSZ MISIEK ~</h1>
         <p class="retro-subtitle mono">{t("retro.hero.subtitle")}</p>
@@ -163,8 +164,8 @@ const formatPeriod = (ym: string) => {
       <!-- CONTACT -->
       <span id="contact" style="display:block;height:0;overflow:hidden;"></span>
       <h2>{t("section.contact")}</h2>
-      <p><b>{t("contact.headline")}</b></p>
-      <p><i>{t("contact.subheadline").replace(/^\/\/\s*/, "")}</i></p>
+      <p class="mono"><b>{t("contact.headline")}</b></p>
+      <p class="mono"><i>{t("contact.subheadline").replace(/^\/\/\s*/, "")}</i></p>
 
       <div class="contact-cols">
         <div class="contact-col">

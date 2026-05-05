@@ -52,6 +52,7 @@
   "contact.errors.required": "Required.",
   "contact.errors.invalidEmail": "Invalid email address.",
 
+  "retro.skipToContent": "Skip to main content",
   "retro.close": "Close",
   "retro.close.tooltip": "Exit retro mode",
   "retro.hero.subtitle": "Software Engineer & PhD Candidate",

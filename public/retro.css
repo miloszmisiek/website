@@ -18,6 +18,7 @@ html, body {
   color: #000;
   font-family: "Times New Roman", Times, serif;
   font-size: 16px;
+  line-height: 1.5;
 }
 
 body::before {
@@ -41,9 +42,32 @@ body a {
   color: #0000EE;
   text-decoration: underline;
   touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 body a:visited { color: #551A8B; }
 body a:active  { color: #FF0000; }
+
+a:focus-visible,
+button:focus-visible,
+input[type="submit"]:focus-visible,
+input[type="button"]:focus-visible {
+  outline: 2px solid #ffff00;
+  outline-offset: 1px;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  background: #000080;
+  color: #ffff00;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 14px;
+  padding: 4px 10px;
+  text-decoration: none;
+  z-index: 1000;
+}
+.skip-link:focus { top: 0; }
 
 h1, h2, h3, h4 {
   font-family: "VT323", "Times New Roman", Times, serif;
@@ -80,7 +104,10 @@ td {
   vertical-align: top;
   border-bottom: 1px solid #aaa;
   background: #fff;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 14px;
 }
+td small { font-size: inherit; }
 tr:last-child td { border-bottom: none; }
 
 table.zebra tr:nth-child(even) td { background: #f0f0f0; }
@@ -113,6 +140,10 @@ td.period-cell div { margin: 1px 0; }
 }
 
 /* form inputs: browser-default look */
+label {
+  font-family: "Courier New", Courier, monospace;
+}
+label small { font-size: inherit; }
 input[type="text"], input[type="email"], textarea {
   border: 2px inset #888;
   background: #fff;
@@ -185,7 +216,7 @@ input[type="text"], input[type="email"], textarea {
 /* nav pipes */
 .retro-nav {
   text-align: center;
-  font-family: "Times New Roman", Times, serif;
+  font-family: "Courier New", Courier, monospace;
   margin: 8px 0;
   line-height: 1;
 }
@@ -340,7 +371,7 @@ ul li, ol li { display: list-item !important; }
 ul.tags { padding-left: 22px !important; margin: 4px 0 !important; }
 ul.tags li {
   font-family: "Courier New", Courier, monospace;
-  font-size: 12px;
+  font-size: inherit;
   list-style: square !important;
   margin-bottom: 4px;
 }
@@ -352,6 +383,7 @@ ul.tags li {
   border: 1px solid #000;
   padding: 4px;
   margin: 8px 0;
+  font-family: "Courier New", Courier, monospace;
 }
 .contact-cols::after { content: ""; display: block; clear: both; }
 .contact-col {
@@ -408,6 +440,7 @@ ul.tags li {
 
 footer.retro-footer {
   text-align: center;
+  font-family: "Courier New", Courier, monospace;
   font-size: 12px;
   margin-top: 24px;
   padding: 8px;
@@ -463,16 +496,19 @@ marquee {
 .retro-card .card-head a,
 .retro-card .card-head b,
 .retro-card .card-head small { color: #fff; }
+.retro-card .card-head small { font-size: inherit; }
 
 .retro-card .card-field {
   display: flex;
   gap: 8px;
   padding: 4px 10px;
   border-bottom: 1px dotted #bbb;
-  font-size: 16px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 14px;
   align-items: baseline;
 }
 .retro-card .card-field:last-child { border-bottom: none; }
+.retro-card .card-field small { font-size: inherit; }
 .retro-card .card-doi { word-break: break-all; }
 
 .retro-card .card-field::before {
@@ -512,7 +548,7 @@ marquee {
 
 /* Mobile */
 @media (max-width: 500px) {
-  body { font-size: 14px; }
+  body { font-size: 15px; }
   h1 { font-size: 38px !important; }
   h2 { font-size: 28px !important; }
   h3 { font-size: 20px !important; }

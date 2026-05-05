@@ -58,7 +58,7 @@ function showEmptyState() {
   tbody?.appendChild(tr);
   const div = document.createElement("div");
   div.className = "bevel-in";
-  div.style.cssText = "display:block; margin:8px 0;";
+  div.style.cssText = "display:block; margin:8px 0; background:#fff;";
   div.innerHTML = emptyInner;
   cards?.appendChild(div);
 }

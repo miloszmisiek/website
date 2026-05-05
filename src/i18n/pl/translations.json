@@ -52,6 +52,7 @@
   "contact.errors.required": "Pole wymagane.",
   "contact.errors.invalidEmail": "Nieprawidłowy adres e-mail.",
 
+  "retro.skipToContent": "Przejdź do treści",
   "retro.close": "Zamknij",
   "retro.close.tooltip": "Wyjdź z trybu retro",
   "retro.hero.subtitle": "Inżynier Oprogramowania i Doktorant",
