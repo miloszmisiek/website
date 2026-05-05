@@ -41,7 +41,7 @@
   "contact.form.email.label": "EMAIL",
   "contact.form.email.placeholder": "you@example.com…",
   "contact.form.message.label": "MESSAGE",
-  "contact.form.message.placeholder": "Tell me about your project…",
+  "contact.form.message.placeholder": "What's on your mind…",
   "contact.form.submit": "SEND",
   "contact.form.success": "Message sent. I'll get back to you soon.",
   "contact.form.error": "Something went wrong. Try again.",
