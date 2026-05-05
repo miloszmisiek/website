@@ -1,0 +1,16 @@
+export const LINK_DIST      = 190;
+export const MAX_CONN       = 4;
+export const CURVE_BEND     = 55;
+export const DRIFT          = 0.25;
+export const DRIFT_NOISE    = 0.002;
+export const MAX_SPEED      = 0.35;
+export const REPULSE_R      = 110;
+export const REPULSE_F      = 3.5;
+export const EDGE_FADE_STEP = 0.05;
+export const PULSE_SPEED    = 0.020;
+export const PULSE_VAR      = 0.006;
+export const PULSE_TTL      = 2;
+export const MAX_PULSES     = 6;
+export const PROPAGATE_P    = 0.20;
+export const PULSE_R        = 1.5;
+export const ACTIVATE_FADE  = 0.018;

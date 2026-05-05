@@ -4,6 +4,7 @@ import "@fontsource-variable/inter";
 import "@fontsource-variable/jetbrains-mono";
 import "@fontsource-variable/space-grotesk";
 import "@fontsource/vt323/400.css";
+import ParticleBackground from "../components/ParticleBackground.astro";
 import vt323Url from "@fontsource/vt323/files/vt323-latin-400-normal.woff2?url";
 import { LOCALE_META, defaultLocale, locales, type Locale } from "../i18n";
 import {
@@ -181,6 +182,8 @@ const defaultHref = toAbsolute("/");
   <body
     class="relative selection:bg-foreground selection:text-background overflow-x-hidden"
   >
+    <ParticleBackground />
+    <div class="relative" style="z-index:1;">
     <a
       href="#main-content"
       class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-skip focus:px-4 focus:py-2 focus:bg-foreground focus:text-background focus:font-mono focus:text-xs focus:tracking-technical focus:uppercase focus:outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-2"
@@ -188,5 +191,6 @@ const defaultHref = toAbsolute("/");
       Skip to content
     </a>
     <slot />
+    </div>
   </body>
 </html>

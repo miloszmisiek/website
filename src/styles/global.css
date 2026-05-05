@@ -66,6 +66,10 @@
     );
   }
 
+  [data-theme="dark"] body {
+    text-shadow: 0 0 18px rgba(0, 0, 0, 0.9);
+  }
+
   
   .hero-zone {
     position: relative;
@@ -109,5 +113,11 @@
   * {
     scrollbar-width: thin;
     scrollbar-color: rgb(var(--color-border)) transparent;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) body {
+    text-shadow: 0 0 18px rgba(0, 0, 0, 0.9);
   }
 }
