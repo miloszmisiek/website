@@ -3,7 +3,7 @@ import {
   LINK_DIST, MAX_CONN, CURVE_BEND, DRIFT, DRIFT_NOISE, MAX_SPEED,
   REPULSE_R, REPULSE_F, EDGE_FADE_STEP,
   PULSE_SPEED, PULSE_VAR, MAX_PULSES, PROPAGATE_P, PULSE_TTL,
-  ACTIVATE_FADE,
+  ACTIVATE_FADE, WAVE_INTERVAL,
 } from './config';
 
 export let W = 0, H = 0;
@@ -20,7 +20,7 @@ export function resize(canvas: HTMLCanvasElement) {
 
 function nodeCount(): number | null {
   const w = window.innerWidth;
-  if (w < 768)  return null;
+  if (w < 768)  return 10;
   if (w < 1024) return 20;
   return 38;
 }
@@ -53,6 +53,15 @@ export function neighborsOf(idx: number): number[] {
   return edges
     .filter(e => !e.dying && (e.a === idx || e.b === idx))
     .map(e => e.a === idx ? e.b : e.a);
+}
+
+export function triggerWave() {
+  if (!nodes.length) return;
+  const connected = nodes.map((_, i) => i).filter(i => neighborsOf(i).length > 0);
+  if (!connected.length) return;
+  const idx = connected[Math.floor(Math.random() * connected.length)];
+  nodes[idx].activation = 1.0;
+  for (const n of neighborsOf(idx)) spawnPulse(idx, n, PULSE_TTL);
 }
 
 export function spawnPulse(from: number, to: number, ttl: number) {
@@ -104,6 +113,7 @@ export function init() {
 
 export function tick() {
   frameN++;
+  if (frameN % WAVE_INTERVAL === 0) triggerWave();
 
   for (const n of nodes) {
     const mdx = n.x - mouse.x, mdy = n.y - mouse.y;

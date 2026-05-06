@@ -9,7 +9,7 @@ export function ContactForm() {
 
   return (
     <MotionConfig reducedMotion="user">
-    <Form.Root>
+    <Form.Root className="glass-fade bg-background/60 backdrop-blur-sm px-6 py-8 sm:px-8 sm:py-10">
       <Form.LiveRegion
         successText={t("contact.form.success")}
         errorText={t("contact.form.error")}

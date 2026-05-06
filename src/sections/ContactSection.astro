@@ -35,15 +35,18 @@ const t = getTranslations(Astro.currentLocale);
     <AnimatedSectionTitle client:load text={t("section.contact")} />
   </div>
 
+  <FadeIn client:load delay={FADE_DELAY.xs} noTranslate>
+    <h2 class="font-display font-bold leading-none tracking-tight text-foreground text-[2.75rem] md:text-6xl mb-10 short:mb-6">
+      {t("contact.headline")}
+    </h2>
+  </FadeIn>
+
   <FadeIn client:load delay={FADE_DELAY.sm}>
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 short:lg:gap-10 items-start">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 short:lg:gap-10 items-start">
       {/* ── Left: info + social links ── */}
-      <div class="lg:col-span-5 flex flex-col gap-8 short:gap-5">
-        {/* Headline */}
+      <div class="flex flex-col gap-8 short:gap-5">
+        {/* Subheadline */}
         <div class="flex flex-col gap-4 short:gap-3">
-          <h2 class="font-display text-heading-contact text-4xl md:text-5xl short:text-[2.5rem] max-w-[12ch] short:max-w-[15ch] [text-wrap:balance]">
-            {t("contact.headline")}
-          </h2>
           <p
             class="text-foreground/70 text-base md:text-lg short:text-base leading-relaxed max-w-md [text-wrap:balance] lowercase"
           >
@@ -133,7 +136,7 @@ const t = getTranslations(Astro.currentLocale);
       </div>
 
       {/* ── Right: terminal form card ── */}
-      <div class="lg:col-span-6 lg:col-start-7">
+      <div>
         <ContactForm client:load />
       </div>
     </div>

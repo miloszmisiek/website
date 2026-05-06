@@ -19,7 +19,7 @@ function start() {
   window.addEventListener('mouseleave', () => { mouse.x = -9999; mouse.y = -9999; });
 
   window.addEventListener('click', ev => {
-    if (window.innerWidth < 768 || !nodes.length) return;
+    if (!nodes.length) return;
     let nearest = -1, nearDist = Infinity;
     for (let i = 0; i < nodes.length; i++) {
       if (neighborsOf(i).length === 0) continue;

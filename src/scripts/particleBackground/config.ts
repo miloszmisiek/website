@@ -14,3 +14,4 @@ export const MAX_PULSES     = 6;
 export const PROPAGATE_P    = 0.20;
 export const PULSE_R        = 1.5;
 export const ACTIVATE_FADE  = 0.018;
+export const WAVE_INTERVAL  = 900;

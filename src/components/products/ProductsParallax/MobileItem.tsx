@@ -1,19 +1,10 @@
-import { motion } from "framer-motion";
 import { Badge } from "../../Badge";
 import { Button } from "../../button/Button";
 import { getTranslations } from "../../../i18n";
 import type { Product } from "../../../data/schema";
-import { EASE_SMOOTH } from "../../../styles/animations";
-
-const MOBILE_ITEM_ANIMATION = {
-  initial: { opacity: 1, y: 40 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: "-40px" },
-};
 
 type ProductMobileItemProps = {
   product: Product;
-  index: number;
 };
 
 export function ProductMobileItem({
@@ -28,20 +19,11 @@ export function ProductMobileItem({
     description,
     technologies,
   },
-  index,
 }: ProductMobileItemProps) {
   const t = getTranslations();
 
   return (
-    <motion.article
-      {...MOBILE_ITEM_ANIMATION}
-      transition={{
-        duration: 0.6,
-        ease: EASE_SMOOTH,
-        delay: index * 0.08,
-      }}
-      className="py-12 first:pt-4"
-    >
+    <article className="py-12 first:pt-4">
       {year && (
         <div className="mb-6 flex items-center gap-2">
           {nda && <Badge variant="restricted">{t("product.nda")}</Badge>}
@@ -89,6 +71,6 @@ export function ProductMobileItem({
           {t("product.viewProduct")}
         </Button>
       )}
-    </motion.article>
+    </article>
   );
 }
