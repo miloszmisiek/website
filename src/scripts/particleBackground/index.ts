@@ -34,7 +34,12 @@ function start() {
     for (const n of neighborsOf(nearest)) spawnPulse(nearest, n, PULSE_TTL);
   });
 
-  window.addEventListener('resize', () => { resize(canvas); init(); });
+  let lastW = window.innerWidth;
+  window.addEventListener('resize', () => {
+    const newW = window.innerWidth;
+    resize(canvas);
+    if (newW !== lastW) { lastW = newW; init(); }
+  });
 
   resize(canvas);
   init();

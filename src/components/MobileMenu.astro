@@ -50,7 +50,7 @@ const { links } = Astro.props;
     if (!header || !menu) return;
     const headerH = header.offsetHeight;
     menu.style.top = `${headerH}px`;
-    menu.style.height = `calc(100vh - ${headerH}px)`;
+    menu.style.height = `calc(100dvh - ${headerH}px)`;
   };
 
   const openMenu = () => {

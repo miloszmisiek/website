@@ -16,7 +16,7 @@
     @apply text-foreground antialiased font-sans;
     background-color: rgb(var(--color-background));
     position: relative;
-    min-height: 100vh;
+    min-height: 100svh;
   }
 
   
