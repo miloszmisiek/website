@@ -15,8 +15,11 @@ function start() {
     requestAnimationFrame(loop);
   }
 
-  window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
-  window.addEventListener('mouseleave', () => { mouse.x = -9999; mouse.y = -9999; });
+  const hasMouse = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (hasMouse) {
+    window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+    window.addEventListener('mouseleave', () => { mouse.x = -9999; mouse.y = -9999; });
+  }
 
   window.addEventListener('click', ev => {
     if (!nodes.length) return;
