@@ -98,13 +98,7 @@ const defaultHref = toAbsolute("/");
         if ("scrollRestoration" in history)
           history.scrollRestoration = "manual";
         const stored = localStorage.getItem(STORAGE_KEY);
-        const prefersDark = matchMedia("(prefers-color-scheme: dark)").matches;
-        const theme =
-          stored === DARK || stored === LIGHT
-            ? stored
-            : prefersDark
-              ? DARK
-              : LIGHT;
+        const theme = stored === DARK || stored === LIGHT ? stored : DARK;
         document.documentElement.setAttribute("data-theme", theme);
       })();
     </script>

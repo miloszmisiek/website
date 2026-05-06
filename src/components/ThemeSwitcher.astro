@@ -54,9 +54,7 @@ import IconMoon from "./icons/IconMoon.astro";
   const getEffectiveTheme = (): Theme => {
     const stored = localStorage.getItem(THEME_STORAGE_KEY);
     if (isTheme(stored)) return stored;
-    return window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? THEME.DARK
-      : THEME.LIGHT;
+    return THEME.DARK;
   };
 
   const applyTheme = (theme: Theme) => {
@@ -80,12 +78,6 @@ import IconMoon from "./icons/IconMoon.astro";
       applyTheme(next);
     });
 
-    window
-      .matchMedia("(prefers-color-scheme: dark)")
-      .addEventListener("change", () => {
-        if (!localStorage.getItem(THEME_STORAGE_KEY))
-          applyTheme(getEffectiveTheme());
-      });
   };
 
   init();
