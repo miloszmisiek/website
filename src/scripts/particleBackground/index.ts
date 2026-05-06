@@ -37,8 +37,7 @@ function start() {
   let lastW = window.innerWidth;
   window.addEventListener('resize', () => {
     const newW = window.innerWidth;
-    resize(canvas);
-    if (newW !== lastW) { lastW = newW; init(); }
+    if (newW !== lastW) { lastW = newW; resize(canvas); init(); }
   });
 
   resize(canvas);
