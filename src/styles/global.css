@@ -27,9 +27,9 @@
     z-index: -1;
     background: radial-gradient(
       circle at 50% -20%,
-      #201e1d 0%,
-      #181615 60%,
-      #12100f 100%
+      #1a1a1d 0%,
+      #141413 60%,
+      #0d0d0f 100%
     );
     pointer-events: none;
     transition: background 0.3s ease;
@@ -60,9 +60,9 @@
   [data-theme="dark"] body::before {
     background: radial-gradient(
       circle at 50% -20%,
-      #201e1d 0%,
-      #181615 60%,
-      #12100f 100%
+      #1a1a1d 0%,
+      #141413 60%,
+      #0d0d0f 100%
     );
   }
 

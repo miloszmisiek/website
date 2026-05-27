@@ -8,48 +8,48 @@
     --header-height: 5rem;
 
 
-    --color-background: 24 22 21;
-    --color-foreground: 230 226 221;
-    --color-muted: 163 157 150;
-    --color-border: 48 44 42;
+    --color-background: 20 20 19;
+    --color-foreground: 230 231 234;
+    --color-muted: 151 154 161;
+    --color-border: 44 46 51;
     --color-accent: 217 119 6;
-    --color-accent-fg: 24 22 21;
+    --color-accent-fg: 20 20 19;
 
 
-    --color-line: rgba(230, 226, 221, 0.15);
-    --color-dim: rgba(230, 226, 221, 0.4);
+    --color-line: rgba(230, 231, 234, 0.15);
+    --color-dim: rgba(230, 231, 234, 0.4);
 
     
-    --color-hover-bg: rgba(230, 226, 221, 0.05);
+    --color-hover-bg: rgba(230, 231, 234, 0.05);
 
     
     --color-success: #739e73;
     --color-info: #7a9fbf;
 
     
-    --gradient-text-from: #e6e2dd;
-    --gradient-text-to: #a39d96;
-    --gradient-hover-via: rgba(230, 226, 221, 0.03);
+    --gradient-text-from: #e6e7ea;
+    --gradient-text-to: #979aa1;
+    --gradient-hover-via: rgba(230, 231, 234, 0.03);
 
     
-    --color-hero-bg: 13 11 10;            
+    --color-hero-bg: 12 12 14;            
 
     
-    --color-card-bg: 32 29 28;
-    --color-card-bg-hover: 38 35 34;
+    --color-card-bg: 28 29 31;
+    --color-card-bg-hover: 35 37 40;
 
     
     --shadow-card-top: none;
     --shadow-card-bg: none;
 
     
-    --terminal-body-bg: 32 30 28;
-    --terminal-titlebar-bg: rgba(230, 226, 221, 0.05);
-    --terminal-border: rgba(230, 226, 221, 0.18);
-    --terminal-divider: rgba(230, 226, 221, 0.07);
-    --terminal-fieldset: rgba(230, 226, 221, 0.1);
-    --terminal-dot: 85 80 75;
-    --terminal-glow: radial-gradient(ellipse at 50% 0%, rgba(230, 226, 221, 0.03) 0%, transparent 70%);
+    --terminal-body-bg: 29 30 33;
+    --terminal-titlebar-bg: rgba(230, 231, 234, 0.05);
+    --terminal-border: rgba(230, 231, 234, 0.18);
+    --terminal-divider: rgba(230, 231, 234, 0.07);
+    --terminal-fieldset: rgba(230, 231, 234, 0.1);
+    --terminal-dot: 78 80 86;
+    --terminal-glow: radial-gradient(ellipse at 50% 0%, rgba(230, 231, 234, 0.03) 0%, transparent 70%);
   }
 
   
@@ -88,30 +88,30 @@
   
   [data-theme="dark"] {
     color-scheme: dark;
-    --color-background: 24 22 21;
-    --color-foreground: 230 226 221;
-    --color-muted: 163 157 150;
-    --color-border: 48 44 42;
+    --color-background: 20 20 19;
+    --color-foreground: 230 231 234;
+    --color-muted: 151 154 161;
+    --color-border: 44 46 51;
     --color-accent: 217 119 6;
-    --color-accent-fg: 24 22 21;
-    --color-line: rgba(230, 226, 221, 0.15);
-    --color-dim: rgba(230, 226, 221, 0.4);
-    --color-hover-bg: rgba(230, 226, 221, 0.05);
-    --gradient-text-from: #e6e2dd;
-    --gradient-text-to: #a39d96;
-    --gradient-hover-via: rgba(230, 226, 221, 0.03);
-    --color-hero-bg: 13 11 10;
-    --color-card-bg: 32 29 28;
-    --color-card-bg-hover: 38 35 34;
+    --color-accent-fg: 20 20 19;
+    --color-line: rgba(230, 231, 234, 0.15);
+    --color-dim: rgba(230, 231, 234, 0.4);
+    --color-hover-bg: rgba(230, 231, 234, 0.05);
+    --gradient-text-from: #e6e7ea;
+    --gradient-text-to: #979aa1;
+    --gradient-hover-via: rgba(230, 231, 234, 0.03);
+    --color-hero-bg: 12 12 14;
+    --color-card-bg: 28 29 31;
+    --color-card-bg-hover: 35 37 40;
     --shadow-card-top: none;
     --shadow-card-bg: none;
-    --terminal-body-bg: 32 30 28;
-    --terminal-titlebar-bg: rgba(230, 226, 221, 0.05);
-    --terminal-border: rgba(230, 226, 221, 0.18);
-    --terminal-divider: rgba(230, 226, 221, 0.07);
-    --terminal-fieldset: rgba(230, 226, 221, 0.1);
-    --terminal-dot: 85 80 75;
-    --terminal-glow: radial-gradient(ellipse at 50% 0%, rgba(230, 226, 221, 0.03) 0%, transparent 70%);
+    --terminal-body-bg: 29 30 33;
+    --terminal-titlebar-bg: rgba(230, 231, 234, 0.05);
+    --terminal-border: rgba(230, 231, 234, 0.18);
+    --terminal-divider: rgba(230, 231, 234, 0.07);
+    --terminal-fieldset: rgba(230, 231, 234, 0.1);
+    --terminal-dot: 78 80 86;
+    --terminal-glow: radial-gradient(ellipse at 50% 0%, rgba(230, 231, 234, 0.03) 0%, transparent 70%);
   }
 
   

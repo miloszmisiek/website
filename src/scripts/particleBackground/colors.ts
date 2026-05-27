@@ -9,10 +9,10 @@ function isDark(): boolean {
 
 export function colors(): ColorScheme {
   return isDark() ? {
-    node:        'rgba(160,152,145,0.60)',
-    nodeMembrane:'rgba(160,152,145,0.18)',
+    node:        'rgba(151,154,161,0.60)',
+    nodeMembrane:'rgba(151,154,161,0.18)',
     nodeActive:  'rgba(251,191,36,0.90)',
-    dendrite:    'rgba(130,122,115,0.22)',
+    dendrite:    'rgba(120,123,130,0.22)',
     dendriteAct: 'rgba(217,119,6,0.35)',
     pulse:       'rgba(251,191,36,0.70)',
   } : {
