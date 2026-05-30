@@ -9,7 +9,7 @@ const retroHref = Astro.currentLocale === "pl" ? "/pl/retro" : "/retro";
 const t = getTranslations(Astro.currentLocale);
 ---
 
-<div class="footer-zone relative z-10">
+<div class="footer-zone relative z-10 mt-auto">
   <div class="page-container">
     <FadeIn client:load delay={FADE_DELAY.md}>
       <footer class="flex items-center gap-3 text-xs font-mono text-muted py-8">
