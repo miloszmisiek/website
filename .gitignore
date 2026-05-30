@@ -28,9 +28,10 @@ theme-drafts/
 .agents/
 skills-lock.json
 
-# Markdown files (except README)
+# Markdown files (except README and blog content collection)
 *.md
 !README.md
+!src/content/blog/*.md
 
 .playwright-mcp/
 
