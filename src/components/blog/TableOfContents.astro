@@ -1,0 +1,65 @@
+---
+import type { MarkdownHeading } from "astro";
+
+type Props = {
+  headings: MarkdownHeading[];
+};
+
+const { headings } = Astro.props;
+---
+
+<aside class="col-start-1 sticky top-24 w-60" aria-label="Table of contents">
+  <p class="text-sm font-semibold text-foreground mb-4">Table of Contents</p>
+  <ul class="list-none p-0 m-0 flex flex-col gap-3.5">
+    {
+      headings.map((heading) => (
+        <li>
+          <a
+            href={`#${heading.slug}`}
+            data-toc-link={heading.slug}
+            class:list={[
+              "relative block text-sm leading-snug text-muted no-underline transition-colors hover:text-foreground",
+              "data-[active=true]:text-foreground",
+              "data-[active=true]:before:content-[''] data-[active=true]:before:absolute data-[active=true]:before:left-0.5 data-[active=true]:before:top-2 data-[active=true]:before:w-2 data-[active=true]:before:h-2 data-[active=true]:before:bg-foreground",
+              heading.depth === 3 ? "pl-10" : "pl-6",
+            ]}
+          >
+            {heading.text}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</aside>
+
+<script>
+  const links = Array.from(
+    document.querySelectorAll<HTMLAnchorElement>("[data-toc-link]"),
+  );
+
+  function setActive(id: string) {
+    for (const link of links) {
+      if (link.dataset.tocLink === id) link.dataset.active = "true";
+      else delete link.dataset.active;
+    }
+  }
+
+  const targets = links
+    .map((link) => document.getElementById(link.dataset.tocLink ?? ""))
+    .filter((element): element is HTMLElement => element !== null);
+
+  function handleIntersect(entries: IntersectionObserverEntry[]) {
+    const visible = entries
+      .filter((entry) => entry.isIntersecting)
+      .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+    if (visible[0]) setActive(visible[0].target.id);
+  }
+
+  if (targets.length > 0) {
+    const observer = new IntersectionObserver(handleIntersect, {
+      rootMargin: "-20% 0px -70% 0px",
+    });
+    for (const target of targets) observer.observe(target);
+    setActive(targets[0].id);
+  }
+</script>
