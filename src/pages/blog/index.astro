@@ -1,0 +1,45 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../sections/Header.astro";
+import Footer from "../../sections/Footer.astro";
+import PostCard from "../../components/blog/PostCard.astro";
+
+const posts = (await getCollection("blog"))
+  .filter((post) => (import.meta.env.PROD ? !post.data.draft : true))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<Layout
+  title="Blog — Milosz Misiek"
+  description="Notes on cryptography, engineering, and the things I build."
+  particles={false}
+>
+  <Header />
+  <main id="main-content" class="max-w-3xl mx-auto px-6 pt-12 pb-20">
+    <header class="mb-12">
+      <span class="section-num">~/blog</span>
+      <h1 class="font-display text-heading-xl text-3xl sm:text-4xl mt-2 mb-3">
+        Writing
+      </h1>
+      <p class="text-body max-w-md m-0">
+        Notes on cryptography, engineering, and the things I build.
+      </p>
+    </header>
+
+    {
+      posts.length > 0 ? (
+        <ul class="list-none m-0 p-0 flex flex-col gap-5">
+          {posts.map((post) => (
+            <li>
+              <PostCard post={post} />
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="text-label">No posts yet — check back soon.</p>
+      )
+    }
+  </main>
+  <Footer />
+</Layout>
