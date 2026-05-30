@@ -1,0 +1,97 @@
+/* Blog reading styles — global, scoped to .prose because the slot content is
+   auto-generated HTML from Markdown (Tailwind classes cannot be added to it). */
+
+.prose {
+  font-size: 1.125rem; /* 18px desktop */
+  line-height: 1.75;
+  color: rgb(var(--color-foreground));
+}
+@media (max-width: 768px) { .prose { font-size: 1.0625rem; } } /* 17px */
+@media (max-width: 480px) { .prose { font-size: 1rem; } }       /* 16px */
+
+.prose p { margin: 1.4rem 0; }
+
+.prose h2,
+.prose h3 {
+  font-family: "Space Grotesk", Inter, sans-serif;
+  letter-spacing: -0.01em;
+  color: rgb(var(--color-foreground));
+  scroll-margin-top: 6rem; /* clear the sticky header on anchor jumps */
+}
+.prose h2 {
+  font-size: 1.875rem;
+  font-weight: 600;
+  margin: 3rem 0 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid rgb(var(--color-border));
+}
+.prose h3 {
+  font-size: 1.375rem;
+  font-weight: 600;
+  margin: 2.25rem 0 0.75rem;
+}
+
+.prose a {
+  color: rgb(var(--color-accent));
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+.prose a:hover { text-decoration-thickness: 2px; }
+
+.prose strong { font-weight: 700; }
+
+.prose ul,
+.prose ol { margin: 1.4rem 0; padding-left: 1.3rem; }
+.prose li { margin: 0.45rem 0; }
+
+.prose blockquote {
+  margin: 1.75rem 0;
+  padding: 0.4rem 0 0.4rem 1.25rem;
+  border-left: 3px solid rgb(var(--color-accent));
+  color: rgb(var(--color-muted));
+  font-style: italic;
+}
+
+/* Inline code (not inside a code block) */
+.prose :not(pre) > code {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.88em;
+  background-color: rgb(var(--color-card-bg));
+  border: 1px solid rgb(var(--color-border));
+  padding: 0.12em 0.4em;
+  border-radius: 0;
+}
+
+/* Shiki code blocks: terminal-ish chrome + dual-theme color switch */
+.prose .astro-code {
+  border: 1px solid rgb(var(--color-border));
+  padding: 1rem 1.25rem;
+  border-radius: 0;
+  overflow-x: auto;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  margin: 1.8rem 0;
+}
+.prose .astro-code,
+.prose .astro-code span {
+  color: var(--shiki-light);
+  background-color: var(--shiki-light-bg);
+}
+[data-theme="dark"] .prose .astro-code,
+[data-theme="dark"] .prose .astro-code span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+}
+
+/* KaTeX display math: keep wide formulas from breaking layout */
+.prose .katex-display {
+  margin: 1.8rem 0;
+  padding: 0.4rem 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .prose * { scroll-behavior: auto; }
+}
