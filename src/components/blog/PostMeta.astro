@@ -1,0 +1,63 @@
+---
+type Props = {
+  pubDate: Date;
+  updatedDate?: Date;
+  readingTime: number;
+  tags: string[];
+};
+
+const { pubDate, updatedDate, readingTime, tags } = Astro.props;
+
+const formatDate = (date: Date) =>
+  date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+---
+
+<div
+  class="text-label flex flex-wrap items-center gap-x-4 gap-y-2 pb-6 mb-10 border-b border-border [&_svg]:w-3.5 [&_svg]:h-3.5 [&_svg]:stroke-accent [&_svg]:fill-none"
+>
+  <span class="flex items-center gap-1.5">
+    <svg viewBox="0 0 16 16" stroke-width="1.5" aria-hidden="true">
+      <rect x="2" y="3" width="12" height="11" rx="1"></rect>
+      <line x1="2" y1="6" x2="14" y2="6"></line>
+      <line x1="5" y1="1.5" x2="5" y2="4"></line>
+      <line x1="11" y1="1.5" x2="11" y2="4"></line>
+    </svg>
+    <time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time>
+  </span>
+
+  {
+    updatedDate && (
+      <span class="flex items-center gap-1.5">
+        updated{" "}
+        <time datetime={updatedDate.toISOString()}>
+          {formatDate(updatedDate)}
+        </time>
+      </span>
+    )
+  }
+
+  <span class="flex items-center gap-1.5">
+    <svg viewBox="0 0 16 16" stroke-width="1.5" aria-hidden="true">
+      <circle cx="8" cy="8" r="6"></circle>
+      <line x1="8" y1="5" x2="8" y2="8"></line>
+      <line x1="8" y1="8" x2="10.5" y2="9.5"></line>
+    </svg>
+    {readingTime} min read
+  </span>
+
+  {
+    tags.length > 0 && (
+      <ul class="flex gap-2 ml-auto m-0 p-0 list-none">
+        {tags.map((tag) => (
+          <li class="border border-border text-muted px-2 py-0.5 text-micro tracking-widest uppercase transition-colors hover:border-accent hover:text-accent">
+            {tag}
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</div>
