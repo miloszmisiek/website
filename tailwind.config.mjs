@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const READING_COL = 'minmax(0, 64ch)';
+
 export default {
   darkMode: ["selector", '[data-theme="dark"]'],
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
@@ -15,6 +17,7 @@ export default {
       short: { raw: "(max-height: 800px) and (min-width: 768px)" },
       heroShort: { raw: "(max-height: 640px) and (min-width: 768px)" },
       heroShortAny: { raw: "(max-height: 800px)" },
+      "blog-stack": { max: "1099px" },
     },
     extend: {
       fontSize: {
@@ -22,6 +25,7 @@ export default {
         micro: "0.625rem",  // 10px
         caption: "0.6875rem", // 11px
         label: "0.8125rem", // 13px
+        headline: "2.75rem", // hero H1 base size, also blog post H1
       },
       letterSpacing: {
         technical: "0.2em",
@@ -59,6 +63,13 @@ export default {
         "gradient-from": "var(--gradient-text-from)",
         "gradient-to": "var(--gradient-text-to)",
         "gradient-via": "var(--gradient-hover-via)",
+      },
+      maxWidth: {
+        reading: "79rem", // 1264px — blog post outer container
+      },
+      gridTemplateColumns: {
+        blog: `2.23fr ${READING_COL} 1fr`,
+        "blog-single": READING_COL,
       },
       fontFamily: {
         sans: ["Inter", "sans-serif"],
