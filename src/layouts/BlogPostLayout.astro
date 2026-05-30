@@ -1,0 +1,66 @@
+---
+import type { CollectionEntry } from "astro:content";
+import type { MarkdownHeading } from "astro";
+import Layout from "./Layout.astro";
+import Header from "../sections/Header.astro";
+import Footer from "../sections/Footer.astro";
+import PostMeta from "../components/blog/PostMeta.astro";
+import TableOfContents from "../components/blog/TableOfContents.astro";
+import { getReadingTime } from "../utils/readingTime";
+import "katex/dist/katex.min.css";
+
+type Props = {
+  post: CollectionEntry<"blog">;
+  headings: MarkdownHeading[];
+};
+
+const { post, headings } = Astro.props;
+const { title, description, pubDate, updatedDate, tags, ogImage } = post.data;
+
+const readingTime = getReadingTime(post.body ?? "");
+
+const tocHeadings = headings.filter(
+  (heading) => heading.depth === 2 || heading.depth === 3,
+);
+const showToc =
+  tocHeadings.filter((heading) => heading.depth === 2).length >= 3;
+---
+
+<Layout
+  title={`${title} — Milosz Misiek`}
+  description={description}
+  ogType="article"
+  ogImage={ogImage}
+  publishedTime={pubDate.toISOString()}
+  modifiedTime={updatedDate?.toISOString()}
+  particles={false}
+>
+  <Header />
+  <main
+    id="main-content"
+    class="max-w-reading mx-auto px-6 pt-12 pb-20 grid grid-cols-blog items-start data-[toc=false]:grid-cols-blog-single data-[toc=false]:justify-center blog-stack:grid-cols-blog-single blog-stack:justify-center"
+    data-toc={String(showToc)}
+  >
+    {showToc && <TableOfContents headings={tocHeadings} />}
+    <article class="min-w-0">
+      <nav class="text-label mb-8" aria-label="Breadcrumb">
+        <a href="/blog" class="text-accent no-underline">~/blog</a>
+        <span class="mx-2">/</span>
+        <span>{post.id}</span>
+      </nav>
+      <h1 class="font-display text-heading-xl text-3xl sm:text-headline mb-5">
+        {title}
+      </h1>
+      <PostMeta
+        pubDate={pubDate}
+        updatedDate={updatedDate}
+        readingTime={readingTime}
+        tags={tags}
+      />
+      <div class="prose">
+        <slot />
+      </div>
+    </article>
+  </main>
+  <Footer />
+</Layout>
