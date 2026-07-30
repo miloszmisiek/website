@@ -7,7 +7,6 @@ import MobileTerminalBar from "../components/hero/MobileTerminalBar.astro";
 import DesktopTerminal from "../components/hero/DesktopTerminal.astro";
 import ScrollIndicator from "../components/hero/ScrollIndicator.astro";
 import IconArrowRight from "../components/icons/IconArrowRight.astro";
-import IconMail from "../components/icons/IconMail.astro";
 
 const t = getTranslations(Astro.currentLocale);
 ---
@@ -35,26 +34,31 @@ const t = getTranslations(Astro.currentLocale);
   </div>
   <div class="flex-1 short:hidden" aria-hidden="true"></div>
   <FadeIn client:load delay={FADE_DELAY.xs}>
-    <h1
-      class="font-display text-heading-xl text-headline sm:text-6xl md:text-7xl short:text-[3.5rem] heroShort:text-5xl mb-8 sm:mb-12 md:mb-16 short:mb-10 heroShort:mb-8 heroShort:max-w-xl max-w-4xl lg:max-w-5xl text-transparent bg-clip-text text-gradient-heading [text-wrap:pretty]"
+    <p
+      class="font-mono text-caption tracking-technical text-muted mb-4 short:mb-3"
     >
-      {t("hero.headline.first")}<br />{t("hero.headline.second")}
+      {t("hero.eyebrow")}
+    </p>
+    <h1
+      translate="no"
+      class="font-display text-heading-xl text-headline sm:text-6xl md:text-7xl short:text-[3.5rem] heroShort:text-5xl mb-6 sm:mb-8 short:mb-6 heroShort:mb-6 max-w-4xl lg:max-w-5xl text-transparent bg-clip-text text-gradient-heading [text-wrap:pretty]"
+    >
+      {t("hero.name")}
     </h1>
+    <p
+      class="font-display text-2xl md:text-3xl short:text-2xl heroShort:text-xl text-foreground/85 mb-8 sm:mb-12 md:mb-16 short:mb-10 heroShort:mb-8 max-w-3xl [text-wrap:balance]"
+    >
+      {t("hero.headline.first")} {t("hero.headline.second")}
+    </p>
     <div
       class="grid grid-cols-1 md2:grid-cols-12 gap-8 md2:gap-12 text-muted leading-relaxed text-sm md2:border-l-2 md2:border-line md2:pl-10 md2:ml-2"
     >
       <div class="md2:col-span-6 mlg:col-span-7 max-w-2xl pt-2">
-        <p class="text-lg md:text-xl lg:text-2xl short:text-xl heroShort:text-lg text-foreground/85 leading-relaxed lg:leading-body-loose mb-4 short:mb-2">
-          <span class="text-foreground/50 font-mono mr-3" aria-hidden="true"
-            >{"//"}</span
-          >
-          {t("hero.bio.first")}
-        </p>
-        <p class="text-lg md:text-xl lg:text-2xl short:text-xl heroShort:text-lg text-foreground/85 leading-relaxed lg:leading-body-loose mb-8 sm:mb-10 short:mb-8">
-          <span class="text-foreground/50 font-mono mr-3" aria-hidden="true"
-            >{"//"}</span
-          >
-          {t("hero.bio.second")}
+        <p
+          class="prose-links text-lg md:text-xl short:text-lg heroShort:text-lg text-foreground/85 leading-relaxed md:leading-relaxed mb-8 sm:mb-10 short:mb-8"
+        >
+          <Fragment set:html={t("hero.bio.first")} />
+          <Fragment set:html={t("hero.bio.second")} />
         </p>
         <div class="flex flex-wrap justify-start items-center gap-4">
           <Button href="#products" variant="primary" class="group gap-2.5">
@@ -62,10 +66,6 @@ const t = getTranslations(Astro.currentLocale);
             <IconArrowRight
               class="shrink-0 transition-transform duration-200 group-hover:translate-x-0.5"
             />
-          </Button>
-          <Button href="#contact" variant="secondary" class="group gap-2.5">
-            <span>{t("hero.cta.contact")}</span>
-            <IconMail class="shrink-0 text-accent" />
           </Button>
         </div>
 

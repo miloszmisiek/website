@@ -14,14 +14,14 @@ const navLinks = [
   { key: "nav.contact" as const, href: "/#contact" },
 ];
 
-const blogLink = { label: "Blog", href: "/blog" };
+// const blogLink = { label: "Blog", href: "/blog" };
 
 const translatedLinks = [
   ...navLinks.map((link) => ({
     label: t(link.key),
     href: link.href,
   })),
-  blogLink,
+  // blogLink,
 ];
 ---
 
@@ -40,7 +40,7 @@ const translatedLinks = [
             <NavLink href={link.href} label={t(link.key)} />
           ))
         }
-        <NavLink href={blogLink.href} label={blogLink.label} />
+        <!-- <NavLink href={blogLink.href} label={blogLink.label} /> -->
       </div>
 
       <div class="hidden md:block w-[1px] h-6 bg-foreground/20 mx-2"></div>

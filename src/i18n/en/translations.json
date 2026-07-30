@@ -5,18 +5,20 @@
   "nav.research": "RESEARCH",
   "nav.contact": "CONTACT",
 
+  "hero.eyebrow": "SOFTWARE ENGINEER · PHD CANDIDATE · SZCZECIN, PL",
+  "hero.name": "Milosz Misiek",
   "hero.headline.first": "Code that ships.",
   "hero.headline.second": "Research that's published.",
-  "hero.bio.first": "Software engineer working on production systems.",
-  "hero.bio.second": "PhD candidate researching applied machine learning for cybersecurity.",
+  "hero.bio.first": "I build production systems at <a href=\"https://elasticemail.com/\" target=\"_blank\" rel=\"noopener\">Elastic Email</a>.",
+  "hero.bio.second": "I research <a href=\"#publications\">ML-driven phishing detection</a> at West Pomeranian University of Technology in Szczecin.",
   "hero.cta.viewWork": "VIEW WORK",
   "hero.cta.contact": "CONTACT",
 
   "hero.terminal.greeting": "Hello there!",
 
   "section.experience": "EXPERIENCE",
-  "section.publications": "PUBLICATIONS",
-  "section.products": "FEATURED PRODUCTS",
+  "section.publications": "RESEARCH",
+  "section.products": "WORK",
 
   "timeline.present": "Present",
 

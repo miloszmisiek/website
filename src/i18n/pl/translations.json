@@ -5,18 +5,20 @@
   "nav.research": "BADANIA",
   "nav.contact": "KONTAKT",
 
+  "hero.eyebrow": "INŻYNIER OPROGRAMOWANIA · DOKTORANT · SZCZECIN, PL",
+  "hero.name": "Milosz Misiek",
   "hero.headline.first": "Mało kodu trafia na produkcję.",
   "hero.headline.second": "Pracuję nad tym, który trafia.",
-  "hero.bio.first": "Inżynier oprogramowania pracujący przy systemach produkcyjnych.",
-  "hero.bio.second": "Doktorant badający zastosowania ML w cyberbezpieczeństwie.",
+  "hero.bio.first": "Buduję systemy produkcyjne w <a href=\"https://elasticemail.com/\" target=\"_blank\" rel=\"noopener\">Elastic Email</a>.",
+  "hero.bio.second": "Badam <a href=\"#publications\">wykrywanie phishingu z użyciem ML</a> na Zachodniopomorskim Uniwersytecie Technologicznym w Szczecinie.",
   "hero.cta.viewWork": "Projekty",
   "hero.cta.contact": "Kontakt",
 
   "hero.terminal.greeting": "Cześć, dobrze Cię widzieć!",
 
   "section.experience": "DOŚWIADCZENIE",
-  "section.publications": "PUBLIKACJE",
-  "section.products": "WYBRANE PROJEKTY",
+  "section.publications": "BADANIA",
+  "section.products": "PROJEKTY",
 
   "timeline.present": "Obecnie",
 

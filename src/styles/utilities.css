@@ -87,9 +87,15 @@
     @apply bg-gradient-to-br from-gradient-from to-gradient-to;
   }
 
-  
+
   .focus-ring {
     @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+
+  /* Styles anchors inside a text block — for links authored in i18n content. */
+  .prose-links {
+    @apply [&_a]:text-foreground [&_a]:underline [&_a]:decoration-1 [&_a]:decoration-accent/75 [&_a]:underline-offset-4 [&_a]:transition-colors [&_a:hover]:decoration-accent;
+    @apply [&_a:focus-visible]:outline-none [&_a:focus-visible]:ring-2 [&_a:focus-visible]:ring-foreground/50 [&_a:focus-visible]:ring-offset-2 [&_a:focus-visible]:ring-offset-background;
   }
 
   

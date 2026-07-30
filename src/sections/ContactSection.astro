@@ -8,6 +8,7 @@ import IconArrowRight from "../components/icons/IconArrowRight.astro";
 import IconGitHub from "../components/icons/IconGitHub.astro";
 import IconLinkedIn from "../components/icons/IconLinkedIn.astro";
 import IconResearchGate from "../components/icons/IconResearchGate.astro";
+import IconCv from "../components/icons/IconCv.astro";
 import { getTranslations } from "../i18n";
 
 const t = getTranslations(Astro.currentLocale);
@@ -36,9 +37,9 @@ const t = getTranslations(Astro.currentLocale);
   </div>
 
   <FadeIn client:load delay={FADE_DELAY.xs} noTranslate>
-    <h2 class="font-display font-bold leading-none tracking-tight text-foreground text-[2.75rem] md:text-6xl mb-10 short:mb-6">
+    <h3 class="font-display font-bold leading-none tracking-tight text-foreground text-[2.75rem] md:text-6xl mb-10 short:mb-6">
       {t("contact.headline")}
-    </h2>
+    </h3>
   </FadeIn>
 
   <FadeIn client:load delay={FADE_DELAY.sm}>
@@ -114,6 +115,19 @@ const t = getTranslations(Astro.currentLocale);
           >
             <IconResearchGate class="w-3.5 h-3.5 shrink-0" />
             {t("contact.researchgate")}
+          </Button>
+
+          {/* CV */}
+          <Button
+            href="/Milosz_Misiek_CV.pdf"
+            variant="secondary"
+            target="_blank"
+            download
+            class="focus-ring gap-2"
+            aria-label="Download CV"
+          >
+            <IconCv class="w-3.5 h-3.5 shrink-0" />
+            {t("contact.cv")}
           </Button>
         </div>
 

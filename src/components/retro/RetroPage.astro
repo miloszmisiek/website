@@ -111,8 +111,8 @@ const formatPeriod = (ym: string) => {
             <p><b>{t("retro.about.name")}</b> Milosz Misiek</p>
             <p><b>{t("retro.about.occupation")}</b> {t("retro.about.occupationValue")}</p>
             <ul>
-              <li>{t("hero.bio.first")}</li>
-              <li>{t("hero.bio.second")}</li>
+              <li set:html={t("hero.bio.first")}></li>
+              <li set:html={t("hero.bio.second")}></li>
             </ul>
           </td>
         </tr>

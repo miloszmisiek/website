@@ -3,10 +3,8 @@ import { FadeIn } from "../components/FadeIn";
 import { ProfileAvatar } from "../components/ProfileAvatar";
 import { FADE_DELAY } from "../styles/animations";
 import FooterLink from "../components/FooterLink.astro";
-import { getTranslations } from "../i18n";
 
 const retroHref = Astro.currentLocale === "pl" ? "/pl/retro" : "/retro";
-const t = getTranslations(Astro.currentLocale);
 ---
 
 <div class="footer-zone relative z-10 mt-auto">
@@ -18,21 +16,6 @@ const t = getTranslations(Astro.currentLocale);
           © {new Date().getFullYear()} MILOSZ MISIEK
         </span>
         <div class="ml-auto flex items-center gap-6">
-          <!-- <FooterLink -->
-          <!--   href="/Milosz_Misiek_CV.pdf" -->
-          <!--   label={t("contact.cv")} -->
-          <!--   target="_blank" -->
-          <!--   download -->
-          <!-- > -->
-          <!--   <img -->
-          <!--     src="/icons/cv.svg" -->
-          <!--     alt="" -->
-          <!--     aria-hidden="true" -->
-          <!--     width="14" -->
-          <!--     height="14" -->
-          <!--     class="w-3.5 h-3.5 shrink-0 icon-invert" -->
-          <!--   /> -->
-          <!-- </FooterLink> -->
           <FooterLink
             href={retroHref}
             id="retro-link"

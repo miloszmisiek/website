@@ -1,8 +1,5 @@
 import {
   CARD_WIDTH,
-  DECK_BASE_OPACITY,
-  DECK_MIN_OPACITY,
-  DECK_OPACITY_STEP,
   DECK_ROTATE_Y_STEP,
   DECK_SCALE_STEP,
   DECK_STACK_SHADOW,
@@ -28,12 +25,7 @@ export const getDeckCardVisualState = (
   };
   return {
     isTop,
-    opacity: isTop
-      ? 1
-      : Math.max(
-          DECK_MIN_OPACITY,
-          DECK_BASE_OPACITY - stackPos * DECK_OPACITY_STEP,
-        ),
+    opacity: 1,
     visualStyle,
   };
 };
