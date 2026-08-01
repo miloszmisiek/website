@@ -17,14 +17,18 @@ export function usePublicationCarousel(
   });
 
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [settledIndex, setSettledIndex] = useState(0);
   const activeCardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!emblaApi) return;
     const onSelect = () => setCurrentIndex(emblaApi.selectedScrollSnap());
+    const onSettle = () => setSettledIndex(emblaApi.selectedScrollSnap());
     emblaApi.on("select", onSelect);
+    emblaApi.on("settle", onSettle);
     return () => {
       emblaApi.off("select", onSelect);
+      emblaApi.off("settle", onSettle);
     };
   }, [emblaApi]);
 
@@ -39,6 +43,8 @@ export function usePublicationCarousel(
 
   const canGoPrev = currentIndex > 0;
   const canGoNext = currentIndex < publications.length - 1;
+  const hasPeekPrev = settledIndex > 0;
+  const hasPeekNext = settledIndex < publications.length - 1;
 
   const goPrev = () => {
     emblaApi?.scrollPrev();
@@ -75,6 +81,8 @@ export function usePublicationCarousel(
     currentIndex,
     canGoPrev,
     canGoNext,
+    hasPeekPrev,
+    hasPeekNext,
     dotItems,
     goPrev,
     goNext,

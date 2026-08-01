@@ -14,6 +14,8 @@ export function PublicationCarousel({
     currentIndex,
     canGoPrev,
     canGoNext,
+    hasPeekPrev,
+    hasPeekNext,
     dotItems,
     goPrev,
     goNext,
@@ -30,9 +32,9 @@ export function PublicationCarousel({
       <div
         ref={emblaRef}
         className={cn("overflow-hidden w-full", {
-          "carousel-fade-both": canGoPrev && canGoNext,
-          "carousel-fade-left": canGoPrev && !canGoNext,
-          "carousel-fade-right": !canGoPrev && canGoNext,
+          "carousel-fade-both": hasPeekPrev && hasPeekNext,
+          "carousel-fade-left": hasPeekPrev && !hasPeekNext,
+          "carousel-fade-right": !hasPeekPrev && hasPeekNext,
         })}
         onKeyDown={onKeyDown}
         tabIndex={0}
