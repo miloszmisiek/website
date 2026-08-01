@@ -1,4 +1,3 @@
-import { cn } from "../../../styles/cn";
 import { PublicationStackCard } from "../card";
 import { CarouselControls } from "./CarouselControls";
 import { usePublicationCarousel } from "./usePublicationCarousel";
@@ -14,8 +13,6 @@ export function PublicationCarousel({
     currentIndex,
     canGoPrev,
     canGoNext,
-    hasPeekPrev,
-    hasPeekNext,
     dotItems,
     goPrev,
     goNext,
@@ -31,11 +28,7 @@ export function PublicationCarousel({
 
       <div
         ref={emblaRef}
-        className={cn("overflow-hidden w-full", {
-          "carousel-fade-both": hasPeekPrev && hasPeekNext,
-          "carousel-fade-left": hasPeekPrev && !hasPeekNext,
-          "carousel-fade-right": !hasPeekPrev && hasPeekNext,
-        })}
+        className="overflow-hidden w-full carousel-fade-both"
         onKeyDown={onKeyDown}
         tabIndex={0}
         role="region"

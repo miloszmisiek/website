@@ -114,14 +114,6 @@
   }
 
   @media (min-width: 640px) {
-    .carousel-fade-right {
-      -webkit-mask-image: linear-gradient(to right, black calc(100% - 3.5rem), transparent);
-      mask-image: linear-gradient(to right, black calc(100% - 3.5rem), transparent);
-    }
-    .carousel-fade-left {
-      -webkit-mask-image: linear-gradient(to left, black calc(100% - 3.5rem), transparent);
-      mask-image: linear-gradient(to left, black calc(100% - 3.5rem), transparent);
-    }
     .carousel-fade-both {
       -webkit-mask-image: linear-gradient(to right, transparent, black 1.75rem, black calc(100% - 1.75rem), transparent);
       mask-image: linear-gradient(to right, transparent, black 1.75rem, black calc(100% - 1.75rem), transparent);
@@ -129,14 +121,6 @@
   }
   
   @media (min-width: 768px) {
-    .carousel-fade-right {
-      -webkit-mask-image: linear-gradient(to right, black calc(100% - 5rem), transparent);
-      mask-image: linear-gradient(to right, black calc(100% - 5rem), transparent);
-    }
-    .carousel-fade-left {
-      -webkit-mask-image: linear-gradient(to left, black calc(100% - 5rem), transparent);
-      mask-image: linear-gradient(to left, black calc(100% - 5rem), transparent);
-    }
     .carousel-fade-both {
       -webkit-mask-image: linear-gradient(to right, transparent, black 2.5rem, black calc(100% - 2.5rem), transparent);
       mask-image: linear-gradient(to right, transparent, black 2.5rem, black calc(100% - 2.5rem), transparent);
