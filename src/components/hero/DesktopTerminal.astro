@@ -7,7 +7,10 @@ const t = getTranslations(Astro.currentLocale);
 const M_LOGO = "█▀▄▀█\n█ ▀ █";
 ---
 
-<div class="md2:col-span-6 mlg:col-span-5 terminal-widget self-start hidden md2:block">
+<div
+  class="md2:col-span-6 mlg:col-span-5 terminal-widget self-start hidden md2:block"
+  aria-hidden="true"
+>
   <div
     class="terminal-frame relative overflow-hidden rounded-none font-mono text-caption sm:text-xs"
   >
@@ -40,7 +43,7 @@ const M_LOGO = "█▀▄▀█\n█ ▀ █";
             class="flex flex-col items-center justify-center text-center space-y-4 mlg:space-y-2 xl:space-y-4 short:space-y-2"
           >
             <span class="text-foreground/90 font-medium tracking-wide"
-              >{t("hero.terminal.greeting")}</span
+              >{t("hero.terminal.focus")}</span
             >
 
             <div
@@ -52,7 +55,7 @@ const M_LOGO = "█▀▄▀█\n█ ▀ █";
             <div
               class="text-foreground/60 flex flex-col items-center text-micro tracking-wider pt-1"
             >
-              <span>Wetware v∞ · hallucinating occasionally</span>
+              <span>{t("hero.terminal.stats")}</span>
               <span class="lowercase mt-1 tracking-normal"
                 >~/workspace/portfolio</span
               >
@@ -70,7 +73,7 @@ const M_LOGO = "█▀▄▀█\n█ ▀ █";
           <span class="text-emerald-400">❯</span>
           <TerminalTypewriter
             client:load
-            words={["frontend", "backend", "full-stack", "builder"]}
+            words={["frontend", "backend", "full-stack", "machine learning"]}
           />
         </div>
 
