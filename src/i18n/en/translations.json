@@ -10,11 +10,12 @@
   "hero.headline.first": "Code that ships.",
   "hero.headline.second": "Research that's published.",
   "hero.bio.first": "I build production systems at <a href=\"https://elasticemail.com/\" target=\"_blank\" rel=\"noopener\">Elastic Email</a>.",
-  "hero.bio.second": "I research <a href=\"#publications\">ML-driven phishing detection</a> at West Pomeranian University of Technology in Szczecin.",
+  "hero.bio.second": "I research <a href=\"#research\">ML-driven phishing detection</a> at West Pomeranian University of Technology in Szczecin.",
   "hero.cta.viewWork": "VIEW WORK",
   "hero.cta.contact": "CONTACT",
 
-  "hero.terminal.greeting": "Hello there!",
+  "hero.terminal.focus": "LLM features · phishing detection",
+  "hero.terminal.stats": "3 yrs shipping · 2 papers",
 
   "section.experience": "EXPERIENCE",
   "section.publications": "RESEARCH",
@@ -36,7 +37,7 @@
 
   "section.contact": "CONTACT",
   "contact.headline": "Let’s connect.",
-  "contact.subheadline": "// Have an idea or interesting problem? I’d love to hear about it.",
+  "contact.subheadline": "Have an idea or interesting problem? I’d love to hear about it.",
   "contact.email.label": "DIRECT",
   "contact.form.name.label": "NAME",
   "contact.form.name.placeholder": "e.g. Jane Smith…",
@@ -50,7 +51,6 @@
   "contact.github": "GITHUB",
   "contact.linkedin": "LINKEDIN",
   "contact.researchgate": "RESEARCHGATE",
-  "contact.cv": "CV",
   "contact.errors.required": "Required.",
   "contact.errors.invalidEmail": "Invalid email address.",
 

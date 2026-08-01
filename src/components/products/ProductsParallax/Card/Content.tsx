@@ -28,7 +28,7 @@ export function CardContent({ product, index }: CardContentProps) {
 
       <div className="mb-8 short:mb-4">
         <h3 className="text-heading-contact text-5xl md:text-5xl lg:text-5xl short:text-4xl short:leading-heading mb-4 short:mb-2">{product.name}</h3>
-        <p className="text-label short:text-sm text-muted/80">{`// ${product.role}`}</p>
+        <p className="text-label short:text-sm text-muted/80">{product.role}</p>
       </div>
 
       <p className="text-body text-base md:text-lg short:text-base mb-10 short:mb-5 grow max-w-xl">

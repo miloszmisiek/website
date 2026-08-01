@@ -47,7 +47,7 @@ export function ProductMobileItem({
       )}
 
       <h3 className="text-heading-md text-4xl md:text-3xl mb-2">{name}</h3>
-      <p className="text-label mb-6">{`// ${role}`}</p>
+      <p className="text-label mb-6">{role}</p>
       <p className="text-body text-lg text-muted mb-6">{description}</p>
 
       {technologies.length > 0 && (

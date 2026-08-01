@@ -8,7 +8,6 @@ import IconArrowRight from "../components/icons/IconArrowRight.astro";
 import IconGitHub from "../components/icons/IconGitHub.astro";
 import IconLinkedIn from "../components/icons/IconLinkedIn.astro";
 import IconResearchGate from "../components/icons/IconResearchGate.astro";
-import IconCv from "../components/icons/IconCv.astro";
 import { getTranslations } from "../i18n";
 
 const t = getTranslations(Astro.currentLocale);
@@ -49,10 +48,9 @@ const t = getTranslations(Astro.currentLocale);
         {/* Subheadline */}
         <div class="flex flex-col gap-4 short:gap-3">
           <p
-            class="text-foreground/70 text-base md:text-lg short:text-base leading-relaxed max-w-md [text-wrap:balance] lowercase"
+            class="text-foreground/70 text-base md:text-lg short:text-base leading-relaxed max-w-md [text-wrap:balance]"
           >
-            <span class="text-foreground/60 font-mono mr-2">{"//"}</span>
-            {t("contact.subheadline").replace("// ", "")}
+            {t("contact.subheadline")}
           </p>
         </div>
 
@@ -115,19 +113,6 @@ const t = getTranslations(Astro.currentLocale);
           >
             <IconResearchGate class="w-3.5 h-3.5 shrink-0" />
             {t("contact.researchgate")}
-          </Button>
-
-          {/* CV */}
-          <Button
-            href="/Milosz_Misiek_CV.pdf"
-            variant="secondary"
-            target="_blank"
-            download
-            class="focus-ring gap-2"
-            aria-label="Download CV"
-          >
-            <IconCv class="w-3.5 h-3.5 shrink-0" />
-            {t("contact.cv")}
           </Button>
         </div>
 
