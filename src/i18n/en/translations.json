@@ -5,7 +5,8 @@
   "nav.research": "RESEARCH",
   "nav.contact": "CONTACT",
 
-  "hero.eyebrow": "SOFTWARE ENGINEER · PHD CANDIDATE · SZCZECIN, PL",
+  "hero.eyebrow.roles": "SOFTWARE ENGINEER · PHD CANDIDATE",
+  "hero.eyebrow.location": "SZCZECIN, PL",
   "hero.name": "Milosz Misiek",
   "hero.headline.first": "Code that ships.",
   "hero.headline.second": "Research that's published.",

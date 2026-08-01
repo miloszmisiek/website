@@ -5,7 +5,8 @@
   "nav.research": "BADANIA",
   "nav.contact": "KONTAKT",
 
-  "hero.eyebrow": "INŻYNIER OPROGRAMOWANIA · DOKTORANT · SZCZECIN, PL",
+  "hero.eyebrow.roles": "INŻYNIER OPROGRAMOWANIA · DOKTORANT",
+  "hero.eyebrow.location": "SZCZECIN, PL",
   "hero.name": "Milosz Misiek",
   "hero.headline.first": "Mało kodu trafia na produkcję.",
   "hero.headline.second": "Pracuję nad tym, który trafia.",

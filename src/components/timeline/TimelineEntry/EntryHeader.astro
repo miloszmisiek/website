@@ -17,20 +17,23 @@ const endYear =
 
 <h3 class="text-heading-md text-3xl short:text-2xl mb-2">{role}</h3>
 <p
-  class="text-mono-meta mb-6 short:mb-3 flex flex-wrap items-center gap-x-2 gap-y-1"
+  class="text-mono-meta mb-6 short:mb-3 flex flex-wrap items-baseline gap-x-2 gap-y-1"
 >
-  <span class="text-foreground/50" aria-hidden="true">@</span>
-  <span>{company}</span>
-  <span class="text-foreground/40" aria-hidden="true">·</span>
-  <span>{startYear} — {endYear}</span>
+  <span><span class="text-foreground/50" aria-hidden="true">@</span> {company}</span
+  >
+  <span class="whitespace-nowrap"
+    ><span class="text-foreground/40" aria-hidden="true">·</span> {startYear} — {
+      endYear
+    }</span
+  >
   {
     duration && (
-      <>
+      <span class="whitespace-nowrap">
         <span class="text-foreground/40" aria-hidden="true">
           ·
-        </span>
-        <span>{duration}</span>
-      </>
+        </span>{" "}
+        {duration}
+      </span>
     )
   }
 </p>
