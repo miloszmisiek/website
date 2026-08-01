@@ -30,9 +30,11 @@ export function PublicationCarousel({
       <div
         ref={emblaRef}
         className={cn("overflow-hidden w-full", {
-          "carousel-fade-both": canGoPrev && canGoNext,
-          "carousel-fade-left": canGoPrev && !canGoNext,
-          "carousel-fade-right": !canGoPrev && canGoNext,
+          // Slides align to start, so the peeking card is on the right until
+          // the last snap, where it flips to the left. Fade that side only —
+          // fading both would mask the active card's own edge.
+          "carousel-fade-right": canGoNext,
+          "carousel-fade-left": !canGoNext && canGoPrev,
         })}
         onKeyDown={onKeyDown}
         tabIndex={0}
