@@ -2,13 +2,35 @@
 type Props = {
   role: string;
   company: string;
+  start: string;
+  end: string;
+  presentLabel: string;
+  duration?: string;
 };
 
-const { role, company } = Astro.props;
+const { role, company, start, end, presentLabel, duration } = Astro.props;
+
+const startYear = start.split("-")[0];
+const endYear =
+  end.toLowerCase() === "present" ? presentLabel : end.split("-")[0];
 ---
 
 <h3 class="text-heading-md text-3xl short:text-2xl mb-2">{role}</h3>
-<p class="text-mono-meta mb-6 short:mb-3 flex items-center gap-3">
-  <span class="text-foreground/50">@</span>
-  {company}
+<p
+  class="text-mono-meta mb-6 short:mb-3 flex flex-wrap items-center gap-x-2 gap-y-1"
+>
+  <span class="text-foreground/50" aria-hidden="true">@</span>
+  <span>{company}</span>
+  <span class="text-foreground/40" aria-hidden="true">·</span>
+  <span>{startYear} — {endYear}</span>
+  {
+    duration && (
+      <>
+        <span class="text-foreground/40" aria-hidden="true">
+          ·
+        </span>
+        <span>{duration}</span>
+      </>
+    )
+  }
 </p>

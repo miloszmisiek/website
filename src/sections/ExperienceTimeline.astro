@@ -24,9 +24,7 @@ const t = getTranslations(Astro.currentLocale);
 
         <TimelineAnimator client:load items={experience}>
           {
-            experience.map((entry, index) => (
-              <TimelineEntry entry={entry} index={index} />
-            ))
+            experience.map((entry) => <TimelineEntry entry={entry} />)
           }
         </TimelineAnimator>
       </div>

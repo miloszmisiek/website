@@ -4,8 +4,6 @@ import { ExperienceTypeEnum } from "../../../data/types";
 import { getTranslations } from "../../../i18n";
 import { TimelineTechStack } from "../TimelineTechStack";
 import CommitNode from "./CommitNode.astro";
-import GitRef from "./GitRef.astro";
-import Period from "./Period.astro";
 import EntryHeader from "./EntryHeader.astro";
 import EntryFocus from "./EntryFocus.astro";
 import Highlights from "./Highlights.astro";
@@ -14,10 +12,9 @@ const MAX_HIGHLIGHTS = 4;
 
 type Props = {
   entry: TimelineEntryType;
-  index: number;
 };
 
-const { entry, index } = Astro.props;
+const { entry } = Astro.props;
 const t = getTranslations(Astro.currentLocale);
 
 const {
@@ -40,16 +37,14 @@ const visibleHighlights = highlights?.slice(0, MAX_HIGHLIGHTS);
   <CommitNode isWork={isWork} />
 
   <div class="relative z-10">
-    <GitRef entry={entry} isWork={isWork} isHead={index === 0} />
-
-    <Period
+    <EntryHeader
+      role={role}
+      company={company}
       start={start}
       end={end}
       presentLabel={t("timeline.present")}
       duration={duration}
     />
-
-    <EntryHeader role={role} company={company} />
 
     {focus && <EntryFocus focus={focus} />}
 

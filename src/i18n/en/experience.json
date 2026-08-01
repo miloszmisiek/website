@@ -68,7 +68,7 @@
     "focus": "Procurement System Development",
     "description": "Built and delivered the first version of a procurement system (NDA project), designing and implementing a full-stack solution using React, Redux, Express, TypeScript, and MySQL.",
     "highlights": [
-      "Built and delivered the first version of a procurement system (NDA project), designing and implementing a full-stack solution using React, Redux, Express, TypeScript, and MySQL.",
+      "Built and delivered the first version of a full-stack procurement system (NDA project)",
       "Deployed and configured on Debian server with secure database management",
       "Led development across the entire project lifecycle to on-time delivery"
     ],

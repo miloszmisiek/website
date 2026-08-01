@@ -1,8 +1,3 @@
-export enum GitBranchPrefixEnum {
-  Feature = "feat",
-  Education = "edu",
-}
-
 export enum ExperienceTypeEnum {
   Work = "work",
   Academic = "academic",
