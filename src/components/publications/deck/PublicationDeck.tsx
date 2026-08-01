@@ -48,9 +48,11 @@ export function PublicationDeck({ publications }: PublicationDeckProps) {
 
   const bringToFront = useCallback((id: string) => {
     setOrderedPublications((prev) => {
+      if (prev[0]?.id === id) return prev;
       const publication = prev.find((pub) => pub.id === id);
       if (!publication) return prev;
-      return [publication, ...prev.filter((pub) => pub.id !== id)];
+      const [oldTop, ...others] = prev.filter((pub) => pub.id !== id);
+      return [publication, ...others, oldTop];
     });
   }, []);
 
