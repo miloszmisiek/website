@@ -42,7 +42,7 @@
     "focus": "Cyberbezpieczeństwo i detekcja phishingu",
     "description": "Badania doktoranckie na styku AI i cyberbezpieczeństwa. Buduję systemy wykrywania phishingu oparte na XGBoost, NLP i metodach computer vision.",
     "highlights": [
-      "2 opublikowane artykuły (HICSS 2025, IEEE Access 2026), 3. w recenzji na CISIM 2026",
+      "2 opublikowane artykuły (HICSS 2025, IEEE Access 2026), 3. przyjęty na CISIM 2026",
       "Budowa rozszerzenia przeglądarkowego do wykrywania phishingu w czasie rzeczywistym (XGBoost)",
       "Rozwój wielowarstwowego systemu detekcji łączącego NLP i computer vision"
     ],
