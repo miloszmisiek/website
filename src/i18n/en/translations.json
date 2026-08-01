@@ -26,6 +26,7 @@
 
   "publication.abstract": "Abstract",
   "publication.viewPaper": "VIEW PAPER",
+  "publication.viewPaper.pending": "Available once the conference proceedings are published",
   "publication.status.published": "Published",
   "publication.status.accepted": "Accepted",
   "publication.status.underreview": "Under Review",

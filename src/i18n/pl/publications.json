@@ -13,11 +13,12 @@
       "Klasyfikacja wizualna",
       "Deep learning",
       "SigLIP 2",
-      "DINOv2",
-      "MLP"
+      "DINOv2"
     ],
     "tldr": "Wykrywanie stron phishingowych na podstawie zrzutów ekranu przez połączenie zamrożonych embeddingów SigLIP 2 i DINOv2, bez douczania modeli. Na zbiorze 70 785 zrzutów model MLP osiąga F1 0,9474 oraz AUC 0,9839.",
-    "excerpt": "Ataki phishingowe coraz częściej opierają się na oszustwie wizualnym. Ponieważ atakujący kopiują wygląd legalnych witryn, detektory oparte na tekście i adresie URL często nie wykrywają zagrożenia.\n\nW artykule przedstawiono podejście do wizualnej detekcji phishingu, wykorzystujące wiedzę semantyczną dużych, wstępnie wytrenowanych modeli wizyjnych bez kosztownego douczania. Embeddingi z zamrożonych enkoderów SigLIP 2 i DINOv2 są łączone w jedną reprezentację multimodalną, na której trenowany jest lekki klasyfikator MLP, porównywany z XGBoost.\n\nNa zbiorze 70 785 zrzutów ekranu połączony model MLP osiąga F1 0,9474 oraz AUC 0,9839. Wyniki pokazują, że multimodalna fuzja embeddingów obrazowo-tekstowych i czysto wizualnych konsekwentnie przewyższa reprezentacje z pojedynczego enkodera."
+    "excerpt": "Ataki phishingowe coraz częściej opierają się na oszustwie wizualnym. Ponieważ atakujący kopiują wygląd legalnych witryn, detektory oparte na tekście i adresie URL często nie wykrywają zagrożenia.\n\nW artykule przedstawiono podejście do wizualnej detekcji phishingu, wykorzystujące wiedzę semantyczną dużych, wstępnie wytrenowanych modeli wizyjnych bez kosztownego douczania. Embeddingi z zamrożonych enkoderów SigLIP 2 i DINOv2 są łączone w jedną reprezentację multimodalną, na której trenowany jest lekki klasyfikator MLP, porównywany z XGBoost.\n\nNa zbiorze 70 785 zrzutów ekranu połączony model MLP osiąga F1 0,9474 oraz AUC 0,9839. Wyniki pokazują, że multimodalna fuzja embeddingów obrazowo-tekstowych i czysto wizualnych konsekwentnie przewyższa reprezentacje z pojedynczego enkodera.",
+    "doi": "TBA",
+    "readTime": "15 min"
   },
   {
     "id": "pub-hicss-2025",

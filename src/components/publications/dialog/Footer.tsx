@@ -1,6 +1,7 @@
 import { getTranslations } from "../../../i18n";
 import { Button } from "../../button/Button";
 import { usePublicationAbstractDialogContext } from "./context";
+import { PendingPaperButton } from "../PendingPaperButton";
 
 export function Footer() {
   const t = getTranslations();
@@ -18,7 +19,7 @@ export function Footer() {
           </span>
         )}
       </div>
-      {link && (
+      {link ? (
         <Button
           href={link}
           variant="secondary"
@@ -28,6 +29,8 @@ export function Footer() {
         >
           {t("publication.viewPaper")}
         </Button>
+      ) : (
+        <PendingPaperButton className="w-full md:w-auto" />
       )}
     </div>
   );

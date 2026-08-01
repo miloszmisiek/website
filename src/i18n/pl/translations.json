@@ -26,6 +26,7 @@
 
   "publication.abstract": "Streszczenie",
   "publication.viewPaper": "CZYTAJ ARTYKUŁ",
+  "publication.viewPaper.pending": "Dostępne po opublikowaniu materiałów konferencyjnych",
   "publication.status.published": "Opublikowano",
   "publication.status.accepted": "Przyjęto",
   "publication.status.underreview": "W recenzji",

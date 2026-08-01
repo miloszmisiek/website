@@ -5,6 +5,7 @@ import { cn } from "../../../styles/cn";
 import { Badge } from "../../Badge";
 import { Button } from "../../button/Button";
 import { PublicationAbstractDialog } from "../dialog";
+import { PendingPaperButton } from "../PendingPaperButton";
 
 type PublicationStackCardProps = {
   publication: Publication;
@@ -133,7 +134,6 @@ export function PublicationStackCard({
           </p>
         )}
 
-        {(readTime || doi || link) && (
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 short:gap-3 pt-6 short:pt-4 border-t border-border/70 mt-auto relative z-10">
           <div className="flex items-center gap-x-4 overflow-hidden text-micro font-mono uppercase tracking-widest text-muted/90 min-w-0">
             {readTime && (
@@ -152,7 +152,7 @@ export function PublicationStackCard({
             )}
           </div>
 
-          {link && (
+          {link ? (
             <Button
               href={link}
               variant="secondary"
@@ -163,9 +163,10 @@ export function PublicationStackCard({
             >
               {t("publication.viewPaper")}
             </Button>
+          ) : (
+            <PendingPaperButton />
           )}
         </div>
-        )}
       </div>
 
       <PublicationAbstractDialog.Panel>

@@ -13,11 +13,12 @@
       "Visual Classification",
       "Deep Learning",
       "SigLIP 2",
-      "DINOv2",
-      "MLP"
+      "DINOv2"
     ],
     "tldr": "Detects phishing pages from screenshots by fusing frozen SigLIP 2 and DINOv2 embeddings, with no fine-tuning. Evaluated on 70,785 web-page screenshots, the fused MLP reaches an F1 score of 0.9474 and an AUC of 0.9839.",
-    "excerpt": "Phishing attacks increasingly rely on visual deception to steal user data. Because attackers copy the exact appearance of legitimate websites, text-based and URL-based detectors often fail to identify the threat.\n\nThis paper presents a visual phishing detection approach that exploits the semantic knowledge of large pretrained vision models without the computational cost of fine-tuning. We extract embeddings from frozen SigLIP 2 and DINOv2 encoders and concatenate them into a single multimodal representation. We then train a lightweight Multi-Layer Perceptron (MLP) classifier on these fused features and compare its performance against XGBoost.\n\nEvaluated on a dataset of 70,785 web-page screenshots, our fused MLP model achieves an F1 score of 0.9474 and an AUC of 0.9839. The results demonstrate that multimodal fusion of image-text and purely visual embeddings consistently outperforms single-encoder representations. Furthermore, a simple MLP is highly competitive with gradient boosting when trained on rich pretrained embeddings."
+    "excerpt": "Phishing attacks increasingly rely on visual deception to steal user data. Because attackers copy the exact appearance of legitimate websites, text-based and URL-based detectors often fail to identify the threat.\n\nThis paper presents a visual phishing detection approach that exploits the semantic knowledge of large pretrained vision models without the computational cost of fine-tuning. We extract embeddings from frozen SigLIP 2 and DINOv2 encoders and concatenate them into a single multimodal representation. We then train a lightweight Multi-Layer Perceptron (MLP) classifier on these fused features and compare its performance against XGBoost.\n\nEvaluated on a dataset of 70,785 web-page screenshots, our fused MLP model achieves an F1 score of 0.9474 and an AUC of 0.9839. The results demonstrate that multimodal fusion of image-text and purely visual embeddings consistently outperforms single-encoder representations. Furthermore, a simple MLP is highly competitive with gradient boosting when trained on rich pretrained embeddings.",
+    "doi": "TBA",
+    "readTime": "15 min"
   },
   {
     "id": "pub-hicss-2025",
