@@ -12,7 +12,7 @@ export function usePublicationCarousel(
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: false,
     align: "start",
-    containScroll: "keepSnaps",
+    containScroll: "trimSnaps",
     duration: prefersReducedMotion ? 0 : 25,
   });
 
