@@ -5,6 +5,7 @@ export enum ExperienceTypeEnum {
 
 export enum PublicationStatusEnum {
   Published = "published",
+  Accepted = "accepted",
   UnderReview = "underreview",
   Preprint = "preprint",
 }

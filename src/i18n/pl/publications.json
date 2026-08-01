@@ -1,8 +1,31 @@
 [
   {
+    "id": "pub-cisim-2026",
+    "title": "Phishing protection model based on machine learning vision detection approach",
+    "authors": [
+      "Miłosz Misiek",
+      "Tomasz Hyla"
+    ],
+    "status": "accepted",
+    "year": 2026,
+    "topics": [
+      "Detekcja phishingu",
+      "Klasyfikacja wizualna",
+      "Deep learning",
+      "SigLIP 2",
+      "DINOv2",
+      "MLP"
+    ],
+    "tldr": "Wykrywanie stron phishingowych na podstawie zrzutów ekranu przez połączenie zamrożonych embeddingów SigLIP 2 i DINOv2, bez douczania modeli. Na zbiorze 70 785 zrzutów model MLP osiąga F1 0,9474 oraz AUC 0,9839.",
+    "excerpt": "Ataki phishingowe coraz częściej opierają się na oszustwie wizualnym. Ponieważ atakujący kopiują wygląd legalnych witryn, detektory oparte na tekście i adresie URL często nie wykrywają zagrożenia.\n\nW artykule przedstawiono podejście do wizualnej detekcji phishingu, wykorzystujące wiedzę semantyczną dużych, wstępnie wytrenowanych modeli wizyjnych bez kosztownego douczania. Embeddingi z zamrożonych enkoderów SigLIP 2 i DINOv2 są łączone w jedną reprezentację multimodalną, na której trenowany jest lekki klasyfikator MLP, porównywany z XGBoost.\n\nNa zbiorze 70 785 zrzutów ekranu połączony model MLP osiąga F1 0,9474 oraz AUC 0,9839. Wyniki pokazują, że multimodalna fuzja embeddingów obrazowo-tekstowych i czysto wizualnych konsekwentnie przewyższa reprezentacje z pojedynczego enkodera."
+  },
+  {
     "id": "pub-hicss-2025",
     "title": "Preventing Phishing Attacks with Browser-Based URL Detection",
-    "authors": ["Miłosz Misiek", "Tomasz Hyla"],
+    "authors": [
+      "Miłosz Misiek",
+      "Tomasz Hyla"
+    ],
     "status": "published",
     "year": 2025,
     "topics": [
@@ -20,7 +43,10 @@
   {
     "id": "pub-ieee-access-2026",
     "title": "XGBoost-Based URL Phishing Detection Method With Cross-Dataset Validation",
-    "authors": ["Milosz Misiek", "Tomasz Hyla"],
+    "authors": [
+      "Milosz Misiek",
+      "Tomasz Hyla"
+    ],
     "status": "published",
     "year": 2026,
     "topics": [

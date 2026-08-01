@@ -27,6 +27,7 @@
   "publication.abstract": "Abstract",
   "publication.viewPaper": "VIEW PAPER",
   "publication.status.published": "Published",
+  "publication.status.accepted": "Accepted",
   "publication.status.underreview": "Under Review",
   "publication.status.preprint": "Preprint",
   "publication.time": "Time",

@@ -14,6 +14,7 @@ type PublicationStackCardProps = {
 
 const statusLabels = {
   [PublicationStatusEnum.Published]: "publication.status.published",
+  [PublicationStatusEnum.Accepted]: "publication.status.accepted",
   [PublicationStatusEnum.UnderReview]: "publication.status.underreview",
   [PublicationStatusEnum.Preprint]: "publication.status.preprint",
 } satisfies Record<PublicationStatusEnum, TranslationKey>;
@@ -23,6 +24,7 @@ const STATUS_BADGE_VARIANTS: Record<
   "success" | "warning" | "info"
 > = {
   [PublicationStatusEnum.Published]: "success",
+  [PublicationStatusEnum.Accepted]: "info",
   [PublicationStatusEnum.UnderReview]: "warning",
   [PublicationStatusEnum.Preprint]: "info",
 };
@@ -131,6 +133,7 @@ export function PublicationStackCard({
           </p>
         )}
 
+        {(readTime || doi || link) && (
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 short:gap-3 pt-6 short:pt-4 border-t border-border/70 mt-auto relative z-10">
           <div className="flex items-center gap-x-4 overflow-hidden text-micro font-mono uppercase tracking-widest text-muted/90 min-w-0">
             {readTime && (
@@ -162,6 +165,7 @@ export function PublicationStackCard({
             </Button>
           )}
         </div>
+        )}
       </div>
 
       <PublicationAbstractDialog.Panel>
