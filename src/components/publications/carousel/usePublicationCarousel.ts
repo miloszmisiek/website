@@ -11,7 +11,7 @@ export function usePublicationCarousel(
 
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: false,
-    align: "start",
+    align: "center",
     containScroll: "trimSnaps",
     duration: prefersReducedMotion ? 0 : 25,
   });

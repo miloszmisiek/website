@@ -47,8 +47,6 @@
   }
 
   
-  /* w-full is required: as a flex child, auto cross-axis margins would
-     otherwise shrink this to content width instead of filling to max-w. */
   .page-container {
     @apply w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-16;
   }
@@ -94,7 +92,6 @@
     @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background;
   }
 
-  /* Styles anchors inside a text block — for links authored in i18n content. */
   .prose-links {
     @apply [&_a]:text-foreground [&_a]:underline [&_a]:decoration-1 [&_a]:decoration-accent/75 [&_a]:underline-offset-4 [&_a]:transition-colors [&_a:hover]:decoration-accent;
     @apply [&_a:focus-visible]:outline-none [&_a:focus-visible]:ring-2 [&_a:focus-visible]:ring-foreground/50 [&_a:focus-visible]:ring-offset-2 [&_a:focus-visible]:ring-offset-background;
@@ -125,6 +122,10 @@
       -webkit-mask-image: linear-gradient(to left, black calc(100% - 3.5rem), transparent);
       mask-image: linear-gradient(to left, black calc(100% - 3.5rem), transparent);
     }
+    .carousel-fade-both {
+      -webkit-mask-image: linear-gradient(to right, transparent, black 1.75rem, black calc(100% - 1.75rem), transparent);
+      mask-image: linear-gradient(to right, transparent, black 1.75rem, black calc(100% - 1.75rem), transparent);
+    }
   }
   
   @media (min-width: 768px) {
@@ -135,6 +136,10 @@
     .carousel-fade-left {
       -webkit-mask-image: linear-gradient(to left, black calc(100% - 5rem), transparent);
       mask-image: linear-gradient(to left, black calc(100% - 5rem), transparent);
+    }
+    .carousel-fade-both {
+      -webkit-mask-image: linear-gradient(to right, transparent, black 2.5rem, black calc(100% - 2.5rem), transparent);
+      mask-image: linear-gradient(to right, transparent, black 2.5rem, black calc(100% - 2.5rem), transparent);
     }
   }
 

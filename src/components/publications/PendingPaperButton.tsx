@@ -6,8 +6,6 @@ type PendingPaperButtonProps = {
   className?: string;
 };
 
-// aria-disabled rather than disabled: keeps the control focusable so keyboard
-// users can reach it and hear why the paper isn't linked yet.
 export function PendingPaperButton({ className }: PendingPaperButtonProps) {
   const t = getTranslations();
   const reason = t("publication.viewPaper.pending");
