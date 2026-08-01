@@ -47,8 +47,10 @@
   }
 
   
+  /* w-full is required: as a flex child, auto cross-axis margins would
+     otherwise shrink this to content width instead of filling to max-w. */
   .page-container {
-    @apply max-w-7xl mx-auto px-6 md:px-12 lg:px-16;
+    @apply w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-16;
   }
 
   
