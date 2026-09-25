@@ -42,7 +42,7 @@
     "focus": "Cybersecurity & Phishing Detection",
     "description": "Doctoral research at the intersection of AI and cybersecurity. Building ML-based phishing detection systems using XGBoost, NLP, and computer vision approaches.",
     "highlights": [
-      "Published 2 papers (HICSS 2025, IEEE Access 2026), 3rd accepted for CISIM 2026",
+      "Published 3 papers (CISIM 2026, IEEE Access 2026, HICSS 2025)",
       "Built browser extension for real-time phishing URL detection using XGBoost",
       "Developing multi-layer detection pipeline combining NLP and computer vision"
     ],
